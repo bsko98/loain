@@ -68,7 +68,7 @@
     margin-right: 24px;
 }
 
-/* 우측 컬럼 (왼쪽으로 이동) */
+/* 우측 컬럼 */
 .right-Column {
     display: flex;
     flex-direction: column;
