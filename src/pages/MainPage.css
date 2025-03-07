@@ -1,4 +1,166 @@
-.Main-Page{
-    background-color: #0A0A0A;
-    height: 100vh;
+/* 메인 컨테이너 */
+.main-Container {
+    display: flex;
+    width: 1440px;
+    height: 1604px;
+    background-color: #0a0a0a;
+    padding: 10px;
+    color: aliceblue;
+}
+
+/* 사이드 메뉴 */
+.side-Menu-Container {
+    width: 244px;
+    height: 900px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    box-shadow: 
+      0px 0px 3px 0px rgba(0, 0, 0, 0.12),
+      0px 0px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 0px 1px -1px rgba(0, 0, 0, 0.2);
+    margin-right: 80px;
+}
+
+/* 전체 컨텐츠 */
+.content-Wrapper {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 244px);
+    margin-left: 20px;
+}
+
+/* 광고 컨테이너 */
+.ad-Container {
+    width: 1037.8125px;
+    height: 123px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* 캐릭터 선택 컨테이너 (Fixed Width, Hug Height) */
+.character-Select-Container {
+    width: 1036px;
+    height: auto;
+    min-height: 58px;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 16px;
+    background-color: #1E1E1E;
+    margin-top: 24px;
+}
+
+/* 메인 컨텐츠 좌 우 배치 */
+.main-Content {
+    display: flex;
+
+    width: 100%;
+    gap: 16px;
+
+}
+
+/* 좌측 컬럼 */
+.left-Column {
+    display: flex;
+    flex-direction: column;
+    width: 318px;
+    gap: 16px;
+    margin-right: 24px;
+}
+
+/* 우측 컬럼 (왼쪽으로 이동) */
+.right-Column {
+    display: flex;
+    flex-direction: column;
+    width: 686px;
+}
+
+/* 캐릭터 컨테이너 (Hug Width, Hug Height) */
+.character-Container {
+    background-color: #1E1E1E;
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: 182px;
+    top: 237px;
+    left: 324px;
+    border-radius: 4px;
+    gap: 16px;
+    padding-top: 24px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+
+}
+
+/* 아크패시브 컨테이너 (Hug Width, Hug Height) */
+.arkPassive-Container {
+    background-color: #1E1E1E;
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: 84px;
+    border-radius: 4px;
+    top: 435px;
+    left: 324px;
+    padding: 16px;
+    gap: 47px;
+
+}
+
+/* 타이틀 컨테이너 (Hug Width, Hug Height) */
+.title-Container {
+    background-color: #1E1E1E;
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: 229px;
+    border-radius: 4px;
+    padding: 16px;
+    top: 535px;
+    left: 324px;
+    gap: 8px;
+
+}
+
+/* 검색 컨테이너 (Fixed Width, Hug Height) */
+.search-Container {
+    width: 100%;
+    height: auto;
+    min-height: 33px;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    padding: 8px;
+    top: 249px;
+    left: 658px;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* 필터 컨테이너 (Hug Width, Hug Height) */
+.filter-Container {
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: 59px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    padding: 16px;
+    top: 306px;
+    left: 658px;
+    gap: 228px;
+    margin-top: 24px;
+}
+
+
+
+/* 파티 컨테이너 (Fixed Width, Hug Height) */
+.party-Container {
+    width: 100%;
+    height: auto;
+    min-height: 1072px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 19px;
 }
