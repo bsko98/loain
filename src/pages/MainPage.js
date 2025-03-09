@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import './MainPage.css';
+import CharacterSelectContainer from '../components/CharacterSelectContainer';
 
 const MainPage = () => {
     return (
@@ -7,7 +8,7 @@ const MainPage = () => {
           <div className="side-Menu-Container">sideMenu</div>
           <div className="content-Wrapper">
             <div className="ad-Container">ad-Container</div>
-            <div className="character-Select-Container">character-select-Container</div>
+            <div className="character-Select-Container"><CharacterSelectContainer></CharacterSelectContainer></div>
             <div className="main-Content">
               <div className="left-Column">
                 <div className="character-Container">character-Container</div>
