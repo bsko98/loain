@@ -42,7 +42,6 @@ const Sidebar = () => {
           ))}
         </div>
         <div className='more-option-box'>
-          
         </div>
         <div className='more-option-button'> 
           <button className='more-info-button' onClick={()=>alert("sex")}> 
