@@ -1,10 +1,12 @@
 import React , {useState} from 'react';
 import './MainPage.css';
+import Sidebar from '../components/Sidebar.jsx';
+
 
 const MainPage = () => {
     return (
         <div className="main-Container">
-          <div className="side-Menu-Container">sideMenu</div>
+          <div className="side-Menu-Container"><Sidebar/></div>
           <div className="content-Wrapper">
             <div className="ad-Container">ad-Container</div>
             <div className="character-Select-Container">character-select-Container</div>

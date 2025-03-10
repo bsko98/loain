@@ -1,0 +1,73 @@
+/* 사이드 메뉴 */
+.side-Menu-Container {
+    width: 244px;
+    height: 900px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    box-shadow: 
+      0px 0px 3px 0px rgba(0, 0, 0, 0.12),
+      0px 0px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 0px 1px -1px rgba(0, 0, 0, 0.2);
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-box{
+  margin-top: 24px;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-box{
+  width: 220px;
+  height: 272px;
+  margin-top: 30px;
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*NOTE - 메뉴 박스 내 하나하나의 row*/
+.menu-box-row{
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 12px;
+}
+
+.menu-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.more-option-button{
+  width: 220px;
+  height: 48px;
+  margin-top: 463px;
+  margin-left: 12px;
+}
+
+.more-info-button{
+  border-radius: 10px;
+  width:220px;
+  height: 48px;
+  background-color:#292B2E;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 48px;
+  color: #DFDFDF;
+  padding: 0px 12px; /* 상하 0px, 좌우 12px 패딩 */
+}
+
+.more-option-box{
+  width: 220px;
+  height: 166px;
+  background-color: #0d0d0d;
+  padding: 0px 12px; /* 상하 0px, 좌우 12px 패딩 */
+  border: 1px #737373;
+  border-radius: 10px;
+}
