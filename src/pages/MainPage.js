@@ -3,6 +3,7 @@ import './MainPage.css';
 
 const MainPage = () => {
     return (
+      <div style={{fontFamily:'Pretendard'}}>
         <div className="main-Container">
           <div className="side-Menu-Container">sideMenu</div>
           <div className="content-Wrapper">
@@ -22,6 +23,7 @@ const MainPage = () => {
             </div>
           </div>
         </div>
+      </div>
       );
 }
 
