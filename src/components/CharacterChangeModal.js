@@ -25,8 +25,6 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                     <h2>내 캐릭터</h2>
                     <button className="modal-close-btn" onClick={onClose}>X</button>
                 </div>
-
-                {/* 서버 선택 버튼 */}
                 <div className="server-list">
                     {["루페온", "실리안", "카마인", "아브렐슈드", "아만", "카제로스", "카단", "니나브"].map((server, index) => (
                         <button 
@@ -38,8 +36,6 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                         </button>
                     ))}
                 </div>
-
-                {/* 캐릭터 리스트 */}
                 <div className="character-list">
                     {filteredCharacters.length > 0 ? (
                         filteredCharacters.map((character) => (

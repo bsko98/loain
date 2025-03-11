@@ -124,7 +124,7 @@
 .character-item.selected {
     background-color: rgba(63, 64, 68, 1);
 }
-
+/*캐릭터 이미지*/
 .character-icon {
     width: 40px;
     height: 40px;

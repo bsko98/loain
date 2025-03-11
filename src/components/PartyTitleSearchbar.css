@@ -1,0 +1,105 @@
+/* 전체 컨테이너 */
+.party-search-container {
+    width: 100%;
+    height: 91px;
+    background: rgba(30, 30, 30, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 상단 타이틀 & 버튼 컨테이너 */
+.party-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 모집중인 파티 텍스트 */
+.party-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(223, 223, 223, 1);
+}
+
+/* 업데이트 버튼 */
+.update-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 26px;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    background: rgba(63, 64, 68, 1);
+    color: rgba(223, 223, 223, 1);
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.update-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* 검색 박스 */
+.search-box {
+    width: 100%;
+    max-width: 654px;
+    height: auto;
+    min-height: 33px;
+    display: flex;
+    align-items: center;
+    background: rgba(230, 230, 230, 1);
+    border-radius: 8px;
+    padding: 8px 16px;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* 검색 입력 필드 */
+.search-input {
+    width: 100%;
+    height: 33px;
+    max-width: 654px;
+    border: none;
+    background: transparent;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: rgba(100, 100, 100, 1);
+    outline: none;
+    border-radius: 8px;
+    
+}
+
+
+/* 검색 입력 후 나타나는 텍스트 */
+.search-placeholder {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: rgba(50, 50, 50, 1);
+}
+
+/* 검색 아이콘 */
+.search-button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-icon{
+    width: 14.17px;
+    height: 14.17px;
+    top: 1.42px;
+    left: 1.42px;
+
+}

@@ -18,7 +18,7 @@ const CharacterSelectContainer = () => {
     const handleRefresh = async () => {
         setLoading(true);
         try {
-            setSelectedCharacter(characterList[0]); // 예제: 첫 번째 캐릭터 선택
+            setSelectedCharacter(characterList[0]);
         } catch (error) {
             alert("네트워크 오류가 발생했습니다.");
             console.error(error);

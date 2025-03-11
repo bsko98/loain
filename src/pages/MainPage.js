@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import './MainPage.css';
 import CharacterSelectContainer from '../components/CharacterSelectContainer';
+import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 
 const MainPage = () => {
     return (
@@ -13,11 +14,16 @@ const MainPage = () => {
               <div className="left-Column">
                 <div className="character-Container">character-Container</div>
                 <div className="arkPassive-Container">arkpassive-Container</div>
+                <div className="card-Container">card-Container</div>
                 <div className="title-Container">title-Container</div>
               </div>
               <div className="right-Column">
-                <div className="search-Container">search-Container</div>
-                <div className="filter-Container">filter-Container</div>
+                <div className="right-Container">
+                  <div className="right-Top-Container">
+                    <PartyTitleSearchbar></PartyTitleSearchbar>
+                    <div className="filter-Container">filter-Container</div>
+                  </div>
+                </div>
                 <div className="party-Container">party-Container</div>
               </div>
             </div>
