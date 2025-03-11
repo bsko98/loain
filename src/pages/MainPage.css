@@ -53,7 +53,6 @@
 /* 메인 컨텐츠 좌 우 배치 */
 .main-Content {
     display: flex;
-
     width: 100%;
     gap: 16px;
 
@@ -66,6 +65,7 @@
     width: 318px;
     gap: 16px;
     margin-right: 24px;
+    
 }
 
 /* 우측 컬럼 */
@@ -73,7 +73,9 @@
     display: flex;
     flex-direction: column;
     width: 686px;
+    /* background-color: #1E1E1E; */
 }
+
 
 /* 캐릭터 컨테이너 (Hug Width, Hug Height) */
 .character-Container {

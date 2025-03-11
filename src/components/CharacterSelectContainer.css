@@ -14,7 +14,7 @@
     flex-grow: 1;
     text-align: left;
     line-height: 100%;
-    color: rgba(223,223,223,1);
+    color: rgba(107,131,225,1);
 }
 
 
@@ -26,7 +26,6 @@
 }
 
 .character-select-btn {
-  background-color: #444;
   color: white;
   border: none;
   border-radius: 8px;
@@ -41,17 +40,34 @@
 }
 .refresh{
   height: 25px;
+  background-color: rgba(63,64,68,1);
 }
 .change{
   height: 26px;
+  background-color: rgba(107,131,225,1);
 }
 .select{
   height: 26px;
+  background-color: rgba(107,131,225,1);
 }
-.character-select-btn:hover {
+/* .character-select-btn:hover {
     background-color: #666;
-}
+} <- 호버 부분임 지금 색 안정해진것 같아서 주석 처리 해놨음음*/
 .character-select-btn.character-select-icon{
   width: 18px;
   height: 18px;
+}
+.server-button {
+  min-width: 100px;
+  height: 30px;
+  background: rgba(63, 64, 68, 1);
+  color: rgba(223, 223, 223, 1);
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.server-button.active {
+  background: rgba(80, 81, 85, 1);
 }
