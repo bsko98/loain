@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from "react";
 import './MainPage.css';
 import CharacterSelectContainer from '../components/CharacterSelectContainer';
 import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 import FilterContainer from '../components/FilterContainer';
+import FilterModal from "../components/FilterModal";
 
 const MainPage = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+    const [selectedFilters, setSelectedFilters] = useState([]);
+
+    const applyFilters = (filters) => {
+        setSelectedFilters(filters);
+        setFilterModalOpen(false); 
+    };
+
     return (
         <div className="main-Container">
             <div className="side-Menu-Container">sideMenu</div>
@@ -23,14 +33,15 @@ const MainPage = () => {
                     <div className="right-Column">
                         <div className="right-Container">
                             <div className="right-Top-Container">
-                                <PartyTitleSearchbar />
-                                <FilterContainer />
+                                <PartyTitleSearchbar setSearchQuery={setSearchQuery} />
+                                <FilterContainer setFilterModalOpen={setFilterModalOpen} selectedFilters={selectedFilters} />
                             </div>
                         </div>
                         <div className="party-Container">party-Container</div>
                     </div>
                 </div>
             </div>
+            {isFilterModalOpen && <FilterModal isOpen={isFilterModalOpen} onClose={() => setFilterModalOpen(false)} applyFilters={applyFilters} />}
         </div>
     );
 };

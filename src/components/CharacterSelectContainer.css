@@ -50,9 +50,11 @@
   height: 26px;
   background-color: rgba(107,131,225,1);
 }
-/* .character-select-btn:hover {
-    background-color: #666;
-} <- 호버 부분임 지금 색 안정해진것 같아서 주석 처리 해놨음음*/
+.character-select-btn:hover {
+  background: rgba(61, 63, 68, 1);
+
+} 
+
 .character-select-btn.character-select-icon{
   width: 18px;
   height: 18px;

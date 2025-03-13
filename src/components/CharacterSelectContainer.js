@@ -44,10 +44,10 @@ const CharacterSelectContainer = () => {
                     캐릭터 변경
                 </button>
 
-                <button className="character-select-btn select" onClick={() => setIsModalOpen(true)}>
+                {/* <button className="character-select-btn select" onClick={() => setIsModalOpen(true)}>
                     <img src={CharacterSelectIcon} alt="캐릭터 선택" className="character-select-icon" />
                     캐릭터 선택
-                </button>
+                </button> */}
             </div>
 
             {isModalOpen && (
