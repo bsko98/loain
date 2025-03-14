@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./FilterModal.css";
-import CloseButton from "../images/CloseButton.svg";
+import CloseButton from "../assets/images/CloseButton.svg";
+
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
 
@@ -40,7 +41,6 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
             setEndLevel(null);
         }
     };
-
     return (
         <div className={`filter-modal-overlay ${isOpen ? "visible" : "hidden"}`}>
             <div className="filter-modal-container">
@@ -109,9 +109,81 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                                 </div>
                                 <div className="skill-bar-bottom-line"></div>
                             </div>
-                            <div className="checkbox-container">
-                                <input type="checkbox" name="isQuick" checked={filters.isQuick} onChange={handleFilterChange} />
-                                <label>내 캐릭터 스펙 불러오기</label>
+                            <div className="mycharacter-checkbox-container">
+                                    <input type="checkbox" name="isQuick" checked={filters.isQuick} onChange={handleFilterChange} />
+                                    <label className="mycharacter-checkbox-container-label">내 캐릭터 스펙 불러오기</label>
+                                </div>
+                            <div className="filter-main-container">
+                                
+                                <div className="character-filter-container">
+                                    <div className="character-filter-column-left">
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">템렙</label>
+                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">칭호</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">카드</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">각성</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">분위기</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                        <div className="custom-checkbox-container">
+                                            <div>
+                                                <input type="checkbox" name="isLottPot" id="isLottPot" />
+                                                <label htmlFor="isLottPot">랏폿</label>
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" name="isLottDeal" id="isLottDeal" />
+                                                <label htmlFor="isLottDeal">랏딜</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="character-filter-column-right">
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">진화</label>
+                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">깨달음</label>
+                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">도약</label>
+                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                        </div>
+                                        <label className="transcendence-label">초월</label>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">무기</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                        <div className="character-filter-box">
+                                            <label className="character-filter-label">방어구</label>
+                                            <select className="character-filter-dropdown">
+                                                <option>선택</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

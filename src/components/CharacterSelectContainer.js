@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CharacterSelectContainer.css";
 import CharacterChangeModal from "./CharacterChangeModal";
-import CharacterSelectIcon from "../images/CharacterSelectIcon.svg";
+import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 
 const CharacterSelectContainer = () => {
     const [selectedCharacter, setSelectedCharacter] = useState(null);

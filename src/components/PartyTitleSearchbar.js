@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./PartyTitleSearchbar.css";
-import UpdateIcon from "../images/UpdateIcon.svg";
-import PartyTitleSearchIcon from "../images/PartyTitleSearchIcon.svg";
+import UpdateIcon from "../assets/images/UpdateIcon.svg";
+import PartyTitleSearchIcon from "../assets/images/PartyTitleSearchIcon.svg";
 
 const PartyTitleSearchbar = ({ setSearchQuery }) => {
     const [searchTerm, setSearchTerm] = useState("");

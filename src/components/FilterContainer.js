@@ -1,6 +1,6 @@
 import React from "react";
 import "./FilterContainer.css";
-import FilterButtonIcon from "../images/FilterButtonIcon.svg";
+import FilterButtonIcon from "../assets/images/FilterButtonIcon.svg";
 
 const FilterContainer = ({ setFilterModalOpen, selectedFilters }) => {
     return (
