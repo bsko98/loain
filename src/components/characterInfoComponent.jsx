@@ -3,7 +3,7 @@ import './characterInfoComponent.css'
 
 
 
-
+// 이거 지우삼삼
 //TODO - 일단 받아오긴하는데 정보갱신 버튼을 새로운 컴포넌트로 만들까? 아니면 기존 모달에서 만들어?
 const characterInfoComponent = ({characterPhoto,characterName,serverName,classInfo,itemLevel,refreshButton}) => {
   return (
