@@ -1,0 +1,53 @@
+/* 전체 구도 */
+.character-info-component-container{
+    width: 494px;
+    min-width: 494px;
+    height: 80px;
+    background-color: #2C2F34;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+/* 캐릭터 이미지 부분 */
+.character-img-container{
+    width: 51px;
+    height: 64px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+/* 이미지 제외 나머지 부분 */
+.character-info-container{
+    width: 420px;
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 나머지의 첫 번째줄 */
+.character-info-first-row{
+    width: 420px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    margin-left: 7px;
+    justify-content: space-between;
+}
+
+/* 나머지의 두 번째 줄 */
+.character-info-second-row{
+    width: 420px;
+    height: 19px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    margin-left: 7px;
+}
+
+.character-info-component-container:hover{
+    background-color: #3D3F44;
+}

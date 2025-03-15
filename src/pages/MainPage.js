@@ -1,12 +1,14 @@
 // import React , {useState} from 'react';
 import React from 'react';
 import './MainPage.css';
+import Sidebar from '../components/sidebar';
 
 const MainPage = () => {
     return (
-      <div style={{fontFamily:'Pretendard'}}>
+      <div>
         <div className="main-Container">
-          <div className="side-Menu-Container">sideMenu</div>
+          {/* <div className="side-Menu-Container">
+          </div> */}
           <div className="content-Wrapper">
             <div className="ad-Container">ad-Container</div>
             <div className="character-Select-Container">character-select-Container</div>
