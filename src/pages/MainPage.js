@@ -4,6 +4,7 @@ import CharacterSelectContainer from '../components/CharacterSelectContainer';
 import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 import FilterContainer from '../components/FilterContainer';
 import FilterModal from "../components/FilterModal";
+import Sidebar from '../components/sidebar';
 
 const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -16,8 +17,8 @@ const MainPage = () => {
     };
 
     return (
+      <div>
         <div className="main-Container">
-            <div className="side-Menu-Container">sideMenu</div>
             <div className="content-Wrapper">
                 <div className="ad-Container">ad-Container</div>
                 <div className="character-Select-Container">

@@ -1,0 +1,67 @@
+/* 내 캐릭터 나오는 부분 전체 컨테이너 */
+.my-character-container{
+    width: 1036px;
+    height: 721px;
+    background-color: #1E1E1E;
+    margin-top: 24px;
+    border-radius: 10px;
+}
+
+/* 내 캐릭터, 추가하기 라인 */
+.my-character-add-button-row{
+    width: 1004px;
+    height: 26px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+
+/* 추가하기 버튼 */
+.add-character-buuton{
+    width: 79px;
+    height: 26px;
+    background-color: #3F4044;
+    color: #DFDFDF;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+}
+
+/* 로아 서버 보여주는 부분 */
+.my-character-server-box{
+    width: 1004px;
+    max-width: 1004px;
+    height: 74px;
+    margin-top: 24px;
+    background-color: #0D0D0D;
+    margin-left: 12px;
+    border-radius: 10px;
+    border: 1px solid #737373;
+    padding-top: 8px;
+    padding-left: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 로아 서버 버튼 */
+.server-button{
+    width: 173px;
+    height: 25px;
+    background-color: #3F4044;
+    border-radius: 8px;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    color: #DFDFDF;
+}
+
+/* 내 캐릭터 정보 보여주는 부분 */
+.my-character-info-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 16px;
+    margin-top: 24px;
+}
