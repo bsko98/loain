@@ -9,7 +9,7 @@ const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [isFilterModalOpen, setFilterModalOpen] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState([]);
-    console.log("Partytitle test -> " + searchQuery);//파티 제목 나중에 처리용 데이터 가져와졌는지 테스트용
+    console.log("Partytitle test -> " + searchQuery);//lint-cex
     const applyFilters = (filters) => {
         setSelectedFilters(filters);
         setFilterModalOpen(false);
@@ -37,7 +37,7 @@ const MainPage = () => {
                                     <FilterContainer setFilterModalOpen={setFilterModalOpen} selectedFilters={selectedFilters} />
                                 </div>
                             </div>
-                            <div className="party-Container">party-Container</div>
+                            <div className="party-Container">party-Container</div>  {/** @param {string} searchQuery  파티 제목 검색용 데이터*/}
                         </div>
                     </div>
                 </div>
