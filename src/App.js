@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
 
+
 function App() {
   return (
     <div className="App"> 

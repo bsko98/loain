@@ -1,0 +1,60 @@
+
+.filter-container {
+    width: 654px;
+    height: auto; 
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(21, 23, 27, 1);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(121, 121, 121, 1);
+    flex-wrap: wrap; 
+}
+
+.filter-tags {
+    width: 521px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1; 
+}
+
+.filter-tag {
+    background: rgba(42, 43, 46, 1);
+    color: rgba(223, 223, 223, 1);
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.filter-button {
+    width: 65px;
+    height: 60px;
+    border-radius: 8px;
+    background: rgba(63, 64, 68, 1);
+    color: rgba(223, 223, 223, 1);
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    gap: 4px;
+}
+
+.filter-icon {
+    width: 16px;
+    height: 16px;
+}
