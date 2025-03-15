@@ -1,0 +1,202 @@
+/* 메인 컨테이너 */
+.main-Container {
+    display: flex;
+    width: 1440px;
+    height: 1604px;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    padding: 10px;
+    color: aliceblue;
+    overflow: hidden;
+    font-family: Pretendard;
+}
+
+/* 사이드 메뉴 */
+.side-Menu-Container {
+    max-width: 244px;
+    width: 100%;
+    max-height: 900px;
+    height: auto;
+    background: rgba(30, 30, 30, 1);
+    border-radius: 4px;
+    box-shadow: 
+        0px 0px 3px 0px rgba(0, 0, 0, 0.12),
+        0px 0px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 0px 1px -1px rgba(0, 0, 0, 0.2);
+    margin-right: 80px;
+}
+
+/* 전체 컨텐츠 */
+.content-Wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1036px;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+/* 광고 컨테이너 */
+.ad-Container {
+    max-width: 1038px;
+    width: 100%;
+    height: 123px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 32px;
+}
+
+
+
+/* 캐릭터 선택 컨테이너 (Fixed Width, Hug Height) */
+.character-Select-Container {
+    max-width: 1036px;
+    width: 100%;
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 24px auto;
+}
+
+
+/* 메인 컨텐츠 좌 우 배치 */
+.main-Content {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+}
+
+
+/* 좌측 컬럼 */
+.left-Column {
+    display: flex;
+    flex-direction: column;
+    width: 318px;
+    gap: 16px;
+    margin-right: 24px;
+    position: relative;
+    top: -24px;
+}
+
+/* 우측 컬럼 */
+.right-Column {
+    display: flex;
+    flex-direction: column;
+    max-width: 686px;
+    width: 100%;
+    height: 1378px;
+    gap: 24px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 24px 16px 32px 16px;
+    background: rgba(30, 30, 30, 1);
+}
+
+/* 우측 전체 컨테이너 (Hug width, Hug Height) */
+.right-Container {
+    width: 100%;
+    height: auto;
+    min-width: 654px;
+    min-height: 1322px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 우측 상단 컨테이너 (Fill width, Height Hug) */
+.right-Top-Container {
+    width: 100%;
+    height: auto;
+    min-width: 654px;
+    min-height: 183px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* 캐릭터 컨테이너 (Hug Width, Hug Height) */
+.character-Container {
+    background: rgba(30, 30, 30, 1);
+    width: 100%;
+    min-height: 182px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 24px 16px 8px 16px;
+}
+
+
+/* 아크패시브 컨테이너 (Hug Width, Hug Height) */
+.arkPassive-Container {
+    background: rgba(30, 30, 30, 1);
+    width: 100%;
+    min-height: 84px;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* 카드 컨테이너 (Hug Width, Hug Height) */
+.card-Container {
+    background: rgba(30, 30, 30, 1);
+    width: 100%;
+    min-height: 229px;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* 타이틀 컨테이너 (Hug Width, Hug Height) */
+.title-Container {
+    background: rgba(30, 30, 30, 1);
+    width: 100%;
+    min-height: 229px;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* 검색 컨테이너 (Fill Width, Hug Height) */
+.search-Container {
+    max-width: 654px;
+    width: 100%;
+    height: auto;
+    min-height: 183px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 auto;
+}
+
+/* 필터 컨테이너 (Fill Width, Hug Height) */
+.filter-Container {
+    max-width: 654px;
+    width: 100%;
+    height: auto;
+    min-height: 92px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(21, 23, 27, 1);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(121, 121, 121, 1);
+    margin-top: 16px;
+}
+
+
+/* 파티 컨테이너 (Fixed Width, Hug Height) */
+.party-Container {
+    width: 100%;
+    min-width: 654px;
+    min-height: 1072px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

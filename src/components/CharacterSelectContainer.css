@@ -1,0 +1,75 @@
+.character-select-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1036px;
+    height: auto;
+    min-height: 58px;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+}
+
+.character-info {
+    font-size: 20px;
+    flex-grow: 1;
+    text-align: left;
+    line-height: 100%;
+    color: rgba(107,131,225,1);
+}
+
+
+.character-select-button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+    
+}
+
+.character-select-btn {
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 12px;
+  width: auto;
+}
+.refresh{
+  height: 25px;
+  background-color: rgba(63,64,68,1);
+}
+.change{
+  height: 26px;
+  background-color: rgba(107,131,225,1);
+}
+.select{
+  height: 26px;
+  background-color: rgba(107,131,225,1);
+}
+.character-select-btn:hover {
+  background: rgba(61, 63, 68, 1);
+
+} 
+
+.character-select-btn.character-select-icon{
+  width: 18px;
+  height: 18px;
+}
+.server-button {
+  min-width: 100px;
+  height: 30px;
+  background: rgba(63, 64, 68, 1);
+  color: rgba(223, 223, 223, 1);
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.server-button.active {
+  background: rgba(80, 81, 85, 1);
+}
