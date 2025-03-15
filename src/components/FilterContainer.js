@@ -10,7 +10,6 @@ const FilterContainer = () => {
     const applyFilters = (filters) => {
         setSelectedFilters(filters);
         setIsModalOpen(false);
-        console.log(applyFilters);
     };
 
     return (

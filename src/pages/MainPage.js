@@ -4,16 +4,15 @@ import CharacterSelectContainer from '../components/CharacterSelectContainer';
 import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 import FilterContainer from '../components/FilterContainer';
 import FilterModal from "../components/FilterModal";
-import Sidebar from '../components/sidebar';
 
 const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [isFilterModalOpen, setFilterModalOpen] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState([]);
-
+    console.log("Partytitle test -> " + searchQuery);//파티 제목 나중에 처리용 데이터 가져와졌는지 테스트용
     const applyFilters = (filters) => {
         setSelectedFilters(filters);
-        setFilterModalOpen(false); 
+        setFilterModalOpen(false);
     };
 
     return (

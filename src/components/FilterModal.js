@@ -46,10 +46,6 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
         }
         
     };
-    
-    const isInRange = (index) => {
-        return startLevel !== null && endLevel !== null && index > startLevel && index < endLevel;
-    };
 
     const handleFilterChange = (e) => {
         const { name, value } = e.target;

@@ -1,6 +1,6 @@
 import React from 'react'
 import './ManageMyCharacter.css'
-import { ReactComponent as AddButton } from '../assets/images/addButton.svg';
+// import { ReactComponent as AddButton } from '../assets/images/addButton.svg';
 import MyCharacterModal from '../components/myCharacterModal'
 
             //FIXME - 피그마 그대로 사이즈를 맞추는데 뭔가 안 맞는거같음
