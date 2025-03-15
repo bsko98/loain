@@ -4,7 +4,7 @@ import CharacterInfoComponent from './characterInfoComponent'
 
 
 //TODO - 한 줄에 두 개의 캐릭터정보가 있는데 이거 한 줄도 같이 map을 해야되나?
-const myCharacterModal = () => {
+const myCharacterModal = ({firstRowButton}) => {
 
   const servers = [
     {id:'1', serverName: '루페온'},
