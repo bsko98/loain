@@ -4,26 +4,30 @@ import CloseButton from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
+const gateOptions = [1, 2, 3];
 
 const FilterModal = ({ isOpen, onClose, applyFilters }) => {
     const [filters, setFilters] = useState({
         raid: "",
-        specialization: "",
+        difficulty: "",
         rangeStart: "",
         rangeEnd: "",
-        isQuick: false,
+        itemLevel: "",
+        title: "",
+        card: "",
+        cardValue:"",
+        environment: "",
+        evolution: "",
+        realization: "",
+        leap: "",
+        transcendenceWeapon: "",
+        transcendenceArmor: "",
+        isLottPot: false,
+        isLottDeal: false,
     });
 
     const [startLevel, setStartLevel] = useState(null);
     const [endLevel, setEndLevel] = useState(null);
-
-    const handleFilterChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFilters((prevFilters) => ({
-            ...prevFilters,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-    };
 
     const handleSkillClick = (index) => {
         if (startLevel === null) {
@@ -40,7 +44,37 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
             setStartLevel(index);
             setEndLevel(null);
         }
+        
     };
+    
+    const isInRange = (index) => {
+        return startLevel !== null && endLevel !== null && index > startLevel && index < endLevel;
+    };
+
+    const handleFilterChange = (e) => {
+        const { name, value } = e.target;
+        setFilters((prevFilters) => {
+            const newFilters = { ...prevFilters, [name]: value };
+            if (name === "rangeStart") {
+                const startValue = parseInt(value, 10);
+                if (!isNaN(startValue) && startValue > parseInt(prevFilters.rangeEnd || 0, 10)) {
+                    newFilters.rangeEnd = ""; 
+                }
+            }
+            return newFilters;
+        });
+    };
+
+    const handleApplyFilters = () => {
+        applyFilters({
+            ...filters,
+            skillRange: startLevel !== null && endLevel !== null ? `${skillLevels[startLevel]} ~ ${skillLevels[endLevel]}` : "",
+        });
+        console.log(filters);
+        console.log(startLevel,endLevel);
+        onClose();
+    };
+
     return (
         <div className={`filter-modal-overlay ${isOpen ? "visible" : "hidden"}`}>
             <div className="filter-modal-container">
@@ -55,27 +89,36 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                             <label>레이드 선택</label>
                             <div className="raid-select-dropdown">
                                 <select name="raid" value={filters.raid} onChange={handleFilterChange}>
-                                    <option value="">#레이드 정보01</option>
+                                    <option value="raid1">#레이드 정보01</option>
                                     <option value="raid2">#레이드 정보02</option>
                                 </select>
-                                <select name="specialization" value={filters.specialization} onChange={handleFilterChange}>
-                                    <option value="">노말</option>
-                                    <option value="specialization2">하드</option>
+                                <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
+                                    <option value="normal">노말</option>
+                                    <option value="hard">하드</option>
                                 </select>
                             </div>
                         </div>
                         <div className="range-container">
-                            <label>관문 지정</label>
-                            <div className="raid-select-dropdown">
-                                <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
-                                    <option value="">#관문 범위01</option>
-                                </select>
-                                <label>~</label>
-                                <select name="rangeEnd" value={filters.rangeEnd} onChange={handleFilterChange}>
-                                    <option value="">#관문 범위02</option>
-                                </select>
+                             <label>관문 지정</label>
+                                <div className="raid-select-dropdown">
+
+                                    <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
+                                        <option value="">선택</option>
+                                        {gateOptions.map((gate) => (
+                                            <option key={gate} value={gate}>{gate}</option>
+                                        ))}
+                                    </select>
+                                    <label>~</label>
+                                    <select name="rangeEnd" value={filters.rangeEnd} onChange={handleFilterChange}>
+                                        <option value="">선택</option>
+                                        {gateOptions
+                                            .filter((gate) => parseInt(gate, 10) >= parseInt(filters.rangeStart || 0, 10))
+                                            .map((gate) => (
+                                                <option key={gate} value={gate}>{gate}</option>
+                                            ))}
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                         <div className="filter-bottom-container">
                             <div className="skill-bar">
                                 <div className="skill-wrapper">
@@ -189,7 +232,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                     </div>
                     <div className="filter-modal-footer">
                         <button className="reset-button" onClick={() => { setFilters({}); setStartLevel(null); setEndLevel(null); }}>필터 초기화</button>
-                        <button className="apply-button" onClick={() => applyFilters(filters)}>필터 적용</button>
+                        <button className="apply-button" onClick={() => handleApplyFilters(filters)}>필터 적용</button>
                     </div>
             </div>
         </div>

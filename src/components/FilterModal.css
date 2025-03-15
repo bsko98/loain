@@ -213,6 +213,10 @@
     background: rgba(107, 131, 225, 1);
 }
 
+.skill-step.in-range {
+    background: rgba(107, 131, 225, 1);
+}
+
 .skill-label {
     font-family: Pretendard;
     font-size: 13px;
@@ -307,14 +311,15 @@
     text-align: left;
     cursor: pointer;
     position: relative;
-    background-image: url("../assets/images/DropdownArrow.svg");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 9.21px 7.79px;
+  
 }
 
 .character-filter-dropdown {
     cursor: pointer;
+    background-image: url("../assets/images/DropdownArrow.svg");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 9.21px 7.79px;
 }
 
 .character-filter-dropdown:hover,
