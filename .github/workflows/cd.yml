@@ -33,3 +33,4 @@ jobs:
           source: "build/*"
           target: "/home/${{secrets.SERVER_USER}}/frontend"
           strip_components: 1
+          overwrite: true
