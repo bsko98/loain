@@ -1,5 +1,5 @@
 /* 모달 오버레이 */
-.modal-overlay {
+.character-change-modal-overlay {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -13,7 +13,7 @@
 }
 
 /* 모달 콘텐츠 */
-.modal-content {
+.character-change-modal-content {
     width: 1068px; 
     height: 562px;
     top: 169px;
@@ -29,7 +29,7 @@
 }
 
 /* 모달 헤더 */
-.modal-header {
+.character-change-modal-header {
     width: 1004px;
     height: auto;
     display: flex;
@@ -38,14 +38,14 @@
     padding-bottom: 16px;
 }
 
-.modal-header h2 {
+.character-change-modal-header h2 {
     font-size: 18px;
     font-weight: bold;
     color: #DFDFDF;
 }
 
 /* 닫기 버튼 */
-.modal-close-btn {
+.character-change-modal-close-btn {
     width: 24px;
     height: 24px;
     background: none;
@@ -56,7 +56,7 @@
 }
 
 /* 서버 선택 버튼 컨테이너 */
-.server-list {
+.character-change-server-list {
     width: 1004px;
     height: auto;
     border-radius: 8px;
@@ -72,7 +72,7 @@
 
 
 /* 서버 버튼 */
-.server-button {
+.character-change-server-button {
     min-width: 118px; 
     height: 25px;
     border-radius: 8px;
@@ -86,19 +86,19 @@
     flex-shrink: 0;
 }
 
-.server-button.active {
+.character-change-server-button.active {
     background: rgba(42, 43, 46, 1);
     color: rgba(121, 121, 121, 1);
     font-weight: bold;
     border: none;
 }
 
-.server-button:hover {
+.character-change-server-button:hover {
     background-color: rgba(80, 81, 85, 1);
 }
 
 /* 캐릭터 리스트 */
-.character-list {
+.character-change-character-list {
     width: 1004px;
     height: auto;
     display: grid;
@@ -109,7 +109,7 @@
 }
 
 /* 캐릭터 항목 */
-.character-item {
+.character-change-character-item {
     display: flex;
     align-items: center;
     background-color: rgba(44, 47, 52, 1);
@@ -121,11 +121,11 @@
     position: relative;
 }
 
-.character-item.selected {
+.character-change-character-item.selected {
     background-color: rgba(63, 64, 68, 1);
 }
 /*캐릭터 이미지*/
-.character-icon {
+.character-change-character-icon {
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -134,14 +134,14 @@
 }
 
 /* 캐릭터 정보 */
-.character-info {
+.character-change-character-info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 /* 캐릭터 이름 */
-.character-name {
+.character-change-character-name {
     font-size: 20px;
     font-weight: 500;
     font-weight: bold;
@@ -151,7 +151,7 @@
     letter-spacing: 0%;
 }
 /*캐릭터 세부 정보보*/
-.character-details {
+.character-change-character-details {
     display: flex;
     align-items: center; 
     justify-content: flex-start;
@@ -164,7 +164,7 @@
 }
 
 
-.character-detail-item {
+.character-change-character-detail-item {
     width: 132px;
     height: 19px;
     display: flex;
@@ -172,7 +172,7 @@
 }
 
 /* 캐릭터 아이콘 */
-.character-icon {
+.character-change-character-icon {
     width: 51px;
     height: 64px;
     border-radius: 2px;
@@ -180,20 +180,20 @@
 }
 
 /* 선택된 캐릭터 표시 */
-.selected-character {
+.character-change-selected-character {
     background-color: rgba(80, 81, 85, 1);
     border: 1px solid #ffffff;
 }
 
 /* 선택된 캐릭터 */
-.selected-character {
+.character-change-selected-character {
     background-color: rgba(80, 81, 85, 1);
     border: none;
     position: relative;
 }
 
 /* 선택된 캐릭터 라벨 */
-.selected-label {
+.character-change-selected-label {
     position: absolute;
     top: 12px;
     right: 8px;

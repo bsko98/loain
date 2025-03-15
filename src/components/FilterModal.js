@@ -22,10 +22,10 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
         leap: "",
         transcendenceWeapon: "",
         transcendenceArmor: "",
-        isLottPot: false,
-        isLottDeal: false,
+        isLastPot: false,
+        isLastDeal: false,
     });
-
+    
     const [startLevel, setStartLevel] = useState(null);
     const [endLevel, setEndLevel] = useState(null);
 
@@ -48,15 +48,26 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
     };
 
     const handleFilterChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
+    
         setFilters((prevFilters) => {
-            const newFilters = { ...prevFilters, [name]: value };
+            let newFilters = { ...prevFilters };
+    
+            if (type === "checkbox") {
+                newFilters[name] = checked;
+            } else {
+                newFilters[name] = value;
+            }
+    
             if (name === "rangeStart") {
                 const startValue = parseInt(value, 10);
-                if (!isNaN(startValue) && startValue > parseInt(prevFilters.rangeEnd || 0, 10)) {
-                    newFilters.rangeEnd = ""; 
+                const endValue = parseInt(prevFilters.rangeEnd, 10);
+                
+                if (!isNaN(startValue) && (isNaN(endValue) || startValue > endValue)) {
+                    newFilters.rangeEnd = "";
                 }
             }
+    
             return newFilters;
         });
     };
@@ -149,7 +160,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                                 <div className="skill-bar-bottom-line"></div>
                             </div>
                             <div className="mycharacter-checkbox-container">
-                                    <input type="checkbox" name="isQuick" checked={filters.isQuick} onChange={handleFilterChange} />
+                                    <input type="checkbox" name="isQuick"  onChange={handleFilterChange} />
                                     <label className="mycharacter-checkbox-container-label">내 캐릭터 스펙 불러오기</label>
                                 </div>
                             <div className="filter-main-container">
@@ -158,67 +169,77 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                                     <div className="character-filter-column-left">
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">템렙</label>
-                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                            <input type="text" className="character-filter-input" placeholder="입력" name="itemLevel"  value={filters.itemLevel} onChange={handleFilterChange}/>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">칭호</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="title" value={filters.title} onChange={handleFilterChange}>
+                                                <option value="1">없음</option>
+                                                <option value="2">꿈꾸는 자</option>
+                                                <option value="3">빛을 꺼트리는 자</option>
                                             </select>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">카드</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="card" value={filters.card} onChange={handleFilterChange}>
+                                                <option value="1">없음</option>
+                                                <option value="2">세상을 구하는 빛</option>
+                                                <option value="3">카제로스의 군단장</option>
                                             </select>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">각성</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="cardValue" value={filters.cardValue} onChange={handleFilterChange}>
+                                                <option value="1">18</option>
+                                                <option value="2">24</option>
+                                                <option value="3">30</option>
                                             </select>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">분위기</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
+                                                <option value="1">예민x</option>
+                                                <option value="2">예민max</option>
                                             </select>
                                         </div>
                                         <div className="custom-checkbox-container">
                                             <div>
-                                                <input type="checkbox" name="isLottPot" id="isLottPot" />
-                                                <label htmlFor="isLottPot">랏폿</label>
+                                                <input type="checkbox" name="isLastPot" id="isLastPot" value={filters.isLastPot} onChange={handleFilterChange}/>
+                                                <label htmlFor="isLastPot">랏폿</label>
                                             </div>
                                             <div>
-                                                <input type="checkbox" name="isLottDeal" id="isLottDeal" />
-                                                <label htmlFor="isLottDeal">랏딜</label>
+                                                <input type="checkbox" name="isLastDeal" id="isLastDeal" value={filters.isLastDeal} onChange={handleFilterChange}/>
+                                                <label htmlFor="isLastDeal">랏딜</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="character-filter-column-right">
                                         <div className="character-filter-box">
-                                            <label className="character-filter-label">진화</label>
-                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                            <label className="character-filter-label" >진화</label>
+                                            <input type="text" className="character-filter-input" placeholder="입력" name="evolution" value={filters.evolution} onChange={handleFilterChange}/>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">깨달음</label>
-                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                            <input type="text" className="character-filter-input" placeholder="입력" name="realization" value={filters.realization} onChange={handleFilterChange}/>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">도약</label>
-                                            <input type="text" className="character-filter-input" placeholder="입력" />
+                                            <input type="text" className="character-filter-input" placeholder="입력" name="leaf" value={filters.leaf} onChange={handleFilterChange}/>
                                         </div>
                                         <label className="transcendence-label">초월</label>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">무기</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
+                                                <option value="1">없음</option>
+                                                <option value="2">무풀</option>
                                             </select>
                                         </div>
                                         <div className="character-filter-box">
                                             <label className="character-filter-label">방어구</label>
-                                            <select className="character-filter-dropdown">
-                                                <option>선택</option>
+                                            <select className="character-filter-dropdown" name="transcendenceArmor" value={filters.transcendenceArmor} onChange={handleFilterChange}>
+                                                <option value="1">0</option>
+                                                <option value="2">75</option>
+                                                <option value="3">방풀</option>
                                             </select>
                                         </div>
                                     </div>
