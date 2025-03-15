@@ -3,7 +3,7 @@ name: Deploy React App to AWS S3
 on:
   push:
     branches:
-      - frountend_cd
+      - main
 
 jobs:
   build-and-upload:
