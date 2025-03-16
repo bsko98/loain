@@ -1,6 +1,7 @@
 import React from 'react'
 import './myCharacterModal.css'
 import CharacterInfoComponent from './characterInfoComponent'
+import './CharacterChangeModal.css'
 
 
 //TODO - 한 줄에 두 개의 캐릭터정보가 있는데 이거 한 줄도 같이 map을 해야되나?
@@ -34,8 +35,8 @@ const myCharacterModal = ({firstRowButton}) => {
               </div>
           </button>
       </div>
-      <div className='my-character-server-box'>
-          {servers.map(server => (<button key={server.id} className='server-button'>{server.serverName}</button>))}
+      <div className='character-change-server-list'>
+          {servers.map(server => (<button key={server.id} className='character-change-server-button'>{server.serverName}</button>))}
       </div>
       <div className='my-character-info-box'>
         {characters.map(character=>(
