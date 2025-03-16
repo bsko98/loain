@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterModal.css";
 import CloseButton from "../assets/images/CloseButton.svg";
-
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
 const gateOptions = [1, 2, 3];
 
-const FilterModal = ({ isOpen, onClose, applyFilters }) => {
+const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
     const [filters, setFilters] = useState({
         raid: "",
         difficulty: "",
@@ -15,7 +14,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
         itemLevel: "",
         title: "",
         card: "",
-        cardValue:"",
+        cardValue: "",
         environment: "",
         evolution: "",
         realization: "",
@@ -25,9 +24,25 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
         isLastPot: false,
         isLastDeal: false,
     });
-    
+
     const [startLevel, setStartLevel] = useState(null);
     const [endLevel, setEndLevel] = useState(null);
+
+    useEffect(() => {
+        if (initialFilters) {
+            setFilters({ ...initialFilters });
+            if (initialFilters.skillRange) {
+                const [start, , end] = initialFilters.skillRange.split(" ");
+                const startIdx = skillLevels.indexOf(start);
+                const endIdx = skillLevels.indexOf(end);
+                setStartLevel(startIdx);
+                setEndLevel(endIdx);
+            } else {
+                setStartLevel(null);
+                setEndLevel(null);
+            }
+        }
+    }, [initialFilters, isOpen]);
 
     const handleSkillClick = (index) => {
         if (startLevel === null) {
@@ -44,30 +59,25 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
             setStartLevel(index);
             setEndLevel(null);
         }
-        
     };
 
     const handleFilterChange = (e) => {
         const { name, value, type, checked } = e.target;
-    
         setFilters((prevFilters) => {
             let newFilters = { ...prevFilters };
-    
             if (type === "checkbox") {
                 newFilters[name] = checked;
             } else {
                 newFilters[name] = value;
             }
-    
+
             if (name === "rangeStart") {
                 const startValue = parseInt(value, 10);
                 const endValue = parseInt(prevFilters.rangeEnd, 10);
-                
                 if (!isNaN(startValue) && (isNaN(endValue) || startValue > endValue)) {
                     newFilters.rangeEnd = "";
                 }
             }
-    
             return newFilters;
         });
     };
@@ -75,22 +85,47 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
     const handleApplyFilters = () => {
         applyFilters({
             ...filters,
-            skillRange: startLevel !== null && endLevel !== null ? `${skillLevels[startLevel]} ~ ${skillLevels[endLevel]}` : "",
+            skillRange:
+                startLevel !== null && endLevel !== null
+                    ? `${skillLevels[startLevel]} ~ ${skillLevels[endLevel]}`
+                    : "",
         });
-        console.log(filters);
-        console.log(startLevel,endLevel);
         onClose();
+    };
+
+    const handleResetFilters = () => {
+        const defaultFilters = {
+            raid: "",
+            difficulty: "",
+            rangeStart: "",
+            rangeEnd: "",
+            itemLevel: "",
+            title: "",
+            card: "",
+            cardValue: "",
+            environment: "",
+            evolution: "",
+            realization: "",
+            leap: "",
+            transcendenceWeapon: "",
+            transcendenceArmor: "",
+            isLastPot: false,
+            isLastDeal: false,
+        };
+        setFilters(defaultFilters);
+        setStartLevel(null);
+        setEndLevel(null);
     };
 
     return (
         <div className={`filter-modal-overlay ${isOpen ? "visible" : "hidden"}`}>
             <div className="filter-modal-container">
-                    <div className="filter-modal-header">
-                        <h2>검색 필터</h2>
-                        <button className="modal-close-btn" onClick={onClose}>
-                            <img src={CloseButton} alt="닫기 버튼" />
-                        </button>
-                    </div>
+                <div className="filter-modal-header">
+                    <h2>검색 필터</h2>
+                    <button className="modal-close-btn" onClick={onClose}>
+                        <img src={CloseButton} alt="닫기 버튼" />
+                    </button>
+                </div>
                     <div className="filter-modal-content">
                         <div className="raid-select">
                             <label>레이드 선택</label>
@@ -160,11 +195,10 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                                 <div className="skill-bar-bottom-line"></div>
                             </div>
                             <div className="mycharacter-checkbox-container">
-                                    <input type="checkbox" name="isQuick"  onChange={handleFilterChange} />
+                                    <input type="checkbox" name="isQuick" />
                                     <label className="mycharacter-checkbox-container-label">내 캐릭터 스펙 불러오기</label>
                                 </div>
                             <div className="filter-main-container">
-                                
                                 <div className="character-filter-container">
                                     <div className="character-filter-column-left">
                                         <div className="character-filter-box">
@@ -248,9 +282,9 @@ const FilterModal = ({ isOpen, onClose, applyFilters }) => {
                         </div>
                     </div>
                     <div className="filter-modal-footer">
-                        <button className="reset-button" onClick={() => { setFilters({}); setStartLevel(null); setEndLevel(null); }}>필터 초기화</button>
-                        <button className="apply-button" onClick={() => handleApplyFilters(filters)}>필터 적용</button>
-                    </div>
+                        <button className="reset-button" onClick={handleResetFilters}>필터 초기화</button>
+                        <button className="apply-button" onClick={handleApplyFilters}>필터 적용</button>
+                </div>
             </div>
         </div>
     );
