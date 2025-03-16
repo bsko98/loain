@@ -1,4 +1,4 @@
-
+/* 필터 전체 컨테이너 */
 .filter-container {
     display: flex;
     justify-content: space-between;
@@ -12,6 +12,7 @@
     gap: 12px;
 }
 
+/* 필터 태그 모음 */
 .filter-tags {
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +22,7 @@
     max-height: 100%;
 }
 
+/* 필터 태그 한개 */
 .filter-tag {
     background: rgba(42, 43, 46, 1);
     color: rgba(223, 223, 223, 1);
@@ -32,7 +34,7 @@
     gap: 6px;
 }
 
-
+/* 필터 버튼 */
 .filter-button {
     width: 65px;
     height: 60px;
@@ -53,6 +55,7 @@
     gap: 4px;
 }
 
+/* 필터 아이콘 */
 .filter-icon {
     width: 16px;
     height: 16px;

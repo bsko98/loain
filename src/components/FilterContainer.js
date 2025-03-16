@@ -29,14 +29,11 @@ const FilterContainer = ({ setFilterModalOpen, selectedFilters }) => {
       <div className="filter-tags">
         {selectedFilters && Object.keys(selectedFilters).length > 0 ? (
           Object.entries(selectedFilters).map(([key, value], index) => {
-            // 빈 값은 출력하지 않음
             if (!value || value === "") return null;
-
             let displayValue = value;
-            // 체크박스는 true일 때만 표시
             if (typeof value === "boolean") {
               if (!value) return null;
-              displayValue = ""; // 체크박스는 값 없이 라벨만 표시
+              displayValue = "";
             }
 
             return (
