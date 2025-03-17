@@ -8,8 +8,29 @@ import FilterModal from "../components/FilterModal";
 const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [isFilterModalOpen, setFilterModalOpen] = useState(false);
-    const [selectedFilters, setSelectedFilters] = useState([]);
-    console.log("Partytitle test -> " + searchQuery);//lint-cex
+
+    const [selectedFilters, setSelectedFilters] = useState({
+        raid: "",
+        difficulty: "",
+        rangeStart: "",
+        rangeEnd: "",
+        itemLevel: "",
+        title: "",
+        card: "",
+        cardValue: "",
+        environment: "",
+        evolution: "",
+        realization: "",
+        leap: "",
+        transcendenceWeapon: "",
+        transcendenceArmor: "",
+        isLastPot: false,
+        isLastDeal: false,
+        skillRange: "",
+    });
+
+    console.log("Partytitle test -> " + searchQuery);
+
     const applyFilters = (filters) => {
         setSelectedFilters(filters);
         setFilterModalOpen(false);
@@ -34,14 +55,26 @@ const MainPage = () => {
                             <div className="right-Container">
                                 <div className="right-Top-Container">
                                     <PartyTitleSearchbar setSearchQuery={setSearchQuery} />
-                                    <FilterContainer setFilterModalOpen={setFilterModalOpen} selectedFilters={selectedFilters} />
+                                    <FilterContainer
+                                        setFilterModalOpen={setFilterModalOpen}
+                                        selectedFilters={selectedFilters}
+                                    />
                                 </div>
                             </div>
-                            <div className="party-Container">party-Container</div>  {/** @param {string} searchQuery  파티 제목 검색용 데이터*/}
+                            <div className="party-Container">
+                                party-Container
+                            </div>
                         </div>
                     </div>
                 </div>
-                {isFilterModalOpen && <FilterModal isOpen={isFilterModalOpen} onClose={() => setFilterModalOpen(false)} applyFilters={applyFilters} />}
+                {isFilterModalOpen && (
+                    <FilterModal
+                        isOpen={isFilterModalOpen}
+                        onClose={() => setFilterModalOpen(false)}
+                        applyFilters={applyFilters}
+                        initialFilters={selectedFilters} 
+                    />
+                )}
             </div>
         </div>
     );
