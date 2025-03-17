@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./CharacterChangeModal.css";
+import CharacterInfoComponent from "./characterInfoComponent";
+
+
+//TODO -  선택됨 span이 우측상단에 나옴(일단 해결), 이제 선택됨이냐 정보갱신 버튼이냐 부분 상황에 맞게 들어갈 수 있게 처리해줘야될듯
 
 const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCharacter, selectedCharacter }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
@@ -39,24 +43,11 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                 <div className="character-change-character-list">
                     {filteredCharacters.length > 0 ? (
                         filteredCharacters.map((character) => (
-                            <div
-                                key={character.id}
-                                className={`character-change-character-item ${selectedCharacter?.id === character.id ? "selected" : ""}`}
-                                onClick={() => onSelectCharacter(character)}
-                            >
-                                <img src={character.image} alt={character.name} className="character-icon" />
-                                <div className="character-change-character-info">
-                                    <div className="character-change-character-name">{character.name}</div>
-                                    <div className="character-change-character-details">
-                                        <div className="character-change-character-detail-item">{character.server}</div>
-                                        <div className="character-change-character-detail-item">{character.job}</div>
-                                        <div className="character-change-character-detail-item">{character.itemlevel}</div>
-                                    </div>
-                                </div>
-                                {selectedCharacter?.id === character.id && (
+                            <CharacterInfoComponent key={character.name} characterPhoto={character.image} characterName={character.name} onclick={()=>onSelectCharacter(character)}
+                            serverName={character.server} classInfo={character.job} itemLevel={character.itemlevel} selectedCharacter={selectedCharacter} characterId = {character.id}
+                            refreshButton={selectedCharacter?.id === character.id && (
                                     <span className="character-change-selected-label">선택됨</span>
-                                )}
-                            </div>
+                                )}/>
                         ))
                     ) : (
                         <p className="no-character">해당 서버에 캐릭터가 없습니다.</p>

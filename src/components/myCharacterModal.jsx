@@ -35,14 +35,14 @@ const myCharacterModal = ({firstRowButton}) => {
               </div>
           </button>
       </div>
-      <div className='character-change-server-list'>
+      <div className='my-character-server-box'>
           {servers.map(server => (<button key={server.id} className='character-change-server-button'>{server.serverName}</button>))}
       </div>
       <div className='my-character-info-box'>
         {characters.map(character=>(
           <CharacterInfoComponent key={character.characterName} characterPhoto={character.characterPhoto} characterName={character.characterName} 
           serverName={character.serverName} classInfo={character.classInfo} itemLevel={character.itemLevel}
-          refreshButton={<div style={{paddingTop:'4px'}}>정보 갱신</div>}/>))}
+          refreshButton={<div onClick={()=>console.log(character.characterName)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px'}}>정보 갱신</div>}/>))}
       </div>
   </div>
   )
