@@ -1,0 +1,140 @@
+.party-container {
+    background: #2C2F34;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    color: #dfdfdf;
+    font-family: Pretendard, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;  /* 좌/우 배치 */
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* 좌측: 제목 + 태그들 */
+.party-container-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;  /* 우측 버튼 제외 남은 공간 차지 */
+}
+
+.party-container-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* 레이드/난이도/관문/출발시간 */
+.party-container-info-tags {
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* 나머지 태그들 (작게) */
+.party-container-extra-tags {
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #a0a0a0;
+}
+
+/* 우측: 버튼들 */
+.party-container-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    min-width: 160px;
+}
+
+.party-container-right-top {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.party-container-member-count {
+    background: orange;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.apply-btn {
+    background: #6b83e1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.expand-btn {
+    background: #3e3e3e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* 확장 시 파티원 영역 */
+.party-container-expanded {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    border-top: 1px solid #444;
+    padding-top: 12px;
+}
+
+/* 각 파티 */
+.party-container-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.group-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 파티원 4명 */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+/* 파티원 개별 */
+.party-container-member {
+    background: #1e1e1e;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nickname {
+    color: #4f80ff;
+    font-size: 13px;
+}
+
+.details {
+    font-size: 12px;
+    color: #ccc;
+}

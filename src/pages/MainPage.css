@@ -33,7 +33,7 @@
     max-width: 1036px;
     width: 100%;
     min-height: 100vh;
-    margin: 0 auto;
+    margin: 0;
 }
 
 /* 광고 컨테이너 */
@@ -117,6 +117,7 @@
     min-height: 183px;
     display: flex;
     flex-direction: column;
+    gap:24px;
 
 }
 
