@@ -86,6 +86,7 @@
     cursor: pointer;
     border: none;
     flex-shrink: 0;
+    font-family: 'Pretendard';
 }
 
 .character-change-server-button.active {
@@ -93,6 +94,7 @@
     color: rgba(121, 121, 121, 1);
     font-weight: bold;
     border: none;
+    font-family: 'Pretendard';
 }
 
 .character-change-server-button:hover {

@@ -31,13 +31,8 @@ const MyCharacterModal = () => {
   
   // 서버 필터링 함수
   const filterByServer = (server) => {
-      if (activeServer === server) {
-          setFilteredCharacters(characters);
-          setActiveServer(null);
-      } else {
-          setFilteredCharacters(characters.filter((char) => char.serverName === server));
-          setActiveServer(server);
-      }
+      setFilteredCharacters(characters.filter((char) => char.serverName === server));
+      setActiveServer(server);
   };
 
 
@@ -54,13 +49,17 @@ const MyCharacterModal = () => {
           </button>
       </div>
       <div className='my-character-server-box'>
-          {servers.map(server => (<button key={server.id} className='character-change-server-button' onClick={()=>filterByServer(server.serverName)}>{server.serverName}</button>))}
+          {servers.map(server => (<button key={server.id} className={`character-change-server-button ${activeServer === server.serverName ? "active" : ""}`}  onClick={()=>filterByServer(server.serverName)}>{server.serverName}</button>))}
       </div>
       <div className='my-character-info-box'>
-        {filteredCharacters.map(character=>( 
+      {filteredCharacters.length > 0 ?
+        (filteredCharacters.map(character=>( 
           <CharacterInfoComponent key={character.characterName} characterPhoto={character.characterPhoto} characterName={character.characterName} 
           serverName={character.serverName} classInfo={character.classInfo} itemLevel={character.itemLevel} characterId={character.id}
-          comp={<div onClick={()=>console.log(character.characterName)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px'}}>정보 갱신</div>}/>))}
+          comp={<div onClick={()=>console.log(character.characterName)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px'}}>정보 갱신</div>}/>)))
+          :(
+            <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
+        )}
       </div>
   </div>
   )

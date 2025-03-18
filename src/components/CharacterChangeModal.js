@@ -11,13 +11,8 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
 
     // 서버 필터링 함수
     const filterByServer = (server) => {
-        if (activeServer === server) {
-            setFilteredCharacters(characterList);
-            setActiveServer(null);
-        } else {
-            setFilteredCharacters(characterList.filter((char) => char.server === server));
+        setFilteredCharacters(characterList.filter((char) => char.server === server));
             setActiveServer(server);
-        }
     };
 
     return (
@@ -38,7 +33,7 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                         </button>
                     ))}
                 </div>
-                <div className="character-change-character-list">
+                <div class="my-character-info-box">
                     {filteredCharacters.length > 0 ? (
                         filteredCharacters.map((character) => (
                             <CharacterInfoComponent key={character.name} characterPhoto={character.image} characterName={character.name} onclick={()=>onSelectCharacter(character)}
@@ -48,7 +43,7 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                                 )}/>
                         ))
                     ) : (
-                        <p className="no-character">해당 서버에 캐릭터가 없습니다.</p>
+                        <div className="no-character" ><p>해당 서버에 캐릭터가 없습니다.</p></div>
                     )}
                 </div>
             </div>
