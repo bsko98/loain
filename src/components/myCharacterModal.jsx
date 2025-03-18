@@ -60,7 +60,7 @@ const MyCharacterModal = () => {
         {filteredCharacters.map(character=>( 
           <CharacterInfoComponent key={character.characterName} characterPhoto={character.characterPhoto} characterName={character.characterName} 
           serverName={character.serverName} classInfo={character.classInfo} itemLevel={character.itemLevel} characterId={character.id}
-          refreshButton={<div onClick={()=>console.log(character.characterName)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px'}}>정보 갱신</div>}/>))}
+          comp={<div onClick={()=>console.log(character.characterName)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px'}}>정보 갱신</div>}/>))}
       </div>
   </div>
   )

@@ -43,7 +43,7 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                         filteredCharacters.map((character) => (
                             <CharacterInfoComponent key={character.name} characterPhoto={character.image} characterName={character.name} onclick={()=>onSelectCharacter(character)}
                             serverName={character.server} classInfo={character.job} itemLevel={character.itemlevel} selectedCharacter={selectedCharacter} characterId = {character.id}
-                            refreshButton={selectedCharacter?.id === character.id && (
+                            comp={selectedCharacter?.id === character.id && (
                                     <span className="character-change-selected-label">선택됨</span>
                                 )}/>
                         ))
