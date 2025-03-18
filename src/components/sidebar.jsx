@@ -18,7 +18,7 @@ import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueMa
 
 import './sidebar.css';
 
-//TODO - 뭔가 빠진게 있을테니 한 번 확인해보기 2025.03.14
+
 const Sidebar = () => {
 
     const [moreInfo,setMoreInfo] = useState(false);

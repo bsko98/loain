@@ -51,3 +51,7 @@
 .character-info-component-container:hover{
     background-color: #3D3F44;
 }
+
+.character-info-component-container.selected {
+    background-color: rgba(63, 64, 68, 1);
+}
