@@ -2,10 +2,6 @@ import React from 'react'
 import './characterInfoComponent.css'
 
 
-
-//TODO - 일단 받아오긴하는데 정보갱신 버튼을 새로운 컴포넌트로 만들까? 아니면 기존 모달에서 만들어? 2025.03.15
-//TODO - 서버 비활성화도 만들어야되네(이건 건의를 해볼까?) 2025.03.15
-//TODO - img 태그 alt 어떻게 해야될지 논의해봐야겠네. 2025.03.15
 const characterInfoComponent = ({characterPhoto,characterName,serverName,classInfo,itemLevel,refreshButton, onclick, selectedCharacter, characterId}) => {
   return (
     <div className={`character-info-component-container ${selectedCharacter?.id === characterId ? "selected" : ""}`} onClick={onclick}>

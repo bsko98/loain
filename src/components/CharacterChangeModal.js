@@ -3,8 +3,6 @@ import "./CharacterChangeModal.css";
 import CharacterInfoComponent from "./characterInfoComponent";
 
 
-//TODO -  선택됨 span이 우측상단에 나옴(일단 해결), 이제 선택됨이냐 정보갱신 버튼이냐 부분 상황에 맞게 들어갈 수 있게 처리해줘야될듯
-
 const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCharacter, selectedCharacter }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
     const [activeServer, setActiveServer] = useState(null);
