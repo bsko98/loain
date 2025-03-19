@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
-
+import MyPartyPage from './pages/MyPartyPage.jsx';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter />} />
+          <Route path="/myParty" element={<MyPartyPage />} />
         </Routes>
       </Router>
     </div>
