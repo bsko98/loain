@@ -136,6 +136,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
                                     <option value="raid2">#레이드 정보02</option>
                                 </select>
                                 <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
+                                    <option value="none">선택</option>
                                     <option value="normal">노말</option>
                                     <option value="hard">하드</option>
                                 </select>

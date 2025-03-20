@@ -256,3 +256,15 @@
   align-items: center;
 }
 
+.tag-highlight {
+  color: #dfdfdf;
+  font-weight: bold;
+}
+
+.tag-dimmed {
+  color: #777777;
+}
+
+.dim-tag {
+  color: #5a5a5a;
+}
