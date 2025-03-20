@@ -1,0 +1,258 @@
+.party-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  width: 654px;
+  background: #2C2F34;
+  border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
+  color: #dfdfdf;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+/* 메인 영역: 좌우 배치 */
+.party-container-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 좌측 */
+.party-container-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+  width: 463px;
+  flex-grow: 0;
+}
+
+/* 파티 제목 */
+.party-container-title {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #DFDFDF;
+  text-align: left;
+}
+
+/* 정보 태그 */
+.party-container-info-tags {
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 추가 태그 */
+.party-container-extra-tags {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  color: #a0a0a0;
+}
+
+.extra-tag-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* 우측 */
+.party-container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 143px;
+  flex-grow: 0;
+  margin-top: 10px;
+}
+
+/* 인원수 + 입장 버튼 */
+.party-container-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 143px;
+  height: 27px;
+}
+
+/* 인원수 */
+.party-container-member-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 51px;
+  height: 27px;
+  background: #FF9F00;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+/* 입장 신청 버튼 */
+.apply-btn {
+  font-family: 'Pretendard';
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 4px 8px;
+  gap: 4px;
+  width: 76px;
+  height: 27px;
+  background: #6B83E1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  flex-grow: 0;
+}
+
+/* 확장 버튼 */
+.expand-btn-wrapper {
+  display: flex;
+  align-items: center;
+  width: 143px;
+  height: 27px;
+  background: #909090;
+  border-radius: 8px;
+}
+
+.expand-btn {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* 확장 영역 */
+.party-container-expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #444;
+  padding-top: 12px;
+  width: 100%;
+}
+
+/* 파티 단위 */
+.party-container-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+/* 파티명 */
+.group-label {
+  text-align: left;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #939393;
+  align-self: stretch;
+}
+
+/* 파티원 그리드 - 두 열로 균등 분할 */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* 개별 파티원 카드 */
+.party-container-member {
+  background: #2C2F34;
+  padding: 3px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 307px;
+  height: 42px;
+  min-height: 48px;
+  flex-grow: 0;
+}
+
+/* 닉네임 */
+.nickname {
+  color: #6B83E1;
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  text-align: left;
+}
+
+/* 상세 정보 레이아웃 */
+.details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.class-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 78px;
+  height: 14px;
+}
+
+.class-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.job-text {
+  width: 60px;
+  height: 14px;
+  font-family: 'Pretendard';
+  font-size: 12px;
+  color: #DFDFDF;
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  width: 1px;
+  height: 12px;
+  background: #DFDFDF;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+.level-text {
+  width: 71px;
+  height: 14px;
+  font-family: 'Pretendard';
+  font-size: 12px;
+  color: #DFDFDF;
+  display: flex;
+  align-items: center;
+}
+

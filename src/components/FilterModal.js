@@ -90,6 +90,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
                     ? `${skillLevels[startLevel]} ~ ${skillLevels[endLevel]}`
                     : "",
         });
+        console.log(filters)
         onClose();
     };
 
