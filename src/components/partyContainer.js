@@ -46,23 +46,25 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     return filledGroup;
   });
 
-  const hasFilter = Object.values(selectedFilters).some(val => val !== "" && val !== false);
+  // 필터 유무 확인
+  const hasFilter = Object.values(selectedFilters).some(
+    val => val !== "" && val !== false
+  );
 
+  // 태그 매칭 여부
   const isTagMatched = (tagName, value) => {
+    if (!hasFilter) return false;  // 필터 없으면 기본 색 유지
+
     const filterValue = selectedFilters[tagName];
+    if (filterValue === "" || filterValue === false) return false;
 
-    if (!hasFilter) return true;
-    if (!filterValue) return false;
-
-    if (tagName === "isLastPot" || tagName === "isLastDeal") {
-      return selectedFilters[tagName] === true && value === true;
-    }
-
+    // 숫자 비교
     const numericFields = ["itemLevel", "cardValue", "evolution", "realization", "leap"];
     if (numericFields.includes(tagName)) {
       return parseInt(filterValue, 10) >= parseInt(value, 10);
     }
 
+    // 숙련도 범위 비교
     if (tagName === "skillRange") {
       const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
       const [partyStart, partyEnd] = value.split(" ~ ");
@@ -74,44 +76,42 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
       return fStartIdx <= pEndIdx && fEndIdx >= pStartIdx;
     }
 
+    // 랏딜/랏폿
+    if (tagName === "isLastPot" || tagName === "isLastDeal") {
+      return (selectedFilters.isLastPot && value === true) || (selectedFilters.isLastDeal && value === true);
+    }
+
+    // 문자열 일치
     return filterValue === value;
   };
 
-  const sortTagsByMatch = (tags) => {
-    if (!hasFilter) return tags;
-    return [...tags].sort((a, b) => {
-      const aMatch = isTagMatched(a.key, a.value);
-      const bMatch = isTagMatched(b.key, b.value);
-      return bMatch - aMatch;
-    });
-  };
+  // 태그 목록 (빈 값 제외)
+  const allTags = [
+    itemLevel && { label: `#${itemLevel}↑`, key: "itemLevel", value: itemLevel },
+    skillRange && { label: `#${skillRange}`, key: "skillRange", value: skillRange },
+    title && { label: `#${title}`, key: "title", value: title },
+    card && cardValue && { label: `#${card} : ${cardValue}`, key: "card", value: card },
+    environment && { label: `#${environment}`, key: "environment", value: environment },
+    evolution && { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
+    realization && { label: `#깨달음 ${realization}`, key: "realization", value: realization },
+    leap && { label: `#도약 ${leap}`, key: "leap", value: leap },
+    transcendenceWeapon && { label: `#무기 ${transcendenceWeapon}`, key: "transcendenceWeapon", value: transcendenceWeapon },
+    transcendenceArmor && { label: `#방어구 ${transcendenceArmor}`, key: "transcendenceArmor", value: transcendenceArmor },
+    isLastDeal && { label: "#랏딜", key: "isLastDeal", value: isLastDeal },
+    isLastPot && { label: "#랏폿", key: "isLastPot", value: isLastPot },
+  ].filter(Boolean); // 빈 값 제거
 
-  // 첫 번째 줄 태그 템렙, 숙련도, 파티제목, 카경, 분위기
-  const firstLineTags = [
-    { label: `#${itemLevel}↑`, key: "itemLevel", value: itemLevel },
-    { label: `#${skillRange}`, key: "skillRange", value: skillRange },
-    { label: `#${title}`, key: "title", value: title },
-    { label: `#${card} : ${cardValue}`, key: "card", value: card },
-    { label: `#${environment}`, key: "environment", value: environment },
-  ];
-
-  // 두 번째 줄 태그 진화 깨달음 도약 무기초월 방어구 초월 랏딜 랏폿폿
-  const secondLineTags = [
-    { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
-    { label: `#깨달음 ${realization}`, key: "realization", value: realization },
-    { label: `#도약 ${leap}`, key: "leap", value: leap },
-    { label: `#무기 ${transcendenceWeapon}`, key: "transcendenceWeapon", value: transcendenceWeapon },
-    { label: `#방어구 ${transcendenceArmor}`, key: "transcendenceArmor", value: transcendenceArmor },
-    { label: "#랏딜", key: "isLastDeal", value: isLastDeal },
-    { label: "#랏폿", key: "isLastPot", value: isLastPot },
-  ];
+  // 6개씩 나누기
+  const chunkTags = [];
+  for (let i = 0; i < allTags.length; i += 6) {
+    chunkTags.push(allTags.slice(i, i + 6));
+  }
 
   return (
     <div className="party-container">
       <div className="party-container-main">
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>
-
           <div className="party-container-info-tags">
             <span>#{raid}</span> |
             <span>#{difficulty}</span> |
@@ -120,24 +120,18 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
           </div>
 
           <div className="party-container-extra-tags">
-            <div className="extra-tag-line">
-              {sortTagsByMatch(firstLineTags).map((tag, idx) =>
-                tag.value && (
-                  <span key={idx} className={!isTagMatched(tag.key, tag.value) ? "dim-tag" : ""}>
+            {chunkTags.map((tagGroup, groupIdx) => (
+              <div className="extra-tag-line" key={groupIdx}>
+                {tagGroup.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className={isTagMatched(tag.key, tag.value) ? "highlight-tag" : ""}
+                  >
                     {tag.label}
                   </span>
-                )
-              )}
-            </div>
-            <div className="extra-tag-line">
-              {sortTagsByMatch(secondLineTags).map((tag, idx) =>
-                tag.value && (
-                  <span key={idx} className={!isTagMatched(tag.key, tag.value) ? "dim-tag" : ""}>
-                    {tag.label}
-                  </span>
-                )
-              )}
-            </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 

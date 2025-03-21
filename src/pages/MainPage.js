@@ -38,23 +38,23 @@ const MainPage = () => {
         {
             id: 1,
             partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
-            raid: "카멘",
-            difficulty: "하드",
-            rangeStart: "1",
+            raid: "카멘",// -> /난이도/칭호/카드->카드 밸류/관문 시작/관문 끝/인원 수 
+            difficulty: "하드", //-> 노말/ 하드 / 헬  0 1 2 -> 변환
+            rangeStart: "1", 
             rangeEnd: "3",
-            itemLevel: "1640",
+            itemLevel: "1640", // -> 받은대로 그대로 보여주면 됨.
             title: "빛을 꺼트리는 자",
             card: "세상을 구하는 빛",
             cardValue: "30",
-            environment: "예민x",
-            evolution: "100",
-            realization: "200",
-            leap: "300",
-            transcendenceWeapon: "무풀",
+            environment: "예민x", //-> 받은거 변환
+            evolution: "100", // -> 받은대로 그대로 보여주면 됨.
+            realization: "200", // -> 받은대로 그대로 보여주면 됨.
+            leap: "300", // -> 받은대로 그대로 보여주면 됨.
+            transcendenceWeapon: "무풀", // -> 0 1 -> 1인경우 무풀 아닌경우 아님 
             transcendenceArmor: "방풀",
-            isLastPot: true,
-            isLastDeal: false,
-            skillRange: "반숙 ~ 숙련",
+            isLastPot: true, //-> 그대로
+            isLastDeal: false, //-> 그대로
+            skillRange: "반숙 ~ 숙련", //-> 0 1 2 3 4 -> 변환 트라이 클경 반숙 숙련 숙제
             maxmember: 4,
             member: 3,
             startTime: "12:00",
@@ -95,6 +95,34 @@ const MainPage = () => {
                 { nickname: "닉네임5", level: "1560", class: "홀리나이트", classIcon: "" },
                 { nickname: "닉네임6", level: "1560", class: "기상술사", classIcon: "" },
                 { nickname: "닉네임7", level: "1560", class: "아르카나", classIcon: "" }
+            ]
+        },
+        {
+            id: 3,
+            partytitle: "숙련팟 모집 랏딜",
+            raid: "베히모스",
+            difficulty: "하드",
+            rangeStart: "2",
+            rangeEnd: "3",
+            itemLevel: "1560",
+            title: "",
+            card: "",
+            cardValue: "",
+            environment: "예민max",
+            evolution: "",
+            realization: "",
+            leap: "",
+            transcendenceWeapon: "없음",
+            transcendenceArmor: "방풀",
+            isLastPot: false,
+            isLastDeal: true,
+            skillRange: "숙련 ~ 숙제",
+            maxmember: 16,
+            member: 1,
+            startTime: "12:00",
+            partyMembers: [
+                { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
+                
             ]
         }
     ];

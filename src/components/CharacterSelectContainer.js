@@ -29,9 +29,14 @@ const CharacterSelectContainer = () => {
     return (
         <div className="character-select-container">
             <span className="character-info">
-                {selectedCharacter
-                    ? `#${selectedCharacter.name} / ${selectedCharacter.server} / ${selectedCharacter.job} / ${selectedCharacter.itemlevel}`
-                    : "#캐릭터 닉네임 / 선택한 캐릭터가 없습니다."}
+                {selectedCharacter ? (
+                    <>
+                    <span className="character-name">#{selectedCharacter.name}</span>
+                    <span className="character-details"> / {selectedCharacter.server} / {selectedCharacter.job} / {selectedCharacter.itemlevel}</span>
+                    </>
+                ) : (
+                    "#캐릭터 닉네임 / 선택한 캐릭터가 없습니다."
+                )}
             </span>
 
             <div className="character-select-button-group">
