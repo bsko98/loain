@@ -28,7 +28,7 @@ const MainPage = () => {
         isLastDeal: false,
         skillRange: "",
     });
-
+    console.log(searchQuery)//lint-cex 
     const applyFilters = (filters) => {
         setSelectedFilters(filters);
         setFilterModalOpen(false);
