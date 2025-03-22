@@ -1,149 +1,143 @@
+/* 전체 파티 컨테이너 */
 .party-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  gap: 12px;
-  width: 654px;
   background: #2C2F34;
   border-radius: 8px;
-  font-family: 'Pretendard', sans-serif;
-  color: #dfdfdf;
-  box-sizing: border-box;
+  padding: 16px;
   margin-bottom: 12px;
+  color: #dfdfdf;
+  font-family: Pretendard, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* 메인 영역: 좌우 배치 */
+/* 메인 상단 (좌우 배치) */
 .party-container-main {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-/* 좌측 */
+/* 좌측 정보 영역 */
 .party-container-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 6px;
-  width: 463px;
-  flex-grow: 0;
+  gap: 8px;
+  flex: 1;
 }
 
 /* 파티 제목 */
 .party-container-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  color: #DFDFDF;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-  color: #DFDFDF;
-  text-align: left;
 }
 
-/* 정보 태그 */
+/* 난이도, 관문, 시간 태그 */
 .party-container-info-tags {
   font-size: 13px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
   gap: 8px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #DFDFDF;
 }
 
-/* 추가 태그 */
+/* 추가 태그 묶음 */
 .party-container-extra-tags {
   font-size: 12px;
+  line-height: 14px;
   display: flex;
-  flex-wrap: wrap;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  flex-direction: column;
+  color: #DFDFDF;
   gap: 4px;
-  color: #a0a0a0;
 }
 
+/* 태그 줄 단위 */
 .extra-tag-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  line-height: 1.5;
 }
 
-/* 우측 */
+/* 강조 태그 색상 */
+.highlight-tag {
+  color: #6B83E1;
+}
+
+/* 우측 영역 */
 .party-container-right {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 12px;
-  width: 143px;
-  flex-grow: 0;
-  margin-top: 10px;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 100px;
 }
 
-/* 인원수 + 입장 버튼 */
+/* 인원수 + 버튼 */
 .party-container-top {
   display: flex;
-  flex-direction: row;
+  gap: 8px;
   align-items: center;
-  gap: 16px;
-  width: 143px;
-  height: 27px;
 }
 
-/* 인원수 */
+/* 인원수 표시 */
 .party-container-member-count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 51px;
-  height: 27px;
-  background: #FF9F00;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
+  background: orange;
   color: white;
-}
-
-/* 입장 신청 버튼 */
-.apply-btn {
-  font-family: 'Pretendard';
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
   padding: 4px 8px;
-  gap: 4px;
-  width: 76px;
-  height: 27px;
-  background: #6B83E1;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  flex-grow: 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-/* 확장 버튼 */
+/* 입장 버튼 */
+.apply-btn {
+  background: #6b83e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* 확장 버튼 영역 */
 .expand-btn-wrapper {
-  display: flex;
-  align-items: center;
-  width: 143px;
-  height: 27px;
-  background: #909090;
-  border-radius: 8px;
+  margin-top: 4px;
 }
 
 .expand-btn {
-  background: transparent;
-  border: none;
-  font-size: 13px;
+  background: #3e3e3e;
   color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
-  text-align: center;
+  font-size: 13px;
 }
 
-/* 확장 영역 */
+/* 확장 파티원 영역 */
 .party-container-expanded {
   display: flex;
   flex-direction: column;
@@ -153,74 +147,61 @@
   width: 100%;
 }
 
-/* 파티 단위 */
+/* 파티 그룹 */
 .party-container-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 12px;
+  gap: 6px;
 }
 
-/* 파티명 */
 .group-label {
-  text-align: left;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
   color: #939393;
-  align-self: stretch;
+  text-align: left;
 }
 
-/* 파티원 그리드 - 두 열로 균등 분할 */
+/* 파티원 그리드 */
 .member-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
-/* 개별 파티원 카드 */
+/* 파티원 카드 */
 .party-container-member {
   background: #2C2F34;
-  padding: 3px;
+  padding: 3px 8px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  width: 307px;
-  height: 42px;
-  min-height: 48px;
-  flex-grow: 0;
+  gap: 4px;
+  width: 100%;
+  min-height: 42px;
 }
 
 /* 닉네임 */
 .nickname {
   color: #6B83E1;
-  font-family: 'Pretendard';
   font-weight: 500;
   font-size: 13px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  align-self: stretch;
   text-align: left;
 }
 
-/* 상세 정보 레이아웃 */
+/* 파티원 상세 정보 */
 .details {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 12px;
+  color: #ccc;
 }
 
+/* 직업 아이콘 + 이름 */
 .class-info {
   display: flex;
   align-items: center;
   gap: 4px;
-  width: 78px;
-  height: 14px;
 }
 
 .class-icon {
@@ -230,29 +211,19 @@
 
 .job-text {
   width: 60px;
-  height: 14px;
-  font-family: 'Pretendard';
-  font-size: 12px;
-  color: #DFDFDF;
-  display: flex;
-  align-items: center;
+  text-align: left;
 }
 
+/* 구분선 */
 .divider {
   width: 1px;
   height: 12px;
   background: #DFDFDF;
-  margin: 0 6px;
-  flex-shrink: 0;
+  border-radius: 1px;
 }
 
+/* 아이템 레벨 */
 .level-text {
   width: 71px;
-  height: 14px;
-  font-family: 'Pretendard';
-  font-size: 12px;
-  color: #DFDFDF;
-  display: flex;
-  align-items: center;
+  text-align: left;
 }
-
