@@ -28,33 +28,29 @@ const MainPage = () => {
         isLastDeal: false,
         skillRange: "",
     });
-    console.log(searchQuery)//lint-cex 
-    const applyFilters = (filters) => {
-        setSelectedFilters(filters);
-        setFilterModalOpen(false);
-    };
 
-    const PartyData = [
+    // 초기 데이터 설정
+    const initialPartyData = [
         {
             id: 1,
             partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
-            raid: "카멘",// -> /난이도/칭호/카드->카드 밸류/관문 시작/관문 끝/인원 수 
-            difficulty: "하드", //-> 노말/ 하드 / 헬  0 1 2 -> 변환
-            rangeStart: "1", 
+            raid: "카멘",
+            difficulty: "하드",
+            rangeStart: "1",
             rangeEnd: "3",
-            itemLevel: "1640", // -> 받은대로 그대로 보여주면 됨.
+            itemLevel: "1640",
             title: "빛을 꺼트리는 자",
             card: "세상을 구하는 빛",
             cardValue: "30",
-            environment: "예민x", //-> 받은거 변환
-            evolution: "100", // -> 받은대로 그대로 보여주면 됨.
-            realization: "200", // -> 받은대로 그대로 보여주면 됨.
-            leap: "300", // -> 받은대로 그대로 보여주면 됨.
-            transcendenceWeapon: "무풀", // -> 0 1 -> 1인경우 무풀 아닌경우 아님 
+            environment: "예민x",
+            evolution: "100",
+            realization: "200",
+            leap: "300",
+            transcendenceWeapon: "무풀",
             transcendenceArmor: "방풀",
-            isLastPot: true, //-> 그대로
-            isLastDeal: false, //-> 그대로
-            skillRange: "반숙 ~ 숙련", //-> 0 1 2 3 4 -> 변환 트라이 클경 반숙 숙련 숙제
+            isLastPot: true,
+            isLastDeal: false,
+            skillRange: "반숙 ~ 숙련",
             maxmember: 4,
             member: 3,
             startTime: "12:00",
@@ -121,69 +117,75 @@ const MainPage = () => {
             member: 1,
             startTime: "12:00",
             partyMembers: [
-                { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
-                
+                { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" }
             ]
         }
     ];
 
-    // 필터 유무 체크
+    const [partyData, setPartyData] = useState(initialPartyData);
+
+    const applyFilters = (filters) => {
+        setSelectedFilters(filters);
+        setFilterModalOpen(false);
+    };
+
+    const handleUpdate = () => {
+        setPartyData([...initialPartyData]);
+        setSearchQuery(""); 
+    };
+
     const hasFilter = Object.values(selectedFilters).some(val => val !== "" && val !== false);
 
-    // 파티 필터링 함수
-    const filteredParties = PartyData.filter(party => {
-      if (!hasFilter) return true;
-  
-      // 난이도
-      if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
-  
-      // 관문
-      if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
-          if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
-              parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
-      }
-  
-      // 템렙
-      if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
-  
-      // 숙련도
-      if (selectedFilters.skillRange) {
-          const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-          const [pStart, pEnd] = party.skillRange.split(" ~ ");
-          const [fStart, fEnd] = selectedFilters.skillRange.split(" ~ ");
-          const pStartIdx = skillLevels.indexOf(pStart);
-          const pEndIdx = skillLevels.indexOf(pEnd);
-          const fStartIdx = skillLevels.indexOf(fStart);
-          const fEndIdx = skillLevels.indexOf(fEnd);
-          if (!(fStartIdx <= pEndIdx && fEndIdx >= pStartIdx)) return false;
-      }
-  
-      // 칭호
-      if (selectedFilters.title && selectedFilters.title !== party.title) return false;
-  
-      // 카드 + 카드 밸류
-      if (selectedFilters.card && selectedFilters.card !== party.card) return false;
-      if (selectedFilters.cardValue && parseInt(selectedFilters.cardValue) < parseInt(party.cardValue)) return false;
-  
-      // 분위기
-      if (selectedFilters.environment && selectedFilters.environment !== party.environment) return false;
-  
-      // 진화, 깨달음, 도약
-      if (selectedFilters.evolution && parseInt(selectedFilters.evolution) < parseInt(party.evolution)) return false;
-      if (selectedFilters.realization && parseInt(selectedFilters.realization) < parseInt(party.realization)) return false;
-      if (selectedFilters.leap && parseInt(selectedFilters.leap) < parseInt(party.leap)) return false;
-  
-      // 무기/방어구 초월
-      if (selectedFilters.transcendenceWeapon && selectedFilters.transcendenceWeapon !== party.transcendenceWeapon) return false;
-      if (selectedFilters.transcendenceArmor && selectedFilters.transcendenceArmor !== party.transcendenceArmor) return false;
-  
-      // 랏딜/랏폿 필터
-      if ((selectedFilters.isLastPot || selectedFilters.isLastDeal)) {
-          if (!(party.isLastPot || party.isLastDeal)) return false;
-      }
-  
-      return true;
-  });
+    const filteredParties = partyData.filter(party => {
+        if (!hasFilter && searchQuery.trim() === "") return true;
+
+        const searchTerm = searchQuery.trim();
+        if (searchTerm !== "" && !party.partytitle.includes(searchTerm)) {
+            return false;
+        }
+
+        if (!hasFilter) return true;
+
+        if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
+
+        if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
+            if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
+                parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
+        }
+
+        if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
+
+        if (selectedFilters.skillRange) {
+            const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
+            const [pStart, pEnd] = party.skillRange.split(" ~ ");
+            const [fStart, fEnd] = selectedFilters.skillRange.split(" ~ ");
+            const pStartIdx = skillLevels.indexOf(pStart);
+            const pEndIdx = skillLevels.indexOf(pEnd);
+            const fStartIdx = skillLevels.indexOf(fStart);
+            const fEndIdx = skillLevels.indexOf(fEnd);
+            if (!(fStartIdx <= pEndIdx && fEndIdx >= pStartIdx)) return false;
+        }
+
+        if (selectedFilters.title && selectedFilters.title !== party.title) return false;
+
+        if (selectedFilters.card && selectedFilters.card !== party.card) return false;
+        if (selectedFilters.cardValue && parseInt(selectedFilters.cardValue) < parseInt(party.cardValue)) return false;
+
+        if (selectedFilters.environment && selectedFilters.environment !== party.environment) return false;
+
+        if (selectedFilters.evolution && parseInt(selectedFilters.evolution) < parseInt(party.evolution)) return false;
+        if (selectedFilters.realization && parseInt(selectedFilters.realization) < parseInt(party.realization)) return false;
+        if (selectedFilters.leap && parseInt(selectedFilters.leap) < parseInt(party.leap)) return false;
+
+        if (selectedFilters.transcendenceWeapon && selectedFilters.transcendenceWeapon !== party.transcendenceWeapon) return false;
+        if (selectedFilters.transcendenceArmor && selectedFilters.transcendenceArmor !== party.transcendenceArmor) return false;
+
+        if ((selectedFilters.isLastPot || selectedFilters.isLastDeal)) {
+            if (!(party.isLastPot || party.isLastDeal)) return false;
+        }
+
+        return true;
+    });
 
     return (
         <div className="main-Container">
@@ -202,7 +204,10 @@ const MainPage = () => {
                     <div className="right-Column">
                         <div className="right-Container">
                             <div className="right-Top-Container">
-                                <PartyTitleSearchbar setSearchQuery={setSearchQuery} />
+                                <PartyTitleSearchbar
+                                    setSearchQuery={setSearchQuery}
+                                    onUpdate={handleUpdate}
+                                />
                                 <FilterContainer
                                     setFilterModalOpen={setFilterModalOpen}
                                     selectedFilters={selectedFilters}
