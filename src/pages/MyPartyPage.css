@@ -21,6 +21,9 @@
     width: 100%;
     height: 81px;
     border-bottom: 1px solid #737373;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* 내 파티 참가자 부분 */
@@ -55,4 +58,193 @@
     background-color: #1E1E1E;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+}
+
+/* 내 파티 윗줄에 파티명과 출발시간 부분 */
+.my-party-name-time{
+    width: 112px;
+    height: 49px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    margin-left: 16px;
+    text-align: left;
+}
+
+/* 내 파티 아랫줄에 맴버 보이는 부분 */
+.my-party-member{
+    width: 1004px;
+    max-width: 1004px;
+    height: 220px;
+    margin: 24px 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.my-party-moreinfo-button-container{
+    width: 104px;
+    height: 29px;
+    margin: 26px 16px;
+}
+
+.my-party-moreinfo-button{
+    width: 92px;
+    height: 17px;
+    background-color:#3F4044;
+    color: #DFDFDF;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 6px 6px;
+}
+
+/* n번 파티인지 보여주는거 */
+.party-number-title{
+    width: 488px;
+    height: 14px;
+    text-align: left;
+    color: #939393;
+    margin-bottom: 4px;
+}
+
+/* 킥버튼 컨테이너 */
+.kick-button-container{
+    width: 55px;
+    height: 36px;
+}
+
+/* 위에 내 파티 보여주는 부분에서 킥버튼 */
+.kick-button{
+    width: 25px;
+    height: 18px;
+    padding: 4px 4px;
+    background-color: #D28506;
+    color: #DFDFDF;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Pretendard;
+    margin: 5.5px 10px;
+}
+
+/* 아래 신청자 리스트에서 수락버튼 */
+.accept-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 8px;
+    gap: 4px;
+
+    width: 41px;
+    height: 17px;
+
+    background: #6B83E1;
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+/* 아래 신청자 리스트에서 킥버튼 */
+.kick-button2{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 8px;
+    gap: 4px;
+
+    width: 41px;
+    height: 17px;
+
+    background: #D28506;
+    border-radius: 8px;
+
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+
+
+/* 내 파티 최상단에 각 파티원 정보를 그리는 부분 */
+.party-memeber-info{
+
+    display: flex;
+    flex-direction: row;
+
+    width: 240px;
+    height: 36px;
+
+}
+
+.my-party-waitting-container{
+    width: 400px;
+    height: 244px;
+    margin: 16px 16px 44px;
+}
+
+/* 참가신청자 한 명 줄 */
+.my-party-waitting-row{
+    width: 400px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+/* 참가신청자 버튼 줄 */
+.my-party-waitting-button-row{
+    width: 90px;
+    height: 29px;
+    margin-left: 125px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3.5px;
+}
+
+.my-party-waitting-extra-button-row{
+    width: 400px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 16px 16px;
+}
+
+.my-party-waitting-extra-button{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 14px;
+    gap: 10px;
+
+    width: 92px;
+    height: 24px;
+
+    background: #2C2F34;
+    border-radius: 10px;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+    /* white-space: nowrap; */
+}
+
+.my-party-margin-container{
+    margin-left: 6px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.party-member-container{
+    width: 488px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
