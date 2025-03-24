@@ -63,7 +63,7 @@ const PartyData =
         {
             nickname: "닉네임6",
             level: "1560",
-            class: "기상술사",
+            class: "디스트로이어",
             classIcon:""
         },
         {
@@ -134,7 +134,7 @@ const PartyData =
                     <div className='my-party-participant'>
                         <div className='my-party-member'>    
                             {groupedMembers.map((group,groupIdx)=>(
-                                <div style={{height:'96px',marginLeft:'6px',marginRight:'6px',marginBottom:'24px'}}>
+                                <div style={{height:'98px'}} key={groupIdx}>
                                     <div className='party-number-title'>
                                         파티 0{groupIdx+1}
                                         <div className='party-member-container'>

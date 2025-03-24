@@ -4,7 +4,7 @@
 }
 
 /* 닉네임 */
-.nickname {
+.user-info-nickname {
   color: #6B83E1;
   font-family: 'Pretendard';
   font-weight: 500;
@@ -19,13 +19,14 @@
 
 
 
-.details {
+.user-info-details {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 6px;
 }
   
-.class-info {
+.user-info-class-info {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -33,13 +34,14 @@
   height: 14px;
 }
 
-.class-icon {
+.user-info-class-icon {
   width: 14px;
   height: 14px;
 }
 
-.job-text {
-  width: 60px;
+.user-info-job-text {
+  width: 70px;
+  min-width: 70px;
   height: 14px;
   font-family: 'Pretendard';
   font-size: 12px;
@@ -48,15 +50,15 @@
   align-items: center;
 }
 
-.divider {
+.user-info-divider {
   width: 1px;
   height: 12px;
   background: #DFDFDF;
-  margin: 0 6px;
   flex-shrink: 0;
+  margin-left: 4px;
 }
 
-.level-text {
+.user-info-level-text {
   width: 71px;
   height: 14px;
   font-family: 'Pretendard';
