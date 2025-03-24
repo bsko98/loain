@@ -83,12 +83,14 @@
     gap: 24px 16px;
 }
 
+/* 방 정보 상세보기 줄 영역 */
 .my-party-moreinfo-button-container{
     width: 104px;
     height: 29px;
     margin: 26px 16px;
 }
 
+/* 방 정보 상세보기 버튼 */
 .my-party-moreinfo-button{
     width: 92px;
     height: 17px;
@@ -182,6 +184,7 @@
 
 }
 
+/* 참가신청자 리스트 컨테이너 */
 .my-party-waitting-container{
     width: 400px;
     height: 244px;
@@ -207,6 +210,7 @@
     margin-top: 3.5px;
 }
 
+/* 맨 아래 세 개의 버튼 줄 */
 .my-party-waitting-extra-button-row{
     width: 400px;
     height: 40px;
@@ -216,6 +220,7 @@
     margin: 0px 16px 16px;
 }
 
+/* 맨 아래 세 개의 버튼 */
 .my-party-waitting-extra-button{
 
     display: flex;
@@ -238,10 +243,9 @@
     line-height: 24px;
 
     color: #FFFFFF;
-    /* white-space: nowrap; */
 }
 
-
+/* n번 파티의 파티원을 묶어주는 영역 */
 .party-member-container{
     width: 488px;
     height: 80px;
@@ -252,6 +256,7 @@
     gap: 8px;
 }
 
+/* 채팅창 전체 부분 */
 .my-party-chatting-box{
     width: 580px;
     height: 304px;
@@ -263,6 +268,7 @@
     position: relative;
 }
 
+/* 채팅창 입력부분 */
 .my-party-chatting-input{
     width: 516px;
     height: 20px;
@@ -274,6 +280,7 @@
     padding: 6px 16px;
 }
 
+/* 채팅 입력 버튼 */
 .my-party-chatting-button{
     position: absolute;
     width: 30px;

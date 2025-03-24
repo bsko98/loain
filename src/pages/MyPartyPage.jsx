@@ -138,16 +138,19 @@ const PartyData =
                                     <div className='party-number-title'>
                                         파티 0{groupIdx+1}
                                         <div className='party-member-container'>
-                                            {group.map(member =>(
-                                                member ?
-                                                <div className='party-memeber-info'>
-                                                    <UserInfoComponent userInfo = {member}/>
-                                                    <div className='kick-button-container'>
-                                                        <div className='kick-button'>추방</div>
+                                            {group.map((member,idx) =>(
+                                                <div key={idx}>
+                                                    {member ?
+                                                    <div className='party-memeber-info'>
+                                                        <UserInfoComponent userInfo = {member}/>
+                                                        <div className='kick-button-container'>
+                                                            <div className='kick-button'>추방</div>
+                                                        </div>
                                                     </div>
+                                                    : 
+                                                    <div className="nickname party-memeber-info">빈 슬롯</div>
+                                                }
                                                 </div>
-                                                : 
-                                                <div className="nickname party-memeber-info">빈 슬롯</div>
                                             ))}
                                         </div>
                                     </div>
@@ -168,8 +171,8 @@ const PartyData =
                     </div>
                     <div className='my-party-waitting-list'>
                         <div className='my-party-waitting-container'>
-                            {WaittingData.map(user => (
-                                <div className='my-party-waitting-row'>
+                            {WaittingData.map((user,idx) => (
+                                <div className='my-party-waitting-row' key={idx}>
                                     <UserInfoComponent userInfo = {user}/>
                                     <div className='my-party-waitting-button-row'>
                                         <div className='kick-button2'>추방</div>
