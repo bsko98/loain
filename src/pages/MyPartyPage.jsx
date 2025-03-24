@@ -1,6 +1,7 @@
 import React from 'react'
 import './MyPartyPage.css'
 import UserInfoComponent from '../components/UserInfoComponent.jsx'
+import { ReactComponent as SendChattingButton } from '../assets/images/SendChattingButton.svg';
 
 const MyPartyPage = () => {
 
@@ -132,9 +133,8 @@ const PartyData =
                     </div>
                     <div className='my-party-participant'>
                         <div className='my-party-member'>    
-                            <div className='my-party-margin-container'>    
-                                {groupedMembers.map((group,groupIdx)=>(
-                                    <div>
+                            {groupedMembers.map((group,groupIdx)=>(
+                                <div style={{height:'96px',marginLeft:'6px',marginRight:'6px',marginBottom:'24px'}}>
                                     <div className='party-number-title'>
                                         파티 0{groupIdx+1}
                                         <div className='party-member-container'>
@@ -151,14 +151,21 @@ const PartyData =
                                             ))}
                                         </div>
                                     </div>
-                                    </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
                 <div className='my-party-others-container'>
-                    <div className='my-party-chatting-container'></div>
+                    <div className='my-party-chatting-container'>
+                        <div className='my-party-chatting-box'>
+
+                        </div>
+                        <div className='my-party-chatting-input-cotainer'>
+                            <input type='text' placeholder='내용을 입력해주세요.' className='my-party-chatting-input'/>
+                            <button className='my-party-chatting-button' onClick={()=>console.log('sex')}><SendChattingButton style={{width:'24px', height:'24px'}}/></button>
+                        </div>
+                    </div>
                     <div className='my-party-waitting-list'>
                         <div className='my-party-waitting-container'>
                             {WaittingData.map(user => (
