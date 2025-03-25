@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from "react";
 import './MyPartyPage.css'
 import UserInfoComponent from '../components/UserInfoComponent.jsx'
 import { ReactComponent as SendChattingButton } from '../assets/images/SendChattingButton.svg';
+import PartyInfoModal from '../components/PartyInfoModal.jsx';
 
 const MyPartyPage = () => {
+
+const [isModalOpen, setIsModalOpen] = useState(false);
 
 const PartyData =
     {
@@ -128,7 +131,7 @@ const PartyData =
                             <div style={{color:'#DFDFDF'}}>출발 시간</div>
                         </div>
                         <div className='my-party-moreinfo-button-container'>
-                            <div className='my-party-moreinfo-button' onClick={()=>console.log(groupedMembers)}>방 정보 상세보기</div>
+                            <div className='my-party-moreinfo-button' onClick={()=>setIsModalOpen(!isModalOpen)}>방 정보 상세보기</div>
                         </div>
                     </div>
                     <div className='my-party-participant'>
@@ -189,6 +192,7 @@ const PartyData =
                     </div>
                 </div>
             </div>
+            <PartyInfoModal isOpen={isModalOpen}/>
         </div>
     </div>
   )

@@ -1,0 +1,218 @@
+/* 뒤에 빔? 처리 */
+.filter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+
+/* 파티 정보(만들기에도 사용될듯) 전체 영역 */
+.party-info-modal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 32px 32px;
+    gap: 24px;
+
+    position: absolute;
+    width: 1032px;
+    height: 648px;
+    left: calc(50% - 1096px/2);
+    top: calc(50% - 648px/2);
+
+    background: #1E1E1E;
+    border-radius: 8px;
+}
+
+/* 모달 맨 위 첫째 줄 */
+.party-info-modal-first-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+
+    width: 1032px;
+    height: 24px;
+
+    margin-bottom: 24px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+/* 두 번째 설정요소들이 있는 부분 */
+.party-info-modal-second-row{
+    /* Frame 427322469 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+
+    width: 1032px;
+    height: 472px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+/* 마지막으로 버튼이 있는 부분 */
+.party-info-modal-last-row{
+    /* Frame 427322451 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+
+    width: 1032px;
+    height: 56px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+/* 마지막 줄에 들어갈 버튼들 스타일 */
+.last-row-button{
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 32px;
+gap: 10px;
+
+width: 240px;
+height: 56px;
+
+background: #2C2F34;
+border-radius: 10px;
+border: 0;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+font-family: 'Pretendard';
+/* 저장 */
+
+font-family: 'Pretendard';
+
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
+
+/* 두 번째 줄 왼쪽 부분  */
+.party-info-modal-left-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    width: 504px;
+    height: 288px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+/* 두번째 줄 오른쪽 부분 */
+.party-info-modal-right-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 504px;
+    height: 472px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+/* 방 정보 줄 */
+.party-info-modal-left-container-first-row{
+    width: 100%;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+
+    text-align: left;
+    color: #DFDFDF;
+    margin-bottom: 8px;
+}
+
+/* 방 정보 아래에 영역 */
+.party-info-modal-left-container-second-row{
+
+    /* Frame 427322465 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+
+    width: 504px;
+    height: 262px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
