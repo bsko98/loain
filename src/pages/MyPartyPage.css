@@ -92,13 +92,43 @@
 
 /* 방 정보 상세보기 버튼 */
 .my-party-moreinfo-button{
-    width: 92px;
-    height: 17px;
-    background-color:#3F4044;
-    color: #DFDFDF;
-    border-radius: 8px;
-    font-size: 14px;
-    padding: 6px 6px;
+    /* Frame 427322213 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 6px;
+gap: 4px;
+
+width: 104px;
+height: 29px;
+
+background: #3F4044;
+border-radius: 8px;
+border: 0;
+
+cursor: pointer;
+
+margin-top: 26px;
+margin-right: 16px;
+
+/* 방 정보 상세보기 */
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+
+
 }
 
 /* n번 파티인지 보여주는거 */
@@ -118,18 +148,37 @@
 
 /* 위에 내 파티 보여주는 부분에서 킥버튼 */
 .kick-button{
-    width: 25px;
-    height: 18px;
-    padding: 4px 4px;
-    background-color: #D28506;
-    color: #DFDFDF;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: Pretendard;
-    margin: 5.5px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
+    /* Frame 427322365 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 4px;
+gap: 4px;
+
+width: 33px;
+height: 25px;
+
+background: #D28506;
+border-radius: 8px;
+border: 0;
+cursor: pointer;
+/* 추방 */
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+
     
 }
 
@@ -147,13 +196,13 @@
 
     background: #6B83E1;
     border-radius: 8px;
-
+    cursor: pointer;
     font-size: 14px;
 }
 
 /* 아래 신청자 리스트에서 킥버튼 */
 .kick-button2{
-
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -222,7 +271,7 @@
 
 /* 맨 아래 세 개의 버튼 */
 .my-party-waitting-extra-button{
-
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -230,11 +279,12 @@
     padding: 8px 14px;
     gap: 10px;
 
-    width: 92px;
-    height: 24px;
+    width: 120px;
+    height: 40px;
 
     background: #2C2F34;
     border-radius: 10px;
+    border: 0;
 
     font-family: 'Pretendard';
     font-style: normal;
@@ -291,4 +341,5 @@
     padding: 3px 3px;
     right: 18px;
     top: 13px;
+    cursor: pointer
 }

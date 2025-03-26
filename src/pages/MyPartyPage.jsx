@@ -135,9 +135,9 @@ const PartyData =
                             <div style={{color:'#6B83E1', marginBottom:'6px', fontSize:'20px'}}>방 제목</div>
                             <div style={{color:'#DFDFDF'}}>출발 시간</div>
                         </div>
-                        <div className='my-party-moreinfo-button-container'>
-                            <div className='my-party-moreinfo-button' onClick={()=>setIsModalOpen(!isModalOpen)}>방 정보 상세보기</div>
-                        </div>
+                        
+                        <button className='my-party-moreinfo-button' onClick={()=>setIsModalOpen(!isModalOpen)}>방 정보 상세보기</button>
+                        
                     </div>
                     <div className='my-party-participant'>
                         <div className='my-party-member'>    
@@ -152,7 +152,7 @@ const PartyData =
                                                     <div className='party-memeber-info'>
                                                         <UserInfoComponent userInfo = {member}/>
                                                         <div className='kick-button-container'>
-                                                            <div className='kick-button'>추방</div>
+                                                            <button className='kick-button'>추방</button>
                                                         </div>
                                                     </div>
                                                     : 
@@ -190,9 +190,9 @@ const PartyData =
                             ))}
                         </div>
                         <div className='my-party-waitting-extra-button-row'>
-                            <div className='my-party-waitting-extra-button'>알람 보내기</div>
-                            <div className='my-party-waitting-extra-button'>마감</div>
-                            <div className='my-party-waitting-extra-button'>나가기</div>
+                            <button className='my-party-waitting-extra-button'>알람 보내기</button>
+                            <button className='my-party-waitting-extra-button'>마감</button>
+                            <button className='my-party-waitting-extra-button'>나가기</button>
                         </div>
                     </div>
                 </div>
