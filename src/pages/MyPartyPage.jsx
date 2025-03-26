@@ -8,6 +8,11 @@ const MyPartyPage = () => {
 
 const [isModalOpen, setIsModalOpen] = useState(false);
 
+const closeModal = () => {
+    return setIsModalOpen(!isModalOpen);
+}
+
+
 const PartyData =
     {
         id: 2,
@@ -192,7 +197,7 @@ const PartyData =
                     </div>
                 </div>
             </div>
-            <PartyInfoModal isOpen={isModalOpen}/>
+            <PartyInfoModal isOpen={isModalOpen} onClose={closeModal}/>
         </div>
     </div>
   )
