@@ -4,11 +4,17 @@ import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
+const rangeLevels = ["1관문","2관문","3관문"]
 
+
+
+//TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
 const PartyInfoModal = ({isOpen, onClose}) => {
 
   const [startLevel, setStartLevel] = useState(null);
   const [endLevel, setEndLevel] = useState(null);
+  const [rangeStart, setRangeStart] = useState(null);
+  const [rangeEnd, setRangeEnd] = useState(null);
 
   const [filters, setFilters] = useState({
           raid: "",
@@ -46,6 +52,23 @@ const PartyInfoModal = ({isOpen, onClose}) => {
         setEndLevel(null);
     }
   };
+
+  const handleRangeClick = (index) => {
+    if (rangeStart === null) {
+        setRangeStart(index);
+        setRangeEnd(null);
+    } else if (rangeEnd === null) {
+        if (index < rangeStart) {
+            setRangeEnd(rangeStart);
+            setRangeStart(index);
+        } else {
+            setRangeEnd(index);
+        }
+    } else {
+        setRangeStart(index);
+        setRangeEnd(null);
+    }
+  };
   
   const handleFilterChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -77,7 +100,7 @@ const PartyInfoModal = ({isOpen, onClose}) => {
       <div className={`party-info-modal-container ${isOpen ? "visible" : "hidden"}`}>
           <div className='party-info-modal-first-row'>
             <span style={{fontSize:'18px'}}>파티 상세정보</span>
-            <CloseButton onClick={onClose}/>
+            <CloseButton onClick={onClose} style={{cursor:'pointer'}}/>
           </div>
           <div className='party-info-modal-second-row'>
             <div className='party-info-modal-left-container'>
@@ -98,6 +121,40 @@ const PartyInfoModal = ({isOpen, onClose}) => {
                   <select className='party-info-modal-left-container-basic-select'>
                     <option>난이도를 선택해주세요.</option>
                   </select>
+                </div>
+                <div className='party-info-modal-left-container-range-container'>
+                    <span className='party-info-modal-left-container-range-info-text'>관문 정보</span>
+                    <div className="skill-bar">
+                        <div className="skill-wrapper">
+                            {rangeStart !== null && rangeEnd !== null && (
+                                <div
+                                    className="skill-line"
+                                    style={{
+                                        left: `calc(${Math.min(rangeStart, rangeEnd) * 100}px + 20px)`,
+                                        width: `calc(${Math.abs(rangeEnd - rangeStart) * 100 * Math.abs(rangeEnd - rangeStart)}px)`,
+                                    }}
+                                />
+                            )}
+                            {rangeLevels.map((text, index) => (
+                                <div key={index} className="skill-step-container">
+                                    <div
+                                        className={`skill-step ${
+                                            index === rangeStart || index === rangeEnd ? "selected" : ""
+                                        } ${
+                                            rangeStart !== null &&
+                                            rangeEnd !== null &&
+                                            index > rangeStart &&
+                                            index < rangeEnd
+                                                ? "in-range"
+                                                : ""
+                                        }`}
+                                        onClick={() => handleRangeClick(index)}
+                                    />
+                                    <span className="skill-label">{text}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>

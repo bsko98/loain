@@ -343,3 +343,38 @@ color: #DFDFDF;
     top: 13px;
     cursor: pointer
 }
+
+.party-info-modal-left-container-range-container{
+        /* Frame 427322468 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    width: 504px;
+    height: 115px;
+}
+
+.party-info-modal-left-container-range-info-text{
+    /* 관문 정보 */
+
+    width: 504px;
+    height: 17px;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    color: #DFDFDF;
+
+    opacity: 0.8;
+
+  text-align: left;
+
+}
