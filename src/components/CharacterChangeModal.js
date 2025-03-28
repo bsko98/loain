@@ -15,6 +15,8 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
             setActiveServer(server);
     };
 
+    
+
     return (
         <div className="character-change-modal-overlay">
             <div className="character-change-modal-content">

@@ -5,10 +5,12 @@ import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 import FilterContainer from '../components/FilterContainer';
 import FilterModal from "../components/FilterModal";
 import PartyContainer from "../components/partyContainer";
+import CharacterInfoDisplay from "../components/characterInfoDisplay";
 
 const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState({
         raid: "",
         difficulty: "",
@@ -29,7 +31,6 @@ const MainPage = () => {
         skillRange: "",
     });
 
-    // 초기 데이터 설정
     const initialPartyData = [
         {
             id: 1,
@@ -131,30 +132,26 @@ const MainPage = () => {
 
     const handleUpdate = () => {
         setPartyData([...initialPartyData]);
-        setSearchQuery(""); 
+        setSearchQuery("");
     };
 
     const hasFilter = Object.values(selectedFilters).some(val => val !== "" && val !== false);
 
     const filteredParties = partyData.filter(party => {
         if (!hasFilter && searchQuery.trim() === "") return true;
-
         const searchTerm = searchQuery.trim();
         if (searchTerm !== "" && !party.partytitle.includes(searchTerm)) {
             return false;
         }
-
         if (!hasFilter) return true;
 
+        // 필터 조건들...
         if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
-
         if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
             if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
                 parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
         }
-
         if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
-
         if (selectedFilters.skillRange) {
             const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
             const [pStart, pEnd] = party.skillRange.split(" ~ ");
@@ -165,21 +162,15 @@ const MainPage = () => {
             const fEndIdx = skillLevels.indexOf(fEnd);
             if (!(fStartIdx <= pEndIdx && fEndIdx >= pStartIdx)) return false;
         }
-
         if (selectedFilters.title && selectedFilters.title !== party.title) return false;
-
         if (selectedFilters.card && selectedFilters.card !== party.card) return false;
         if (selectedFilters.cardValue && parseInt(selectedFilters.cardValue) < parseInt(party.cardValue)) return false;
-
         if (selectedFilters.environment && selectedFilters.environment !== party.environment) return false;
-
         if (selectedFilters.evolution && parseInt(selectedFilters.evolution) < parseInt(party.evolution)) return false;
         if (selectedFilters.realization && parseInt(selectedFilters.realization) < parseInt(party.realization)) return false;
         if (selectedFilters.leap && parseInt(selectedFilters.leap) < parseInt(party.leap)) return false;
-
         if (selectedFilters.transcendenceWeapon && selectedFilters.transcendenceWeapon !== party.transcendenceWeapon) return false;
         if (selectedFilters.transcendenceArmor && selectedFilters.transcendenceArmor !== party.transcendenceArmor) return false;
-
         if ((selectedFilters.isLastPot || selectedFilters.isLastDeal)) {
             if (!(party.isLastPot || party.isLastDeal)) return false;
         }
@@ -192,11 +183,13 @@ const MainPage = () => {
             <div className="content-Wrapper">
                 <div className="ad-Container">ad-Container</div>
                 <div className="character-Select-Container">
-                    <CharacterSelectContainer />
+                    <CharacterSelectContainer setSelectedCharacter={setSelectedCharacter} />
                 </div>
                 <div className="main-Content">
                     <div className="left-Column">
-                        <div className="character-Container">character-Container</div>
+                        <div className="character-Container">
+                            <CharacterInfoDisplay selectedCharacter={selectedCharacter} />
+                        </div>
                         <div className="arkPassive-Container">arkpassive-Container</div>
                         <div className="card-Container">card-Container</div>
                         <div className="title-Container">title-Container</div>
@@ -204,10 +197,7 @@ const MainPage = () => {
                     <div className="right-Column">
                         <div className="right-Container">
                             <div className="right-Top-Container">
-                                <PartyTitleSearchbar
-                                    setSearchQuery={setSearchQuery}
-                                    onUpdate={handleUpdate}
-                                />
+                                <PartyTitleSearchbar setSearchQuery={setSearchQuery} onUpdate={handleUpdate} />
                                 <FilterContainer
                                     setFilterModalOpen={setFilterModalOpen}
                                     selectedFilters={selectedFilters}
