@@ -42,43 +42,43 @@ const PartyData =
             nickname: "닉네임1",
             level: "1560",
             class: "데모닉",
-            classIcon:""
+            classIcon: "/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임2",
             level: "1560",
             class: "창술사",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임3",
             level: "1560",
             class: "블레이드",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임4",
             level: "1560",
             class: "건슬링어",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임5",
             level: "1560",
             class: "홀리나이트",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임6",
             level: "1560",
             class: "디스트로이어",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임7",
             level: "1560",
             class: "아르카나",
-            classIcon:""
+            classIcon:"/src/assets/images/iconExam.svg"
         }
         ]
     }
@@ -88,25 +88,25 @@ const PartyData =
             nickname: "닉네임1",
             level: "1560",
             class: "데모닉",
-            classIcon:""
+            classIcon:null
         },
         {
             nickname: "닉네임2",
             level: "1560",
             class: "창술사",
-            classIcon:""
+            classIcon:null
         },
         {
             nickname: "닉네임3",
             level: "1560",
             class: "블레이드",
-            classIcon:""
+            classIcon:null
         },
         {
             nickname: "닉네임4",
             level: "1560",
             class: "건슬링어",
-            classIcon:""
+            classIcon:null
         }
         ]
 
@@ -197,7 +197,7 @@ const PartyData =
                     </div>
                 </div>
             </div>
-            <PartyInfoModal isOpen={isModalOpen} onClose={closeModal}/>
+            <PartyInfoModal isOpen={isModalOpen} onClose={closeModal} modalTitleText={'파티 상세정보'} buttonText={'저장'}/>
         </div>
     </div>
   )

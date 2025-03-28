@@ -4,17 +4,14 @@ import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const rangeLevels = ["1관문","2관문","3관문"]
-
+const gateOptions = [1, 2, 3, 4];
 
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
-const PartyInfoModal = ({isOpen, onClose}) => {
+const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
   const [startLevel, setStartLevel] = useState(null);
   const [endLevel, setEndLevel] = useState(null);
-  const [rangeStart, setRangeStart] = useState(null);
-  const [rangeEnd, setRangeEnd] = useState(null);
 
   const [filters, setFilters] = useState({
           raid: "",
@@ -53,22 +50,6 @@ const PartyInfoModal = ({isOpen, onClose}) => {
     }
   };
 
-  const handleRangeClick = (index) => {
-    if (rangeStart === null) {
-        setRangeStart(index);
-        setRangeEnd(null);
-    } else if (rangeEnd === null) {
-        if (index < rangeStart) {
-            setRangeEnd(rangeStart);
-            setRangeStart(index);
-        } else {
-            setRangeEnd(index);
-        }
-    } else {
-        setRangeStart(index);
-        setRangeEnd(null);
-    }
-  };
   
   const handleFilterChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -99,7 +80,7 @@ const PartyInfoModal = ({isOpen, onClose}) => {
     <div className='filter-modal-overlay'>
       <div className={`party-info-modal-container ${isOpen ? "visible" : "hidden"}`}>
           <div className='party-info-modal-first-row'>
-            <span style={{fontSize:'18px'}}>파티 상세정보</span>
+            <span style={{fontSize:'18px', fontWeight:'600'}}>{modalTitleText}</span>
             <CloseButton onClick={onClose} style={{cursor:'pointer'}}/>
           </div>
           <div className='party-info-modal-second-row'>
@@ -122,56 +103,39 @@ const PartyInfoModal = ({isOpen, onClose}) => {
                     <option>난이도를 선택해주세요.</option>
                   </select>
                 </div>
+                <div className='party-info-modal-left-container-basic-row'>
+                  <span className='party-info-modal-left-container-basic-span'>레이드</span>
+                  <select className='party-info-modal-left-container-basic-select'>
+                    <option>레이드를 선택해주세요.</option>
+                  </select>
+                </div>
                 <div className='party-info-modal-left-container-range-container'>
                     <span className='party-info-modal-left-container-range-info-text'>관문 정보</span>
-                    <div className="skill-bar">
-                        <div className="skill-wrapper">
-                            {rangeStart !== null && rangeEnd !== null && (
-                                <div
-                                    className="skill-line"
-                                    style={{
-                                        left: `calc(${Math.min(rangeStart, rangeEnd) * 100}px + 20px)`,
-                                        width: `calc(${Math.abs(rangeEnd - rangeStart) * 100 * Math.abs(rangeEnd - rangeStart)}px)`,
-                                    }}
-                                />
-                            )}
-                            {rangeLevels.map((text, index) => (
-                                <div key={index} className="skill-step-container">
-                                    <div
-                                        className={`skill-step ${
-                                            index === rangeStart || index === rangeEnd ? "selected" : ""
-                                        } ${
-                                            rangeStart !== null &&
-                                            rangeEnd !== null &&
-                                            index > rangeStart &&
-                                            index < rangeEnd
-                                                ? "in-range"
-                                                : ""
-                                        }`}
-                                        onClick={() => handleRangeClick(index)}
-                                    />
-                                    <span className="skill-label">{text}</span>
-                                </div>
-                            ))}
+                    <div className="range-container">
+                        <div className="raid-select-dropdown">
+
+                            <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
+                                <option value="">선택</option>
+                                {gateOptions.map((gate) => (
+                                    <option key={gate} value={gate}>{gate}</option>
+                                ))}
+                            </select>
+                            <label>~</label>
+                            <select name="rangeEnd" value={filters.rangeEnd} onChange={handleFilterChange}>
+                                <option value="">선택</option>
+                                {gateOptions
+                                    .filter((gate) => parseInt(gate, 10) >= parseInt(filters.rangeStart || 0, 10))
+                                    .map((gate) => (
+                                        <option key={gate} value={gate}>{gate}</option>
+                                    ))}
+                            </select>
                         </div>
                     </div>
                 </div>
               </div>
             </div>
             <div className='party-info-modal-right-container'>
-              <div className="raid-select">
-                  <label>레이드 선택</label>
-                  <div className="raid-select-dropdown">
-                      <select name="raid" value={filters.raid} onChange={handleFilterChange}>
-                          <option value="raid1">#레이드 정보01</option>
-                          <option value="raid2">#레이드 정보02</option>
-                      </select>
-                      <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
-                          <option value="normal">노말</option>
-                          <option value="hard">하드</option>
-                      </select>
-                  </div>
-              </div>
+            <div className='party-info-modal-left-container-first-row'>상세정보</div>
               <div className="filter-bottom-container">
                 <div className="skill-bar">
                     <div className="skill-wrapper">
@@ -206,9 +170,7 @@ const PartyInfoModal = ({isOpen, onClose}) => {
                     <div className="skill-bar-bottom-line"></div>
                 </div>
                 <div className="mycharacter-checkbox-container">
-                        <input type="checkbox" name="isQuick" />
-                        <label className="mycharacter-checkbox-container-label">내 캐릭터 스펙 불러오기</label>
-                    </div>
+                </div>
                 <div className="filter-main-container">
                     <div className="character-filter-container">
                         <div className="character-filter-column-left">
@@ -295,7 +257,7 @@ const PartyInfoModal = ({isOpen, onClose}) => {
           </div>
           <div className='party-info-modal-last-row'>
             <button className='last-row-button'>취소</button>
-            <button className='last-row-button'>파티 만들기</button>
+            <button className='last-row-button'>{buttonText}</button>
           </div>
       </div>
     </div>
