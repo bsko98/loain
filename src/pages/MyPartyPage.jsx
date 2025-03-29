@@ -3,6 +3,7 @@ import './MyPartyPage.css'
 import UserInfoComponent from '../components/UserInfoComponent.jsx'
 import { ReactComponent as SendChattingButton } from '../assets/images/SendChattingButton.svg';
 import PartyInfoModal from '../components/PartyInfoModal.jsx';
+import ImageExam from "../assets/images/iconExam.svg";
 
 const MyPartyPage = () => {
 
@@ -42,7 +43,7 @@ const PartyData =
             nickname: "닉네임1",
             level: "1560",
             class: "데모닉",
-            classIcon: "/src/assets/images/iconExam.svg"
+            classIcon: {ImageExam}
         },
         {
             nickname: "닉네임2",
@@ -54,13 +55,13 @@ const PartyData =
             nickname: "닉네임3",
             level: "1560",
             class: "블레이드",
-            classIcon:"/src/assets/images/iconExam.svg"
+            classIcon:"../assets/images/iconExam.svg"
         },
         {
             nickname: "닉네임4",
             level: "1560",
             class: "건슬링어",
-            classIcon:"/src/assets/images/iconExam.svg"
+            classIcon:'https://img.lostark.co.kr/armory/3/ADCEB258EB5A436F8E1E3B0F852441B0A85753ABE72E9D29D88C610F885A1120.jpg?v=20250204191040'
         },
         {
             nickname: "닉네임5",

@@ -43,6 +43,7 @@
 
     width: 1032px;
     height: 24px;
+    color: #DFDFDF;
 
     /* Inside auto layout */
     flex: none;
