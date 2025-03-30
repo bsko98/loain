@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./partyContainer.css";
 
-const PartyContainer = ({ partyData }) => {
+const PartyContainer = ({ partyData, selectedFilters }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
+
   const toggleExpand = () => setIsExpanded(prev => !prev);
   const toggleApply = () => setIsApplied(prev => !prev);
 
@@ -45,37 +46,92 @@ const PartyContainer = ({ partyData }) => {
     return filledGroup;
   });
 
+  // 필터 유무 확인
+  const hasFilter = Object.values(selectedFilters).some(
+    val => val !== "" && val !== false
+  );
+
+  // 태그 매칭 여부
+  const isTagMatched = (tagName, value) => {
+    if (!hasFilter) return false;  // 필터 없으면 기본 색 유지
+
+    const filterValue = selectedFilters[tagName];
+    if (filterValue === "" || filterValue === false) return false;
+
+    // 숫자 비교
+    const numericFields = ["itemLevel", "cardValue", "evolution", "realization", "leap"];
+    if (numericFields.includes(tagName)) {
+      return parseInt(filterValue, 10) >= parseInt(value, 10);
+    }
+
+    // 숙련도 범위 비교
+    if (tagName === "skillRange") {
+      const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
+      const [partyStart, partyEnd] = value.split(" ~ ");
+      const [filterStart, filterEnd] = filterValue.split(" ~ ");
+      const pStartIdx = skillLevels.indexOf(partyStart);
+      const pEndIdx = skillLevels.indexOf(partyEnd);
+      const fStartIdx = skillLevels.indexOf(filterStart);
+      const fEndIdx = skillLevels.indexOf(filterEnd);
+      return fStartIdx <= pEndIdx && fEndIdx >= pStartIdx;
+    }
+
+    // 랏딜/랏폿
+    if (tagName === "isLastPot" || tagName === "isLastDeal") {
+      return (selectedFilters.isLastPot && value === true) || (selectedFilters.isLastDeal && value === true);
+    }
+
+    // 문자열 일치
+    return filterValue === value;
+  };
+
+  // 태그 목록 (빈 값 제외)
+  const allTags = [
+    itemLevel && { label: `#${itemLevel}↑`, key: "itemLevel", value: itemLevel },
+    skillRange && { label: `#${skillRange}`, key: "skillRange", value: skillRange },
+    title && { label: `#${title}`, key: "title", value: title },
+    card && cardValue && { label: `#${card} : ${cardValue}`, key: "card", value: card },
+    environment && { label: `#${environment}`, key: "environment", value: environment },
+    evolution && { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
+    realization && { label: `#깨달음 ${realization}`, key: "realization", value: realization },
+    leap && { label: `#도약 ${leap}`, key: "leap", value: leap },
+    transcendenceWeapon && { label: `#무기 ${transcendenceWeapon}`, key: "transcendenceWeapon", value: transcendenceWeapon },
+    transcendenceArmor && { label: `#방어구 ${transcendenceArmor}`, key: "transcendenceArmor", value: transcendenceArmor },
+    isLastDeal && { label: "#랏딜", key: "isLastDeal", value: isLastDeal },
+    isLastPot && { label: "#랏폿", key: "isLastPot", value: isLastPot },
+  ].filter(Boolean); // 빈 값 제거
+
+  // 6개씩 나누기
+  const chunkTags = [];
+  for (let i = 0; i < allTags.length; i += 6) {
+    chunkTags.push(allTags.slice(i, i + 6));
+  }
+
   return (
     <div className="party-container">
       <div className="party-container-main">
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>
           <div className="party-container-info-tags">
-          <span>#{raid}</span> |
+            <span>#{raid}</span> |
             <span>#{difficulty}</span> |
             <span>{rangeStart} 관문 ~ {rangeEnd} 관문</span> |
             <span>#{startTime}</span>
           </div>
-          <div className="party-container-extra-tags">
-            {/* 첫 번째 줄 태그 묶음 */}
-            <div className="extra-tag-line">
-              {itemLevel && <span>#{itemLevel}↑</span>}
-              {skillRange && <span>#{skillRange}</span>}
-              {title && <span>#{title}</span>}
-              {card && cardValue && <span>#{card} : {cardValue}</span>}
-              {environment && <span>#{environment}</span>}
-            </div>
 
-            {/* 두 번째 줄 태그 묶음 */}
-            <div className="extra-tag-line">
-              {evolution && <span>#진화 {evolution}</span>}
-              {realization && <span> #깨달음 {realization}</span>}
-              {leap && <span> 도약 {leap}</span>}
-              {transcendenceWeapon && <span>#무기 {transcendenceWeapon}</span>}
-              {transcendenceArmor && <span>#방어구 {transcendenceArmor}</span>}
-              {isLastDeal && <span>#랏딜</span>}
-              {isLastPot && <span>#랏폿</span>}
-            </div>
+          <div className="party-container-extra-tags">
+            {chunkTags.map((tagGroup, groupIdx) => (
+              <div className="extra-tag-line" key={groupIdx}>
+                {tagGroup.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className={isTagMatched(tag.key, tag.value) ? "highlight-tag" : ""}
+                  >
+                    {tag.label}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -107,8 +163,7 @@ const PartyContainer = ({ partyData }) => {
                         <div className="nickname">#{member.nickname}</div>
                         <div className="details">
                           <div className="class-info">
-                          {/* 나중에 이미지 태그 추가해주면 됨 */}
-                            <img  alt="직업 아이콘" className="class-icon" /> 
+                            <img src={member.classIcon} alt="직업 아이콘" className="class-icon" />
                             <div className="job-text">#{member.class}</div>
                           </div>
                           <div className="divider" />

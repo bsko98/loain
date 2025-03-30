@@ -7,10 +7,12 @@
     height: 130px;          
     padding: 12px;
     background: #15171B;
-    border-radius: 8px;
     box-sizing: border-box;
     gap: 12px;
     font-family: 'Pretendard';
+    border: 1px solid #797979;
+    border-radius: 8px;
+    margin-bottom: 24px;
 }
 
 /* 필터 태그 모음 */

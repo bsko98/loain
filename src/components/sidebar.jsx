@@ -18,7 +18,10 @@ import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueMa
 import PartyInfoModal from './PartyInfoModal';
 
 import './sidebar.css';
-
+import SignIn from '../pages/Signin';
+import FindId from '../pages/Findid';
+import ResetPassword from '../pages/Resetpassword';
+import SignUp from '../pages/Signup';
 
 const Sidebar = () => {
 
@@ -94,6 +97,7 @@ const Sidebar = () => {
             </div>
         </div>
         <PartyInfoModal isOpen={isModalOpen} onClose={closeModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
+        <SignIn />
     </div>
   )
 }
