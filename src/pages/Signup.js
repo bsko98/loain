@@ -1,14 +1,14 @@
 import './GlobalComponents.css';
-import React , {useState, useRef} from "react"
-import {ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
-import {ReactComponent as LoainText } from './images/LoainTextImage.svg';
-import {ReactComponent as IdImage } from './images/IdImage.svg';
-import {ReactComponent as PwImage } from './images/PwImage.svg';
-import {ReactComponent as EmailImage } from './images/EmailImage.svg';
-import {ReactComponent as APIKeyImage } from './images/APIKeyImage.svg';
-import {ReactComponent as QuestionMarkImage} from './images/QuestionMarkImage.svg';
-import {ReactComponent as XMarkImage} from './images/XMarkImage.svg';
-import {ReactComponent as Dot} from './images/Dot.svg';
+import React, { useState, useRef } from "react"
+import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
+import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
+import { ReactComponent as IdImage } from './images/IdImage.svg';
+import { ReactComponent as PwImage } from './images/PwImage.svg';
+import { ReactComponent as EmailImage } from './images/EmailImage.svg';
+import { ReactComponent as APIKeyImage } from './images/APIKeyImage.svg';
+import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.svg';
+import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
+import { ReactComponent as Dot } from './images/Dot.svg';
 
 const Signup = () => {
 
@@ -44,8 +44,7 @@ const Signup = () => {
 
     const CheckId = () => {
         setSubbmittedValueId(inputId.trim() ? inputId : null);              // 값이 없으면 null 저장
-        if (inputId)
-        {
+        if (inputId) {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
         }
 
@@ -54,10 +53,8 @@ const Signup = () => {
     const CheckPassword = () => {
         setSubbmittedValuePw(inputPw.trim() ? inputPw : null);                  // 값이 없으면 null 저장
         setSubbmittedValueCheckPw(inputCheckPw.trim() ? inputCheckPw : null);   // 값이 없으면 null 저장
-        if (!(!inputPw || !inputCheckPw))
-        {
-            if (inputPw === inputCheckPw)
-            {
+        if (!(!inputPw || !inputCheckPw)) {
+            if (inputPw === inputCheckPw) {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
             }
             setInputPw("");
@@ -69,8 +66,7 @@ const Signup = () => {
     };
     const CheckEmail = () => {
         setSubbmittedValueEmail(inputEmail.trim() ? inputEmail : null);     // 값이 없으면 null 저장
-        if (inputEmail)
-        {
+        if (inputEmail) {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
         }
 
@@ -78,8 +74,7 @@ const Signup = () => {
     };
     const CheckAPIKey = () => {
         setSubbmittedValueAPIKey(inputAPIKey.trim() ? inputAPIKey : null);     // 값이 없으면 null 저장
-        if (inputAPIKey)
-        {
+        if (inputAPIKey) {
             // API Key 저장
         }
 
@@ -110,7 +105,7 @@ const Signup = () => {
 
     const divList = [
         <div key={0}>
-            <div className='IdPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column'}}>
+            <div className='IdPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                     <IdImage style={{ width: '18px', height: '18px' }} />
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</a>
@@ -123,7 +118,7 @@ const Signup = () => {
         </div>,
 
         <div key={1}>
-            <div className='PwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column'}}>
+            <div className='PwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                     <PwImage style={{ width: '18px', height: '18px' }} />
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</a>
@@ -146,55 +141,55 @@ const Signup = () => {
         </div>,
 
         <div key={2}>
-            <div key={2} className='EmailPwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column'}}>
+            <div key={2} className='EmailPwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                     <EmailImage style={{ width: '18px', height: '18px' }} />
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputAccount-Textbox' type='text' value={inputEmail} placeholder='백업용 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px'}}>
+                    <input className='inputAccount-Textbox' type='text' value={inputEmail} placeholder='백업용 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                     </input>
                 </div>
             </div>
         </div>,
 
         <div key={3}>
-            <div key={3} className='APIKeyPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column'}}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px'}}>
+            <div key={3} className='APIKeyPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                     <APIKeyImage style={{ width: '18px', height: '18px' }} />
-                    <a style={{ width: 'auto', minWidth: '123px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px', paddingRight: '201px'}}>로스트아크 API Key</a>
-                    <div ref={divRef} onClick={modalOpen} style={{width: '18px', height: '18px'}}>
-                        <QuestionMarkImage style={{ width: '18px', height: '18px'}} />
+                    <a style={{ width: 'auto', minWidth: '123px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px', paddingRight: '201px' }}>로스트아크 API Key</a>
+                    <div ref={divRef} onClick={modalOpen} style={{ width: '18px', height: '18px' }}>
+                        <QuestionMarkImage style={{ width: '18px', height: '18px' }} />
                     </div>
                     {isModalOpen && (
-                        <div style={{position: "absolute", top: `${modalPosition.top}px`, left: `${modalPosition.left}px`, width: `${modalWidth}px`, height: "auto", minHeight: '100px', backgroundColor: "rgba(10, 10, 10, 0.9)", border: "solid", borderRadius: '20px', borderColor: '#737373'}}>
-                            <div style={{width: '216px', height: 'autto', minHeight: '77px', display: 'flex', flexDirection: 'column', padding: '12px'}}>
-                                <div className='ModalTitlePos' style={{width: '216px', height: 'auto', minHeight: '15px', display: 'flex'}}>
-                                    <a className='ModalTitle' style={{width: 'auto', minWidth: '103px', height: 'auto', minHeight: '15px', color: '#DFDFDF', fontSize: '12px', fontWeight: 'bold'}}>로스트아크 API Key</a>
-                                    <div onClick={modalClose} style={{width: '15px', height: '15px', paddingLeft: '96px'}}>
-                                        <XMarkImage style={{width: '15px', height: '15px'}}/>
+                        <div style={{ position: "absolute", top: `${modalPosition.top}px`, left: `${modalPosition.left}px`, width: `${modalWidth}px`, height: "auto", minHeight: '100px', backgroundColor: "rgba(10, 10, 10, 0.9)", border: "solid", borderRadius: '20px', borderColor: '#737373' }}>
+                            <div style={{ width: '216px', height: 'autto', minHeight: '77px', display: 'flex', flexDirection: 'column', padding: '12px' }}>
+                                <div className='ModalTitlePos' style={{ width: '216px', height: 'auto', minHeight: '15px', display: 'flex' }}>
+                                    <a className='ModalTitle' style={{ width: 'auto', minWidth: '103px', height: 'auto', minHeight: '15px', color: '#DFDFDF', fontSize: '12px', fontWeight: 'bold' }}>로스트아크 API Key</a>
+                                    <div onClick={modalClose} style={{ width: '15px', height: '15px', paddingLeft: '96px' }}>
+                                        <XMarkImage style={{ width: '15px', height: '15px' }} />
                                     </div>
                                 </div>
-                                <div className='ModalContentPos' style={{width: '216px', height: 'auto', minHeight: '52px', display: 'flex', flexDirection: 'column', paddingTop: '10px'}}>
-                                    <div className='ModalContent' style={{width: '216px', height: 'auto', minHeight: '24px', display: 'flex'}}>
-                                        <div style={{width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <div className='ModalContentPos' style={{ width: '216px', height: 'auto', minHeight: '52px', display: 'flex', flexDirection: 'column', paddingTop: '10px' }}>
+                                    <div className='ModalContent' style={{ width: '216px', height: 'auto', minHeight: '24px', display: 'flex' }}>
+                                        <div style={{ width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                             <Dot />
                                         </div>
-                                        <a style={{color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px'}}>로스트아크 API Key에 대한 설명 문구가 들어갑니다.</a>
+                                        <a style={{ color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px' }}>로스트아크 API Key에 대한 설명 문구가 들어갑니다.</a>
                                     </div>
-                                    <div className='ModalContent' style={{width: '216px', height: 'auto', minHeight: '24px', display: 'flex', paddingTop: '4px'}}>
-                                        <div style={{width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <div className='ModalContent' style={{ width: '216px', height: 'auto', minHeight: '24px', display: 'flex', paddingTop: '4px' }}>
+                                        <div style={{ width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                             <Dot />
                                         </div>
-                                        <a style={{color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px'}}>로스트아크 API Key입력에 대한 권장 문구가 들어갑니다.</a>
+                                        <a style={{ color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px' }}>로스트아크 API Key입력에 대한 권장 문구가 들어갑니다.</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     )}
                 </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '62px', backgroundColor: 'white', borderRadius: '12px'}}>
-                    <textarea rows={2} className='inputAccount-Textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none'}}>
+                <div style={{ width: '368px', height: 'auto', minHeight: '62px', backgroundColor: 'white', borderRadius: '12px' }}>
+                    <textarea rows={2} className='inputAccount-Textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none' }}>
                     </textarea>
                 </div>
             </div>
@@ -203,31 +198,31 @@ const Signup = () => {
 
     const btnList = [
         <button key={0} className='mainAccount-Button' onClick={CheckId}>
-            <a style={{width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px'}}>다음 ({currentIndex+1}/{divList.length})</a>
+            <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
         <button key={1} className='mainAccount-Button' onClick={CheckPassword}>
-            <a style={{width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px'}}>다음 ({currentIndex+1}/{divList.length})</a>
+            <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
         <button key={2} className='mainAccount-Button' onClick={CheckEmail}>
-            <a style={{width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px'}}>다음 ({currentIndex+1}/{divList.length})</a>
+            <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
         <button key={3} className='mainAccount-Button' onClick={CheckAPIKey}>
-            <a style={{width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px'}}>회원가입 완료</a>
+            <a style={{ width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>회원가입 완료</a>
         </button>
     ];
 
     return (
-        <div style={{fontFamily: 'Pretendard'}}>
+        <div style={{ fontFamily: 'Pretendard' }}>
             <div className='background-Container'>
                 <div className='mainAccount-Container'>
                     <div className='contentAccount-Container'>
                         <div className='mainContentAccount-Container'>
                             <div className='logoPosAccount-Container'>
-                                <LoainLogo /> {}
-                                <LoainText /> {}
+                                <LoainLogo /> { }
+                                <LoainText /> { }
                             </div>
                             <div className='inputPosAccount-Container'>
                                 {divList[currentIndex]}

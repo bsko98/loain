@@ -9,9 +9,9 @@ import MyPartyPage from './pages/MyPartyPage.jsx';
 
 function App() {
   return (
-    <div className="App"> 
+    <div className="App">
       <Router>
-        <Sidebar/>
+        <Sidebar />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter />} />
