@@ -6,6 +6,8 @@ import FilterContainer from '../components/FilterContainer';
 import FilterModal from "../components/FilterModal";
 import PartyContainer from "../components/partyContainer";
 import CharacterInfoDisplay from "../components/characterInfoDisplay";
+import CardContainer from '../components/CardContainer';
+import TitleContainer from '../components/TitleContainer';
 
 const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -178,6 +180,37 @@ const MainPage = () => {
         return true;
     });
 
+    const cardSetInfo = [
+        { cardSetName: "세상을 구하는 빛", cardSetEffectType: "성", cardSetAwakenSum: 30, cardSetEffectSum: 0 },
+        { cardSetName: "카제로스의 군단장", cardSetEffectType: "암", cardSetAwakenSum: 24, cardSetEffectSum: 0 }
+    ];
+    const cardSetData = [
+        { Name: cardSetInfo[0].cardSetName, EffectType: cardSetInfo[0].cardSetEffectType, AwakenSum: cardSetInfo[0].cardSetAwakenSum, EffectSum: sortDealerCardEffectSum(cardSetInfo[0].cardSetAwakenSum) },
+        { Name: cardSetInfo[1].cardSetName, EffectType: cardSetInfo[1].cardSetEffectType, AwakenSum: cardSetInfo[1].cardSetAwakenSum, EffectSum: sortDealerCardEffectSum(cardSetInfo[1].cardSetAwakenSum) }
+    ];
+    const titleData = [
+        { titleName: "몽환의 현시자", titleContent: "몽환의 현시자, 아브렐슈드와의 전투에서 승리하기" },
+        { titleName: "광기군단장", titleContent: "광기군단장 쿠크세이튼 물리치기" },
+        { titleName: "폭풍의 눈", titleContent: "잔혹한 폭풍의 처단자, 베히모스 처치하기" },
+        { titleName: "욕망의 주인", titleContent: "욕망의 주인, 에키드나 처치하기" }
+    ];
+
+    function sortDealerCardEffectSum(AwakenSum) {
+        switch (true) {
+            case AwakenSum === 30:
+                return 15;
+
+            case AwakenSum >= 24 && AwakenSum < 30:
+                return 11;
+
+            case AwakenSum >= 18 && AwakenSum < 24:
+                return 7;
+
+            default:
+                return 0;
+        }
+    }
+
     return (
         <div className="main-Container">
             <div className="content-Wrapper">
@@ -191,8 +224,8 @@ const MainPage = () => {
                             <CharacterInfoDisplay selectedCharacter={selectedCharacter} />
                         </div>
                         <div className="arkPassive-Container">arkpassive-Container</div>
-                        <div className="card-Container">card-Container</div>
-                        <div className="title-Container">title-Container</div>
+                        <CardContainer listTitle={"가지고 있는 카드"} listData={cardSetData} />
+                        <TitleContainer listTitle={"가지고 있는 칭호"} listData={titleData} />
                     </div>
                     <div className="right-Column">
                         <div className="right-Container">
