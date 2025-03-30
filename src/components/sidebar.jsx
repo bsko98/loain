@@ -17,7 +17,10 @@ import { ReactComponent as BlueMyParty } from '../assets/images/blueMyParty.svg'
 import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueManageMyCharacter.svg';
 
 import './sidebar.css';
-
+import SignIn from '../pages/Signin';
+import FindId from '../pages/Findid';
+import ResetPassword from '../pages/Resetpassword';
+import SignUp from '../pages/Signup';
 
 const Sidebar = () => {
 
@@ -82,6 +85,7 @@ const Sidebar = () => {
                 <div style={{paddingTop:'14.5px', color:'#DFDFDF'}}>계정 관리 및 더보기</div>
             </div>
         </div>
+        <SignIn />
     </div>
   )
 }
