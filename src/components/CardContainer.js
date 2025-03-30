@@ -3,12 +3,12 @@ import './CardTitleContainer.css';
 
 const CardContainer = ({ listTitle, listData }) => {
   return (
-    <div className='cardTitle-Container'>
-      <div className='listTitle'>{listTitle}</div>
-      <div className='list-Container'>
+    <div className='cardtitle-container'>
+      <div className='listtitle'>{listTitle}</div>
+      <div className='list-container'>
         {listData.map((data, index) => (
           <div key={index} className='list'>
-            <div className='contentTitle'>{data.Name}({data.AwakenSum}각)</div>
+            <div className='contenttitle'>{data.Name}({data.AwakenSum}각)</div>
             <div className='content'>{data.EffectType}속성 피해 + {data.EffectSum}%</div>
           </div>
         ))}

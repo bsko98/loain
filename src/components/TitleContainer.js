@@ -3,12 +3,12 @@ import './CardTitleContainer.css';
 
 const TitleContainer = ({ listTitle, listData }) => {
   return (
-    <div className='cardTitle-Container'>
-      <div className='listTitle'>{listTitle}</div>
-      <div className='list-Container'>
+    <div className='cardtitle-container'>
+      <div className='listtitle'>{listTitle}</div>
+      <div className='list-container'>
         {listData.map((data, index) => (
           <div key={index} className='list'>
-            <div className='contentTitle'>{data.titleName}</div>
+            <div className='contenttitle'>{data.titleName}</div>
             <div className='content'>{data.titleContent}</div>
           </div>
         ))}

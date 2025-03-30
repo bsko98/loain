@@ -6,6 +6,10 @@ import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
 import MyPartyPage from './pages/MyPartyPage.jsx';
+import SignIn from './pages/Signin';
+import FindId from './pages/Findid';
+import ResetPassword from './pages/Resetpassword';
+import SignUp from './pages/Signup';
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter />} />
           <Route path="/myParty" element={<MyPartyPage />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/findId" element={<FindId />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/signUp" element={<SignUp />} />
         </Routes>
       </Router>
     </div>

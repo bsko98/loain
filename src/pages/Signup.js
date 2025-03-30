@@ -111,7 +111,7 @@ const Signup = () => {
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</a>
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputAccount-Textbox' type='text' placeholder='사용할 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                    <input className='inputaccount-textbox' type='text' placeholder='사용할 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                     </input>
                 </div>
             </div>
@@ -124,7 +124,7 @@ const Signup = () => {
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</a>
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputAccount-Textbox' type='password' value={inputPw} placeholder='사용할 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                    <input className='inputaccount-textbox' type='password' value={inputPw} placeholder='사용할 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                     </input>
                 </div>
             </div>
@@ -134,7 +134,7 @@ const Signup = () => {
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 확인 *</a>
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputAccount-Textbox' type='password' value={inputCheckPw} placeholder='비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                    <input className='inputaccount-textbox' type='password' value={inputCheckPw} placeholder='비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                     </input>
                 </div>
             </div>
@@ -147,7 +147,7 @@ const Signup = () => {
                     <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputAccount-Textbox' type='text' value={inputEmail} placeholder='백업용 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                    <input className='inputaccount-textbox' type='text' value={inputEmail} placeholder='백업용 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                     </input>
                 </div>
             </div>
@@ -189,7 +189,7 @@ const Signup = () => {
                     )}
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '62px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <textarea rows={2} className='inputAccount-Textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none' }}>
+                    <textarea rows={2} className='inputaccount-textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none' }}>
                     </textarea>
                 </div>
             </div>
@@ -197,37 +197,37 @@ const Signup = () => {
     ];
 
     const btnList = [
-        <button key={0} className='mainAccount-Button' onClick={CheckId}>
+        <button key={0} className='mainaccount-button' onClick={CheckId}>
             <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
-        <button key={1} className='mainAccount-Button' onClick={CheckPassword}>
+        <button key={1} className='mainaccount-button' onClick={CheckPassword}>
             <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
-        <button key={2} className='mainAccount-Button' onClick={CheckEmail}>
+        <button key={2} className='mainaccount-button' onClick={CheckEmail}>
             <a style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</a>
         </button>,
 
-        <button key={3} className='mainAccount-Button' onClick={CheckAPIKey}>
+        <button key={3} className='mainaccount-button' onClick={CheckAPIKey}>
             <a style={{ width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>회원가입 완료</a>
         </button>
     ];
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-Container'>
-                <div className='mainAccount-Container'>
-                    <div className='contentAccount-Container'>
-                        <div className='mainContentAccount-Container'>
-                            <div className='logoPosAccount-Container'>
+            <div className='background-container'>
+                <div className='mainaccount-container'>
+                    <div className='contentaccount-container'>
+                        <div className='maincontentaccount-container'>
+                            <div className='logoposaccount-container'>
                                 <LoainLogo /> { }
                                 <LoainText /> { }
                             </div>
-                            <div className='inputPosAccount-Container'>
+                            <div className='inputposaccount-container'>
                                 {divList[currentIndex]}
                             </div>
-                            <div className='mainbuttonPosAccount-Container'>
+                            <div className='mainbuttonposaccount-container'>
                                 {btnList[currentIndex]}
                             </div>
                         </div>

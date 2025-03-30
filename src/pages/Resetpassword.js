@@ -62,15 +62,15 @@ const Resetpassword = () => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-Container'>
-                <div className='mainAccount-Container'>
-                    <div className='contentAccount-Container'>
-                        <div className='mainContentAccount-Container'>
-                            <div className='logoPosAccount-Container'>
+            <div className='background-container'>
+                <div className='mainaccount-container'>
+                    <div className='contentaccount-container'>
+                        <div className='maincontentaccount-container'>
+                            <div className='logoposaccount-container'>
                                 <LoainLogo /> { }
                                 <LoainText /> { }
                             </div>
-                            <div className='inputPosAccount-Container'>
+                            <div className='inputposaccount-container'>
                                 {isSelfChecked === false ? (
                                     <>
                                         <div className='IdPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
@@ -79,7 +79,7 @@ const Resetpassword = () => {
                                                 <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</a>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                                                <input className='inputAccount-Textbox' type='text' value={inputId} placeholder='현재 사용중인 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                                                <input className='inputaccount-textbox' type='text' value={inputId} placeholder='현재 사용중인 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                                                 </input>
                                             </div>
                                         </div>
@@ -89,7 +89,7 @@ const Resetpassword = () => {
                                                 <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                                                <input className='inputAccount-Textbox' type='text' value={inputEmail} placeholder='계정에 등록된 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                                                <input className='inputaccount-textbox' type='text' value={inputEmail} placeholder='계정에 등록된 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                                                 </input>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@ const Resetpassword = () => {
                                                 <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</a>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                                                <input className='inputAccount-Textbox' type='password' value={inputPw} placeholder='새 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                                                <input className='inputaccount-textbox' type='password' value={inputPw} placeholder='새 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                                                 </input>
                                             </div>
                                         </div>
@@ -112,20 +112,20 @@ const Resetpassword = () => {
                                                 <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 확인 *</a>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                                                <input className='inputAccount-Textbox' type='password' value={inputCheckPw} placeholder='새 비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                                                <input className='inputaccount-textbox' type='password' value={inputCheckPw} placeholder='새 비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                                                 </input>
                                             </div>
                                         </div>
                                     </>
                                 )}
                             </div>
-                            <div className='mainbuttonPosAccount-Container'>
+                            <div className='mainbuttonposaccount-container'>
                                 {isSelfChecked === false ? (
-                                    <button className='mainAccount-Button' onClick={selfCheck}>
+                                    <button className='mainaccount-button' onClick={selfCheck}>
                                         <a style={{ width: 'auto', minWidth: '70px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>본인인증</a>
                                     </button>
                                 ) : (
-                                    <button className='mainAccount-Button' onClick={checkPassword}>
+                                    <button className='mainaccount-button' onClick={checkPassword}>
                                         <a style={{ width: 'auto', minWidth: '126px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>비밀번호 재설정</a>
                                     </button>
                                 )}

@@ -36,49 +36,49 @@ const Findid = () => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-Container'>
-                <div className='mainAccount-Container'>
-                    <div className='contentAccount-Container'>
-                        <div className='mainContentAccount-Container'>
-                            <div className='logoPosAccount-Container'>
+            <div className='background-container'>
+                <div className='mainaccount-container'>
+                    <div className='contentaccount-container'>
+                        <div className='maincontentaccount-container'>
+                            <div className='logoposaccount-container'>
                                 <LoainLogo /> { }
                                 <LoainText /> { }
                             </div>
-                            <div className='inputPosAccount-Container'>
+                            <div className='inputposaccount-container'>
                                 <div className='EmailPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '122px', display: 'flex', flexDirection: 'column' }}>
                                     <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                         <EmailImage style={{ width: '18px', height: '18px' }} /> { }
-                                        <a href='#' style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
+                                        <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
                                     </div>
                                     <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                                        <input className='inputAccount-Textbox' type='text' placeholder='회원가입에 사용한 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
+                                        <input className='inputaccount-textbox' type='text' placeholder='회원가입에 사용한 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
                                         </input>
                                     </div>
                                     {isVisibleInfo && (
                                         subbmittedValueEmail === null || subbmittedValueEmail === undefined ? (
                                             <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '33px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '16px' }}>
-                                                <a href='#'>등록된 이메일이 아닙니다.</a>
+                                                <a>등록된 이메일이 아닙니다.</a>
                                             </div>
                                         ) : (
                                             <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '33px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '16px' }}>
                                                 <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '17px', display: 'flex', justifyContent: 'center' }}>
-                                                    <a href='#' style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px' }}>사용중인 아이디 :&nbsp;</a>
-                                                    <a href='#' className='no-Underline' style={{ fontSize: '14px', fontWeight: 'bold', color: '#6B83E1' }}>{maskedId(inputId)}</a>
+                                                    <a style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px' }}>사용중인 아이디 :&nbsp;</a>
+                                                    <a className='no-underline' style={{ fontSize: '14px', fontWeight: 'bold', color: '#6B83E1' }}>{maskedId(inputId)}</a>
                                                 </div>
-                                                <a href='#' style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</a>
+                                                <a style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</a>
                                             </div>
                                         )
                                     )}
                                 </div>
                             </div>
-                            <div className='mainbuttonPosAccount-Container'>
+                            <div className='mainbuttonposaccount-container'>
                                 {isChecked === false ? (
-                                    <button className='mainAccount-Button' onClick={checkEmail}>
-                                        <a href='#' style={{ width: 'auto', minWidth: '92px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>아이디 찾기</a>
+                                    <button className='mainaccount-button' onClick={checkEmail}>
+                                        <a style={{ width: 'auto', minWidth: '92px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>아이디 찾기</a>
                                     </button>
                                 ) : (
-                                    <button className='mainAccount-Button' onClick={checkEmail}>
-                                        <a href='#' style={{ width: 'auto', minWidth: '165px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>로그인 페이지로 이동</a>
+                                    <button className='mainaccount-button' onClick={checkEmail}>
+                                        <a style={{ width: 'auto', minWidth: '165px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>로그인 페이지로 이동</a>
                                     </button>
                                 )}
                             </div>
