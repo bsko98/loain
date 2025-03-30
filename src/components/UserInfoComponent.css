@@ -1,0 +1,70 @@
+.user-info-cotainer{
+    width: 185px;
+    height: 36px;
+}
+
+/* 닉네임 */
+.user-info-nickname {
+  color: #6B83E1;
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+
+
+.user-info-details {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+  
+.user-info-class-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 78px;
+  height: 14px;
+}
+
+.user-info-class-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.user-info-job-text {
+  width: 70px;
+  min-width: 70px;
+  height: 14px;
+  font-family: 'Pretendard';
+  font-size: 12px;
+  color: #DFDFDF;
+  display: flex;
+  align-items: center;
+}
+
+.user-info-divider {
+  width: 1px;
+  height: 12px;
+  background: #DFDFDF;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.user-info-level-text {
+  width: 71px;
+  height: 14px;
+  font-family: 'Pretendard';
+  font-size: 12px;
+  color: #DFDFDF;
+  display: flex;
+  align-items: center;
+}
+  
