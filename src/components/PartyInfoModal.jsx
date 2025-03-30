@@ -98,15 +98,15 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
-                  <span className='party-info-modal-left-container-basic-span'>난이도</span>
-                  <select className='party-info-modal-left-container-basic-select'>
-                    <option>난이도를 선택해주세요.</option>
-                  </select>
-                </div>
-                <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>레이드</span>
                   <select className='party-info-modal-left-container-basic-select'>
                     <option>레이드를 선택해주세요.</option>
+                  </select>
+                </div>
+                <div className='party-info-modal-left-container-basic-row'>
+                  <span className='party-info-modal-left-container-basic-span'>난이도</span>
+                  <select className='party-info-modal-left-container-basic-select'>
+                    <option>난이도를 선택해주세요.</option>
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-range-container'>
