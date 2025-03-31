@@ -48,7 +48,7 @@ const Findid = () => {
                                 <div className='EmailPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '122px', display: 'flex', flexDirection: 'column' }}>
                                     <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                         <EmailImage style={{ width: '18px', height: '18px' }} /> { }
-                                        <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
+                                        <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</span>
                                     </div>
                                     <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
                                         <input className='inputaccount-textbox' type='text' placeholder='회원가입에 사용한 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
@@ -57,15 +57,15 @@ const Findid = () => {
                                     {isVisibleInfo && (
                                         subbmittedValueEmail === null || subbmittedValueEmail === undefined ? (
                                             <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '33px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '16px' }}>
-                                                <a>등록된 이메일이 아닙니다.</a>
+                                                <span>등록된 이메일이 아닙니다.</span>
                                             </div>
                                         ) : (
                                             <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '33px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '16px' }}>
                                                 <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '17px', display: 'flex', justifyContent: 'center' }}>
-                                                    <a style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px' }}>사용중인 아이디 :&nbsp;</a>
-                                                    <a className='no-underline' style={{ fontSize: '14px', fontWeight: 'bold', color: '#6B83E1' }}>{maskedId(inputId)}</a>
+                                                    <span style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px' }}>사용중인 아이디 :&nbsp;</span>
+                                                    <span className='no-underline' style={{ fontSize: '14px', fontWeight: 'bold', color: '#6B83E1' }}>{maskedId(inputId)}</span>
                                                 </div>
-                                                <a style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</a>
+                                                <span style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</span>
                                             </div>
                                         )
                                     )}
@@ -74,11 +74,11 @@ const Findid = () => {
                             <div className='mainbuttonposaccount-container'>
                                 {isChecked === false ? (
                                     <button className='mainaccount-button' onClick={checkEmail}>
-                                        <a style={{ width: 'auto', minWidth: '92px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>아이디 찾기</a>
+                                        <span style={{ width: 'auto', minWidth: '92px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>아이디 찾기</span>
                                     </button>
                                 ) : (
                                     <button className='mainaccount-button' onClick={checkEmail}>
-                                        <a style={{ width: 'auto', minWidth: '165px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>로그인 페이지로 이동</a>
+                                        <span style={{ width: 'auto', minWidth: '165px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>로그인 페이지로 이동</span>
                                     </button>
                                 )}
                             </div>
