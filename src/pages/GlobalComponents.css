@@ -138,8 +138,3 @@ textarea:placeholder {
     font-family: 'Pretendard', sans-serif;
     color: #898989;
 }
-
-/* 기본 a태그 폰트 적용 */
-a {
-    font-family: 'Pretendard', sans-serif;
-}

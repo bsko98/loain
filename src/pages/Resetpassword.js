@@ -13,10 +13,16 @@ const Resetpassword = () => {
     const [inputPw, setInputPw] = useState("");             // 입력값 상태
     const [inputCheckPw, setInputCheckPw] = useState("");   // 입력값 상태
 
-    const [subbmittedValueId, setSubbmittedValueId] = useState(null);               // 제출된 값 상태
-    const [subbmittedValueEmail, setSubbmittedValueEmail] = useState(null);         // 제출된 값 상태
-    const [subbmittedValuePw, setSubbmittedValuePw] = useState(null);               // 제출된 값 상태
-    const [subbmittedValueCheckPw, setSubbmittedValueCheckPw] = useState(null);     // 제출된 값 상태
+    // <Lint>
+    // const [subbmittedValueId, setSubbmittedValueId] = useState(null);
+    // const [subbmittedValueEmail, setSubbmittedValueEmail] = useState(null);
+    // const [subbmittedValuePw, setSubbmittedValuePw] = useState(null);
+    // const [subbmittedValueCheckPw, setSubbmittedValueCheckPw] = useState(null);
+    const setSubbmittedValueId = useState(null)[1];
+    const setSubbmittedValueEmail = useState(null)[1];
+    const setSubbmittedValuePw = useState(null)[1];
+    const setSubbmittedValueCheckPw = useState(null)[1];
+
 
     const [isSelfChecked, setIsSelfChecked] = useState(false);      // 아이디 및 이메일 유무 검증 상태
 
@@ -76,7 +82,7 @@ const Resetpassword = () => {
                                         <div className='IdPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                                             <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                                 <IdImage style={{ width: '18px', height: '18px' }} />
-                                                <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</a>
+                                                <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</span>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
                                                 <input className='inputaccount-textbox' type='text' value={inputId} placeholder='현재 사용중인 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
@@ -86,7 +92,7 @@ const Resetpassword = () => {
                                         <div className='EmailPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column', paddingTop: '16px' }}>
                                             <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                                 <EmailImage style={{ width: '18px', height: '18px' }} />
-                                                <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</a>
+                                                <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</span>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
                                                 <input className='inputaccount-textbox' type='text' value={inputEmail} placeholder='계정에 등록된 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
@@ -99,7 +105,7 @@ const Resetpassword = () => {
                                         <div className='PwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                                             <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                                 <PwImage style={{ width: '18px', height: '18px' }} />
-                                                <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</a>
+                                                <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</span>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
                                                 <input className='inputaccount-textbox' type='password' value={inputPw} placeholder='새 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
@@ -109,7 +115,7 @@ const Resetpassword = () => {
                                         <div className='CheckPwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column', paddingTop: '16px' }}>
                                             <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                                                 <PwImage style={{ width: '18px', height: '18px' }} />
-                                                <a style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 확인 *</a>
+                                                <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 확인 *</span>
                                             </div>
                                             <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
                                                 <input className='inputaccount-textbox' type='password' value={inputCheckPw} placeholder='새 비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
@@ -122,11 +128,11 @@ const Resetpassword = () => {
                             <div className='mainbuttonposaccount-container'>
                                 {isSelfChecked === false ? (
                                     <button className='mainaccount-button' onClick={selfCheck}>
-                                        <a style={{ width: 'auto', minWidth: '70px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>본인인증</a>
+                                        <span style={{ width: 'auto', minWidth: '70px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>본인인증</span>
                                     </button>
                                 ) : (
                                     <button className='mainaccount-button' onClick={checkPassword}>
-                                        <a style={{ width: 'auto', minWidth: '126px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>비밀번호 재설정</a>
+                                        <span style={{ width: 'auto', minWidth: '126px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>비밀번호 재설정</span>
                                     </button>
                                 )}
                             </div>
