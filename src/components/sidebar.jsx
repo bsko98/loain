@@ -17,15 +17,25 @@ import { ReactComponent as BlueMyParty } from '../assets/images/blueMyParty.svg'
 import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueManageMyCharacter.svg';
 import PartyInfoModal from './PartyInfoModal';
 
-import './sidebar.css';
-// import SignIn from '../pages/Signin';                Lint
-// import FindId from '../pages/Findid';
+import './sidebar.css';              
+import Signin from '../pages/Signin';
+// import FindId from '../pages/Findid';        Lint
 // import ResetPassword from '../pages/Resetpassword';
 // import SignUp from '../pages/Signup';
 
 const Sidebar = () => {
 
     const [moreInfo, setMoreInfo] = useState(false);
+    const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
+    const [isSinginModalOpen, setIsSinginModalOpen] = useState(false);
+    
+    const closePartyModal = () => {
+        return setIsPartyModalOpen(!isPartyModalOpen);
+    }
+
+    const closeSinginModal = () => {
+        return setIsSinginModalOpen(!isSinginModalOpen);
+    }
 
     const activeMoreInfo = (moreInfo) => {
         console.log(moreInfo)
@@ -51,8 +61,17 @@ const Sidebar = () => {
     ]
 
 
-    const onClickMenu = (item) => {
-        navigate(`${item.url}`)
+    const onClickMenu = (item) =>{
+        console.log(item)
+        if(item.id === 5){
+            setIsPartyModalOpen(!isPartyModalOpen);
+        }
+        else if(item.id === 2){
+            setIsSinginModalOpen(!isSinginModalOpen);
+        }
+        else{
+            navigate(`${item.url}`);
+        }
     }
 
 
@@ -86,6 +105,8 @@ const Sidebar = () => {
                     <div style={{ paddingTop: '14.5px', color: '#DFDFDF' }}>계정 관리 및 더보기</div>
                 </div>
             </div>
+            <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal}/>
+            <PartyInfoModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
         </div>
     )
 }
