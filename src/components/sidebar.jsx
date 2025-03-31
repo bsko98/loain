@@ -15,13 +15,22 @@ import { ReactComponent as Logout } from '../assets/images/logout.svg';
 import { ReactComponent as BlueFindParty } from '../assets/images/blueFindParty.svg';
 import { ReactComponent as BlueMyParty } from '../assets/images/blueMyParty.svg';
 import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueManageMyCharacter.svg';
+import PartyInfoModal from './PartyInfoModal';
 
 import './sidebar.css';
+import SignIn from '../pages/Signin';
+import FindId from '../pages/Findid';
+import ResetPassword from '../pages/Resetpassword';
+import SignUp from '../pages/Signup';
 
-//TODO - 뭔가 빠진게 있을테니 한 번 확인해보기 2025.03.14
 const Sidebar = () => {
 
     const [moreInfo,setMoreInfo] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    const closeModal = () => {
+        return setIsModalOpen(!isModalOpen);
+    }
 
     const activeMoreInfo = (moreInfo)=> {
         console.log(moreInfo)
@@ -48,7 +57,12 @@ const Sidebar = () => {
 
 
     const onClickMenu = (item) =>{
-        navigate(`${item.url}`)
+        console.log(item)
+        if(item.name !== "파티 만들기")
+        {navigate(`${item.url}`)}
+        else{
+            setIsModalOpen(!isModalOpen)
+        }
     }
 
 
@@ -82,6 +96,8 @@ const Sidebar = () => {
                 <div style={{paddingTop:'14.5px', color:'#DFDFDF'}}>계정 관리 및 더보기</div>
             </div>
         </div>
+        <PartyInfoModal isOpen={isModalOpen} onClose={closeModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
+        <SignIn />
     </div>
   )
 }

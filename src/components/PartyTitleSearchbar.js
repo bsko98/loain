@@ -3,25 +3,28 @@ import "./PartyTitleSearchbar.css";
 import UpdateIcon from "../assets/images/UpdateIcon.svg";
 import PartyTitleSearchIcon from "../assets/images/PartyTitleSearchIcon.svg";
 
-const PartyTitleSearchbar = ({ setSearchQuery }) => {
+const PartyTitleSearchbar = ({ setSearchQuery, onUpdate }) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearch = () => {
-        if (searchTerm.trim() !== "") {
-            setSearchQuery(searchTerm);
-        }
+        setSearchQuery(searchTerm.trim());
     };
+
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
             handleSearch();
         }
     };
 
+    const handleInputChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     return (
         <div className="party-search-container">
             <div className="party-header">
                 <span className="party-title">모집중인 파티</span>
-                <button className="update-button">
+                <button className="update-button" onClick={onUpdate}>
                     <img src={UpdateIcon} alt="업데이트" className="update-icon" />
                     업데이트
                 </button>
@@ -32,7 +35,7 @@ const PartyTitleSearchbar = ({ setSearchQuery }) => {
                     placeholder="검색할 파티명을 입력해주세요."
                     className="search-input"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={handleInputChange}
                     onKeyPress={handleKeyPress}
                 />
                 <button className="search-button" onClick={handleSearch}>

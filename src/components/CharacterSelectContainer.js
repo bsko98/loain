@@ -3,8 +3,7 @@ import "./CharacterSelectContainer.css";
 import CharacterChangeModal from "./CharacterChangeModal";
 import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 
-const CharacterSelectContainer = () => {
-    const [selectedCharacter, setSelectedCharacter] = useState(null);
+const CharacterSelectContainer = ({ selectedCharacter, setSelectedCharacter }) => {
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,11 +13,10 @@ const CharacterSelectContainer = () => {
         { id: 3, name: "test아브", server: "아브렐슈드", job: "홀리나이트", itemlevel: 1650, image: "/img1.png" },
     ];
 
-    // 캐릭터 정보 갱신 함수
     const handleRefresh = async () => {
         setLoading(true);
         try {
-            setSelectedCharacter(characterList[0]);
+            setSelectedCharacter(characterList[0]); // 첫 번째 캐릭터를 기본 선택
         } catch (error) {
             alert("네트워크 오류가 발생했습니다.");
             console.error(error);
@@ -29,9 +27,14 @@ const CharacterSelectContainer = () => {
     return (
         <div className="character-select-container">
             <span className="character-info">
-                {selectedCharacter
-                    ? `#${selectedCharacter.name} / ${selectedCharacter.server} / ${selectedCharacter.job} / ${selectedCharacter.itemlevel}`
-                    : "#캐릭터 닉네임 / 선택한 캐릭터가 없습니다."}
+                {selectedCharacter ? (
+                    <>
+                        <span className="character-name">#{selectedCharacter.name}</span>
+                        <span className="character-details"> / {selectedCharacter.server} / {selectedCharacter.job} / {selectedCharacter.itemlevel}</span>
+                    </>
+                ) : (
+                    "#캐릭터 닉네임 / 선택한 캐릭터가 없습니다."
+                )}
             </span>
 
             <div className="character-select-button-group">
@@ -43,11 +46,6 @@ const CharacterSelectContainer = () => {
                     <img src={CharacterSelectIcon} alt="캐릭터 변경" className="character-select-icon" />
                     캐릭터 변경
                 </button>
-
-                {/* <button className="character-select-btn select" onClick={() => setIsModalOpen(true)}>
-                    <img src={CharacterSelectIcon} alt="캐릭터 선택" className="character-select-icon" />
-                    캐릭터 선택
-                </button> */}
             </div>
 
             {isModalOpen && (
@@ -57,6 +55,7 @@ const CharacterSelectContainer = () => {
                     characterList={characterList}
                     onSelectCharacter={(char) => {
                         setSelectedCharacter(char);
+                        setIsModalOpen(false); // 모달 닫기
                     }}
                     selectedCharacter={selectedCharacter}
                 />
