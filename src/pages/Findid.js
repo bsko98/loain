@@ -36,7 +36,7 @@ const Findid = () => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-container'>
+            <div className='filter-modal-overlay'>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
                         <div className='maincontentaccount-container'>
@@ -62,10 +62,10 @@ const Findid = () => {
                                         ) : (
                                             <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '33px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '16px' }}>
                                                 <div style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '17px', display: 'flex', justifyContent: 'center' }}>
-                                                    <span style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px' }}>사용중인 아이디 :&nbsp;</span>
+                                                    <span style={{ width: 'auto', minWidth: '96px', height: 'auto', minHeight: '17px', fontSize: '14px', color:'#DFDFDF'}}>사용중인 아이디 :&nbsp;</span>
                                                     <span className='no-underline' style={{ fontSize: '14px', fontWeight: 'bold', color: '#6B83E1' }}>{maskedId(inputId)}</span>
                                                 </div>
-                                                <span style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</span>
+                                                <span style={{ width: 'auto', minWidth: '280px', height: 'auto', minHeight: '14px', fontSize: '12px', color:'#DFDFDF' }}>개인정보 보호를 위하여 아이디 일부만이 표시됩니다.</span>
                                             </div>
                                         )
                                     )}
