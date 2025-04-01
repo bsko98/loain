@@ -1,5 +1,6 @@
 import './GlobalComponents.css';
 import React from "react"
+import { useNavigate} from "react-router-dom";
 import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
 import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
 import { ReactComponent as IdImage } from './images/IdImage.svg';
@@ -8,10 +9,31 @@ import { ReactComponent as Dot } from './images/Dot.svg';
 
 const Signin = ({isOpen, onClose}) => {
 
+    const navigate = useNavigate();
+
     if (!isOpen) return null;
 
+    const closeModal = (e) =>{
+        if(e.target.classList.contains("filter-modal-overlay"))
+        {
+            onClose();
+        }
+    }
+
+    const naviageToModals = (e) =>{
+        console.log(e)
+        if(e.target.id === 'signUp'){
+            navigate("/signUp")  
+        }else if(e.target.id === "resetPw"){
+            navigate("/resetPassword")  
+        }else{
+            navigate("/findId")
+        }
+        
+    }
+
     return (
-        <div className='filter-modal-overlay'>
+        <div className='filter-modal-overlay' onClick={closeModal}>
             <div style={{ fontFamily: 'Pretendard' }}>
                 {/* <div className='background-container'> */}
                     <div className='mainaccount-container'>
@@ -51,16 +73,16 @@ const Signin = ({isOpen, onClose}) => {
                             </div>
                             <div className='subcontentaccount-container' style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
                                 <div className='subContentPos' style={{ width: 'auto', minWidth: '256px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                    <button className='findEmail' style={{ width: 'auto', minWidth: '69px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }}>
-                                        <span className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>이메일 찾기</span>
+                                    <button className='findEmail' style={{ width: 'auto', minWidth: '69px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }} onClick={naviageToModals}>
+                                        <span id = "findEmail" className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>이메일 찾기</span>
                                     </button>
                                     <Dot /> { }
-                                    <button className='resetPw' style={{ width: 'auto', minWidth: '95px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }}>
-                                        <span className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>비밀번호 재설정</span>
+                                    <button className='resetPw' style={{ width: 'auto', minWidth: '95px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }} onClick={naviageToModals}>
+                                        <span id = "resetPw" className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>비밀번호 재설정</span>
                                     </button>
                                     <Dot /> { }
-                                    <button className='signUp' style={{ width: 'auto', minWidth: '52px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }}>
-                                        <span className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>회원가입</span>
+                                    <button className='signUp' style={{ width: 'auto', minWidth: '52px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }} onClick={naviageToModals}>
+                                        <span id = "signUp" className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>회원가입</span>
                                     </button>
                                 </div>
                             </div>
