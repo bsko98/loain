@@ -195,7 +195,7 @@ const Signup = () => {
                     )}
                 </div>
                 <div style={{ width: '368px', height: 'auto', minHeight: '62px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <textarea rows={2} className='inputaccount-textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none' }}>
+                    <textarea rows={2} className='inputaccount-textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none', resize: 'none' }}>
                     </textarea>
                 </div>
             </div>
@@ -222,7 +222,7 @@ const Signup = () => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-container'>
+            <div className='filter-modal-overlay'>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
                         <div className='maincontentaccount-container'>

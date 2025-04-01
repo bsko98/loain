@@ -68,7 +68,7 @@ const Resetpassword = () => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='background-container'>
+            <div className='filter-modal-overlay'>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
                         <div className='maincontentaccount-container'>
