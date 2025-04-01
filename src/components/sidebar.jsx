@@ -87,7 +87,7 @@ const Sidebar = () => {
                         {items.map(item => (
                             <li className='menu-row' key={item.id} onClick={() => onClickMenu(item)}>
                                 {(location.pathname === item.url && 1) ? <item.blueComponent className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} /> : <item.Component className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} />}
-                                <div style={{ paddingTop: '14.5px', color: (location.pathname === item.url && (item.name !== '로그인' && item.name !== '파티 만들기')) ? '#6B83E1' : '#DFDFDF' }}>{item.name}</div>
+                                <div style={{userSelect:'none', paddingTop: '14.5px', color: (location.pathname === item.url && (item.name !== '로그인' && item.name !== '파티 만들기')) ? '#6B83E1' : '#DFDFDF' }}>{item.name}</div>
                             </li>))}
                     </ul>
                 </nav>
@@ -101,8 +101,8 @@ const Sidebar = () => {
             </div> : <div className='more-item-container2'></div>}
             <div>
                 <div className='more-info-button'>
-                    <More style={{ paddingTop: '12px', paddingLeft: '12px', marginRight: '49px' }} onClick={() => activeMoreInfo(moreInfo)} />
-                    <div style={{ paddingTop: '14.5px', color: '#DFDFDF' }}>계정 관리 및 더보기</div>
+                    <More style={{cursor:'pointer', paddingTop: '12px', paddingLeft: '12px', marginRight: '49px' }} onClick={() => activeMoreInfo(moreInfo)} />
+                    <div style={{userSelect:'none', paddingTop: '14.5px', color: '#DFDFDF' }}>계정 관리 및 더보기</div>
                 </div>
             </div>
             <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal}/>
