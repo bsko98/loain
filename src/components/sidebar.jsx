@@ -16,6 +16,7 @@ import { ReactComponent as BlueFindParty } from '../assets/images/blueFindParty.
 import { ReactComponent as BlueMyParty } from '../assets/images/blueMyParty.svg';
 import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueManageMyCharacter.svg';
 import PartyInfoModal from './PartyInfoModal';
+import ManageMyAccountModal from './ManageMyAccountModal';
 
 import './sidebar.css';              
 import Signin from '../pages/Signin';
@@ -28,6 +29,7 @@ const Sidebar = () => {
     const [moreInfo, setMoreInfo] = useState(false);
     const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
     const [isSinginModalOpen, setIsSinginModalOpen] = useState(false);
+    const [isMyAccountModalOpen, setIsMyAccountModalOpen] = useState(false);
     
     const closePartyModal = () => {
         return setIsPartyModalOpen(!isPartyModalOpen);
@@ -35,6 +37,10 @@ const Sidebar = () => {
 
     const closeSinginModal = () => {
         return setIsSinginModalOpen(!isSinginModalOpen);
+    }
+
+    const closeMyAccountModal = () => {
+        setIsMyAccountModalOpen(!isMyAccountModalOpen);
     }
 
     const activeMoreInfo = (moreInfo) => {
@@ -74,6 +80,12 @@ const Sidebar = () => {
         }
     }
 
+    const openManageMyAccountModal = (item) =>{
+        if(item.id === 1){
+            setIsMyAccountModalOpen(!isMyAccountModalOpen);
+        }
+    }
+
 
     return (
         <div className='side-bar' style={{ fontFamily: 'Pretendard' }}>
@@ -94,7 +106,7 @@ const Sidebar = () => {
             </div>
             {moreInfo ? <div className='more-item-container'>
                 <div className='more-item-box'>
-                    {moreItems.map(item => (<li key={item.id} className='more-item-box-row' onClick={() => onClickMenu(item)}> <item.Component style={{ marginRight: '4px' }} />
+                    {moreItems.map(item => (<li key={item.id} className='more-item-box-row' onClick={()=>openManageMyAccountModal(item)}> <item.Component style={{ marginRight: '4px' }}/>
                         <div style={{ fontSize: '15px', color: '#DFDFDF', paddingTop: '1px' }}>{item.name}</div> </li>))}
                     <div style={{ fontSize: '13px', marginTop: '16px', textAlign: 'left', color: '#DFDFDF' }}>이용약관 ⋅ 개인정보 처리방침</div>
                 </div>
@@ -107,6 +119,7 @@ const Sidebar = () => {
             </div>
             <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal}/>
             <PartyInfoModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
+            <ManageMyAccountModal isOpen={isMyAccountModalOpen} onClose={closeMyAccountModal}/>
         </div>
     )
 }

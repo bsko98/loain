@@ -1,0 +1,339 @@
+/* 전체 컨테이너 */
+.manage-my-account-container{
+    /* Frame 427322400 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 32px 32px;
+gap: 24px;
+
+position: absolute;
+width: 504px;
+height: 309px;
+left: calc(50% - 568px/2);
+top: calc(50% - 357px/2 + 0.5px);
+
+background: #1E1E1E;
+border-radius: 8px;
+
+}
+
+/* 모달 맨 윗줄 */
+.manage-my-account-first-row{
+    /* Frame 427322390 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 393px;
+
+width: 504px;
+height: 24px;
+
+
+}
+
+/* 내 계정 관리 */
+.manage-my-account-title{
+   
+
+width: 87px;
+height: 21px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+}
+
+.manage-my-account-email-box{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 504px;
+    height: 73px;
+
+}
+
+.manage-my-account-email-row{
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    width: 77px;
+    height: 18px;
+}
+
+.manage-my-account-email-txt{
+    /* 이메일 * */
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+/* identical to box height */
+
+color: #DFDFDF;
+
+}
+
+/* 텍스트 아래 */
+.manage-my-account-email-input-row{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    width: 504px;
+    height: 43px;
+}
+
+.manage-my-account-email-input{
+    /* Frame 427322380 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 24px;
+gap: 10px;
+
+width: 368px;
+height: 43px;
+
+background: #FFFFFF;
+border: 1px solid #D9D9D9;
+border-radius: 12px;
+
+}
+
+.manage-my-account-email-btn{
+    /* Frame 427319569 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 24px;
+gap: 10px;
+
+width: 120px;
+height: 43px;
+
+background: #D6D6D6;
+border: 1px solid #797979;
+border-radius: 12px;
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+
+color: #FFFFFF;
+
+cursor: pointer;
+
+}
+
+.manage-my-account-api-box{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 504px;
+    height: 92px;
+
+
+}
+
+.manage-my-account-api-row{
+    /* Frame 427322410 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 337px;
+
+width: 504px;
+height: 18px;
+
+}
+
+
+.manage-my-account-api-title-row{
+
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 149px;
+height: 18px;
+
+
+}
+
+.manage-my-account-api-txt{
+    /* 로스트아크 API Key */
+
+width: 123px;
+height: 18px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+/* identical to box height */
+
+color: #DFDFDF;
+
+}
+
+.manage-my-account-api-input-row{
+    /* Frame 427322394 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 504px;
+height: 62px;
+
+}
+
+.manage-my-account-api-input{
+
+box-sizing: border-box;
+
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 24px;
+gap: 10px;
+
+width: 368px;
+height: 62px;
+
+background: #FFFFFF;
+border: 1px solid #D9D9D9;
+border-radius: 12px;
+
+}
+
+.manage-my-account-api-btn{
+
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 24px;
+gap: 10px;
+
+width: 120px;
+height: 62px;
+
+background: #D6D6D6;
+border: 1px solid #797979;
+border-radius: 12px;
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+   
+}
+
+
+
+.manage-my-account-btn-box{
+ 
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 504px;
+height: 56px;
+
+}
+
+.manage-my-account-btn{
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 32px;
+gap: 10px;
+
+width: 240px;
+height: 56px;
+
+background: #2C2F34;
+border-radius: 10px;
+border: 0;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+
+color: #FFFFFF;
+
+
+}
