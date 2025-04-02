@@ -25,6 +25,10 @@ const MainPage = () => {
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 30, effecttype: "성" },
         { cardname: "카제로스의 군단장", cardvalue: 26, effecttype: "암" }
+      ],
+      titleList: [
+        { titleName: "몽환의 현시자", titleContent: "몽환의 현시자, 아브렐슈드와의 전투에서 승리하기" },
+        { titleName: "광기군단장", titleContent: "광기군단장 쿠크세이튼 물리치기" }
       ]
     },
     {
@@ -36,6 +40,10 @@ const MainPage = () => {
       image: "/img1.png",
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 18, effecttype: "성" }
+      ],
+      titleList: [
+        { titleName: "마수군단장", titleContent: "마수군단장 발탄 물리치기" },
+        { titleName: "폭풍의 눈", titleContent: "베히모스 물리치기" }
       ]
     }
   ]);
@@ -84,44 +92,7 @@ const MainPage = () => {
       maxmember: 4,
       member: 3,
       startTime: "12:00",
-      partyMembers: [
-        { nickname: "닉네임1", level: "1640", class: "버서커", classIcon: "" },
-        { nickname: "닉네임2", level: "1640", class: "소서리스", classIcon: "" },
-        { nickname: "닉네임3", level: "1640", class: "홀리나이트", classIcon: "" }
-      ]
-    },
-    {
-      id: 2,
-      partytitle: "숙련팟 모집 랏딜",
-      raid: "베히모스",
-      difficulty: "하드",
-      rangeStart: "2",
-      rangeEnd: "3",
-      itemLevel: "1560",
-      title: "빛을 꺼트리는 자",
-      card: "카제로스의 군단장",
-      cardValue: "30",
-      environment: "예민max",
-      evolution: "100",
-      realization: "999",
-      leap: "300",
-      transcendenceWeapon: "없음",
-      transcendenceArmor: "방풀",
-      isLastPot: false,
-      isLastDeal: true,
-      skillRange: "숙련 ~ 숙제",
-      maxmember: 16,
-      member: 7,
-      startTime: "12:00",
-      partyMembers: [
-        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
-        { nickname: "닉네임2", level: "1560", class: "창술사", classIcon: "" },
-        { nickname: "닉네임3", level: "1560", class: "블레이드", classIcon: "" },
-        { nickname: "닉네임4", level: "1560", class: "건슬링어", classIcon: "" },
-        { nickname: "닉네임5", level: "1560", class: "홀리나이트", classIcon: "" },
-        { nickname: "닉네임6", level: "1560", class: "기상술사", classIcon: "" },
-        { nickname: "닉네임7", level: "1560", class: "아르카나", classIcon: "" }
-      ]
+      partyMembers: []
     }
   ];
 
@@ -145,7 +116,6 @@ const MainPage = () => {
     if (searchTerm !== "" && !party.partytitle.includes(searchTerm)) return false;
 
     if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
-
     if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
       if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
           parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
@@ -167,12 +137,15 @@ const MainPage = () => {
     if (selectedFilters.title && selectedFilters.title !== party.title) return false;
     if (selectedFilters.card && selectedFilters.card !== party.card) return false;
     if (selectedFilters.cardValue && parseInt(selectedFilters.cardValue) < parseInt(party.cardValue)) return false;
+
     if (selectedFilters.environment && selectedFilters.environment !== party.environment) return false;
     if (selectedFilters.evolution && parseInt(selectedFilters.evolution) < parseInt(party.evolution)) return false;
     if (selectedFilters.realization && parseInt(selectedFilters.realization) < parseInt(party.realization)) return false;
     if (selectedFilters.leap && parseInt(selectedFilters.leap) < parseInt(party.leap)) return false;
+
     if (selectedFilters.transcendenceWeapon && selectedFilters.transcendenceWeapon !== party.transcendenceWeapon) return false;
     if (selectedFilters.transcendenceArmor && selectedFilters.transcendenceArmor !== party.transcendenceArmor) return false;
+
     if ((selectedFilters.isLastPot || selectedFilters.isLastDeal)) {
       if (!(party.isLastPot || party.isLastDeal)) return false;
     }
@@ -180,26 +153,24 @@ const MainPage = () => {
     return true;
   });
 
-  const calcEffectSum = (value) => {
-    if (value >= 30) return 15;
-    if (value >= 24) return 11;
-    if (value >= 18) return 7;
-    console.log("선택된 캐릭터:", selectedCharacter);
-console.log("카드 데이터:", cardSetData);
-    return 0;
+  const getAwakenAndEffectSum = (cardValue) => {
+    if (cardValue >= 30) return { displayAwaken: 30, effectSum: 15 };
+    if (cardValue >= 24) return { displayAwaken: 24, effectSum: 11 };
+    if (cardValue >= 18) return { displayAwaken: 18, effectSum: 7 };
+    return { displayAwaken: 0, effectSum: 0 };
   };
 
-  const cardSetData = (selectedCharacter?.cardList || []).map(card => ({
-    Name: card.cardname,
-    AwakenSum: card.cardvalue,
-    EffectType: card.effecttype,
-    EffectSum: calcEffectSum(card.cardvalue)
-  }));
+  const cardSetData = selectedCharacter?.cardList?.map(card => {
+    const { displayAwaken, effectSum } = getAwakenAndEffectSum(card.cardvalue);
+    return {
+      cardname: card.cardname,
+      cardvalue: displayAwaken,
+      effecttype: card.effecttype,
+      effectsum: effectSum
+    };
+  }) || [];
 
-  const titleData = [
-    { titleName: "몽환의 현시자", titleContent: "몽환의 현시자, 아브렐슈드와의 전투에서 승리하기" },
-    { titleName: "광기군단장", titleContent: "광기군단장 쿠크세이튼 물리치기" }
-  ];
+  const titleData = selectedCharacter?.titleList || [];
 
   return (
     <div className="main-Container">
@@ -219,7 +190,6 @@ console.log("카드 데이터:", cardSetData);
             </div>
             <div className="arkPassive-Container">arkpassive-Container</div>
             <CardContainer listTitle={"가지고 있는 카드"} listData={cardSetData} />
-            
             <TitleContainer listTitle={"가지고 있는 칭호"} listData={titleData} />
           </div>
           <div className="right-Column">
