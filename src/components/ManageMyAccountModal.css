@@ -165,6 +165,11 @@ cursor: pointer;
 
 }
 
+.manage-my-account-email-btn:active{
+    background-color: #464AA5;
+}
+
+
 .manage-my-account-api-box{
 
     display: flex;
@@ -292,9 +297,13 @@ line-height: 19px;
 
 color: #FFFFFF;
 
-   
+cursor: pointer;
+
 }
 
+.manage-my-account-api-btn:active{
+    background-color: #464AA5;
+}
 
 
 .manage-my-account-btn-box{
@@ -332,8 +341,142 @@ font-weight: 700;
 font-size: 20px;
 line-height: 24px;
 
+cursor: pointer;
 
 color: #FFFFFF;
 
 
 }
+
+.inputaccount-textbox {
+    background-color: white;
+    border: none;
+    outline: none;
+    padding: 12px 32px;
+    border-radius: 12px;
+}
+
+textarea {
+    font-family: 'Pretendard', sans-serif;
+    color: #3E3E3E;
+}
+
+textarea:placeholder {
+    font-family: 'Pretendard', sans-serif;
+    color: #898989;
+}
+
+.delete-id-modal-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 32px 32px;
+    gap: 24px;
+
+    position: absolute;
+    width: 368px;
+    height: 171px;
+    left: 552px;
+    top: 379px;
+
+    background: #1E1E1E;
+    border-radius: 8px;
+
+}
+
+.delete-id-modal-title-row{
+
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 257px;
+
+width: 368px;
+height: 21px;
+
+
+}
+
+.delete-id-modal-title-txt{
+    /* 회원 탈퇴 */
+
+width: 67px;
+height: 21px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+}
+
+.delete-id-modal-txt-row{
+    /* 회원 탈퇴에 대한 안내 문구가 들어갑니다. 회원 탈퇴에 대한 안내 문구가 들어갑니다.2 */
+
+width: 269px;
+height: 46px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #DFDFDF;
+
+}
+
+
+
+
+.delete-id-modal-button-row{
+
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 368px;
+height: 56px;
+
+
+}
+
+.delete-id-modal-btn{
+
+border: 0;
+cursor: pointer;
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 32px;
+gap: 10px;
+
+width: 172px;
+height: 56px;
+
+background: #2C2F34;
+border-radius: 10px;
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+}
+

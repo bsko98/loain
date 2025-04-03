@@ -11,6 +11,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [modalPosition, setModalPosition] = useState({ top: 160, left: 292 });
+    const [deleteIdModal, setDeleteIdModal] = useState(false);
     const modalWidth = 240;
     const divRef = useRef(null);
 
@@ -39,7 +40,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
             <div className='manage-my-account-container'>
                 <div className='manage-my-account-first-row'>
                     <span className='manage-my-account-title'>내 계정 관리</span>
-                    <CloseButton/>
+                    <CloseButton onClick={onClose} style={{cursor:'pointer'}}/>
                 </div>
                 <div className='manage-my-account-email-box'>
                     <div className='manage-my-account-email-row'>
@@ -58,7 +59,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                             <span className='manage-my-account-api-txt'>로스트아크 API Key</span>
                         </div>
                         <div ref={divRef} onClick={modalOpen} style={{ width: '18px', height: '18px' }}>
-                            <QuestionMarkImage style={{ width: '18px', height: '18px' }} />
+                            <QuestionMarkImage style={{ width: '18px', height: '18px', cursor:'pointer'}} />
                         </div>
                         {isModalOpen && (
                             <div style={{ position: "absolute", top: `${modalPosition.top}px`, left: `${modalPosition.left}px`, width: `${modalWidth}px`, height: "auto", minHeight: '100px', backgroundColor: "rgba(10, 10, 10, 0.9)", border: "solid", borderRadius: '20px', borderColor: '#737373' }}>
@@ -88,14 +89,31 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                         )}
                     </div>
                     <div className='manage-my-account-api-input-row'>
-                        <input className='manage-my-account-api-input' type='text'/>
+                    <textarea className='inputaccount-textbox' type='text'  placeholder='API Key를 입력해주세요.'  style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none', resize: 'none' }}>
+                    </textarea>
                         <button className='manage-my-account-api-btn'>저장</button>
                     </div>
                 </div>
                 <div className='manage-my-account-btn-box'>
-                    <button className='manage-my-account-btn'>회원 탈퇴</button>
+                    <button className='manage-my-account-btn' onClick={()=>setDeleteIdModal(!deleteIdModal)}>회원 탈퇴</button>
                     <button className='manage-my-account-btn'>비밀번호 재설정</button>
                 </div>
+                {deleteIdModal && 
+                    <div className='delete-id-modal-container'>
+                        <div className='delete-id-modal-title-row'>
+                            <span className='delete-id-modal-title-txt'>회원 탈퇴</span>
+                        </div>
+                        <div className='delete-id-modal-txt-row'>
+                            <span>회원탈퇴에 대한 안내문구가 들어갑니다.</span>
+                            <br/>
+                            <span>회원탈퇴에 대한 안내문구가 들어갑니다2.</span>
+                        </div>
+                        <div className='delete-id-modal-button-row'>
+                            <button className='delete-id-modal-btn' onClick={()=>setDeleteIdModal(!deleteIdModal)}>취소</button>
+                            <button className='delete-id-modal-btn'>탈퇴하기</button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )
