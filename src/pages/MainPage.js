@@ -8,6 +8,7 @@ import PartyContainer from "../components/partyContainer";
 import CharacterInfoDisplay from "../components/characterInfoDisplay";
 import CardContainer from '../components/CardContainer';
 import TitleContainer from '../components/TitleContainer';
+import ArkPassiveContainer from '../components/ArkPassiveContainer';
 
 const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +23,9 @@ const MainPage = () => {
       job: "소서리스",
       itemlevel: 1720,
       image: "/img1.png",
+      evolution: 100,
+      realization: 200,
+      leap: 300,
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 30, effecttype: "성" },
         { cardname: "카제로스의 군단장", cardvalue: 26, effecttype: "암" }
@@ -38,6 +42,9 @@ const MainPage = () => {
       job: "버서커",
       itemlevel: 1700,
       image: "/img1.png",
+      evolution: 50,
+      realization: 60,
+      leap: 70,
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 18, effecttype: "성" }
       ],
@@ -188,7 +195,11 @@ const MainPage = () => {
             <div className="character-Container">
               <CharacterInfoDisplay selectedCharacter={selectedCharacter} />
             </div>
-            <div className="arkPassive-Container">arkpassive-Container</div>
+            <ArkPassiveContainer
+              evolution={selectedCharacter?.evolution}
+              realization={selectedCharacter?.realization}
+              leap={selectedCharacter?.leap}
+            />
             <CardContainer listTitle={"가지고 있는 카드"} listData={cardSetData} />
             <TitleContainer listTitle={"가지고 있는 칭호"} listData={titleData} />
           </div>
