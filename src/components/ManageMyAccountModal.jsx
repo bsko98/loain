@@ -9,8 +9,8 @@ import { ReactComponent as XMarkImage } from '../assets/images/XMarkImage.svg';
 
 const ManageMyAccountModal = ({isOpen, onClose}) => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [modalPosition, setModalPosition] = useState({ top: 160, left: 292 });
     const modalWidth = 240;
     const divRef = useRef(null);
 
