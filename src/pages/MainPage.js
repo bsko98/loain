@@ -96,6 +96,103 @@ const MainPage = () => {
       isLastPot: true,
       isLastDeal: false,
       skillRange: "반숙 ~ 숙련",
+      maxmember: 16,
+      member: 4,
+      startTime: "12:00",
+      partyMembers: [
+        {
+          nickname: "test1",
+          level: "1620",
+          class: "버서커",
+          classIcon: "/icons/berserker.png"
+        },
+        {
+          nickname: "test2",
+          level: "1610",
+          class: "소서리스",
+          classIcon: "/icons/sorceress.png"
+        },
+        {
+          nickname: "test3",
+          level: "1600",
+          class: "홀리나이트",
+          classIcon: "/icons/holyknight.png"
+        },
+        {
+          nickname: "test4",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        },
+        {
+          nickname: "test5",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        },
+        {
+          nickname: "test6",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        }, {
+          nickname: "test1",
+          level: "1620",
+          class: "버서커",
+          classIcon: "/icons/berserker.png"
+        },
+        {
+          nickname: "test2",
+          level: "1610",
+          class: "소서리스",
+          classIcon: "/icons/sorceress.png"
+        },
+        {
+          nickname: "test3",
+          level: "1600",
+          class: "홀리나이트",
+          classIcon: "/icons/holyknight.png"
+        },
+        {
+          nickname: "test4",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        },
+        {
+          nickname: "test5",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        },
+        {
+          nickname: "test6",
+          level: "1605",
+          class: "기상술사",
+          classIcon: "/icons/aeromancer.png"
+        }
+      ]
+    },
+    {
+      id: 2,
+      partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
+      raid: "카멘",
+      difficulty: "하드",
+      rangeStart: "1",
+      rangeEnd: "3",
+      itemLevel: "1640",
+      title: "빛을 꺼트리는 자",
+      card: "세상을 구하는 빛",
+      cardValue: "30",
+      environment: "예민x",
+      evolution: "100",
+      realization: "200",
+      leap: "300",
+      transcendenceWeapon: "무풀",
+      transcendenceArmor: "방풀",
+      isLastPot: true,
+      isLastDeal: false,
+      skillRange: "반숙 ~ 숙련",
       maxmember: 4,
       member: 3,
       startTime: "12:00",
@@ -221,6 +318,7 @@ const MainPage = () => {
                   ))}
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
