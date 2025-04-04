@@ -6,12 +6,14 @@ import { ReactComponent as APIKeyImage } from '../assets/images/APIKeyImage.svg'
 import { ReactComponent as QuestionMarkImage } from '../assets/images/QuestionMarkImage.svg';
 import { ReactComponent as Dot } from '../assets/images/Dot.svg';
 import { ReactComponent as XMarkImage } from '../assets/images/XMarkImage.svg';
+import ResetPasswordModal from './ResetPasswordModal.jsx';
 
 const ManageMyAccountModal = ({isOpen, onClose}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [modalPosition, setModalPosition] = useState({ top: 160, left: 292 });
     const [deleteIdModal, setDeleteIdModal] = useState(false);
+    const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
     const modalWidth = 240;
     const divRef = useRef(null);
 
@@ -31,6 +33,10 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
 
     const modalClose = () => {
         setIsModalOpen(false);
+    }
+
+    const closeResetPasswordModal = () =>{
+        setIsResetPasswordModalOpen(!isResetPasswordModalOpen)
     }
 
     if (!isOpen) return null;
@@ -96,7 +102,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                 </div>
                 <div className='manage-my-account-btn-box'>
                     <button className='manage-my-account-btn' onClick={()=>setDeleteIdModal(!deleteIdModal)}>회원 탈퇴</button>
-                    <button className='manage-my-account-btn'>비밀번호 재설정</button>
+                    <button className='manage-my-account-btn' onClick={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)}>비밀번호 재설정</button>
                 </div>
                 {deleteIdModal && 
                     <div className='delete-id-modal-container'>
@@ -114,6 +120,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                         </div>
                     </div>
                 }
+            <ResetPasswordModal isOpen={isResetPasswordModalOpen} onClose={closeResetPasswordModal}/>   
             </div>
         </div>
     )
