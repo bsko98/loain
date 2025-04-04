@@ -1,0 +1,44 @@
+.arkpassive {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px;
+  gap: 47px;
+  background: #1E1E1E;
+  border-radius: 4px;
+  width: auto;
+  height: 84px;
+}
+
+.arkpassive-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 64px;
+  height: 52px;
+}
+
+.arkpassive-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #22233F;
+  border-radius: 8px;
+  height: 25px;
+  width: 64px;
+  color: #DFDFDF;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.arkpassive-value {
+  width: 64px;
+  height: 19px;
+  color: #DFDFDF;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+

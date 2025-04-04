@@ -8,6 +8,7 @@ import PartyContainer from "../components/partyContainer";
 import CharacterInfoDisplay from "../components/characterInfoDisplay";
 import CardContainer from '../components/CardContainer';
 import TitleContainer from '../components/TitleContainer';
+import ArkPassiveContainer from '../components/ArkPassiveContainer';
 
 const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +23,9 @@ const MainPage = () => {
       job: "소서리스",
       itemlevel: 1720,
       image: "/img1.png",
+      evolution: 100,
+      realization: 200,
+      leap: 300,
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 30, effecttype: "성" },
         { cardname: "카제로스의 군단장", cardvalue: 26, effecttype: "암" }
@@ -38,6 +42,9 @@ const MainPage = () => {
       job: "버서커",
       itemlevel: 1700,
       image: "/img1.png",
+      evolution: 50,
+      realization: 60,
+      leap: 70,
       cardList: [
         { cardname: "세상을 구하는 빛", cardvalue: 18, effecttype: "성" }
       ],
@@ -68,7 +75,7 @@ const MainPage = () => {
     skillRange: "",
   });
 
-  const initialPartyData = [
+  const rawPartyData = [
     {
       id: 1,
       partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
@@ -89,12 +96,50 @@ const MainPage = () => {
       isLastPot: true,
       isLastDeal: false,
       skillRange: "반숙 ~ 숙련",
-      maxmember: 4,
-      member: 3,
+      maxmember: 16,
       startTime: "12:00",
-      partyMembers: []
+      partyMembers: [
+        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
+        { nickname: "닉네임2", level: "1560", class: "창술사", classIcon: "" },
+        { nickname: "닉네임3", level: "1560", class: "블레이드", classIcon: "" },
+        { nickname: "닉네임4", level: "1560", class: "건슬링어", classIcon: "" },
+        { nickname: "닉네임5", level: "1560", class: "홀리나이트", classIcon: "" },
+        { nickname: "닉네임6", level: "1560", class: "기상술사", classIcon: "" },
+        { nickname: "닉네임7", level: "1560", class: "아르카나", classIcon: "" }
+      ]
+    },
+    {
+      id: 2,
+      partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
+      raid: "카멘",
+      difficulty: "하드",
+      rangeStart: "1",
+      rangeEnd: "3",
+      itemLevel: "1640",
+      title: "빛을 꺼트리는 자",
+      card: "세상을 구하는 빛",
+      cardValue: "30",
+      environment: "예민x",
+      evolution: "100",
+      realization: "200",
+      leap: "300",
+      transcendenceWeapon: "무풀",
+      transcendenceArmor: "방풀",
+      isLastPot: true,
+      isLastDeal: false,
+      skillRange: "반숙 ~ 숙련",
+      maxmember: 4,
+      startTime: "12:00",
+      partyMembers: [
+        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" }
+      ]
     }
   ];
+  
+  const initialPartyData = rawPartyData.map(party => ({
+    ...party,
+    member: party.partyMembers.length
+  }));
 
   const [partyData, setPartyData] = useState(initialPartyData);
 
@@ -188,7 +233,11 @@ const MainPage = () => {
             <div className="character-Container">
               <CharacterInfoDisplay selectedCharacter={selectedCharacter} />
             </div>
-            <div className="arkPassive-Container">arkpassive-Container</div>
+            <ArkPassiveContainer
+              evolution={selectedCharacter?.evolution}
+              realization={selectedCharacter?.realization}
+              leap={selectedCharacter?.leap}
+            />
             <CardContainer listTitle={"가지고 있는 카드"} listData={cardSetData} />
             <TitleContainer listTitle={"가지고 있는 칭호"} listData={titleData} />
           </div>
