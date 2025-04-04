@@ -75,7 +75,7 @@ const MainPage = () => {
     skillRange: "",
   });
 
-  const initialPartyData = [
+  const rawPartyData = [
     {
       id: 1,
       partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
@@ -97,80 +97,15 @@ const MainPage = () => {
       isLastDeal: false,
       skillRange: "반숙 ~ 숙련",
       maxmember: 16,
-      member: 4,
       startTime: "12:00",
       partyMembers: [
-        {
-          nickname: "test1",
-          level: "1620",
-          class: "버서커",
-          classIcon: "/icons/berserker.png"
-        },
-        {
-          nickname: "test2",
-          level: "1610",
-          class: "소서리스",
-          classIcon: "/icons/sorceress.png"
-        },
-        {
-          nickname: "test3",
-          level: "1600",
-          class: "홀리나이트",
-          classIcon: "/icons/holyknight.png"
-        },
-        {
-          nickname: "test4",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        },
-        {
-          nickname: "test5",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        },
-        {
-          nickname: "test6",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        }, {
-          nickname: "test1",
-          level: "1620",
-          class: "버서커",
-          classIcon: "/icons/berserker.png"
-        },
-        {
-          nickname: "test2",
-          level: "1610",
-          class: "소서리스",
-          classIcon: "/icons/sorceress.png"
-        },
-        {
-          nickname: "test3",
-          level: "1600",
-          class: "홀리나이트",
-          classIcon: "/icons/holyknight.png"
-        },
-        {
-          nickname: "test4",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        },
-        {
-          nickname: "test5",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        },
-        {
-          nickname: "test6",
-          level: "1605",
-          class: "기상술사",
-          classIcon: "/icons/aeromancer.png"
-        }
+        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
+        { nickname: "닉네임2", level: "1560", class: "창술사", classIcon: "" },
+        { nickname: "닉네임3", level: "1560", class: "블레이드", classIcon: "" },
+        { nickname: "닉네임4", level: "1560", class: "건슬링어", classIcon: "" },
+        { nickname: "닉네임5", level: "1560", class: "홀리나이트", classIcon: "" },
+        { nickname: "닉네임6", level: "1560", class: "기상술사", classIcon: "" },
+        { nickname: "닉네임7", level: "1560", class: "아르카나", classIcon: "" }
       ]
     },
     {
@@ -194,40 +129,17 @@ const MainPage = () => {
       isLastDeal: false,
       skillRange: "반숙 ~ 숙련",
       maxmember: 4,
-      member: 3,
       startTime: "12:00",
-      partyMembers: []
+      partyMembers: [
+        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" }
+      ]
     }
   ];
-
-  const [partyData, setPartyData] = useState(initialPartyData);
-
-  const applyFilters = (filters) => {
-    setSelectedFilters(filters);
-    setFilterModalOpen(false);
-  };
-
-  const handleUpdate = () => {
-    setPartyData([...initialPartyData]);
-    setSearchQuery("");
-  };
-
-  const hasFilter = Object.values(selectedFilters).some(val => val !== "" && val !== false);
-
-  const filteredParties = partyData.filter(party => {
-    if (!hasFilter && searchQuery.trim() === "") return true;
-    const searchTerm = searchQuery.trim();
-    if (searchTerm !== "" && !party.partytitle.includes(searchTerm)) return false;
-
-    if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
-    if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
-      if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
-          parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
-    }
-
-    if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
-
-
+  
+  const initialPartyData = rawPartyData.map(party => ({
+    ...party,
+    member: party.partyMembers.length
+  }));
 
   const [partyData, setPartyData] = useState(initialPartyData);
 
