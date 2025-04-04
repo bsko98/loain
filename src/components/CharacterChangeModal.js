@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react"; 
 import "./CharacterChangeModal.css";
 import CharacterInfoComponent from "./characterInfoComponent";
 
@@ -6,20 +6,33 @@ import CharacterInfoComponent from "./characterInfoComponent";
 const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCharacter, selectedCharacter }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
     const [activeServer, setActiveServer] = useState(null);
+    const modalRef = useRef(null);
+
+   useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (modalRef.current && !modalRef.current.contains(e.target)) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isOpen, onClose]);
 
     if (!isOpen) return null;
 
-    // 서버 필터링 함수
     const filterByServer = (server) => {
         setFilteredCharacters(characterList.filter((char) => char.server === server));
-            setActiveServer(server);
+        setActiveServer(server);
     };
-
-    
 
     return (
         <div className="character-change-modal-overlay">
-            <div className="character-change-modal-content">
+            <div className="character-change-modal-content" ref={modalRef}>
                 <div className="character-change-modal-header">
                     <h2>내 캐릭터</h2>
                     <button className="character-change-modal-close-btn" onClick={onClose}>X</button>

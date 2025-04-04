@@ -10,6 +10,7 @@ import SignIn from './pages/Signin';
 import FindId from './pages/Findid';
 import ResetPassword from './pages/Resetpassword';
 import SignUp from './pages/Signup';
+import ManageMyAccountModal from './components/ManageMyAccountModal.jsx';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/findId" element={<FindId />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/manageMyAccount" element={<ManageMyAccountModal/>}/>
         </Routes>
       </Router>
     </div>
