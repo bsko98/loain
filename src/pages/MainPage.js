@@ -227,6 +227,35 @@ const MainPage = () => {
 
     if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
 
+
+
+  const [partyData, setPartyData] = useState(initialPartyData);
+
+  const applyFilters = (filters) => {
+    setSelectedFilters(filters);
+    setFilterModalOpen(false);
+  };
+
+  const handleUpdate = () => {
+    setPartyData([...initialPartyData]);
+    setSearchQuery("");
+  };
+
+  const hasFilter = Object.values(selectedFilters).some(val => val !== "" && val !== false);
+
+  const filteredParties = partyData.filter(party => {
+    if (!hasFilter && searchQuery.trim() === "") return true;
+    const searchTerm = searchQuery.trim();
+    if (searchTerm !== "" && !party.partytitle.includes(searchTerm)) return false;
+
+    if (selectedFilters.difficulty && selectedFilters.difficulty !== party.difficulty) return false;
+    if (selectedFilters.rangeStart && selectedFilters.rangeEnd) {
+      if (parseInt(party.rangeEnd) < parseInt(selectedFilters.rangeStart) ||
+          parseInt(party.rangeStart) > parseInt(selectedFilters.rangeEnd)) return false;
+    }
+
+    if (selectedFilters.itemLevel && parseInt(selectedFilters.itemLevel) < parseInt(party.itemLevel)) return false;
+
     if (selectedFilters.skillRange) {
       const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
       const [pStart, pEnd] = party.skillRange.split(" ~ ");
@@ -318,7 +347,6 @@ const MainPage = () => {
                   ))}
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
