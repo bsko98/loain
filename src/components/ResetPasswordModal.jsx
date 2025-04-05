@@ -39,7 +39,7 @@ const ResetPasswordModal = ({isOpen, onClose}) => {
                 </div>
             </div>
             <div className='reset-password-modal-button-row'>
-                <button className='reset-password-modal-button-row-btn'>취소</button>
+                <button className='reset-password-modal-button-row-btn' onClick={onClose}>취소</button>
                 <button className='reset-password-modal-button-row-btn'>비밀번호 재설정</button>
             </div>
         </div>
