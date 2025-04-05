@@ -19,21 +19,21 @@ const ResetPasswordModal = ({isOpen, onClose}) => {
                 <div className='reset-password-modal-input-row'>
                     <div className='reset-password-modal-input-txt-row'>
                         <PwImage/>
-                        <span className='reset-password-modal-input-txt'>현재 비밀번호*</span>
+                        <span className='reset-password-modal-input-txt'>현재 비밀번호 *</span>
                     </div>
                     <input type='text' className='reset-password-modal-input' placeholder='현재 비밀번호를 입력해주세요.'/>
                 </div>
                 <div className='reset-password-modal-input-row'>
                     <div className='reset-password-modal-input-txt-row'>
                         <PwImage/>
-                        <span className='reset-password-modal-input-txt' style={{textAlign:'left'}}>새 비밀번호*</span>
+                        <span className='reset-password-modal-input-txt' style={{textAlign:'left'}}>새 비밀번호 *</span>
                     </div>
                     <input type='text' className='reset-password-modal-input' placeholder='새 비밀번호를 입력해주세요.'/>
                 </div>
                 <div className='reset-password-modal-input-row'>
                     <div className='reset-password-modal-input-txt-row'>
                         <PwImage/>
-                        <span className='reset-password-modal-input-txt'>비밀번호 확인*</span>
+                        <span className='reset-password-modal-input-txt'>비밀번호 확인 *</span>
                     </div>
                     <input type='text' className='reset-password-modal-input' placeholder='입력한 비밀번호를 한번 더 입력해주세요.'/>
                 </div>
