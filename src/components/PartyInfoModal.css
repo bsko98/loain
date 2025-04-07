@@ -134,10 +134,7 @@ line-height: 24px;
 
 color: #FFFFFF;
 
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;
+cursor: pointer;
 
 }
 

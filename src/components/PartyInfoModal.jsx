@@ -256,7 +256,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             </div>
           </div>
           <div className='party-info-modal-last-row'>
-            <button className='last-row-button'>취소</button>
+            <button className='last-row-button' onClick={onClose}>취소</button>
             <button className='last-row-button'>{buttonText}</button>
           </div>
       </div>

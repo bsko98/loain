@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Sidebar />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter />} />
@@ -27,6 +26,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/manageMyAccount" element={<ManageMyAccountModal/>}/>
         </Routes>
+        <Sidebar />
       </Router>
     </div>
   );
