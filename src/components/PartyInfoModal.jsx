@@ -72,12 +72,20 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     });
   };
   
+
+  const closeModal = (e) =>{
+    if(e.target.classList.contains("filter-modal-overlay"))
+    {
+        onClose();
+    }
+}
+
   
   if (!isOpen) return null;
 
 
   return (
-    <div className='filter-modal-overlay'>
+    <div className='filter-modal-overlay' onClick={closeModal}>
       <div className={`party-info-modal-container ${isOpen ? "visible" : "hidden"}`}>
           <div className='party-info-modal-first-row'>
             <span style={{fontSize:'18px', fontWeight:'600'}}>{modalTitleText}</span>

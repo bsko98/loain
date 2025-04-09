@@ -6,7 +6,7 @@ import { ReactComponent as IdImage } from './images/IdImage.svg';
 import { ReactComponent as PwImage } from './images/PwImage.svg';
 import { ReactComponent as EmailImage } from './images/EmailImage.svg';
 
-const Resetpassword = () => {
+const Resetpassword = ({isOpen, onClose}) => {
 
     const [inputId, setInputId] = useState("");             // 입력값 상태
     const [inputEmail, setInputEmail] = useState("");       // 입력값 상태
@@ -66,9 +66,19 @@ const Resetpassword = () => {
         // setInputCheckPw("");
     };
 
+
+    const closeModal = (e) =>{
+        if(e.target.classList.contains("filter-modal-overlay"))
+        {
+            onClose();
+        }
+    }
+
+    if (!isOpen) return null;
+
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='filter-modal-overlay'>
+            <div className='filter-modal-overlay' onClick={closeModal}>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
                         <div className='maincontentaccount-container'>
