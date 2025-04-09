@@ -10,7 +10,7 @@ import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
 
-const Signup = () => {
+const Signup = ({isOpen}) => {
 
     const [inputId, setInputId] = useState("");
     const [inputPw, setInputPw] = useState("");
@@ -219,6 +219,8 @@ const Signup = () => {
             <span style={{ width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>회원가입 완료</span>
         </button>
     ];
+
+    if (!isOpen) return null;
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>

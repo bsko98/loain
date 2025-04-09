@@ -1,15 +1,12 @@
 import './GlobalComponents.css';
 import React from "react"
-import { useNavigate} from "react-router-dom";
 import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
 import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
 import { ReactComponent as IdImage } from './images/IdImage.svg';
 import { ReactComponent as PwImage } from './images/PwImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
 
-const Signin = ({isOpen, onClose}) => {
-
-    const navigate = useNavigate();
+const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen}) => {
 
     if (!isOpen) return null;
 
@@ -24,13 +21,13 @@ const Signin = ({isOpen, onClose}) => {
         console.log(e)
         if(e.target.id === 'signUp'){
             onClose();
-            navigate("/signUp")  
+            isSignUpOpen();  
         }else if(e.target.id === "resetPw"){
             onClose();
-            navigate("/resetPassword")  
+            isResetPasswordOpen();
         }else{
             onClose();
-            navigate("/findId")
+            isFindIdOpen();
         }
         
     }
