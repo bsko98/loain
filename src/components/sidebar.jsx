@@ -110,7 +110,7 @@ const Sidebar = () => {
                         <div style={{ fontSize: '15px', color: '#DFDFDF', paddingTop: '1px' }}>{item.name}</div> </li>))}
                     <div style={{ fontSize: '13px', marginTop: '16px', textAlign: 'left', color: '#DFDFDF' }}>이용약관 ⋅ 개인정보 처리방침</div>
                 </div>
-            </div> : <div className='more-item-container2'></div>}
+            </div> : null}
             <div>
                 <div className='more-info-button'>
                     <More style={{cursor:'pointer', paddingTop: '12px', paddingLeft: '12px', marginRight: '49px' }} onClick={() => activeMoreInfo(moreInfo)} />
