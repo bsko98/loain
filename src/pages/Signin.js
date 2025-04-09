@@ -23,10 +23,13 @@ const Signin = ({isOpen, onClose}) => {
     const naviageToModals = (e) =>{
         console.log(e)
         if(e.target.id === 'signUp'){
+            onClose();
             navigate("/signUp")  
         }else if(e.target.id === "resetPw"){
+            onClose();
             navigate("/resetPassword")  
         }else{
+            onClose();
             navigate("/findId")
         }
         
