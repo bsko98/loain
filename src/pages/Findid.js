@@ -4,7 +4,7 @@ import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
 import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
 import { ReactComponent as EmailImage } from './images/EmailImage.svg';
 
-const Findid = () => {
+const Findid = ({isOpen, onClose}) => {
 
     const [inputEmail, setInputEmail] = useState("");               // 입력값 상태
     const [subbmittedValueEmail, setSubbmittedValueEmail] = useState(null);    // 제출된 값 상태
@@ -34,8 +34,18 @@ const Findid = () => {
 
     const inputId = "dbtjd173";     // 예제 입력값
 
+    const closeModal = (e) =>{
+        if(e.target.classList.contains("filter-modal-overlay"))
+        {
+            onClose();
+        }
+    }
+
+
+    if (!isOpen) return null;
+
     return (
-        <div style={{ fontFamily: 'Pretendard' }}>
+        <div style={{ fontFamily: 'Pretendard' }} onClick={closeModal}>
             <div className='filter-modal-overlay'>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>

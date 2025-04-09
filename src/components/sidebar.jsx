@@ -20,9 +20,9 @@ import ManageMyAccountModal from './ManageMyAccountModal';
 
 import './sidebar.css';              
 import Signin from '../pages/Signin';
-// import FindId from '../pages/Findid';        Lint
-// import ResetPassword from '../pages/Resetpassword';
-// import SignUp from '../pages/Signup';
+import FindId from '../pages/Findid';       
+import ResetPassword from '../pages/Resetpassword';
+import SignUp from '../pages/Signup';
 
 const Sidebar = () => {
 
@@ -30,6 +30,9 @@ const Sidebar = () => {
     const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
     const [isSinginModalOpen, setIsSinginModalOpen] = useState(false);
     const [isMyAccountModalOpen, setIsMyAccountModalOpen] = useState(false);
+    const [isFindIdModalOpen,setIsFindIdModalOpen] = useState(false);
+    const [isResetPasswordModalOpen,setIsResetPasswordModalOpen] = useState(false);
+    const [isSingUpModalOpen,setIsSingUpModalOpen] = useState(false);
     
     const closePartyModal = () => {
         return setIsPartyModalOpen(!isPartyModalOpen);
@@ -117,9 +120,12 @@ const Sidebar = () => {
                     <div style={{userSelect:'none', paddingTop: '14.5px', color: '#DFDFDF' }}>계정 관리 및 더보기</div>
                 </div>
             </div>
-            <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal}/>
+            <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal} isFindIdOpen={()=>setIsFindIdModalOpen(!isFindIdModalOpen)} isResetPasswordOpen={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)} isSignUpOpen={()=>setIsSingUpModalOpen(!isSingUpModalOpen)}/>
             <PartyInfoModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
             <ManageMyAccountModal isOpen={isMyAccountModalOpen} onClose={closeMyAccountModal}/>
+            <ResetPassword isOpen={isResetPasswordModalOpen} onClose={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)}/>
+            <FindId isOpen={isFindIdModalOpen} onClose={()=>setIsFindIdModalOpen(!isFindIdModalOpen)}/>
+            <SignUp isOpen={isSingUpModalOpen}/> {/*회원가입 부분은 onClose가 없다*/}
         </div>
     )
 }
