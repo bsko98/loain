@@ -1,7 +1,7 @@
 /*사이드바 전체 컨테이너*/
 .side-bar {
     width: 244px;
-    height: 900px;
+    height: 100vh;
     background-color: #1E1E1E;
     border-radius: 4px;
     box-shadow: 
@@ -11,6 +11,8 @@
     margin-right: 80px;
     display: flex;
     flex-direction: column;
+    position: fixed;
+    transform: translateY(0%);
 }
 
 
@@ -58,6 +60,10 @@
     margin-left: 12px;
     border-radius: 10px;
     border: 1px solid #737373;
+
+    margin-bottom: calc(84px);
+    position: fixed;
+    bottom: 0;
 }
 
 /* 계정관리 및 더보기 내용박스가 안 보일때*/
@@ -69,6 +75,10 @@
     margin-left: 12px;
     border-radius: 10px;
     border: 1px solid #1E1E1E;
+
+    margin-bottom: calc(24px);
+    position: fixed;
+    bottom: 0;
 }
 
 /* 계정관리 및 더보기 버튼*/
@@ -81,6 +91,10 @@
     border-radius: 10px;
     display: flex;
     flex-direction: row;
+
+    margin-bottom: calc(24px);
+    position: fixed;
+    bottom: 0;
 }
 
 /*더보기 메뉴들 박스*/
@@ -105,4 +119,3 @@
 .more-item-box-row:hover{
     background-color: #292B2E;
 }
-
