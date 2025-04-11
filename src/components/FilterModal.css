@@ -30,6 +30,7 @@
 .filter-modal-header {
     font-family: 'Pretendard';
     width: 504px;
+    height: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -123,6 +124,7 @@
 .range-container {
     width: 504px;
     height: 75px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 8px;

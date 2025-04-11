@@ -81,8 +81,22 @@
 }
 
 /* 강조 태그 색상 */
-.highlight-tag {
-  color: #6B83E1;
+.party-container-extra-tags .highlight-tag {
+  background-color: #22233F ;  
+  height: 20px;
+  padding: 3px;
+  border-radius: 4px;
+  font-weight: 500;
+  gap: 10px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #DFDFDF;
+  box-sizing: border-box;
 }
 
 /* 우측 영역 */
@@ -99,6 +113,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  height: 27px;
 }
 
 /* 인원수 표시 */
@@ -109,6 +124,8 @@
   border-radius: 8px;
   font-weight: bold;
   font-size: 16px;
+  height: 27px;
+  box-sizing: border-box;
 }
 
 /* 입장 버튼 */
@@ -120,6 +137,10 @@
   padding: 4px 8px;
   cursor: pointer;
   font-size: 16px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 확장 버튼 영역 */
