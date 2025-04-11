@@ -85,7 +85,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
 
   return (
-    <div className='filter-modal-overlay' onClick={closeModal}>
+    <div className='filter-modal-overlay' onMouseDown={closeModal}>
       <div className={`party-info-modal-container ${isOpen ? "visible" : "hidden"}`}>
           <div className='party-info-modal-first-row'>
             <span style={{fontSize:'18px', fontWeight:'600'}}>{modalTitleText}</span>
@@ -119,8 +119,8 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                 </div>
                 <div className='party-info-modal-left-container-range-container'>
                     <span className='party-info-modal-left-container-range-info-text'>관문 정보</span>
-                    <div className="range-container">
-                        <div className="raid-select-dropdown">
+                    <div className="range-container2">
+                        <div className="raid-select-dropdown2">
 
                             <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
                                 <option value="">선택</option>

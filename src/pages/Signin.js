@@ -33,7 +33,7 @@ const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen}
     }
 
     return (
-        <div className='filter-modal-overlay' onClick={closeModal}>
+        <div className='filter-modal-overlay' onMouseDown={closeModal}>
             <div style={{ fontFamily: 'Pretendard' }}>
                 {/* <div className='background-container'> */}
                     <div className='mainaccount-container'>
