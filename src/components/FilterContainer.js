@@ -3,7 +3,6 @@ import "./FilterContainer.css";
 import FilterButtonIcon from "../assets/images/FilterButtonIcon.svg";
 
 const FilterContainer = ({ setFilterModalOpen, selectedFilters }) => {
-  // 각 필드에 대한 라벨 정의
   const fieldLabels = {
     raid: "레이드",
     difficulty: "난이도",
@@ -26,31 +25,37 @@ const FilterContainer = ({ setFilterModalOpen, selectedFilters }) => {
 
   return (
     <div className="filter-container">
-      <div className="filter-tags">
-        {selectedFilters && Object.keys(selectedFilters).length > 0 ? (
-          Object.entries(selectedFilters).map(([key, value], index) => {
-            if (!value || value === "") return null;
-            let displayValue = value;
-            if (typeof value === "boolean") {
-              if (!value) return null;
-              displayValue = "";
-            }
+      <div className="filter-inner-row">
+        <div className="filter-tags">
+          {selectedFilters && Object.keys(selectedFilters).length > 0 ? (
+            Object.entries(selectedFilters).map(([key, value], index) => {
+              if (!value || value === "") return null;
+              let displayValue = value;
+              if (typeof value === "boolean") {
+                if (!value) return null;
+                displayValue = "";
+              }
 
-            return (
-              <span key={index} className="filter-tag">
-                {fieldLabels[key]}
-                {displayValue ? `: ${displayValue}` : ""}
-              </span>
-            );
-          })
-        ) : (
-          <span className="filter-placeholder">선택된 필터가 없습니다.</span>
-        )}
+              return (
+                <span key={index} className="filter-tag">
+                  {fieldLabels[key]}
+                  {displayValue ? `: ${displayValue}` : ""}
+                </span>
+              );
+            })
+          ) : (
+            <span className="filter-placeholder">선택된 필터가 없습니다.</span>
+          )}
+        </div>
+
+        <div className="filter-button-wrapper">
+          <div className="filter-divider" />
+          <button className="filter-button" onClick={() => setFilterModalOpen(true)}>
+            <img src={FilterButtonIcon} alt="필터 아이콘" className="filter-icon" />
+            필터
+          </button>
+        </div>
       </div>
-      <button className="filter-button" onClick={() => setFilterModalOpen(true)}>
-        <img src={FilterButtonIcon} alt="필터 아이콘" className="filter-icon" />
-        필터
-      </button>
     </div>
   );
 };

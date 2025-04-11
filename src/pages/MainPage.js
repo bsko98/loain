@@ -22,7 +22,7 @@ const MainPage = () => {
       server: "아만",
       job: "소서리스",
       itemlevel: 1720,
-      image: "/img1.png",
+      image: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
       evolution: 100,
       realization: 200,
       leap: 300,

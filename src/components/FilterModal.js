@@ -21,7 +21,6 @@ const defaultFilters = {
     transcendenceArmor: "",
     isLastPot: false,
     isLastDeal: false,
-    isQuick: false,
 };
 
 const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
@@ -194,9 +193,9 @@ const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
                             <div className="skill-bar-bottom-line"></div>
                         </div>
 
-                        <div className="custom-checkbox-container" style={{ paddingLeft: "32px" }}>
+                        <div className="custom-checkbox-container" style={{ paddingLeft: "16px", marginTop: "16px"}}>
                             <div>
-                                <input type="checkbox" name="isQuick" id="isQuick" checked={filters.isQuick} onChange={handleFilterChange} />
+                                <input type="checkbox" name="isQuick" id="isQuick" />
                                 <label htmlFor="isQuick">내 캐릭터 스펙 불러오기</label>
                             </div>
                         </div>
