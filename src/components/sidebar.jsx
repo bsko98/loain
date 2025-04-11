@@ -135,7 +135,7 @@ const Sidebar = () => {
             <ManageMyAccountModal isOpen={isMyAccountModalOpen} onClose={closeMyAccountModal}/>
             <ResetPassword isOpen={isResetPasswordModalOpen} onClose={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)}/>
             <FindId isOpen={isFindIdModalOpen} onClose={()=>setIsFindIdModalOpen(!isFindIdModalOpen)}/>
-            <SignUp isOpen={isSingUpModalOpen}/> {/*회원가입 부분은 onClose가 없다*/}
+            <SignUp isOpen={isSingUpModalOpen} onClose={()=>setIsSingUpModalOpen(!isSingUpModalOpen)}/> {/*회원가입 부분은 onClose가 없다*/}
         </div>
     )
 }

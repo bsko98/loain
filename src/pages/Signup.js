@@ -10,7 +10,7 @@ import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
 
-const Signup = ({isOpen}) => {
+const Signup = ({isOpen, onClose}) => {
 
     const [inputId, setInputId] = useState("");
     const [inputPw, setInputPw] = useState("");
@@ -87,6 +87,7 @@ const Signup = ({isOpen}) => {
         setInputAPIKey("");
 
         // 회원가입 완료 후 메인페이지 or 로그인페이지
+        onClose();
     };
 
     const [isModalOpen, setIsModalOpen] = useState(true);
