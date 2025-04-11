@@ -140,7 +140,7 @@ const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
 
                     <div className="range-container">
                         <label>관문 지정</label>
-                        <div className="raid-select-dropdown">
+                        <div className="range-select-dropdown">
                             <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
                                 <option value="">선택</option>
                                 {gateOptions.map((gate) => (

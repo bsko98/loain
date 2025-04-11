@@ -16,7 +16,7 @@
 .filter-modal-container {
     width: 568px;
     height: auto;
-    min-height: 747px;
+    min-height: 735px;
     background: rgba(30, 30, 30, 1);
     border-radius: 8px;
     padding: 16px 32px 32px 32px;
@@ -62,6 +62,7 @@
     gap: 6px;
 }
 
+
 /* 레이드 선택 */
 .raid-select {
     width: 504px;
@@ -83,16 +84,13 @@
 
 .raid-select-dropdown {
     display: flex;
-    gap: 32px;
-    background-image: url("../assets/images/DropdownArrow.svg");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 12px 12px;
+    justify-content: space-between;
+
 }
 
 .raid-select-dropdown select {
     font-family: 'Pretendard';
-    width: 244px;
+    width: 215px;
     height: auto;
     min-height: 33px;
     border-radius: 12px;
@@ -107,8 +105,10 @@
     background-image: url("../assets/images/DropdownArrow.svg");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    background-size: 9.21px 7.79px;
+
 }
+
+
 
 .raid-select-dropdown select:hover {
     border-color: rgba(180, 180, 180, 1);
@@ -130,6 +130,11 @@
     gap: 8px;
 }
 
+.range-select-dropdown {
+    display: flex;
+    justify-content: space-between;
+
+}
 .range-container label {
     font-family: 'Pretendard';
     font-weight: 700;
@@ -140,7 +145,7 @@
 }
 
 .range-container select {
-    width: 228px;
+    width: 215px;
     min-height: 33px;
     border-radius: 12px;
     padding: 8px 12px;
@@ -154,13 +159,13 @@
     background-image: url("../assets/images/DropdownArrow.svg");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    background-size: 9.21px 7.79px;
+    box-sizing: border-box;
 }
 
 /* 필터 하단 컨테이너 */
 .filter-bottom-container {
     width: 504px;
-    height: 401px;
+    height: 389px;
     border-radius: 10px;
     border: 1px solid rgba(115, 115, 115, 1);
     display: flex;
