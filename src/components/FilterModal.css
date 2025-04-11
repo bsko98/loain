@@ -16,7 +16,7 @@
 .filter-modal-container {
     width: 568px;
     height: auto;
-    min-height: 747px;
+    min-height: 735px;
     background: rgba(30, 30, 30, 1);
     border-radius: 8px;
     padding: 16px 32px 32px 32px;
@@ -30,6 +30,7 @@
 .filter-modal-header {
     font-family: 'Pretendard';
     width: 504px;
+    height: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,6 +62,7 @@
     gap: 6px;
 }
 
+
 /* 레이드 선택 */
 .raid-select {
     width: 504px;
@@ -82,16 +84,13 @@
 
 .raid-select-dropdown {
     display: flex;
-    gap: 32px;
-    background-image: url("../assets/images/DropdownArrow.svg");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 12px 12px;
+    justify-content: space-between;
+
 }
 
 .raid-select-dropdown select {
     font-family: 'Pretendard';
-    width: 244px;
+    width: 215px;
     height: auto;
     min-height: 33px;
     border-radius: 12px;
@@ -106,8 +105,10 @@
     background-image: url("../assets/images/DropdownArrow.svg");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    background-size: 9.21px 7.79px;
+
 }
+
+
 
 .raid-select-dropdown select:hover {
     border-color: rgba(180, 180, 180, 1);
@@ -123,11 +124,17 @@
 .range-container {
     width: 504px;
     height: 75px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
+.range-select-dropdown {
+    display: flex;
+    justify-content: space-between;
+
+}
 .range-container label {
     font-family: 'Pretendard';
     font-weight: 700;
@@ -138,7 +145,7 @@
 }
 
 .range-container select {
-    width: 228px;
+    width: 215px;
     min-height: 33px;
     border-radius: 12px;
     padding: 8px 12px;
@@ -152,13 +159,13 @@
     background-image: url("../assets/images/DropdownArrow.svg");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    background-size: 9.21px 7.79px;
+    box-sizing: border-box;
 }
 
 /* 필터 하단 컨테이너 */
 .filter-bottom-container {
     width: 504px;
-    height: 401px;
+    height: 389px;
     border-radius: 10px;
     border: 1px solid rgba(115, 115, 115, 1);
     display: flex;
@@ -229,16 +236,19 @@
     width: 480px;
     height: 2px;
     border-radius: 1px;
+    border: solid 1.4px;
     background: rgba(223, 223, 223, 1);
+    border-color: rgba(223, 223, 223, 1);
 }
 
 /* 내 캐릭터 스펙 불러오기 */
 .mycharacter-checkbox-container {
     width: 480px;
     text-align: left;
-    padding: 12px 12px 0px 12px; 
+    padding: 12px 12px 0px 12px;
     display: flex;
-    align-items: center; /* 체크박스와 라벨을 동일 높이로 정렬 */
+    align-items: center;
+    /* 체크박스와 라벨을 동일 높이로 정렬 */
     gap: 8px;
     font-family: 'Pretendard';
 }
@@ -250,7 +260,7 @@
     cursor: pointer;
 }
 
-.filter-main-container{
+.filter-main-container {
     width: 100%;
     display: flex;
     text-align: left;
@@ -266,8 +276,7 @@
 
 
 .character-filter-column-left,
-.character-filter-column-right
- {
+.character-filter-column-right {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -280,9 +289,11 @@
     display: flex;
     align-items: center;
 }
-.transcendence-label{
-   color: #939393;
-   font-size: 12px;
+
+.transcendence-label {
+    color: #939393;
+    font-size: 12px;
+    margin-top: 11px;
 }
 
 
@@ -294,7 +305,7 @@
     font-size: 14px;
     color: rgba(223, 223, 223, 1);
     text-align: left;
-    margin-right:8px;
+    margin-right: 8px;
 }
 
 .character-filter-input,
@@ -313,7 +324,7 @@
     text-align: left;
     cursor: pointer;
     position: relative;
-  
+
 }
 
 .character-filter-dropdown {
@@ -339,14 +350,14 @@
 .custom-checkbox-container {
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     gap: 16px;
-    padding-top:16px;
-    padding-left:38px;
+    padding-left: 38px;
 }
+
 .custom-checkbox-container div {
     display: flex;
-    align-items: center; 
+    align-items: center;
     gap: 8px;
 }
 
@@ -394,7 +405,7 @@
     font-weight: 600;
     font-family: 'Pretendard';
     color: rgba(223, 223, 223, 1);
-    line-height: 20px; 
+    line-height: 20px;
 }
 
 .filter-modal-footer {
@@ -417,4 +428,3 @@
     background: #2c2f34;
     color: #FFFFFF;
 }
-

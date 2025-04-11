@@ -3,7 +3,7 @@ import './ArkPassiveContainer.css';
 
 const ArkPassiveContainer = ({ evolution, realization, leap }) => {
   const formatValue = (value) => {
-    return value ? `# ${value}` : '';
+    return value ? `${value}` : '';
   };
 
   return (

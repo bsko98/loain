@@ -27,13 +27,10 @@ const CharacterSelectContainer = ({ setSelectedCharacter, characterList, selecte
         <span className="character-info">
           {selectedCharacter ? (
             <>
-              <span className="character-name">#{selectedCharacter.name}</span>
-              <span className="character-details">
-                {" "} / {selectedCharacter.server} / {selectedCharacter.job} / {selectedCharacter.itemlevel}
-              </span>
+              <span className="character-name">{selectedCharacter.name}</span>
             </>
           ) : (
-            "#캐릭터 닉네임 / 선택한 캐릭터가 없습니다."
+            "캐릭터 닉네임 / 선택한 캐릭터가 없습니다."
           )}
         </span>
   

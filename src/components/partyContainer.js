@@ -53,7 +53,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   // 태그 매칭 여부
   const isTagMatched = (tagName, value) => {
-    if (!hasFilter) return false;  // 필터 없으면 기본 색 유지
+    if (!hasFilter) return true;  // 필터 없으면 기본 색 유지
 
     const filterValue = selectedFilters[tagName];
     if (filterValue === "" || filterValue === false) return false;
@@ -106,6 +106,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
   for (let i = 0; i < allTags.length; i += 6) {
     chunkTags.push(allTags.slice(i, i + 6));
   }
+  
 
   return (
     <div className="party-container">
@@ -123,6 +124,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
             {chunkTags.map((tagGroup, groupIdx) => (
               <div className="extra-tag-line" key={groupIdx}>
                 {tagGroup.map((tag, idx) => (
+                  
                   <span
                     key={idx}
                     className={isTagMatched(tag.key, tag.value) ? "highlight-tag" : ""}

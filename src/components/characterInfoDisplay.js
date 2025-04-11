@@ -15,15 +15,15 @@ const CharacterInfoDisplay = ({ selectedCharacter }) => {
       <div className="character-info-left">
         <div className="character-info-row">
           <span className="info-label">서버</span>
-          <span className="info-value">#{selectedCharacter.server}</span>
+          <span className="info-value">{selectedCharacter.server}</span>
         </div>
         <div className="character-info-row">
           <span className="info-label">직 업</span>
-          <span className="info-value">#{selectedCharacter.job}</span>
+          <span className="info-value">{selectedCharacter.job}</span>
         </div>
         <div className="character-info-row">
           <span className="info-label">아이템</span>
-          <span className="info-value">#{selectedCharacter.itemlevel}</span>
+          <span className="info-value">{selectedCharacter.itemlevel}</span>
         </div>
       </div>
       <div className="character-image-box">
