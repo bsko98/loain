@@ -78,7 +78,7 @@ const Resetpassword = ({isOpen, onClose}) => {
 
     return (
         <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='filter-modal-overlay' onClick={closeModal}>
+            <div className='filter-modal-overlay' onMouseDown={closeModal}>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
                         <div className='maincontentaccount-container'>

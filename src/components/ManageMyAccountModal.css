@@ -165,8 +165,33 @@ cursor: pointer;
 
 }
 
-.manage-my-account-email-btn:active{
+.manage-my-account-email-btn-active{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+
+    width: 120px;
+    height: 43px;
+
     background-color: #464AA5;
+    border: 1px solid #797979;
+    border-radius: 12px;
+
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+    
 }
 
 
@@ -270,7 +295,6 @@ border-radius: 12px;
 
 .manage-my-account-api-btn{
 
-
 box-sizing: border-box;
 
 /* Auto layout */
@@ -301,8 +325,35 @@ cursor: pointer;
 
 }
 
-.manage-my-account-api-btn:active{
-    background-color: #464AA5;
+.manage-my-account-api-btn-active{
+
+    box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 12px 24px;
+gap: 10px;
+
+width: 120px;
+height: 62px;
+
+background-color: #464AA5;
+border: 1px solid #797979;
+border-radius: 12px;
+
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+cursor: pointer;
 }
 
 
@@ -387,21 +438,20 @@ textarea:placeholder {
 
 .delete-id-modal-title-row{
 
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 0px;
-gap: 257px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 257px;
 
-width: 368px;
-height: 21px;
+    width: 368px;
+    height: 21px;
 
 
 }
 
 .delete-id-modal-title-txt{
-    /* 회원 탈퇴 */
 
 width: 67px;
 height: 21px;
@@ -419,7 +469,9 @@ color: #DFDFDF;
 }
 
 .delete-id-modal-txt-row{
-    /* 회원 탈퇴에 대한 안내 문구가 들어갑니다. 회원 탈퇴에 대한 안내 문구가 들어갑니다.2 */
+
+display: flex;
+flex-direction: column;
 
 width: 269px;
 height: 46px;

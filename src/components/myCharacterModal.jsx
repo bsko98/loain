@@ -40,12 +40,12 @@ const MyCharacterModal = () => {
   return (
     <div className='my-character-container'>
       <div className='my-character-add-button-row'>
-          내 캐릭터
-          <button className='add-character-buuton'>
-              <AddButton style={{marginTop:'4px'}}/>
-              <div style={{width:'49px', height:'17px', fontSize:'11px', marginLeft:'4px', paddingTop:'4.5px'}} onClick={()=>alert("캐릭터 추가 부분이 구현될거임")}>
+          <span className="my-character-tittle">내 캐릭터</span>
+          <button className='add-character-button' onClick={()=>alert("캐릭터 추가 부분이 구현될거임")}>
+              <AddButton/>
+              <span className='add-character-button-text'>
                   추가하기
-              </div>
+              </span>
           </button>
       </div>
       <div className='my-character-server-box'>

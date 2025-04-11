@@ -14,6 +14,8 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
     const [modalPosition, setModalPosition] = useState({ top: 160, left: 292 });
     const [deleteIdModal, setDeleteIdModal] = useState(false);
     const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
+    const [emailInputValue, setEmailInputValue] = useState("");
+    const [apiKeyInputValue, setApiKeyInputValue] = useState("");
     const modalWidth = 240;
     const divRef = useRef(null);
 
@@ -39,6 +41,14 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
         setIsResetPasswordModalOpen(!isResetPasswordModalOpen)
     }
 
+    const handleEmailInputChange = (e) => {
+        setEmailInputValue(e.target.value);
+    };
+
+    const handleApiKeyInputChange = (e) => {
+        setApiKeyInputValue(e.target.value);
+    };
+
     if (!isOpen) return null;
 
     return (
@@ -54,8 +64,8 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                         <span className='manage-my-account-email-txt'>이메일 *</span>
                     </div>
                     <div className='manage-my-account-email-input-row'>
-                        <input className='manage-my-account-email-input' type='text'/>
-                        <button className='manage-my-account-email-btn'>저장</button>
+                        <input className='manage-my-account-email-input' value={emailInputValue} type='text' onChange={handleEmailInputChange}/>
+                        <button className={`${emailInputValue ? 'manage-my-account-email-btn-active' : 'manage-my-account-email-btn'}`}>저장</button>
                     </div>
                 </div>
                 <div className='manage-my-account-api-box'>
@@ -95,9 +105,9 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                         )}
                     </div>
                     <div className='manage-my-account-api-input-row'>
-                    <textarea className='inputaccount-textbox' type='text'  placeholder='API Key를 입력해주세요.'  style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none', resize: 'none' }}>
+                    <textarea className='inputaccount-textbox' type='text'  placeholder='API Key를 입력해주세요.' value={apiKeyInputValue} onChange={handleApiKeyInputChange} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none', resize: 'none' }}>
                     </textarea>
-                        <button className='manage-my-account-api-btn'>저장</button>
+                        <button className={`${apiKeyInputValue ? 'manage-my-account-api-btn-active' : 'manage-my-account-api-btn'}`}>저장</button>
                     </div>
                 </div>
                 <div className='manage-my-account-btn-box'>
@@ -110,8 +120,7 @@ const ManageMyAccountModal = ({isOpen, onClose}) => {
                             <span className='delete-id-modal-title-txt'>회원 탈퇴</span>
                         </div>
                         <div className='delete-id-modal-txt-row'>
-                            <span>회원탈퇴에 대한 안내문구가 들어갑니다.</span>
-                            <br/>
+                            <span style={{marginBottom:'4px'}}>회원탈퇴에 대한 안내문구가 들어갑니다.</span>
                             <span>회원탈퇴에 대한 안내문구가 들어갑니다2.</span>
                         </div>
                         <div className='delete-id-modal-button-row'>

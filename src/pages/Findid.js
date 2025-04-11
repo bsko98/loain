@@ -45,7 +45,7 @@ const Findid = ({isOpen, onClose}) => {
     if (!isOpen) return null;
 
     return (
-        <div style={{ fontFamily: 'Pretendard' }} onClick={closeModal}>
+        <div style={{ fontFamily: 'Pretendard' }} onMouseDown={closeModal}>
             <div className='filter-modal-overlay'>
                 <div className='mainaccount-container'>
                     <div className='contentaccount-container'>
