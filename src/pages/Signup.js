@@ -89,8 +89,8 @@ const Signup = ({isOpen}) => {
         // 회원가입 완료 후 메인페이지 or 로그인페이지
     };
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [modalPosition, setModalPosition] = useState({ top: 350.7, left: 664 });  //일단 위치는 고정값으로
 
     const divRef = useRef(null);
     const modalWidth = 240;

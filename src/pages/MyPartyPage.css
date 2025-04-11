@@ -148,36 +148,31 @@ color: #DFDFDF;
 
 /* 위에 내 파티 보여주는 부분에서 킥버튼 */
 .kick-button{
-    /* Frame 427322365 */
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 4px;
-gap: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
 
-width: 33px;
-height: 25px;
+    width: 33px;
+    height: 25px;
 
-background: #D28506;
-border-radius: 8px;
-border: 0;
-cursor: pointer;
-/* 추방 */
+    background: #D28506;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
 
 
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
-display: flex;
-align-items: center;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 
-color: #DFDFDF;
+    color: #DFDFDF;
 
+    margin-top: 5.5px;
 
     
 }

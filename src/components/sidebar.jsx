@@ -101,7 +101,7 @@ const Sidebar = () => {
                     <ul style={{ paddingInlineStart: '0px' }}>
                         {items.map(item => (
                             <li className='menu-row' key={item.id} onClick={() => onClickMenu(item)}>
-                                {(location.pathname === item.url && 1) ? <item.blueComponent className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} /> : <item.Component className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} />}
+                                {(location.pathname === item.url && 1) ? <item.blueComponent className='icon' style={{ width:'24px', height:'24px' ,marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} /> : <item.Component className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} />}
                                 <div style={{userSelect:'none', paddingTop: '14.5px', color: (location.pathname === item.url && (item.name !== '로그인' && item.name !== '파티 만들기')) ? '#6B83E1' : '#DFDFDF' }}>{item.name}</div>
                             </li>))}
                     </ul>
@@ -111,7 +111,17 @@ const Sidebar = () => {
                 <div className='more-item-box'>
                     {moreItems.map(item => (<li key={item.id} className='more-item-box-row' onClick={()=>openManageMyAccountModal(item)}> <item.Component style={{ marginRight: '4px' }}/>
                         <div style={{ fontSize: '15px', color: '#DFDFDF', paddingTop: '1px' }}>{item.name}</div> </li>))}
-                    <div style={{ fontSize: '13px', marginTop: '16px', textAlign: 'left', color: '#DFDFDF' }}>이용약관 ⋅ 개인정보 처리방침</div>
+                    <div className='terms-of-use'>  
+                        <div style={{cursor:'pointer'}}>
+                            이용약관
+                        </div>
+                        <div style={{marginLeft:'3px', marginRight:'3px'}}>
+                            ⋅
+                        </div>
+                        <div style={{cursor:'pointer'}}>
+                            개인정보 처리방침
+                        </div>
+                    </div>
                 </div>
             </div> : null}
             <div>

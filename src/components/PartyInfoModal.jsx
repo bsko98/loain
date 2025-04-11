@@ -144,7 +144,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             </div>
             <div className='party-info-modal-right-container'>
             <div className='party-info-modal-left-container-first-row'>상세정보</div>
-              <div className="filter-bottom-container">
+              <div className="filter-bottom-container2">
                 <div className="skill-bar">
                     <div className="skill-wrapper">
                         {startLevel !== null && endLevel !== null && (
@@ -177,9 +177,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                     </div>
                     <div className="skill-bar-bottom-line"></div>
                 </div>
-                <div className="mycharacter-checkbox-container">
-                </div>
-                <div className="filter-main-container">
+                <div className="filter-main-container" style={{marginTop:'10px'}}>
                     <div className="character-filter-container">
                         <div className="character-filter-column-left">
                             <div className="character-filter-box">
