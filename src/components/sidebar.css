@@ -119,3 +119,20 @@
 .more-item-box-row:hover{
     background-color: #292B2E;
 }
+
+/* 이용약관이랑 개인정보 어쩌구 */
+.terms-of-use{
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    margin-top: 16px; 
+    text-align: left; 
+    color: #DFDFDF;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+
+}
