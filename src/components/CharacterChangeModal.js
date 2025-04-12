@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"; 
 import "./CharacterChangeModal.css";
 import CharacterInfoComponent from "./characterInfoComponent";
-
+import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCharacter, selectedCharacter }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
@@ -35,7 +35,7 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
             <div className="character-change-modal-content" ref={modalRef}>
                 <div className="character-change-modal-header">
                     <h2>내 캐릭터</h2>
-                    <button className="character-change-modal-close-btn" onClick={onClose}>X</button>
+                    <button className="character-change-modal-close-btn" onClick={onClose}><CloseButton/></button>
                 </div>
                 <div className="character-change-server-list">
                     {["루페온", "실리안", "카마인", "아브렐슈드", "아만", "카제로스", "카단", "니나브"].map((server, index) => (

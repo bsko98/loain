@@ -68,7 +68,6 @@
     width: 654PX;
     max-width: 654px;
     height: 33px;
-
     display: flex;
     align-items: center;
     background: rgba(230, 230, 230, 1);
@@ -91,7 +90,7 @@
     color: #898989;
     outline: none;
     border-radius: 8px;
-    padding-left: 8px;
+    padding-left: 16px;
     flex: none;
     order: 0;
     flex-grow: 1;
