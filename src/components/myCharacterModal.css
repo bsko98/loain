@@ -19,15 +19,23 @@
 }
 
 /* 추가하기 버튼 */
-.add-character-buuton{
-    width: 79px;
-    height: 26px;
-    background-color: #3F4044;
-    color: #DFDFDF;
-    border-radius: 8px;
-    border: none;
+.add-character-button{
+
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    gap: 4px;
+
+    width: 79px;
+    height: 26px;
+
+    background: #3F4044;
+    border-radius: 8px;
+    border: 0;
+
+    cursor: pointer;
+
 }
 
 /* 로아 서버 보여주는 부분 */
@@ -68,4 +76,40 @@
 
 .no-character{
     width: 100%;
+}
+
+.my-character-tittle{
+    /* 내 캐릭터 */
+
+width: 67px;
+height: 21px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 21px;
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+margin-top: 2.5px;
+
+
+}
+
+.add-character-button-text{
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
 }
