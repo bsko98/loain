@@ -5,13 +5,14 @@ import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
 import MyPartyPage from './pages/MyPartyPage.jsx';
+import LoainAuthModal from './components/LoainAuthModal.jsx';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<LoainAuthModal />} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter />} />
           <Route path="/myParty" element={<MyPartyPage />} />
         </Routes>
