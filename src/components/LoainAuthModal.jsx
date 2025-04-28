@@ -8,7 +8,27 @@ import { ReactComponent as QuestionMarkImage } from '../assets/images/QuestionMa
 const LoainAuthModal = () => {
 
   const [type,setType] = useState(true);
+  const webType = [
+    "1. 인증코드 : 199e6b5f0cbd...(클릭하여 복사)",
+    "2. 스토브 프로그램(런처) 실행 후 로그인",
+    "3. 상단의 닉네임을 클릭해 드롭다운 펼치기",
+    "4. 드롭다운 메뉴의 닉네임을 클릭해 프로필 페이지로 이동",
+    "5. 프로필 페이지 상단 배너 우측의 톱니바퀴를 클릭",
+    "6. 소개글 입력란에 복사한 인증코드 붙여넣기 후 변경 버튼을 클릭해 저장",
+    "7. 상단의 '내 MY홈 가기' 버튼 클릭하여 프로필 페이지로 이동",
+    "8. 인증 페이지로 돌아와 복사한 주소(URL)를 붙여넣은 후 인증 진행"
+  ]
 
+  const clientType = [
+    "1. 인증코드 : 199e6b5f0cbd...(클릭하여 복사)",
+    "2. 스토브 홈페이지 접속 후 로그인",
+    "3. 우측 상단의 프로필 아이콘을 클릭해 드롭다운 펼치기",
+    "4. 드롭다운 메뉴의 닉네임을 클릭해 프로필 페이지로 이동",
+    "5. 프로필 페이지 상단 배너 우측의 톱니바퀴를 클릭",
+    "6. 소개글 입력란에 복사한 인증코드 붙여넣기 후 변경 버튼을 클릭해 저장",
+    "7. 상단의 '내 MY홈 가기' 버튼 클릭하여 프로필 페이지로 이동",
+    "8. 인증 페이지로 돌아와 복사한 주소(URL)를 붙여넣은 후 인증 진행"
+  ]
 
   return (
     <div className='filter-modal-overlay'>
@@ -33,6 +53,12 @@ const LoainAuthModal = () => {
                 </div>
                 <div className='loain-auth-content-container'>
                   <div className='loain-auth-content-box'>
+                  {type ? webType.map((data,index) =>(
+                    <span key={index} className='loain-auth-info-txt'>{data}</span>
+                  )) : clientType.map((data,index) =>(
+                    <span key={index} className='loain-auth-info-txt'>{data}</span>
+                  ))
+                  }
                   <input className='loain-auto-content-input' placeholder='프로필 페이지 주소(URL)를 입력해주세요.'/> 
                   </div>
                 </div>

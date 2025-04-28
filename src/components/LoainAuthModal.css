@@ -247,3 +247,22 @@ color: #898989;
 
 
 }
+
+.loain-auth-info-txt{
+    /* 인증코드 : 199e6b5f0cbd...(클릭하여 복사) */
+
+margin: 0 auto;
+width: 515px;
+height: 15px;
+
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+}
