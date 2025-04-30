@@ -5,9 +5,9 @@ import { ReactComponent as LoainText } from '../assets/images/LoainTextImage.svg
 import { ReactComponent as APIKeyImage } from '../assets/images/APIKeyImage.svg';
 import { ReactComponent as QuestionMarkImage } from '../assets/images/QuestionMarkImage.svg';
 
-const LoainAuthModal = () => {
+const LoainAuthModal = ({isOpen, onClose}) => {
 
-  const [type,setType] = useState(true);
+  const [type,setType] = useState("web");
   const randomString = 'seeex'
   const webType = [
     "1. 인증코드 : {randomString}(클릭하여 복사)",
@@ -37,11 +37,17 @@ const LoainAuthModal = () => {
       .catch(() => alert("클립보드 복사에 실패했습니다."));
   };
 
-
-
+  const closeModal = (e) =>{
+    if(e.target.classList.contains("filter-modal-overlay"))
+    {
+        onClose();
+    }
+  }
+  
+  if (!isOpen) return null;
 
   return (
-    <div className='filter-modal-overlay'>
+    <div className='filter-modal-overlay' onMouseDown={closeModal}>
         <div className='loain-auth-modal-container'> 
             <div className='loain-auth-modal-box'>
                 <div className='logoposaccount-container'>
@@ -58,8 +64,8 @@ const LoainAuthModal = () => {
                     </div>
                 </div>
                 <div className='loain-auth-second-row'>
-                  <div className={type ? 'loain-auth-second-row-state-active' :'loain-auth-second-row-state'} onClick={()=>setType(!type)}>브라우저 기준</div>
-                  <div className={type ? 'loain-auth-second-row-state' :'loain-auth-second-row-state-active'} onClick={()=>setType(!type)}>스토브 런처 기준</div>
+                  <div className={type==='web'  ? 'loain-auth-second-row-state-active' : 'loain-auth-second-row-state'} onClick={()=>setType("web")}>브라우저 기준</div>
+                  <div className={type==='client' ? 'loain-auth-second-row-state-active' : 'loain-auth-second-row-state'} onClick={()=>setType("client")}>스토브 런처 기준</div>
                 </div>
                 <div className='loain-auth-content-container'>
                   <div className='loain-auth-content-box'>
