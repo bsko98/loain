@@ -267,3 +267,8 @@ align-items: center;
 color: #FFFFFF;
 
 }
+
+.loain-auth-token{
+    color: #6B83E1;
+    cursor: pointer;
+}

@@ -70,7 +70,7 @@ const LoainAuthModal = () => {
                       {parts[0]}
                       {index === 0 && 
                         <span 
-                          style={{color:'blue'}}
+                          className='loain-auth-token'
                           onClick={handleCopyToClipboard}
                         >
                           &nbsp; {randomString}&nbsp; 
@@ -85,7 +85,7 @@ const LoainAuthModal = () => {
                       {parts[0]}
                       {index === 0 && 
                         <span 
-                          style={{color:'blue'}}
+                          className='loain-auth-token'
                           onClick={handleCopyToClipboard}
                         >
                           &nbsp; {randomString}&nbsp; 
