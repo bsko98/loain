@@ -48,13 +48,13 @@
     flex-direction: row;
 }
 
-.ss{
+.loain-auth-title{
     /* 로아인 인증 과정 설명 */
 
 width: 135px;
 height: 18px;
 
-font-family: 'Noto Sans KR';
+font-family: 'Pretendard';
 font-style: normal;
 font-weight: 700;
 font-size: 15px;
@@ -79,6 +79,8 @@ color: #DFDFDF;
     height: 19px;
 
     background: #1E1E1E;
+
+    font-family: 'Pretendard';
 
 }
 
@@ -189,7 +191,7 @@ margin-top: -12px;
     border: 0;
 
 
-    font-family: 'Noto Sans KR';
+    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -249,13 +251,12 @@ color: #898989;
 }
 
 .loain-auth-info-txt{
-    /* 인증코드 : 199e6b5f0cbd...(클릭하여 복사) */
 
 margin: 0 auto;
 width: 515px;
 height: 15px;
 
-font-family: 'Noto Sans KR';
+font-family: 'Pretendard';
 font-style: normal;
 font-weight: 500;
 font-size: 14px;

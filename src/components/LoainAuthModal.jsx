@@ -8,8 +8,9 @@ import { ReactComponent as QuestionMarkImage } from '../assets/images/QuestionMa
 const LoainAuthModal = () => {
 
   const [type,setType] = useState(true);
+  const randomString = 'seeex'
   const webType = [
-    "1. 인증코드 : 199e6b5f0cbd...(클릭하여 복사)",
+    "1. 인증코드 : {randomString}(클릭하여 복사)",
     "2. 스토브 프로그램(런처) 실행 후 로그인",
     "3. 상단의 닉네임을 클릭해 드롭다운 펼치기",
     "4. 드롭다운 메뉴의 닉네임을 클릭해 프로필 페이지로 이동",
@@ -20,7 +21,7 @@ const LoainAuthModal = () => {
   ]
 
   const clientType = [
-    "1. 인증코드 : 199e6b5f0cbd...(클릭하여 복사)",
+    "1. 인증코드 : {randomString}(클릭하여 복사)",
     "2. 스토브 홈페이지 접속 후 로그인",
     "3. 우측 상단의 프로필 아이콘을 클릭해 드롭다운 펼치기",
     "4. 드롭다운 메뉴의 닉네임을 클릭해 프로필 페이지로 이동",
@@ -29,6 +30,15 @@ const LoainAuthModal = () => {
     "7. 상단의 '내 MY홈 가기' 버튼 클릭하여 프로필 페이지로 이동",
     "8. 인증 페이지로 돌아와 복사한 주소(URL)를 붙여넣은 후 인증 진행"
   ]
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(randomString)
+      .then(() => alert("클립보드에 복사되었습니다!"))
+      .catch(() => alert("클립보드 복사에 실패했습니다."));
+  };
+
+
+
 
   return (
     <div className='filter-modal-overlay'>
@@ -41,7 +51,7 @@ const LoainAuthModal = () => {
                 <div className='loain-auth-first-row'>
                   <div className='loain-auth-text-row'>
                     <APIKeyImage style={{ width: '18px', height: '18px', marginRight:'8px'}} />
-                    <span className='ss'>로아인 인증 과정 설명</span>
+                    <span className='loain-auth-title'>로아인 인증 과정 설명</span>
                   </div>
                     <div style={{ width: '18px', height: '18px' }}>
                         <QuestionMarkImage style={{ width: '18px', height: '18px' }} />
@@ -53,11 +63,37 @@ const LoainAuthModal = () => {
                 </div>
                 <div className='loain-auth-content-container'>
                   <div className='loain-auth-content-box'>
-                  {type ? webType.map((data,index) =>(
-                    <span key={index} className='loain-auth-info-txt'>{data}</span>
-                  )) : clientType.map((data,index) =>(
-                    <span key={index} className='loain-auth-info-txt'>{data}</span>
-                  ))
+                  {type ? webType.map((data,index) =>{
+                    const parts = data.split("{randomString}");
+                    return(
+                    <span key={index} className='loain-auth-info-txt'>
+                      {parts[0]}
+                      {index === 0 && 
+                        <span 
+                          style={{color:'blue'}}
+                          onClick={handleCopyToClipboard}
+                        >
+                          &nbsp; {randomString}&nbsp; 
+                        </span>
+                      }
+                      {parts[1]}
+                    </span>)
+                  }) : clientType.map((data,index) =>{
+                    const parts = data.split("{randomString}");
+                    return(
+                    <span key={index} className='loain-auth-info-txt'>
+                      {parts[0]}
+                      {index === 0 && 
+                        <span 
+                          style={{color:'blue'}}
+                          onClick={handleCopyToClipboard}
+                        >
+                          &nbsp; {randomString}&nbsp; 
+                        </span>
+                      }
+                      {parts[1]}
+                    </span>)
+                  })
                   }
                   <input className='loain-auto-content-input' placeholder='프로필 페이지 주소(URL)를 입력해주세요.'/> 
                   </div>
