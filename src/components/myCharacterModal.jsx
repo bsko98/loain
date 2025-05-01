@@ -3,6 +3,7 @@ import './myCharacterModal.css'
 import CharacterInfoComponent from './characterInfoComponent'
 import './CharacterChangeModal.css'
 import { ReactComponent as AddButton} from '../assets/images/addButton.svg'
+import LoainAuthModal from "./LoainAuthModal";
 
 
 //TODO - 정보 갱신 누를시 어떤 이벤트가 작동하는지 확인해봐야될듯
@@ -25,7 +26,7 @@ const MyCharacterModal = () => {
     {id: '3', characterPhoto:'https://img.lostark.co.kr/armory/3/ADCEB258EB5A436F8E1E3B0F852441B0A85753ABE72E9D29D88C610F885A1120.jpg?v=20250204191040', characterName: '사각나무방패', serverName: '카마인', classInfo:'워로드', itemLevel:'1,592.50'},
   ]  
 
-
+  const [isLoainAuthModalOpen,setIsLoainAuthModalOpen] = useState(false);
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
   const [activeServer, setActiveServer] = useState(null);
   
@@ -41,7 +42,7 @@ const MyCharacterModal = () => {
     <div className='my-character-container'>
       <div className='my-character-add-button-row'>
           <span className="my-character-tittle">내 캐릭터</span>
-          <button className='add-character-button' onClick={()=>alert("캐릭터 추가 부분이 구현될거임")}>
+          <button className='add-character-button' onClick={()=>setIsLoainAuthModalOpen(!isLoainAuthModalOpen)}>
               <AddButton/>
               <span className='add-character-button-text'>
                   추가하기
@@ -61,6 +62,7 @@ const MyCharacterModal = () => {
             <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}
       </div>
+      <LoainAuthModal isOpen={isLoainAuthModalOpen} onClose={()=>setIsLoainAuthModalOpen(!isLoainAuthModalOpen)}/>
   </div>
   )
 }
