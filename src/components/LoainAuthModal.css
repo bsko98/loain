@@ -1,0 +1,276 @@
+.loain-auth-modal-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px;
+    gap: 12px;
+
+    position: relative;
+    width: 579px;
+    height: 548px;
+    /* left: calc(50% - 651px/2 + 16.5px);
+    top: calc(50% - 620px/2 - 3041.5px); */
+
+    background: #1E1E1E;
+    border-radius: 24px;
+
+}
+
+.loain-auth-modal-box{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 12px;
+
+    width: 579px;
+    height: 548px;
+
+}
+
+.loain-auth-first-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 201px;
+
+    width: 579px;
+    height: 18px;
+}
+
+.loain-auth-text-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.loain-auth-title{
+    /* 로아인 인증 과정 설명 */
+
+width: 135px;
+height: 18px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+
+color: #DFDFDF;
+
+}
+
+.loain-auth-second-row{
+    /* Frame 427322409 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 579px;
+    height: 19px;
+
+    background: #1E1E1E;
+
+    font-family: 'Pretendard';
+
+}
+
+.loain-auth-second-row-state{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 289.5px;
+    height: 19px;
+
+    background: #252525;
+    border-radius: 12px 12px 0px 0px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+
+.loain-auth-second-row-state-active{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 289.5px;
+    height: 19px;
+
+    background: #2C2F34;
+    border-radius: 12px 12px 0px 0px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+
+.loain-auth-content-container{
+    /* Frame 427322409 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px;
+gap: 10px;
+
+width: 547px;
+height: 332px;
+
+background: #2C2F34;
+border-radius: 0px 0px 12px 12px;
+
+margin-top: -12px;
+
+}
+
+.loain-auth-content-box{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 18px;
+
+    width: 515px;
+    height: 308px;
+
+    background: #383D45;
+    border-radius: 2px;
+
+}
+
+.loain-auth-btn{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    gap: 10px;
+
+    margin: 0 auto;
+    width: 368px;
+    height: 56px;
+
+    background: #6B83E1;
+    border-radius: 12px;
+    border: 0;
+
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    cursor: pointer;
+
+    color: #FFFFFF;
+
+}
+
+.loain-auto-content-input{
+    /* Frame 427319569 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 24px;
+gap: 10px;
+
+margin: 0 auto;
+width: 515px;
+height: 33px;
+
+background: #FFFFFF;
+border: 1px solid #D9D9D9;
+border-radius: 12px;
+
+font-weight: 500;
+font-size: 14px;
+
+}
+
+.loain-auto-content-input::placeholder{
+
+width: 467px;
+height: 17px;
+
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+display: flex;
+align-items: flex-end;
+
+color: #898989;
+
+
+}
+
+.loain-auth-info-txt{
+
+margin: 0 auto;
+width: 515px;
+height: 15px;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+user-select: none; 
+
+}
+
+.loain-auth-token{
+    color: #6B83E1;
+    cursor: pointer;
+}
+
+
+.loain-auth-btn:active {
+    background-color: #464AA5;
+}
