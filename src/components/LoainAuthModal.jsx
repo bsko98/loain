@@ -9,7 +9,7 @@ const LoainAuthModal = ({isOpen, onClose}) => {
 
   const [type,setType] = useState("web");
   const randomString = 'seeex'
-  const webType = [
+  const clientType = [
     "1. 인증코드 : {randomString}(클릭하여 복사)",
     "2. 스토브 프로그램(런처) 실행 후 로그인",
     "3. 상단의 닉네임을 클릭해 드롭다운 펼치기",
@@ -20,7 +20,7 @@ const LoainAuthModal = ({isOpen, onClose}) => {
     "8. 인증 페이지로 돌아와 복사한 주소(URL)를 붙여넣은 후 인증 진행"
   ]
 
-  const clientType = [
+  const webType = [
     "1. 인증코드 : {randomString}(클릭하여 복사)",
     "2. 스토브 홈페이지 접속 후 로그인",
     "3. 우측 상단의 프로필 아이콘을 클릭해 드롭다운 펼치기",
@@ -69,7 +69,7 @@ const LoainAuthModal = ({isOpen, onClose}) => {
                 </div>
                 <div className='loain-auth-content-container'>
                   <div className='loain-auth-content-box'>
-                  {type ? webType.map((data,index) =>{
+                  {type==='web' ? webType.map((data,index) =>{
                     const parts = data.split("{randomString}");
                     return(
                     <span key={index} className='loain-auth-info-txt'>
