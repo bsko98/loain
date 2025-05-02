@@ -61,6 +61,10 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             newFilters[name] = value;
         }
 
+        if(type === 'text'){
+            newFilters[name] = e.target.value.replaceAll(/\D/g, "");
+        }
+
         if (name === "rangeStart") {
             const startValue = parseInt(value, 10);
             const endValue = parseInt(prevFilters.rangeEnd, 10);
@@ -237,7 +241,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">도약</label>
-                                <input type="text" className="character-filter-input" placeholder="입력" name="leaf" value={filters.leaf} onChange={handleFilterChange}/>
+                                <input type="text" className="character-filter-input" placeholder="입력" name="leap" value={filters.leap} onChange={handleFilterChange}/>
                             </div>
                             <label className="transcendence-label">초월</label>
                             <div className="character-filter-box">
