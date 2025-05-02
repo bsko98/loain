@@ -9,6 +9,7 @@ import CharacterInfoDisplay from "../components/characterInfoDisplay";
 import CardContainer from '../components/CardContainer';
 import TitleContainer from '../components/TitleContainer';
 import ArkPassiveContainer from '../components/ArkPassiveContainer';
+import AdComponent from '../components/AdComponent'; 
 
 const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -220,7 +221,7 @@ const MainPage = () => {
   return (
     <div className="main-Container">
       <div className="content-Wrapper">
-        <div className="ad-Container">ad-Container</div>
+        <div className="ad-Container"><AdComponent /></div>
         <div className="character-Select-Container">
           <CharacterSelectContainer
             setSelectedCharacter={setSelectedCharacter}
