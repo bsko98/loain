@@ -74,7 +74,7 @@ const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen}
                             <div className='subcontentaccount-container' style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
                                 <div className='subContentPos' style={{ width: 'auto', minWidth: '256px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                     <button className='findEmail' style={{ width: 'auto', minWidth: '69px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }} onClick={naviageToModals}>
-                                        <span id = "findEmail" className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>이메일 찾기</span>
+                                        <span id = "findEmail" className='underline-text' style={{ fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF' }}>아이디 찾기</span>
                                     </button>
                                     <Dot /> { }
                                     <button className='resetPw' style={{ width: 'auto', minWidth: '95px', height: 'auto', minHeight: '18px', backgroundColor: '#1E1E1E', border: 'none' }} onClick={naviageToModals}>

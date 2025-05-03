@@ -84,6 +84,10 @@ const FilterModal = ({ isOpen, onClose, applyFilters, initialFilters }) => {
             let newFilters = { ...prevFilters };
             newFilters[name] = type === "checkbox" ? checked : value;
 
+            if(type === 'text'){
+                newFilters[name] = e.target.value.replaceAll(/\D/g, "");
+            }
+            
             if (name === "rangeStart") {
                 const startValue = parseInt(value, 10);
                 const endValue = parseInt(prevFilters.rangeEnd, 10);
