@@ -4,7 +4,6 @@ import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
 import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
 import { ReactComponent as IdImage } from './images/IdImage.svg';
 import { ReactComponent as PwImage } from './images/PwImage.svg';
-import { ReactComponent as EmailImage } from './images/EmailImage.svg';
 import { ReactComponent as APIKeyImage } from './images/APIKeyImage.svg';
 import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.svg';
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
@@ -15,7 +14,6 @@ const Signup = ({isOpen, onClose}) => {
     const [inputId, setInputId] = useState("");
     const [inputPw, setInputPw] = useState("");
     const [inputCheckPw, setInputCheckPw] = useState("");
-    const [inputEmail, setInputEmail] = useState("");
     const [inputAPIKey, setInputAPIKey] = useState("");
 
     // <Lint>
@@ -27,16 +25,12 @@ const Signup = ({isOpen, onClose}) => {
     const setSubbmittedValueId = useState(null)[1];
     const setSubbmittedValuePw = useState(null)[1];
     const setSubbmittedValueCheckPw = useState(null)[1];
-    const setSubbmittedValueEmail = useState(null)[1];
     const setSubbmittedValueAPIKey = useState(null)[1];
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleChangeId = (id) => {
         setInputId(id.target.value);            // 입력값 업데이트
-    };
-    const handleChangeEmail = (email) => {
-        setInputEmail(email.target.value);      // 입력값 업데이트
     };
     const handleChangePw = (pw) => {
         setInputPw(pw.target.value);            // 입력값 업데이트
@@ -70,14 +64,7 @@ const Signup = ({isOpen, onClose}) => {
         setInputPw("");
         setInputCheckPw("");
     };
-    const CheckEmail = () => {
-        setSubbmittedValueEmail(inputEmail.trim() ? inputEmail : null);     // 값이 없으면 null 저장
-        if (inputEmail) {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
-        }
 
-        setInputEmail("");
-    };
     const CheckAPIKey = () => {
         setSubbmittedValueAPIKey(inputAPIKey.trim() ? inputAPIKey : null);     // 값이 없으면 null 저장
         if (inputAPIKey) {
@@ -148,20 +135,7 @@ const Signup = ({isOpen, onClose}) => {
         </div>,
 
         <div key={2}>
-            <div key={2} className='EmailPwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
-                    <EmailImage style={{ width: '18px', height: '18px' }} />
-                    <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>이메일 *</span>
-                </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputaccount-textbox' type='text' value={inputEmail} placeholder='백업용 이메일을 입력해주세요.' onChange={handleChangeEmail} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
-                    </input>
-                </div>
-            </div>
-        </div>,
-
-        <div key={3}>
-            <div key={3} className='APIKeyPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
+            <div key={2} className='APIKeyPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
                     <APIKeyImage style={{ width: '18px', height: '18px' }} />
                     <span style={{ width: 'auto', minWidth: '123px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px', paddingRight: '201px' }}>로스트아크 API Key</span>
@@ -212,11 +186,7 @@ const Signup = ({isOpen, onClose}) => {
             <span style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</span>
         </button>,
 
-        <button key={2} className='mainaccount-button' onClick={CheckEmail}>
-            <span style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</span>
-        </button>,
-
-        <button key={3} className='mainaccount-button' onClick={CheckAPIKey}>
+        <button key={2} className='mainaccount-button' onClick={CheckAPIKey}>
             <span style={{ width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>회원가입 완료</span>
         </button>
     ];
