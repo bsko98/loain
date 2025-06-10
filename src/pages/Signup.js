@@ -74,6 +74,7 @@ const Signup = ({isOpen, onClose}) => {
         setInputAPIKey("");
 
         // 회원가입 완료 후 메인페이지 or 로그인페이지
+        setCurrentIndex(0);
         onClose();
     };
 

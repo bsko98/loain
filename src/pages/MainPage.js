@@ -100,39 +100,39 @@ const MainPage = () => {
       maxmember: 16,
       startTime: "12:00",
       partyMembers: [
-        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" },
-        { nickname: "닉네임2", level: "1560", class: "창술사", classIcon: "" },
-        { nickname: "닉네임3", level: "1560", class: "블레이드", classIcon: "" },
-        { nickname: "닉네임4", level: "1560", class: "건슬링어", classIcon: "" },
-        { nickname: "닉네임5", level: "1560", class: "홀리나이트", classIcon: "" },
-        { nickname: "닉네임6", level: "1560", class: "기상술사", classIcon: "" },
-        { nickname: "닉네임7", level: "1560", class: "아르카나", classIcon: "" }
+        { nickname: "닉네임1", level: "1640", class: "데모닉", classIcon: "" },
+        { nickname: "닉네임2", level: "1640", class: "창술사", classIcon: "" },
+        { nickname: "닉네임3", level: "1640", class: "블레이드", classIcon: "" },
+        { nickname: "닉네임4", level: "1640", class: "건슬링어", classIcon: "" },
+        { nickname: "닉네임5", level: "1680", class: "홀리나이트", classIcon: "" },
+        { nickname: "닉네임6", level: "1700", class: "기상술사", classIcon: "" },
+        { nickname: "닉네임7", level: "1660", class: "아르카나", classIcon: "" }
       ]
     },
     {
       id: 2,
-      partytitle: "카멘 하드 1~3 반숙 방풀방 랏폿",
-      raid: "카멘",
+      partytitle: "일리아칸 하드 1~3 반숙 랏폿",
+      raid: "일리아칸",
       difficulty: "하드",
       rangeStart: "1",
       rangeEnd: "3",
-      itemLevel: "1640",
+      itemLevel: "1600",
       title: "빛을 꺼트리는 자",
       card: "세상을 구하는 빛",
       cardValue: "30",
       environment: "예민x",
-      evolution: "100",
-      realization: "200",
-      leap: "300",
-      transcendenceWeapon: "무풀",
-      transcendenceArmor: "방풀",
+      evolution: "",
+      realization: "",
+      leap: "",
+      transcendenceWeapon: "",
+      transcendenceArmor: "",
       isLastPot: true,
       isLastDeal: false,
       skillRange: "반숙 ~ 숙련",
       maxmember: 4,
       startTime: "12:00",
       partyMembers: [
-        { nickname: "닉네임1", level: "1560", class: "데모닉", classIcon: "" }
+        { nickname: "닉네임1", level: "1640", class: "데모닉", classIcon: "" }
       ]
     }
   ];
