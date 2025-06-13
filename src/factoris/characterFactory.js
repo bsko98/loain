@@ -12,7 +12,7 @@ export class PartyFactory {
         arkPassive = ArkPassiveFactory.create(),
         transcend = TranscendFactory.create(),
         title = [],
-        card =[],
+        card = [],
     ) {
         return {
             characterId: characterId,

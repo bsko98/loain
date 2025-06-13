@@ -43,6 +43,11 @@ class UserData {
     volunteerParties //? string[]
 }
 
+class Chat {
+    timestamp // date
+    senderId // string
+    message // string
+}
 class Party {
     partyId // string
     title // string
@@ -66,7 +71,8 @@ export {
     Transcend,
     Character,
     PartyFilter,
-    Party,
     UserData,
+    Chat,
+    Party,
     MyData,
 }

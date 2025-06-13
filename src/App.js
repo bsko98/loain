@@ -14,6 +14,7 @@ function App() {
   const [partyList, setPartyList] = useState([])
   const [myParty, setMyarty] = useState(PartyFactory.create())
   const [credential, setCredential] = useState(CredentialFactory.create())
+  const [chatList, setChatList] = useState([])
   return (
     <div className="App">
       <Router>
