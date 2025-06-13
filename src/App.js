@@ -8,6 +8,7 @@ import MyPartyPage from './pages/MyPartyPage.jsx';
 import { MyDataFactory } from './factoris/myDataFactory.js';
 import { PartyFactory } from './factoris/partyFactory.js';
 import { CredentialFactory } from './factoris/credentialFactory.js';
+import Notification from './notification/notificationComponent.jsx';
 
 function App() {
   const [myData, setMyData] = useState(MyDataFactory.create())
@@ -17,6 +18,7 @@ function App() {
   const [chatList, setChatList] = useState([])
   return (
     <div className="App">
+      <Notification />
       <Router>
         <Routes>
           <Route path="/" element={<MainPage />} />
