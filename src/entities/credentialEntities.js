@@ -3,4 +3,4 @@ class Credential {
     refreshKey // string
 }
 
-export {Credential}
+export { Credential }

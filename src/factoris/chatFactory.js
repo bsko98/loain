@@ -1,9 +1,9 @@
 
 export class ChatFactory {
-        static create(
-            timestamp = undefined,
-            senderId = undefined,
-            message = undefined
+    static create(
+        timestamp = undefined,
+        senderId = undefined,
+        message = undefined
     ) {
         return {
             timestamp: timestamp,
