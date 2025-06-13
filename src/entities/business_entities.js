@@ -71,7 +71,8 @@ export {
     Transcend,
     Character,
     PartyFilter,
-    Party,
     UserData,
+    Chat,
+    Party,
     MyData,
 }
