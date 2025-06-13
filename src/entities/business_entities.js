@@ -36,6 +36,13 @@ class PartyFilter {
     lastSupporter // boolean|null
     lastDealer // boolean|null
 }
+class UserData {
+    id // string
+    chooseCharacter // Character|null
+    joinedPartyId //? string|null
+    volunteerParties //? string[]
+}
+
 class Party {
     partyId // string
     title // string
@@ -46,12 +53,6 @@ class Party {
     leader // UserData
     partyMembers // (UserData|null)[]
     volunteers // UserData[]
-}
-class UserData {
-    id // string
-    chooseCharacter // Character|null
-    joinedPartyId //? string|null
-    volunteerParties //? string[]
 }
 class MyData {
     stoveId // number
