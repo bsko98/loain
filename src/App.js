@@ -9,6 +9,8 @@ import { MyDataFactory } from './factoris/myDataFactory.js';
 import { PartyFactory } from './factoris/partyFactory.js';
 import { CredentialFactory } from './factoris/credentialFactory.js';
 import Notification from './notification/notificationComponent.jsx';
+import { socketManager } from './socket/socket.js';
+import { setEventHandlers } from './socket/eventHandlers.js';
 
 function App() {
   const [myData, setMyData] = useState(MyDataFactory.create())
@@ -16,6 +18,21 @@ function App() {
   const [myParty, setMyarty] = useState(PartyFactory.create())
   const [credential, setCredential] = useState(CredentialFactory.create())
   const [chatList, setChatList] = useState([])
+
+  const state = {
+    myData: myData,
+    setMyData: setMyData,
+    partyList: partyList,
+    setPartyList: setPartyList,
+    myParty: myParty,
+    setMyarty: setMyarty,
+    credential: credential,
+    setCredential: setCredential,
+    chatList: chatList,
+    setChatList: setChatList
+  }
+  socketManager.setHandlers(setEventHandlers(state))
+
   return (
     <div className="App">
       <Notification />
