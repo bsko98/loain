@@ -20,8 +20,8 @@ class Character {
     itemLevel // number
     arkPassive // ArkPassive
     transcend // Transcend
-    title // string[]
-    card // Card[]
+    titles // string[]
+    cards // Card[]
 }
 class PartyFilter {
     startGate // number
@@ -53,11 +53,11 @@ class Party {
     title // string
     boss // string
     difficulty // number
-    allow // boolean
     partyFilter // PartyFilter
     leader // UserData
     partyMembers // (UserData|null)[]
-    volunteers // UserData[]
+    allow // boolean|undefined
+    volunteers // UserData[]|undefined
 }
 class MyData {
     stoveId // number
