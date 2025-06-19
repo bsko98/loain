@@ -11,7 +11,7 @@ import TitleContainer from '../components/TitleContainer';
 import ArkPassiveContainer from '../components/ArkPassiveContainer';
 import AdComponent from '../components/AdComponent'; 
 
-const MainPage = () => {
+const MainPage = ({state}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -218,29 +218,24 @@ const MainPage = () => {
 
   const titleData = selectedCharacter?.titleList || [];
 
+
   return (
     <div className="main-Container">
       <div className="content-Wrapper">
         <div className="ad-Container"><AdComponent /></div>
         <div className="character-Select-Container">
           <CharacterSelectContainer
-            setSelectedCharacter={setSelectedCharacter}
-            characterList={characterList}
-            selectedCharacter={selectedCharacter}
+            state={state}
           />
         </div>
         <div className="main-Content">
           <div className="left-Column">
             <div className="character-Container">
-              <CharacterInfoDisplay selectedCharacter={selectedCharacter} />
+              <CharacterInfoDisplay state={state} />
             </div>
-            <ArkPassiveContainer
-              evolution={selectedCharacter?.evolution}
-              realization={selectedCharacter?.realization}
-              leap={selectedCharacter?.leap}
-            />
-            <CardContainer listTitle={"가지고 있는 카드"} listData={cardSetData} />
-            <TitleContainer listTitle={"가지고 있는 칭호"} listData={titleData} />
+            <ArkPassiveContainer state={state} />
+            <CardContainer state={state} />
+            <TitleContainer state={state} />
           </div>
           <div className="right-Column">
             <div className="right-Container">
