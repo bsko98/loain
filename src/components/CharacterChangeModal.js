@@ -48,7 +48,7 @@ const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCha
                         </button>
                     ))}
                 </div>
-                <div class="my-character-info-box">
+                <div className="my-character-info-box">
                     {filteredCharacters.length > 0 ? (
                         filteredCharacters.map((character) => (
                             <CharacterInfoComponent key={character.name} characterPhoto={character.image} characterName={character.name} onclick={()=>onSelectCharacter(character)}
