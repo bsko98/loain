@@ -9,13 +9,9 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
   const toggleApply = () => setIsApplied(prev => !prev);
 
   const {
-    partytitle,
-    raid,
+    boss,
     difficulty,
-    rangeStart,
-    rangeEnd,
     startTime,
-    card,
     cardValue,
     environment,
     evolution,
@@ -28,13 +24,14 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     title,
     isLastPot,
     isLastDeal,
-    maxmember,
-    member,
-    partyMembers
   } = partyData;
 
-  const totalParties = Math.ceil(maxmember / 4);
-  const allMembers = partyMembers || [];
+  const partyFilter = partyData.partyFilter;
+
+  const partytitle = partyData.title
+  const member = partyData.partyMembers.filter((member)=>member!==null).length
+  const totalParties = Math.ceil(partyData.partyMembers.length / 4);
+  const allMembers = partyData.partyMembers || [];
 
   const groupedMembers = Array.from({ length: totalParties }, (_, groupIdx) => {
     const groupStart = groupIdx * 4;
@@ -43,6 +40,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     while (filledGroup.length < 4) {
       filledGroup.push(null);
     }
+    console.log(partyData);
     return filledGroup;
   });
 
@@ -87,9 +85,9 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   // 태그 목록 (빈 값 제외)
   const allTags = [
-    itemLevel && { label: `#${itemLevel}↑`, key: "itemLevel", value: itemLevel },
-    skillRange && { label: `#${skillRange}`, key: "skillRange", value: skillRange },
-    title && { label: `#${title}`, key: "title", value: title },
+    partyFilter.itemLevel && { label: `#${partyFilter.itemLevel}↑`, key: "itemLevel", value: partyFilter.itemLevel },
+    partyFilter.skillRange && { label: `#${partyFilter.skillRange}`, key: "skillRange", value: partyFilter.skillRange },
+    partyFilter.title && { label: `#${partyFilter.title}`, key: "title", value: partyFilter.title },
     card && cardValue && { label: `#${card} : ${cardValue}`, key: "card", value: card },
     environment && { label: `#${environment}`, key: "environment", value: environment },
     evolution && { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
@@ -114,9 +112,9 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>
           <div className="party-container-info-tags">
-            <span>#{raid}</span> |
+            <span>#{boss}</span> |
             <span>#{difficulty}</span> |
-            <span>{rangeStart} 관문 ~ {rangeEnd} 관문</span> |
+            <span>{startGate} 관문 ~ {endGate} 관문</span> |
             <span>#{startTime}</span>
           </div>
 
@@ -139,7 +137,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
         <div className="party-container-right">
           <div className="party-container-top">
-            <div className="party-container-member-count">{member}/{maxmember}</div>
+            <div className="party-container-member-count">{member}/{partyData.partyMembers.length}</div>
             <button className="apply-btn" onClick={toggleApply}>
               {isApplied ? "신청 취소" : "입장 신청"}
             </button>
@@ -162,14 +160,14 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
                   <div className="party-container-member" key={idx}>
                     {member ? (
                       <>
-                        <div className="nickname">#{member.nickname}</div>
+                        <div className="nickname">#{member.name}</div>
                         <div className="details">
                           <div className="class-info">
-                            <img src={member.classIcon} alt="직업 아이콘" className="class-icon" />
-                            <div className="job-text">#{member.class}</div>
+                            <img src={member.imageUrl} alt="직업 아이콘" className="class-icon" />
+                            <div className="job-text">#{member.job}</div>
                           </div>
                           <div className="divider" />
-                          <div className="level-text">#{member.level}</div>
+                          <div className="level-text">#{member.itemLevel}</div>
                         </div>
                       </>
                     ) : (

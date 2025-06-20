@@ -246,7 +246,7 @@ const MainPage = ({state}) => {
                   selectedFilters={selectedFilters}
                 />
                 <div className="main-party-Container">
-                  {filteredParties.map((party) => (
+                  {state.partyList.map((party) => (
                     <PartyContainer
                       key={party.id}
                       partyData={party}
