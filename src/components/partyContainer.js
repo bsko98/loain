@@ -12,6 +12,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     boss,
     difficulty,
     startTime,
+    cardName,
     cardValue,
     environment,
     evolution,
@@ -40,7 +41,6 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     while (filledGroup.length < 4) {
       filledGroup.push(null);
     }
-    console.log(partyData);
     return filledGroup;
   });
 
@@ -88,15 +88,15 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     partyFilter.itemLevel && { label: `#${partyFilter.itemLevel}↑`, key: "itemLevel", value: partyFilter.itemLevel },
     partyFilter.skillRange && { label: `#${partyFilter.skillRange}`, key: "skillRange", value: partyFilter.skillRange },
     partyFilter.title && { label: `#${partyFilter.title}`, key: "title", value: partyFilter.title },
-    card && cardValue && { label: `#${card} : ${cardValue}`, key: "card", value: card },
-    environment && { label: `#${environment}`, key: "environment", value: environment },
-    evolution && { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
-    realization && { label: `#깨달음 ${realization}`, key: "realization", value: realization },
-    leap && { label: `#도약 ${leap}`, key: "leap", value: leap },
-    transcendenceWeapon && { label: `#무기 ${transcendenceWeapon}`, key: "transcendenceWeapon", value: transcendenceWeapon },
-    transcendenceArmor && { label: `#방어구 ${transcendenceArmor}`, key: "transcendenceArmor", value: transcendenceArmor },
-    isLastDeal && { label: "#랏딜", key: "isLastDeal", value: isLastDeal },
-    isLastPot && { label: "#랏폿", key: "isLastPot", value: isLastPot },
+    partyFilter.card[0].name && partyFilter.card[0].awakening && { label: `#${partyFilter.card[0].name} : ${partyFilter.card[0].awakening}`, key: "card", value: partyFilter.card[0].name },
+    environment && { label: `#${environment}`, key: "environment", value: environment },//예민 x 예민 o 처리부분인데 아직 데이터가 없음. 나중에 추가
+    partyFilter.arkPassive.evolution && { label: `#진화 ${partyFilter.arkPassive.evolution}`, key: "evolution", value: partyFilter.arkPassive.evolution },
+    partyFilter.arkPassive.enlightenment && { label: `#깨달음 ${partyFilter.arkPassive.enlightenment}`, key: "realization", value: partyFilter.arkPassive.enlightenment },
+    partyFilter.arkPassive.leap && { label: `#도약 ${partyFilter.arkPassive.leap}`, key: "leap", value: partyFilter.arkPassive.leap },
+    partyFilter.transcend.weapon && { label: `#무기 초월 ${ partyFilter.transcend.weapon}`, key: "transcendenceWeapon", value: partyFilter.transcend.weapon},
+    partyFilter.transcend.armor && { label: `#방어구 초월 ${partyFilter.transcend.armor}`, key: "transcendenceArmor", value: partyFilter.transcend.armor},
+    partyFilter.lastDealer && { label: "#랏딜", key: "lastDealer", value: partyFilter.lastDealer },
+    partyFilter.lastSupporter && { label: "#랏폿", key: "lastSupporter", value: partyFilter.lastSupporter },
   ].filter(Boolean); // 빈 값 제거
 
   // 6개씩 나누기
@@ -108,13 +108,15 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   return (
     <div className="party-container">
+      {(() => { console.log(partyFilter); return null })()}
+      {(() => { console.log(allTags); return null })()}
       <div className="party-container-main">
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>
           <div className="party-container-info-tags">
             <span>#{boss}</span> |
             <span>#{difficulty}</span> |
-            <span>{startGate} 관문 ~ {endGate} 관문</span> |
+            {/* <span>{startGate} 관문 ~ {endGate} 관문</span> | */}
             <span>#{startTime}</span>
           </div>
 
