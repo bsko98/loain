@@ -15,120 +15,19 @@ const closeModal = () => {
 
 const PartyData = state.myParty
 
-//파티 데이터
-// const PartyData =
-//     {
-//         id: 2,
-//         partytitle: "숙련팟 모집 랏딜",
-//         raid: "베히모스",
-//         difficulty: "하드",
-//         rangeStart: "2",
-//         rangeEnd: "3",
-//         itemLevel: "1560",
-//         title: "빛을 꺼트리는 자",
-//         card: "카제로스의 군단장",
-//         cardValue: "30",
-//         environment: "예민max",
-//         evolution: "100",
-//         realization: "999",
-//         leap: "300",
-//         transcendenceWeapon: "없음",
-//         transcendenceArmor: "방풀",
-//         isLastPot: false,
-//         isLastDeal: true,
-//         skillRange: "숙련 ~ 숙제",
-//         maxmember: 16,
-//         member: 7,
-//         startTime: "12:00",
-//         partyMembers: [
-//         {
-//             nickname: "닉네임1",
-//             level: "1560",
-//             class: "데모닉",
-//             classIcon: {ImageExam}
-//         },
-//         {
-//             nickname: "닉네임2",
-//             level: "1560",
-//             class: "창술사",
-//             classIcon:"/src/assets/images/iconExam.svg"
-//         },
-//         {
-//             nickname: "닉네임3",
-//             level: "1560",
-//             class: "블레이드",
-//             classIcon:"../assets/images/iconExam.svg"
-//         },
-//         {
-//             nickname: "닉네임4",
-//             level: "1560",
-//             class: "건슬링어",
-//             classIcon:'https://img.lostark.co.kr/armory/3/ADCEB258EB5A436F8E1E3B0F852441B0A85753ABE72E9D29D88C610F885A1120.jpg?v=20250204191040'
-//         },
-//         {
-//             nickname: "닉네임5",
-//             level: "1560",
-//             class: "홀리나이트",
-//             classIcon:"/src/assets/images/iconExam.svg"
-//         },
-//         {
-//             nickname: "닉네임6",
-//             level: "1560",
-//             class: "디스트로이어",
-//             classIcon:"/src/assets/images/iconExam.svg"
-//         },
-//         {
-//             nickname: "닉네임7",
-//             level: "1560",
-//             class: "아르카나",
-//             classIcon:"/src/assets/images/iconExam.svg"
-//         }
-//         ]
-//     }
 
-    //웨이팅 리스트
-    // const WaittingData = [
-    //     {
-    //         nickname: "닉네임1",
-    //         level: "1560",
-    //         class: "데모닉",
-    //         classIcon:null
-    //     },
-    //     {
-    //         nickname: "닉네임2",
-    //         level: "1560",
-    //         class: "창술사",
-    //         classIcon:null
-    //     },
-    //     {
-    //         nickname: "닉네임3",
-    //         level: "1560",
-    //         class: "블레이드",
-    //         classIcon:null
-    //     },
-    //     {
-    //         nickname: "닉네임4",
-    //         level: "1560",
-    //         class: "건슬링어",
-    //         classIcon:null
-    //     }
-    // ]
+const totalParties = Math.ceil(PartyData.partyMembers.length / 4);
+const allMembers = PartyData.partyMembers || [];
 
-    
-
-
-    const totalParties = Math.ceil(PartyData.partyMembers.length / 4);
-    const allMembers = PartyData.partyMembers || [];
-
-    const groupedMembers = Array.from({ length: totalParties }, (_, groupIdx) => {
-        const groupStart = groupIdx * 4;
-        const group = allMembers.slice(groupStart, groupStart + 4);
-        const filledGroup = [...group];
-        while (filledGroup.length < 4) {
-          filledGroup.push(null);
-        }
-        return filledGroup;
-      });
+const groupedMembers = Array.from({ length: totalParties }, (_, groupIdx) => {
+const groupStart = groupIdx * 4;
+const group = allMembers.slice(groupStart, groupStart + 4);
+const filledGroup = [...group];
+while (filledGroup.length < 4) {
+    filledGroup.push(null);
+}
+return filledGroup;
+});
 
 
   return (

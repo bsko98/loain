@@ -12,19 +12,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
     boss,
     difficulty,
     startTime,
-    cardName,
-    cardValue,
     environment,
-    evolution,
-    realization,
-    leap,
-    transcendenceWeapon,
-    transcendenceArmor,
-    skillRange,
-    itemLevel,
-    title,
-    isLastPot,
-    isLastDeal,
   } = partyData;
 
   const partyFilter = partyData.partyFilter;
