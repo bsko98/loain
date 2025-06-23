@@ -25,7 +25,6 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
     title: myParty.partyFilter.title[0],
     card: myParty.partyFilter.card[0].name,
     awakening: myParty.partyFilter.card[0].awakening,
-    environment: "",
     evolution: myParty.partyFilter.arkPassive.evolution,
     enlightenment: myParty.partyFilter.arkPassive.enlightenment,
     leap: myParty.partyFilter.arkPassive.leap,
@@ -289,7 +288,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
           </div>
           <div className='party-info-modal-last-row'>
             <button className='last-row-button' onClick={onClose}>취소</button>
-            <button className='last-row-button' onClick={()=>console.log(myParty)}>{buttonText}</button>
+            <button className='last-row-button'>{buttonText}</button>
           </div>
       </div>
     </div>
