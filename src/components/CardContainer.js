@@ -8,18 +8,19 @@ const getAwakenAndEffectSum = (cardValue) => {
   return { displayAwaken: 0, effectSum: 0 };
 };
 
-const CardContainer = ({ listTitle, listData }) => {
+const CardContainer = ({ state }) => {
   return (
     <div className='cardtitle-container'>
-      <div className='list-title'>{listTitle}</div>
+      <div className='list-title'>가지고 있는 카드</div>
       <div className='list-container'>
-        {listData.length > 0 ? (
-          listData.map((data, index) => {
-            const { displayAwaken, effectSum } = getAwakenAndEffectSum(data.cardvalue);
+        {state.myData.userData.chooseCharacter
+        && state.myData.userData.chooseCharacter.cards.length > 0 ? (
+          state.myData.userData.chooseCharacter.cards.map((data, index) => {
+            const { displayAwaken, effectSum } = getAwakenAndEffectSum(data.awakening);
             return (
               <div key={index} className='list'>
                 <div className='content-title'>
-                  {data.cardname} ({displayAwaken}각)
+                  {data.name} ({displayAwaken}각)
                 </div>
                 <div className='content'>
                   {data.effecttype}속성 피해 + {effectSum}%

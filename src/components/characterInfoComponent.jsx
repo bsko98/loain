@@ -2,7 +2,17 @@ import React from 'react'
 import './characterInfoComponent.css'
 
 
-const characterInfoComponent = ({characterPhoto,characterName,serverName,classInfo,itemLevel,comp, onclick, selectedCharacter, characterId}) => {
+const characterInfoComponent = ({
+    characterPhoto,
+    characterName,
+    serverName,
+    classInfo,
+    itemLevel,
+    comp, 
+    selectedCharacter, 
+    characterId,
+    onclick, 
+  }) => {
   return (
     <div className={`character-info-component-container ${selectedCharacter?.id === characterId ? "selected" : ""}`} onClick={onclick}>
         <div className='character-img-container'><img src={characterPhoto} alt={""} style={{width:'100%', height:'100%', borderRadius:'2px'}}/></div>
