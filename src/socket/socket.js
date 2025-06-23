@@ -26,12 +26,15 @@ class SocketManager {
     }
     setHandlers(handlers) {
         this.handlers = handlers;
+        return this;
     }
     setAccessKey(accessKey) {
         this.accessKey = accessKey;
+        return this;
     }
     send(eventName, data) {
         this.socket.emit(eventName, data);
+        return this;
     }
 }
 
