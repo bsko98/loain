@@ -1,22 +1,40 @@
 import { io } from "socket.io-client"
 
 class SocketManager {
-    socket
-    handlers
+    socket;
+    handlers;
+    accessKey;
+    constructor() {
+        this.accessKey = ``;
+    }
     connect(address, port) {
         if (this.socket === undefined) {
-            this.socket = io(`${address}:${port}`)
+            const accessKey = this.accessKey;
+            this.socket = io(`${address}:${port}`, {
+                auth: {
+                    accessKey
+                },
+            });
             this.handlers.forEach(element => {
-                this.socket.on(element.name, element.handle)
+                this.socket.on(element.name, element.handle);
             });
         }
-        return this
+        return this;
     }
     getSocket() {
-        return this.socket
+        return this.socket;
     }
     setHandlers(handlers) {
-        this.handlers = handlers
+        this.handlers = handlers;
+        return this;
+    }
+    setAccessKey(accessKey) {
+        this.accessKey = accessKey;
+        return this;
+    }
+    send(eventName, data) {
+        this.socket.emit(eventName, data);
+        return this;
     }
 }
 

@@ -16,8 +16,8 @@ function App() {
   const [myData, setMyData] = useState(MyDataFactory.create())
   const [partyList, setPartyList] = useState([])
   const [myParty, setMyarty] = useState(PartyFactory.create())
-  const [credential, setCredential] = useState(CredentialFactory.create())
   const [chatList, setChatList] = useState([])
+  const credential = CredentialFactory.create()
 
 
   const state = {
@@ -27,10 +27,9 @@ function App() {
     setPartyList: setPartyList,
     myParty: myParty,
     setMyarty: setMyarty,
-    credential: credential,
-    setCredential: setCredential,
     chatList: chatList,
-    setChatList: setChatList
+    setChatList: setChatList,
+    credential: credential,
   }
   
   socketManager.setHandlers(setEventHandlers(state))
