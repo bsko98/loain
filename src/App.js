@@ -63,7 +63,7 @@ function App() {
           awakening: 30
         }],
         lastSupporter: true,
-        lastDealer: false,
+        lastDealer: true,
       },
       leader:{
         characterId: "bskoId123",
@@ -204,8 +204,9 @@ function App() {
     partyFilter: {
       startGate: 1,
       endGate: 2,
-      startTime: 0,
-      mastery: 0,
+      startTime: 1,
+      startMastery: 2,
+      endMastery: 4,
       itemLevel: 1600,
       arkPassive: {
         evolution: 10,

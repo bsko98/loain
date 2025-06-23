@@ -103,7 +103,7 @@ return filledGroup;
                     </div>
                 </div>
             </div>
-            <PartyInfoModal isOpen={isModalOpen} onClose={closeModal} modalTitleText={'파티 상세정보'} buttonText={'저장'}/>
+            <PartyInfoModal isOpen={isModalOpen} onClose={closeModal} modalTitleText={'파티 상세정보'} buttonText={'저장'} state={state} />
         </div>
     </div>
   )
