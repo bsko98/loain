@@ -14,7 +14,6 @@ import AdComponent from '../components/AdComponent';
 const MainPage = ({state}) => {
 
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
-
   const [selectedFilters, setSelectedFilters] = useState({
     raid: "",
     difficulty: "",
@@ -39,8 +38,6 @@ const MainPage = ({state}) => {
     setSelectedFilters(filters);
     setFilterModalOpen(false);
   };
-
-
 
   return (
     <div className="main-Container">
