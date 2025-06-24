@@ -10,14 +10,14 @@ import LoainAuthModal from "./LoainAuthModal";
 const MyCharacterModal = ({state}) => {
 
   const servers = [
-    {id:'1', serverName: '루페온'},
-    {id:'2', serverName: '실리안'},
-    {id:'3', serverName:  '아만'},
-    {id:'4', serverName:  '카마인'},
-    {id:'5', serverName:  '카제로스'},
-    {id:'6', serverName:  '아브렐슈드'},
-    {id:'7', serverName:  '카단'},
-    {id:'8', serverName:  '니나브'}
+    {id:'1', serverName: 'server_1'},
+    {id:'2', serverName: 'server_2'},
+    {id:'3', serverName: 'server_3'},
+    {id:'4', serverName: 'server_4'},
+    {id:'5', serverName: 'server_5'},
+    {id:'6', serverName: 'server_6'},
+    {id:'7', serverName: 'server_7'},
+    {id:'8', serverName: 'server_8'}
   ]
 
   const [isLoainAuthModalOpen,setIsLoainAuthModalOpen] = useState(false);

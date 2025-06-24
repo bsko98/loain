@@ -19,7 +19,6 @@ function App() {
   const [chatList, setChatList] = useState([])
   const credential = CredentialFactory.create()
 
-
   const state = {
     myData: myData,
     setMyData: setMyData,
@@ -31,9 +30,7 @@ function App() {
     setChatList: setChatList,
     credential: credential,
   }
-  
   socketManager.setHandlers(setEventHandlers(state))
-
   state.partyList =[
     {
       partyId: "partyId",
@@ -295,51 +292,6 @@ function App() {
       }],
     }]
   }
-
-  myData.characters = [{
-      characterId: "bskoId",
-      name: "bsko",
-      serverName: "아만",
-      job: "블레이드",
-      imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
-      itemLevel: 1500,
-      arkPassive: {
-          evolution: 10,
-          enlightenment: 15,
-          leap: 20,
-      },
-      transcend: {
-        weapon: 20,
-        armor: 100
-      },
-      titles: ["이클립스"],
-      cards: [{
-        name: "세상을 구하는 빛",
-        awakening: 35
-      }],
-  }, {
-      characterId: "bskoId2",
-      name: "bsko2",
-      serverName: "아만2",
-      job: "블레이드2",
-      imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
-      itemLevel: 15002,
-      arkPassive: {
-          evolution: 10,
-          enlightenment: 10,
-          leap: 10,
-      },
-      transcend: {
-        weapon: 0,
-        armor: 0
-      },
-      titles: ["이클립스2"],
-      cards: [{
-        name: "세상을 구하는 빛",
-        awakening: 0
-      }],
-  }
-  ]
 
   return (
     <div className="App">

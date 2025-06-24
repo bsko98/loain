@@ -96,8 +96,8 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   return (
     <div className="party-container">
-      {(() => { console.log(partyFilter); return null })()}
-      {(() => { console.log(allTags); return null })()}
+      {(() => { return null })()}
+      {(() => { return null })()}
       <div className="party-container-main">
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>

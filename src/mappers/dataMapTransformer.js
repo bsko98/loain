@@ -14,11 +14,11 @@ class DataMapTransformer {
         }, {});
     }
     toInternal(externalData) {
-        const id = this.externalToInternal[externalData.name];
+        const id = this.externalToInternal[externalData];
         return id;
     }
     toExternal(internalData) {
-        const name = this.internalToExternal[internalData.id];
+        const name = this.internalToExternal[internalData];
         return name;
     }
 }
