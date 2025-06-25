@@ -47,5 +47,10 @@ class PartyDTO {
     allow // boolean
     volunteers // PublicUserDTO[]
 }
+class ChatDTO {
+    senderId // string
+    message // string
+    timestamp // Date
+}
 
-export { CharacterDTO, MyDTO, PrivateUserDTO, PublicUserDTO, PartyFilterDTO, PartyDTO }
+export { CharacterDTO, MyDTO, PrivateUserDTO, PublicUserDTO, PartyFilterDTO, PartyDTO, ChatDTO }
