@@ -3,10 +3,11 @@ import "./PartyTitleSearchbar.css";
 import UpdateIcon from "../assets/images/UpdateIcon.svg";
 import PartyTitleSearchIcon from "../assets/images/PartyTitleSearchIcon.svg";
 
-const PartyTitleSearchbar = () => {
+const PartyTitleSearchbar = ({ setSearchQuery, onUpdate }) => {
     const [searchTerm, setSearchTerm] = useState("");
-    
+
     const handleSearch = () => {
+        setSearchQuery(searchTerm.trim());
     };
 
     const handleKeyPress = (event) => {
@@ -23,7 +24,7 @@ const PartyTitleSearchbar = () => {
         <div className="party-search-container">
             <div className="party-header">
                 <span className="party-title">모집중인 파티</span>
-                <button className="update-button" onClick={()=>console.log("2025.06.23 neverused 제거")}>
+                <button className="update-button" onClick={onUpdate}>
                     <img src={UpdateIcon} alt="업데이트" className="update-icon" />
                     업데이트
                 </button>

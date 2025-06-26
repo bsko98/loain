@@ -9,18 +9,32 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
   const toggleApply = () => setIsApplied(prev => !prev);
 
   const {
-    boss,
+    partytitle,
+    raid,
     difficulty,
+    rangeStart,
+    rangeEnd,
     startTime,
+    card,
+    cardValue,
     environment,
+    evolution,
+    realization,
+    leap,
+    transcendenceWeapon,
+    transcendenceArmor,
+    skillRange,
+    itemLevel,
+    title,
+    isLastPot,
+    isLastDeal,
+    maxmember,
+    member,
+    partyMembers
   } = partyData;
 
-  const partyFilter = partyData.partyFilter;
-
-  const partytitle = partyData.title
-  const member = partyData.partyMembers.filter((member)=>member!==null).length
-  const totalParties = Math.ceil(partyData.partyMembers.length / 4);
-  const allMembers = partyData.partyMembers || [];
+  const totalParties = Math.ceil(maxmember / 4);
+  const allMembers = partyMembers || [];
 
   const groupedMembers = Array.from({ length: totalParties }, (_, groupIdx) => {
     const groupStart = groupIdx * 4;
@@ -73,18 +87,18 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   // 태그 목록 (빈 값 제외)
   const allTags = [
-    partyFilter.itemLevel && { label: `#${partyFilter.itemLevel}↑`, key: "itemLevel", value: partyFilter.itemLevel },
-    partyFilter.skillRange && { label: `#${partyFilter.skillRange}`, key: "skillRange", value: partyFilter.skillRange },
-    partyFilter.title && { label: `#${partyFilter.title}`, key: "title", value: partyFilter.title },
-    partyFilter.card[0].name && partyFilter.card[0].awakening && { label: `#${partyFilter.card[0].name} : ${partyFilter.card[0].awakening}`, key: "card", value: partyFilter.card[0].name },
-    environment && { label: `#${environment}`, key: "environment", value: environment },//예민 x 예민 o 처리부분인데 아직 데이터가 없음. 나중에 추가
-    partyFilter.arkPassive.evolution && { label: `#진화 ${partyFilter.arkPassive.evolution}`, key: "evolution", value: partyFilter.arkPassive.evolution },
-    partyFilter.arkPassive.enlightenment && { label: `#깨달음 ${partyFilter.arkPassive.enlightenment}`, key: "realization", value: partyFilter.arkPassive.enlightenment },
-    partyFilter.arkPassive.leap && { label: `#도약 ${partyFilter.arkPassive.leap}`, key: "leap", value: partyFilter.arkPassive.leap },
-    partyFilter.transcend.weapon && { label: `#무기 초월 ${ partyFilter.transcend.weapon}`, key: "transcendenceWeapon", value: partyFilter.transcend.weapon},
-    partyFilter.transcend.armor && { label: `#방어구 초월 ${partyFilter.transcend.armor}`, key: "transcendenceArmor", value: partyFilter.transcend.armor},
-    partyFilter.lastDealer && { label: "#랏딜", key: "lastDealer", value: partyFilter.lastDealer },
-    partyFilter.lastSupporter && { label: "#랏폿", key: "lastSupporter", value: partyFilter.lastSupporter },
+    itemLevel && { label: `#${itemLevel}↑`, key: "itemLevel", value: itemLevel },
+    skillRange && { label: `#${skillRange}`, key: "skillRange", value: skillRange },
+    title && { label: `#${title}`, key: "title", value: title },
+    card && cardValue && { label: `#${card} : ${cardValue}`, key: "card", value: card },
+    environment && { label: `#${environment}`, key: "environment", value: environment },
+    evolution && { label: `#진화 ${evolution}`, key: "evolution", value: evolution },
+    realization && { label: `#깨달음 ${realization}`, key: "realization", value: realization },
+    leap && { label: `#도약 ${leap}`, key: "leap", value: leap },
+    transcendenceWeapon && { label: `#무기 ${transcendenceWeapon}`, key: "transcendenceWeapon", value: transcendenceWeapon },
+    transcendenceArmor && { label: `#방어구 ${transcendenceArmor}`, key: "transcendenceArmor", value: transcendenceArmor },
+    isLastDeal && { label: "#랏딜", key: "isLastDeal", value: isLastDeal },
+    isLastPot && { label: "#랏폿", key: "isLastPot", value: isLastPot },
   ].filter(Boolean); // 빈 값 제거
 
   // 6개씩 나누기
@@ -96,15 +110,13 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
   return (
     <div className="party-container">
-      {(() => { return null })()}
-      {(() => { return null })()}
       <div className="party-container-main">
         <div className="party-container-left">
           <div className="party-container-title">#{partytitle}</div>
           <div className="party-container-info-tags">
-            <span>#{boss}</span> |
+            <span>#{raid}</span> |
             <span>#{difficulty}</span> |
-            {/* <span>{startGate} 관문 ~ {endGate} 관문</span> | */}
+            <span>{rangeStart} 관문 ~ {rangeEnd} 관문</span> |
             <span>#{startTime}</span>
           </div>
 
@@ -127,7 +139,7 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
 
         <div className="party-container-right">
           <div className="party-container-top">
-            <div className="party-container-member-count">{member}/{partyData.partyMembers.length}</div>
+            <div className="party-container-member-count">{member}/{maxmember}</div>
             <button className="apply-btn" onClick={toggleApply}>
               {isApplied ? "신청 취소" : "입장 신청"}
             </button>
@@ -150,14 +162,14 @@ const PartyContainer = ({ partyData, selectedFilters }) => {
                   <div className="party-container-member" key={idx}>
                     {member ? (
                       <>
-                        <div className="nickname">#{member.name}</div>
+                        <div className="nickname">#{member.nickname}</div>
                         <div className="details">
                           <div className="class-info">
-                            <img src={member.imageUrl} alt="직업 아이콘" className="class-icon" />
-                            <div className="job-text">#{member.job}</div>
+                            <img src={member.classIcon} alt="직업 아이콘" className="class-icon" />
+                            <div className="job-text">#{member.class}</div>
                           </div>
                           <div className="divider" />
-                          <div className="level-text">#{member.itemLevel}</div>
+                          <div className="level-text">#{member.level}</div>
                         </div>
                       </>
                     ) : (

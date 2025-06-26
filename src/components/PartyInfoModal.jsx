@@ -8,50 +8,45 @@ const gateOptions = [1, 2, 3, 4];
 
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
-//TODO - 랏딜 랏폿 안 바뀌는거 처리해야됨 2025.06.22
-const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
+const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
-  const myParty = state.myParty  
-  const [startMastery, setStartMastery] = useState(myParty.partyFilter.startMastery);
-  const [endMastery, setEndMastery] = useState(myParty.partyFilter.endMastery);
+  const [startLevel, setStartLevel] = useState(null);
+  const [endLevel, setEndLevel] = useState(null);
 
   const [filters, setFilters] = useState({
-    boss: myParty.boss,
-    difficulty: myParty.difficulty,
-    startGate: myParty.partyFilter.startGate,
-    endGate: myParty.partyFilter.endGate,
-    itemLevel: myParty.partyFilter.itemLevel,
-    partyTitle: myParty.title,
-    title: myParty.partyFilter.title[0],
-    card: myParty.partyFilter.card[0].name,
-    awakening: myParty.partyFilter.card[0].awakening,
-    evolution: myParty.partyFilter.arkPassive.evolution,
-    enlightenment: myParty.partyFilter.arkPassive.enlightenment,
-    leap: myParty.partyFilter.arkPassive.leap,
-    transcendenceWeapon: myParty.partyFilter.transcend.weapon,
-    transcendenceArmor: myParty.partyFilter.transcend.armor,
-    lastSupporter: myParty.partyFilter.lastSupporter,
-    lastDealer: myParty.partyFilter.lastDealer,
-    startTime: myParty.partyFilter.startTime,
-    startMastery: myParty.partyFilter.startMastery,
-    endMastery: myParty.partyFilter.endMastery
-    });
+          raid: "",
+          difficulty: "",
+          rangeStart: "",
+          rangeEnd: "",
+          itemLevel: "",
+          title: "",
+          card: "",
+          cardValue: "",
+          environment: "",
+          evolution: "",
+          realization: "",
+          leap: "",
+          transcendenceWeapon: "",
+          transcendenceArmor: "",
+          isLastPot: false,
+          isLastDeal: false,
+      });
 
 
   const handleSkillClick = (index) => {
-    if (startMastery === null) {
-        setStartMastery(index);
-        setEndMastery(null);
-    } else if (endMastery === null) {
-        if (index < startMastery) {
-            setEndMastery(startMastery);
-            setStartMastery(index);
+    if (startLevel === null) {
+        setStartLevel(index);
+        setEndLevel(null);
+    } else if (endLevel === null) {
+        if (index < startLevel) {
+            setEndLevel(startLevel);
+            setStartLevel(index);
         } else {
-            setEndMastery(index);
+            setEndLevel(index);
         }
     } else {
-        setStartMastery(index);
-        setEndMastery(null);
+        setStartLevel(index);
+        setEndLevel(null);
     }
   };
 
@@ -66,22 +61,16 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
             newFilters[name] = value;
         }
 
-        if(type === 'text' && name === 'partyTitle'){
-            newFilters[name] = e.target.value;
-        }else if(type === 'text'){
+        if(type === 'text'){
             newFilters[name] = e.target.value.replaceAll(/\D/g, "");
         }
 
-        if (name === "startGate") {
+        if (name === "rangeStart") {
             const startValue = parseInt(value, 10);
-            const endValue = parseInt(prevFilters.endGate, 10);
+            const endValue = parseInt(prevFilters.rangeEnd, 10);
             if (!isNaN(startValue) && (isNaN(endValue) || startValue > endValue)) {
-                newFilters.endGate = "";
+                newFilters.rangeEnd = "";
             }
-        }
-        if (type === "select-one"){
-            console.log(filters.boss)
-            newFilters[name] = value;
         }
         return newFilters;
     });
@@ -112,28 +101,24 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
               <div className='party-info-modal-left-container-second-row'>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>방 제목</span>
-                  <input className='party-info-modal-left-container-title-input' type='text' name = "partyTitle" placeholder='방 제목을 입력해주세요.' value={filters.partyTitle} onChange={handleFilterChange}/>
+                  <input className='party-info-modal-left-container-title-input' type='text' placeholder='방 제목을 입력해주세요.'/>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>출발 시간</span>
-                  <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
+                  <select className='party-info-modal-left-container-basic-select'>
                     <option>출발시간을 선택해주세요.</option>
-                    <option value={myParty.partyFilter.startTime}>{myParty.partyFilter.startTime}</option>
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>레이드</span>
-                  <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
-                    <option value={1}>레이드를 선택해주세요.</option>
-                    <option value={myParty.boss}>{myParty.boss}</option>
-                    <option value={2}>2</option>
+                  <select className='party-info-modal-left-container-basic-select'>
+                    <option>레이드를 선택해주세요.</option>
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>난이도</span>
-                  <select className='party-info-modal-left-container-basic-select' name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
+                  <select className='party-info-modal-left-container-basic-select'>
                     <option>난이도를 선택해주세요.</option>
-                    <option value={myParty.difficulty}>{myParty.difficulty}</option>
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-range-container'>
@@ -141,14 +126,14 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                     <div className="range-container2">
                         <div className="raid-select-dropdown2">
 
-                            <select name="startGate" value={filters.startGate} onChange={handleFilterChange}>
+                            <select name="rangeStart" value={filters.rangeStart} onChange={handleFilterChange}>
                                 <option value="">선택</option>
                                 {gateOptions.map((gate) => (
                                     <option key={gate} value={gate}>{gate}</option>
                                 ))}
                             </select>
                             <label>~</label>
-                            <select name="endGate" value={filters.endGate} onChange={handleFilterChange}>
+                            <select name="rangeEnd" value={filters.rangeEnd} onChange={handleFilterChange}>
                                 <option value="">선택</option>
                                 {gateOptions
                                     .filter((gate) => parseInt(gate, 10) >= parseInt(filters.rangeStart || 0, 10))
@@ -166,12 +151,12 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
               <div className="filter-bottom-container2">
                 <div className="skill-bar">
                     <div className="skill-wrapper">
-                        {startMastery !== null && endMastery !== null && (
+                        {startLevel !== null && endLevel !== null && (
                             <div
                                 className="skill-line"
                                 style={{
-                                    left: `calc(${Math.min(startMastery, endMastery) * 100}px + 20px)`,
-                                    width: `calc(${Math.abs(endMastery - startMastery) * 100}px)`,
+                                    left: `calc(${Math.min(startLevel, endLevel) * 100}px + 20px)`,
+                                    width: `calc(${Math.abs(endLevel - startLevel) * 100}px)`,
                                 }}
                             />
                         )}
@@ -179,12 +164,12 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                             <div key={index} className="skill-step-container">
                                 <div
                                     className={`skill-step ${
-                                        index === startMastery || index === endMastery ? "selected" : ""
+                                        index === startLevel || index === endLevel ? "selected" : ""
                                     } ${
-                                        startMastery !== null &&
-                                        endMastery !== null &&
-                                        index > startMastery &&
-                                        index < endMastery
+                                        startLevel !== null &&
+                                        endLevel !== null &&
+                                        index > startLevel &&
+                                        index < endLevel
                                             ? "in-range"
                                             : ""
                                     }`}
@@ -209,7 +194,6 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                                     <option value="1">없음</option>
                                     <option value="2">꿈꾸는 자</option>
                                     <option value="3">빛을 꺼트리는 자</option>
-                                    <option value="commander_valtan_1">마수군단장</option>
                                 </select>
                             </div>
                             <div className="character-filter-box">
@@ -218,17 +202,14 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                                     <option value="1">없음</option>
                                     <option value="2">세상을 구하는 빛</option>
                                     <option value="3">카제로스의 군단장</option>
-                                    <option value={myParty.partyFilter.card[0].name}>{myParty.partyFilter.card[0].name}</option>
-
                                 </select>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">각성</label>
-                                <select className="character-filter-dropdown" name="awakening" value={filters.awakening} onChange={handleFilterChange}>
-                                    <option value="18">18</option>
-                                    <option value="24">24</option>
-                                    <option value={myParty.partyFilter.card[0].awakening}>{myParty.partyFilter.card[0].awakening}</option>
-                                    <option value="30">30</option>
+                                <select className="character-filter-dropdown" name="cardValue" value={filters.cardValue} onChange={handleFilterChange}>
+                                    <option value="1">18</option>
+                                    <option value="2">24</option>
+                                    <option value="3">30</option>
                                 </select>
                             </div>
                             <div className="character-filter-box">
@@ -240,12 +221,12 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                             </div>
                             <div className="custom-checkbox-container">
                                 <div>
-                                    <input type="checkbox" name="lastSupporter" id="lastSupporter" value={filters.lastSupporter} checked={filters.lastSupporter} onChange={handleFilterChange}/>
-                                    <label htmlFor="lastSupporter">랏폿</label>
+                                    <input type="checkbox" name="isLastPot" id="isLastPot" value={filters.isLastPot} onChange={handleFilterChange}/>
+                                    <label htmlFor="isLastPot">랏폿</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="lastDealer" id="lastDealer" value={filters.lastDealer} checked={filters.lastDealer} onChange={handleFilterChange}/>
-                                    <label htmlFor="lastDealer">랏딜</label>
+                                    <input type="checkbox" name="isLastDeal" id="isLastDeal" value={filters.isLastDeal} onChange={handleFilterChange}/>
+                                    <label htmlFor="isLastDeal">랏딜</label>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +237,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">깨달음</label>
-                                <input type="text" className="character-filter-input" placeholder="입력" name="enlightenment" value={filters.enlightenment} onChange={handleFilterChange}/>
+                                <input type="text" className="character-filter-input" placeholder="입력" name="realization" value={filters.realization} onChange={handleFilterChange}/>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">도약</label>
@@ -268,7 +249,6 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                                 <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
                                     <option value="1">없음</option>
                                     <option value="2">무풀</option>
-                                    <option value={myParty.partyFilter.transcend.weapon}>{myParty.partyFilter.transcend.weapon}</option>
                                 </select>
                             </div>
                             <div className="character-filter-box">
@@ -277,7 +257,6 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                                     <option value="1">0</option>
                                     <option value="2">75</option>
                                     <option value="3">방풀</option>
-                                    <option value={myParty.partyFilter.transcend.armor}>{myParty.partyFilter.transcend.armor}</option>
                                 </select>
                             </div>
                         </div>
