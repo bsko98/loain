@@ -105,7 +105,7 @@ const LoainAuthModal = ({isOpen, onClose}) => {
                   </div>
                 </div>
                 <div style={{marginTop:'11px'}}>
-                  <button className='loain-auth-btn'>인증하기</button>
+                  <button className='loain-auth-btn' onClick={()=>onClose()}>인증하기</button>
                 </div>
             </div>
         </div>
