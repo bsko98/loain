@@ -3,18 +3,12 @@ import "./CharacterChangeModal.css";
 import CharacterInfoComponent from "./characterInfoComponent";
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
-const CharacterChangeModal = ({ 
-        isOpen, 
-        onClose, 
-        characterList = [], 
-        onSelectCharacter, 
-        selectedCharacter 
-    }) => {
+const CharacterChangeModal = ({ isOpen, onClose, characterList = [], onSelectCharacter, selectedCharacter }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
     const [activeServer, setActiveServer] = useState(null);
     const modalRef = useRef(null);
 
-    useEffect(() => {
+   useEffect(() => {
         const handleClickOutside = (e) => {
             if (modalRef.current && !modalRef.current.contains(e.target)) {
                 onClose();
@@ -32,7 +26,7 @@ const CharacterChangeModal = ({
     if (!isOpen) return null;
 
     const filterByServer = (server) => {
-        setFilteredCharacters(characterList.filter((char) => char.serverName === server));
+        setFilteredCharacters(characterList.filter((char) => char.server === server));
         setActiveServer(server);
     };
 
@@ -54,24 +48,15 @@ const CharacterChangeModal = ({
                         </button>
                     ))}
                 </div>
-                <div className="my-character-info-box">
+                <div class="my-character-info-box">
                     {filteredCharacters.length > 0 ? (
-                        filteredCharacters.map((character) => {
-                            return (
-                            <CharacterInfoComponent 
-                                key={character.name} 
-                                characterPhoto={character.imageUrl} 
-                                characterName={character.name} 
-                                serverName={character.serverName} 
-                                classInfo={character.job} 
-                                itemLevel={character.itemlevel} 
-                                selectedCharacter={selectedCharacter} 
-                                characterId = {character.characterId}
-                                onclick={()=>onSelectCharacter(character)}
-                                comp={selectedCharacter?.characterId === character.characterId && (
+                        filteredCharacters.map((character) => (
+                            <CharacterInfoComponent key={character.name} characterPhoto={character.image} characterName={character.name} onclick={()=>onSelectCharacter(character)}
+                            serverName={character.server} classInfo={character.job} itemLevel={character.itemlevel} selectedCharacter={selectedCharacter} characterId = {character.id}
+                            comp={selectedCharacter?.id === character.id && (
                                     <span className="character-change-selected-label">선택됨</span>
                                 )}/>
-                        )})
+                        ))
                     ) : (
                         <div className="no-character" ><p>해당 서버에 캐릭터가 없습니다.</p></div>
                     )}

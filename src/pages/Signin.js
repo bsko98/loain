@@ -18,7 +18,7 @@ const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen}
     }
 
     const naviageToModals = (e) =>{
-        // console.log(e)
+        console.log(e)
         if(e.target.id === 'signUp'){
             onClose();
             isSignUpOpen();  

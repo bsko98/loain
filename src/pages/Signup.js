@@ -8,7 +8,6 @@ import { ReactComponent as APIKeyImage } from './images/APIKeyImage.svg';
 import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.svg';
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
-import LoainAuthModal from '../components/LoainAuthModal.jsx'
 
 const Signup = ({isOpen, onClose}) => {
 
@@ -16,7 +15,6 @@ const Signup = ({isOpen, onClose}) => {
     const [inputPw, setInputPw] = useState("");
     const [inputCheckPw, setInputCheckPw] = useState("");
     const [inputAPIKey, setInputAPIKey] = useState("");
-    const [isLoainAuthModalOpen,setIsLoainAuthModalOpen] = useState(false);
 
     // <Lint>
     // const [subbmittedValueId, setSubbmittedValueId] = useState(null);
@@ -77,13 +75,8 @@ const Signup = ({isOpen, onClose}) => {
 
         // 회원가입 완료 후 메인페이지 or 로그인페이지
         setCurrentIndex(0);
-        setIsLoainAuthModalOpen(!isLoainAuthModalOpen)  
-    };
-
-    const checkAuth = () =>{
-        setIsLoainAuthModalOpen(!isLoainAuthModalOpen)
         onClose();
-    }
+    };
 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [modalPosition, setModalPosition] = useState({ top: 350.7, left: 664 });  //일단 위치는 고정값으로
@@ -219,10 +212,6 @@ const Signup = ({isOpen, onClose}) => {
                             </div>
                         </div>
                     </div>
-                    <LoainAuthModal 
-                        isOpen={isLoainAuthModalOpen} 
-                        onClose={checkAuth}
-                    />
                 </div>
             </div>
         </div>
