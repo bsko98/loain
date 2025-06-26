@@ -42,11 +42,10 @@ class UserData {
     joinedPartyId //? string|null
     volunteerParties //? string[]
 }
-
 class Chat {
-    timestamp // date
     senderId // string
     message // string
+    timestamp // date
 }
 class Party {
     partyId // string

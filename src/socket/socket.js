@@ -12,7 +12,7 @@ class SocketManager {
             const accessKey = this.accessKey;
             this.socket = io(`${address}:${port}`, {
                 auth: {
-                    accessKey
+                    token: accessKey
                 },
             });
             this.handlers.forEach(element => {

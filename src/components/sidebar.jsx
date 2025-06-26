@@ -47,7 +47,7 @@ const Sidebar = () => {
     }
 
     const activeMoreInfo = (moreInfo) => {
-        console.log(moreInfo)
+        // console.log(moreInfo)
         setMoreInfo(!moreInfo);
     }
 
@@ -71,7 +71,7 @@ const Sidebar = () => {
 
 
     const onClickMenu = (item) =>{
-        console.log(item)
+        // console.log(item)
         if(item.id === 5){
             setIsPartyModalOpen(!isPartyModalOpen);
         }
