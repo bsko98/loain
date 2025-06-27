@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
@@ -296,14 +296,12 @@ function App() {
   return (
     <div className="App">
       <Notification />
-      <Router>
         <Routes>
           <Route path="/" element={<MainPage state={state}/>} />
           <Route path="/manageMyCharacter" element={<ManageMyCharacter state={state} />} />
           <Route path="/myParty" element={<MyPartyPage state={state}/>} />
         </Routes>
         <Sidebar state={state}/>
-      </Router>
     </div>
   );
 }
