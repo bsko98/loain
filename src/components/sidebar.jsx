@@ -15,7 +15,7 @@ import { ReactComponent as Logout } from '../assets/images/logout.svg';
 import { ReactComponent as BlueFindParty } from '../assets/images/blueFindParty.svg';
 import { ReactComponent as BlueMyParty } from '../assets/images/blueMyParty.svg';
 import { ReactComponent as BlueManageMyCharacter } from '../assets/images/blueManageMyCharacter.svg';
-import PartyInfoModal from './PartyInfoModal';
+import MakePartyModal from './MakePartyModal';
 import ManageMyAccountModal from './ManageMyAccountModal';
 
 import './sidebar.css';              
@@ -47,7 +47,7 @@ const Sidebar = () => {
     }
 
     const activeMoreInfo = (moreInfo) => {
-        console.log(moreInfo)
+        // console.log(moreInfo)
         setMoreInfo(!moreInfo);
     }
 
@@ -71,7 +71,7 @@ const Sidebar = () => {
 
 
     const onClickMenu = (item) =>{
-        console.log(item)
+        // console.log(item)
         if(item.id === 5){
             setIsPartyModalOpen(!isPartyModalOpen);
         }
@@ -131,7 +131,7 @@ const Sidebar = () => {
                 </div>
             </div>
             <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal} isFindIdOpen={()=>setIsFindIdModalOpen(!isFindIdModalOpen)} isResetPasswordOpen={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)} isSignUpOpen={()=>setIsSingUpModalOpen(!isSingUpModalOpen)}/>
-            <PartyInfoModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
+            <MakePartyModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
             <ManageMyAccountModal isOpen={isMyAccountModalOpen} onClose={closeMyAccountModal}/>
             <ResetPassword isOpen={isResetPasswordModalOpen} onClose={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)}/>
             <FindId isOpen={isFindIdModalOpen} onClose={()=>setIsFindIdModalOpen(!isFindIdModalOpen)}/>
