@@ -1,6 +1,5 @@
 import React from 'react'
 import './ManageMyCharacter.css'
-// import { ReactComponent as AddButton } from '../assets/images/addButton.svg';
 import MyCharacterModal from '../components/myCharacterModal'
 
 const ManageMyCharacter = ({state}) => {
