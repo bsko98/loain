@@ -42,7 +42,10 @@ jobs:
 
       # 클라우드 프론트 캐시 제거
       - name: Invalidate CloudFront cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          PATHS: '/*'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'ap-northeast-2'
+          DISTRIBUTION: ${{ secrets.DEV_AWS_DISTRIBUTION_ID }}
