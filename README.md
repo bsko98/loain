@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-# lint-cex 배포하기 전에 문자열 검색해서 지울것 lint 해결용임
+# lint 배포하기 전에 문자열 검색해서 지울것 lint 해결용임
 
 ## {/** @param {자료형} 변수명  주석*/} 이런식으로 주석 달아놓을 것
 
