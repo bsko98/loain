@@ -24,7 +24,7 @@ import FindId from '../pages/Findid';
 import ResetPassword from '../pages/Resetpassword';
 import SignUp from '../pages/Signup';
 
-const Sidebar = () => {
+const Sidebar = ({state}) => {
 
     const [moreInfo, setMoreInfo] = useState(false);
     const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
@@ -33,7 +33,6 @@ const Sidebar = () => {
     const [isFindIdModalOpen,setIsFindIdModalOpen] = useState(false);
     const [isResetPasswordModalOpen,setIsResetPasswordModalOpen] = useState(false);
     const [isSingUpModalOpen,setIsSingUpModalOpen] = useState(false);
-    const [isLoggedIn,setIsLoggedIn] = useState(true);
     
     const closePartyModal = () => {
         return setIsPartyModalOpen(!isPartyModalOpen);
@@ -70,7 +69,7 @@ const Sidebar = () => {
         { id: 5, url: '/makeParty', name: '파티 만들기', Component: MakeParty, blueComponent: MakeParty },
     ]
 
-    const displayList = isLoggedIn ? loggedInItems : items;
+    const displayList = state.isLoggedIn ? loggedInItems : items;
 
     const moreItems = [
         { id: 2, url: '/inquiry', name: '문의하기', Component: Inquiry },
@@ -84,7 +83,7 @@ const Sidebar = () => {
         { id: 4, url: '/logout', name: '로그아웃', Component: Logout },
     ]
 
-    const displayMoreList = isLoggedIn ? loggedInMoreItems : moreItems;
+    const displayMoreList = state.isLoggedIn ? loggedInMoreItems : moreItems;
 
     const onClickMenu = (item) =>{
         // console.log(item)
@@ -105,7 +104,6 @@ const Sidebar = () => {
         }
         else if(item.id === 4){
             alert("로그아웃");
-            setIsLoggedIn(!isLoggedIn);
         }
     }
 
@@ -131,7 +129,7 @@ const Sidebar = () => {
                 <div className='more-item-box'>
                     {displayMoreList.map(item => (<li key={item.id} className='more-item-box-row' onClick={()=>openManageMyAccountModal(item)}> <item.Component style={{ marginRight: '4px' }}/>
                         <div style={{ fontSize: '15px', color: '#DFDFDF', paddingTop: '1px' }}>{item.name}</div> </li>))}
-                    <div className={isLoggedIn? 'logged-in-terms-of-use':'terms-of-use'}>  
+                    <div className={state.isLoggedIn? 'logged-in-terms-of-use':'terms-of-use'}>  
                         <div style={{cursor:'pointer'}}>
                             이용약관
                         </div>
