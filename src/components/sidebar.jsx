@@ -33,6 +33,7 @@ const Sidebar = () => {
     const [isFindIdModalOpen,setIsFindIdModalOpen] = useState(false);
     const [isResetPasswordModalOpen,setIsResetPasswordModalOpen] = useState(false);
     const [isSingUpModalOpen,setIsSingUpModalOpen] = useState(false);
+    const [isLoggedIn,setIsLoggedIn] = useState(true);
     
     const closePartyModal = () => {
         return setIsPartyModalOpen(!isPartyModalOpen);
@@ -62,13 +63,28 @@ const Sidebar = () => {
         { id: 5, url: '/makeParty', name: '파티 만들기', Component: MakeParty, blueComponent: MakeParty },
     ]
 
+    const loggedInItems = [
+        { id: 1, url: '/', name: '파티찾기', Component: FindParty, blueComponent: BlueFindParty },
+        { id: 3, url: '/manageMyCharacter', name: '내 캐릭터 관리', Component: ManageMyCharacter, blueComponent: BlueManageMyCharacter },
+        { id: 4, url: '/myParty', name: '내 파티', Component: MyParty, blueComponent: BlueMyParty },
+        { id: 5, url: '/makeParty', name: '파티 만들기', Component: MakeParty, blueComponent: MakeParty },
+    ]
+
+    const displayList = isLoggedIn ? loggedInItems : items;
+
     const moreItems = [
+        { id: 2, url: '/inquiry', name: '문의하기', Component: Inquiry },
+        { id: 3, url: '/coffee', name: '개발자에게 커피사주기', Component: Coffee }
+    ]
+
+    const loggedInMoreItems = [
         { id: 1, url: '/manageMyAccount', name: '내 계정 관리', Component: ManageMyAccount },
         { id: 2, url: '/inquiry', name: '문의하기', Component: Inquiry },
         { id: 3, url: '/coffee', name: '개발자에게 커피사주기', Component: Coffee },
         { id: 4, url: '/logout', name: '로그아웃', Component: Logout },
     ]
 
+    const displayMoreList = isLoggedIn ? loggedInMoreItems : moreItems;
 
     const onClickMenu = (item) =>{
         // console.log(item)
@@ -87,6 +103,10 @@ const Sidebar = () => {
         if(item.id === 1){
             setIsMyAccountModalOpen(!isMyAccountModalOpen);
         }
+        else if(item.id === 4){
+            alert("로그아웃");
+            setIsLoggedIn(!isLoggedIn);
+        }
     }
 
 
@@ -99,7 +119,7 @@ const Sidebar = () => {
             <div className='side-menu-box'>
                 <nav>
                     <ul style={{ paddingInlineStart: '0px' }}>
-                        {items.map(item => (
+                        {displayList.map(item => (
                             <li className='menu-row' key={item.id} onClick={() => onClickMenu(item)}>
                                 {(location.pathname === item.url && 1) ? <item.blueComponent className='icon' style={{ width:'24px', height:'24px' ,marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} /> : <item.Component className='icon' style={{ marginRight: '6px', paddingTop: '12px', paddingLeft: '12px' }} />}
                                 <div style={{userSelect:'none', paddingTop: '14.5px', color: (location.pathname === item.url && (item.name !== '로그인' && item.name !== '파티 만들기')) ? '#6B83E1' : '#DFDFDF' }}>{item.name}</div>
@@ -109,9 +129,9 @@ const Sidebar = () => {
             </div>
             {moreInfo ? <div className='more-item-container'>
                 <div className='more-item-box'>
-                    {moreItems.map(item => (<li key={item.id} className='more-item-box-row' onClick={()=>openManageMyAccountModal(item)}> <item.Component style={{ marginRight: '4px' }}/>
+                    {displayMoreList.map(item => (<li key={item.id} className='more-item-box-row' onClick={()=>openManageMyAccountModal(item)}> <item.Component style={{ marginRight: '4px' }}/>
                         <div style={{ fontSize: '15px', color: '#DFDFDF', paddingTop: '1px' }}>{item.name}</div> </li>))}
-                    <div className='terms-of-use'>  
+                    <div className={isLoggedIn? 'logged-in-terms-of-use':'terms-of-use'}>  
                         <div style={{cursor:'pointer'}}>
                             이용약관
                         </div>
