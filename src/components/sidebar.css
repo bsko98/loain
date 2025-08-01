@@ -140,6 +140,7 @@
 
 }
 
+/* 로그인을 했을 시 보여질 이용약관이랑 개인정보 어쩌구 스타일 */
 .logged-in-terms-of-use{
     display: flex;
     flex-direction: row;
