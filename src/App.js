@@ -17,6 +17,7 @@ function App() {
   const [partyList, setPartyList] = useState([])
   const [myParty, setMyarty] = useState(PartyFactory.create())
   const [chatList, setChatList] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const credential = CredentialFactory.create()
 
   const state = {
@@ -29,6 +30,8 @@ function App() {
     chatList: chatList,
     setChatList: setChatList,
     credential: credential,
+    isLoggedIn: isLoggedIn,
+    setIsLoggedIn: setIsLoggedIn,
   }
   socketManager.setHandlers(setEventHandlers(state))
   state.partyList =[
