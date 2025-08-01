@@ -56,10 +56,7 @@ const Sidebar = ({state}) => {
 
     const items = [
         { id: 1, url: '/', name: '파티찾기', Component: FindParty, blueComponent: BlueFindParty },
-        { id: 2, url: '/login', name: '로그인', Component: Login, blueComponent: Login },
-        { id: 3, url: '/manageMyCharacter', name: '내 캐릭터 관리', Component: ManageMyCharacter, blueComponent: BlueManageMyCharacter },
-        { id: 4, url: '/myParty', name: '내 파티', Component: MyParty, blueComponent: BlueMyParty },
-        { id: 5, url: '/makeParty', name: '파티 만들기', Component: MakeParty, blueComponent: MakeParty },
+        { id: 2, url: '/login', name: '로그인', Component: Login, blueComponent: Login }
     ]
 
     const loggedInItems = [
