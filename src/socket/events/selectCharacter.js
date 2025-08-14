@@ -14,7 +14,7 @@ export const selectCharacterEventHandler = (states) => {
             states.myData.userData.chooseCharacter = selectedCharacter;
 
             states.setMyData({...states.myData});
-            console.log(`!`)
+            console.log(`캐릭터 선택 완료`)
         }
     }
 }
