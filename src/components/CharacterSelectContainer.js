@@ -5,11 +5,11 @@ import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 import { socketManager } from '../socket/socket.js';
 
 const selectCharacter=(characterId, state)=>{
-  if(!state.myData.useState.joinedPartyId){
+  if(!state.myData.userData.joinedPartyId){
     alert("현재 가입된 파티를 탈퇴 후 다시 시도해 주세요");
     return
   }
-  if(!state.myData.useState.volunteerParties){
+  if(!state.myData.userData.volunteerParties){
     alert("현재 신청 중인 파티 가입을 취소 후 다시 시도해 주세요");
     return
   }
