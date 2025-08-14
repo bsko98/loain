@@ -30,7 +30,7 @@ const MyCharacterModal = ({state}) => {
           <span className="my-character-tittle">내 캐릭터</span>
           <button className='add-character-button'>
               <AddButton/>
-              <span className='add-character-button-text' onClick={()=>console.log(state.myData)}>
+              <span className='add-character-button-text'>
                   추가하기
               </span>
           </button>
