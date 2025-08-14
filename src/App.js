@@ -17,7 +17,7 @@ function App() {
   const [partyList, setPartyList] = useState([])
   const [myParty, setMyarty] = useState(PartyFactory.create())
   const [chatList, setChatList] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const credential = CredentialFactory.create()
 
   const state = {
