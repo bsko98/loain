@@ -71,7 +71,7 @@ const CharacterChangeModal = ({
                                 itemLevel={character.itemlevel} 
                                 selectedCharacter={selectedCharacter} 
                                 characterId = {character.characterId}
-                                onclick={()=>onSelectCharacter(character.characterId,state)}
+                                onclick={()=>onSelectCharacter(character.characterId, state.myData.userData)}
                                 comp={selectedCharacter?.characterId === character.characterId && (
                                     <span className="character-change-selected-label">선택됨</span>
                                 )}/>
