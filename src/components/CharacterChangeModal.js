@@ -9,7 +9,8 @@ const CharacterChangeModal = ({
         onClose, 
         characterList = [], 
         onSelectCharacter, 
-        selectedCharacter 
+        selectedCharacter,
+        state 
     }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
     const [activeServer, setActiveServer] = useState(null);
@@ -70,7 +71,7 @@ const CharacterChangeModal = ({
                                 itemLevel={character.itemlevel} 
                                 selectedCharacter={selectedCharacter} 
                                 characterId = {character.characterId}
-                                onclick={()=>onSelectCharacter(character.characterId)}
+                                onclick={()=>onSelectCharacter(character.characterId,state)}
                                 comp={selectedCharacter?.characterId === character.characterId && (
                                     <span className="character-change-selected-label">선택됨</span>
                                 )}/>

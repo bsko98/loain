@@ -4,8 +4,15 @@ import CharacterChangeModal from "./CharacterChangeModal";
 import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 import { socketManager } from '../socket/socket.js';
 
-const selectCharacter=(characterId)=>{
-  console.log("선택한 캐릭터 id: "+characterId);
+const selectCharacter=(characterId, state)=>{
+  if(!state.myData.useState.joinedPartyId){
+    alert("현재 가입된 파티를 탈퇴 후 다시 시도해 주세요");
+    return
+  }
+  if(!state.myData.useState.volunteerParties){
+    alert("현재 신청 중인 파티 가입을 취소 후 다시 시도해 주세요");
+    return
+  }
   socketManager.send("selectCharacter",{characterId: characterId});
 }
 
@@ -55,6 +62,7 @@ const CharacterSelectContainer = ({
             characterList={state.myData.characters}
             onSelectCharacter={selectCharacter}
             selectedCharacter={state.myData.userData.chooseCharacter}
+            state = {state}
           />
         )}
       </div>
