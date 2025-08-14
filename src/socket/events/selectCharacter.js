@@ -9,7 +9,7 @@ export const selectCharacterEventHandler = (states) => {
                 return;
             }
 
-            var selectedCharacter = CharacterEntityMapper.toInternal(data.character);
+            const selectedCharacter = CharacterEntityMapper.toInternal(data.character);
 
             states.myData.userData.chooseCharacter = selectedCharacter;
 
