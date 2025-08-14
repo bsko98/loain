@@ -53,7 +53,7 @@ const CharacterSelectContainer = ({
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
             characterList={state.myData.characters}
-            onSelectCharacter={()=>selectCharacter()}
+            onSelectCharacter={selectCharacter}
             selectedCharacter={state.myData.userData.chooseCharacter}
           />
         )}
