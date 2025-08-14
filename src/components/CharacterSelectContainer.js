@@ -5,7 +5,7 @@ import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 import { socketManager } from '../socket/socket.js';
 
 const selectCharacter=(characterId, state)=>{
-  if(!state.myData.userData.joinedPartyId){
+  if(state.myData.userData.joinedPartyId){
     alert("현재 가입된 파티를 탈퇴 후 다시 시도해 주세요");
     return
   }
