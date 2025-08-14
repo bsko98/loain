@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import "./CharacterSelectContainer.css";
 import CharacterChangeModal from "./CharacterChangeModal";
 import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
+import { socketManager } from '../socket/socket.js';
 
-
-const selectCharacter = (myData, character) => {
-  myData.userData.chooseCharacter = character;
-  return {
-    ...myData
-  };
+const selectCharacter=(characterId)=>{
+  console.log("선택한 캐릭터 id: "+characterId);
+  socketManager.send("selectCharacter",{characterId: characterId});
 }
-
 
 const CharacterSelectContainer = ({ 
     state
@@ -56,7 +53,7 @@ const CharacterSelectContainer = ({
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
             characterList={state.myData.characters}
-            onSelectCharacter={(char) => state.setMyData(selectCharacter(state.myData, char))}
+            onSelectCharacter={()=>selectCharacter()}
             selectedCharacter={state.myData.userData.chooseCharacter}
           />
         )}
