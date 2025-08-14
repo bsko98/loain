@@ -4,7 +4,7 @@ import CharacterChangeModal from "./CharacterChangeModal";
 import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 import { socketManager } from '../socket/socket.js';
 
-const selectCharacter=(characterId, state)=>{
+const selectCharacter=(characterId, userData)=>{
   if(userData.chooseCharacter
     && userData.chooseCharacter.characterId===characterId){
     alert("현재 선택 중인 캐릭터와 동일한 캐릭터입니다.");
