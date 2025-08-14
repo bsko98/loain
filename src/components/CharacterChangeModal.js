@@ -3,16 +3,20 @@ import "./CharacterChangeModal.css";
 import CharacterInfoComponent from "./characterInfoComponent";
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
+
 const CharacterChangeModal = ({ 
         isOpen, 
         onClose, 
         characterList = [], 
         onSelectCharacter, 
-        selectedCharacter 
+        selectedCharacter,
+        state 
     }) => {
     const [filteredCharacters, setFilteredCharacters] = useState(characterList);
     const [activeServer, setActiveServer] = useState(null);
     const modalRef = useRef(null);
+
+    
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -67,7 +71,7 @@ const CharacterChangeModal = ({
                                 itemLevel={character.itemlevel} 
                                 selectedCharacter={selectedCharacter} 
                                 characterId = {character.characterId}
-                                onclick={()=>onSelectCharacter(character)}
+                                onclick={()=>onSelectCharacter(character.characterId, state.myData.userData)}
                                 comp={selectedCharacter?.characterId === character.characterId && (
                                     <span className="character-change-selected-label">선택됨</span>
                                 )}/>
