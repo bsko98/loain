@@ -5,7 +5,7 @@ import CharacterSelectIcon from "../assets/images/CharacterSelectIcon.svg";
 import { socketManager } from '../socket/socket.js';
 
 const selectCharacter=(characterId, state)=>{
-  if(state.myData.userData.chooseCharacter.characterId===characterId){
+  if(state.myData.userData.chooseCharacter&&state.myData.userData.chooseCharacter.characterId===characterId){
     alert("현재 선택 중인 캐릭터와 동일한 캐릭터입니다.");
     return
   }
