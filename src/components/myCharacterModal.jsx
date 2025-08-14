@@ -3,6 +3,7 @@ import './myCharacterModal.css'
 import CharacterInfoComponent from './characterInfoComponent'
 import './CharacterChangeModal.css'
 import { ReactComponent as AddButton} from '../assets/images/addButton.svg'
+import { socketManager } from '../socket/socket.js';
 
 
 //TODO - 정보 갱신 누를시 어떤 이벤트가 작동하는지 확인해봐야될듯
@@ -19,7 +20,14 @@ const MyCharacterModal = ({state}) => {
     {id:'8', serverName: 'server_8'}
   ]
 
+  const selectCharacter=(characterId)=>{
+    console.log("선택한 캐릭터 id: "+characterId);
+    socketManager.send("selectCharacter",characterId);
+  }
+
   const [activeServer, setActiveServer] = useState(null);
+
+  
 
   return (
     <div className='my-character-container'>
@@ -27,7 +35,7 @@ const MyCharacterModal = ({state}) => {
           <span className="my-character-tittle">내 캐릭터</span>
           <button className='add-character-button'>
               <AddButton/>
-              <span className='add-character-button-text'>
+              <span className='add-character-button-text' onClick={()=>console.log(state.myData)}>
                   추가하기
               </span>
           </button>
@@ -52,6 +60,7 @@ const MyCharacterModal = ({state}) => {
             classInfo={character.job} 
             itemLevel={character.itemLevel} 
             characterId={character.characterId}
+            onclick={selectCharacter(character.characterId)}
             comp={<div onClick={()=>console.log(character.name)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px', cursor:'pointer'}}>정보 갱신</div>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
