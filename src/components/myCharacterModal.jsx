@@ -5,7 +5,6 @@ import './CharacterChangeModal.css'
 import { ReactComponent as AddButton} from '../assets/images/addButton.svg'
 
 
-
 //TODO - 정보 갱신 누를시 어떤 이벤트가 작동하는지 확인해봐야될듯
 const MyCharacterModal = ({state}) => {
 
@@ -21,8 +20,6 @@ const MyCharacterModal = ({state}) => {
   ]
 
   const [activeServer, setActiveServer] = useState(null);
-
-  
 
   return (
     <div className='my-character-container'>
