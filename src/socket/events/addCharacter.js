@@ -1,13 +1,20 @@
+import { CharacterEntityMapper } from "../../mappers/entityMappers/characterEntityMapper"
 
 export const addCharacterEventHandler = (states) => {
     return {
-        name: "",
+        name: "addCharacter",
         handle: (data) => {
             if(data.status === "error") {
                 console.log("Error");
                 return;
             }
-            console.log(`!`)
+
+            const addedCharacter = CharacterEntityMapper.toInternal(data.character);
+            
+            states.myData.characters.put(addedCharacter);
+
+            states.setMyData({...states.myData});
+            console.log(`캐릭터 추가 완료`)
         }
     }
 }

@@ -19,7 +19,7 @@
 }
 
 /* 추가하기 버튼 */
-.add-character-button{
+.open-add-character-button{
 
     display: flex;
     flex-direction: row;
