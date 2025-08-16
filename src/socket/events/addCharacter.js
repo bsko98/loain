@@ -6,7 +6,7 @@ export const addCharacterEventHandler = (states) => {
         handle: (data) => {
             if(data.status === "error") {
                 console.log("Error");
-                alert("캐릭터 추가 실패 \n 캐릭터 닉네임을 확인해주세요");
+                alert("캐릭터 추가 실패\n캐릭터 닉네임을 확인해주세요");
                 return;
             }
 
