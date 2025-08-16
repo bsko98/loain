@@ -11,7 +11,7 @@ export const addCharacterEventHandler = (states) => {
 
             const addedCharacter = CharacterEntityMapper.toInternal(data.character);
             
-            states.myData.characters.put(addedCharacter);
+            states.myData.characters.push(addedCharacter);
 
             states.setMyData({...states.myData});
             console.log(`캐릭터 추가 완료`)

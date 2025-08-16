@@ -68,7 +68,7 @@ const MainPage = ({state}) => {
                 <div className="main-party-Container">
                   {state.partyList.map((party) => (
                     <PartyContainer
-                      key={party.id}
+                      key={party.partyId}
                       partyData={party}
                       selectedFilters={selectedFilters}
                     />

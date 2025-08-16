@@ -47,7 +47,7 @@ const MyCharacterModal = ({state}) => {
       {state.myData.characters.length > 0 ?
         (state.myData.characters.filter((char) => activeServer === null || char.serverName === activeServer).map(character=>( 
           <CharacterInfoComponent 
-            key={character.characterName} 
+            key={character.name} 
             characterPhoto={character.imageUrl} 
             characterName={character.name} 
             serverName={character.serverName} 

@@ -7,6 +7,7 @@ import { socketManager } from '../socket/socket.js';
 const AddCharacterComponent = ({isOpen, onClose}) => {
 
     const [inputValue, setInputValue] = useState('');
+    const characterNameRegex = /^[a-zA-Z0-9가-힣]{2,12}$/;
 
     const handleChangeInputVal =(input)=>{
         setInputValue(input.target.value);
@@ -17,8 +18,20 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
             alert("닉네임을 입력해주세요");
             return;
         }
-        console.log(inputValue);
-        socketManager.send("addCharacter",{characterName: inputValue});
+        if(!characterNameRegex.test(inputValue)){
+            alert("유효하지 않은 닉네임입니다");
+        }
+        try{
+            const returnVal = socketManager.send("addCharacter",{characterName: inputValue});
+            console.log(returnVal);
+            if(returnVal.status==="error"){
+                alert("캐릭터 추가 실패");
+            }
+        }catch(error){
+            alert("문제가 발생했습니다. 다시 시도해주세요");
+            console.log("error: ",error);
+        }
+        
     }
 
     if (!isOpen) return null;
