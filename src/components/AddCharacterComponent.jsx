@@ -38,7 +38,6 @@ const AddCharacterComponent = ({isOpen, onClose, state}) => {
             socketManager.send("addCharacter",{characterName: characterName});
         }catch(error){
             alert("문제가 발생했습니다. 다시 시도해주세요");
-            console.log("error: ",error);
         }
         
     }
