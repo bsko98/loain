@@ -14,13 +14,16 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
     }
 
     const addCharacter=(characterName)=>{
+        
+        if(!typeof characterName === 'string'){
+            return;
+        }
+
         if(!characterName){
             alert("닉네임을 입력해주세요");
             return;
         }
-        if(!typeof parameter === 'string'){
-            return;
-        }
+      
         if(!characterNameRegex.test(characterName)){
             alert("유효하지 않은 닉네임입니다");
             return;
