@@ -22,11 +22,7 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
             alert("유효하지 않은 닉네임입니다");
         }
         try{
-            const returnVal = socketManager.send("addCharacter",{characterName: inputValue});
-            console.log(returnVal);
-            if(returnVal.status==="error"){
-                alert("캐릭터 추가 실패");
-            }
+            socketManager.send("addCharacter",{characterName: inputValue});
         }catch(error){
             alert("문제가 발생했습니다. 다시 시도해주세요");
             console.log("error: ",error);
