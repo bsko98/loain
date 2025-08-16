@@ -3,6 +3,7 @@ import './myCharacterModal.css'
 import CharacterInfoComponent from './characterInfoComponent'
 import './CharacterChangeModal.css'
 import { ReactComponent as AddButton} from '../assets/images/addButton.svg'
+import AddCharacterComponent from "./AddCharacterComponent";
 
 
 //TODO - 정보 갱신 누를시 어떤 이벤트가 작동하는지 확인해봐야될듯
@@ -20,12 +21,13 @@ const MyCharacterModal = ({state}) => {
   ]
 
   const [activeServer, setActiveServer] = useState(null);
+  const [isAddCharacterModalOpen,setIsAddCharacterModalOpen] = useState(false);
 
   return (
     <div className='my-character-container'>
       <div className='my-character-add-button-row'>
           <span className="my-character-tittle">내 캐릭터</span>
-          <button className='add-character-button'>
+          <button className='open-add-character-button' onClick={()=>setIsAddCharacterModalOpen(!isAddCharacterModalOpen)}>
               <AddButton/>
               <span className='add-character-button-text'>
                   추가하기
@@ -45,19 +47,22 @@ const MyCharacterModal = ({state}) => {
       {state.myData.characters.length > 0 ?
         (state.myData.characters.filter((char) => activeServer === null || char.serverName === activeServer).map(character=>( 
           <CharacterInfoComponent 
-            key={character.characterName} 
+            key={character.name} 
             characterPhoto={character.imageUrl} 
             characterName={character.name} 
             serverName={character.serverName} 
             classInfo={character.job} 
             itemLevel={character.itemLevel} 
             characterId={character.characterId}
-            comp={<div onClick={()=>console.log(character.name)} style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px', cursor:'pointer'}}>정보 갱신</div>}/>)))
+            comp={<div style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px', cursor:'pointer'}}>정보 갱신</div>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}
       </div>
-
+      <AddCharacterComponent 
+        isOpen = {isAddCharacterModalOpen} 
+        onClose={()=>setIsAddCharacterModalOpen(!isAddCharacterModalOpen)}
+        state={state}/>
   </div>
   )
 }
