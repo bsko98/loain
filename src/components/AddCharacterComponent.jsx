@@ -6,23 +6,27 @@ import { socketManager } from '../socket/socket.js';
 
 const AddCharacterComponent = ({isOpen, onClose}) => {
 
-    const [inputValue, setInputValue] = useState('');
+    const [characterName, setCharacterName] = useState('');
     const characterNameRegex = /^[a-zA-Z0-9가-힣]{2,12}$/;
 
-    const handleChangeInputVal =(input)=>{
-        setInputValue(input.target.value);
+    const handleChangeInputVal =(characterName)=>{
+        setCharacterName(characterName.target.value);
     }
 
-    const addCharacter=(inputValue)=>{
-        if(!inputValue){
+    const addCharacter=(characterName)=>{
+        if(!characterName){
             alert("닉네임을 입력해주세요");
             return;
         }
-        if(!characterNameRegex.test(inputValue)){
+        if(!typeof parameter === 'string'){
+            return;
+        }
+        if(!characterNameRegex.test(characterName)){
             alert("유효하지 않은 닉네임입니다");
+            return;
         }
         try{
-            socketManager.send("addCharacter",{characterName: inputValue});
+            socketManager.send("addCharacter",{characterName: characterName});
         }catch(error){
             alert("문제가 발생했습니다. 다시 시도해주세요");
             console.log("error: ",error);
@@ -48,12 +52,12 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
                     <input type='text' 
                         className='add-character-input-area-input' 
                         placeholder='캐릭터 닉네임을 입력해주세요.' 
-                        value={inputValue}
+                        value={characterName}
                         onChange={handleChangeInputVal}
                     />
                 </div>
             </div>
-            <div className='add-character-button' onClick={()=>addCharacter(inputValue)}>
+            <div className='add-character-button' onClick={()=>addCharacter(characterName)}>
                 다음
             </div>
         </div>
