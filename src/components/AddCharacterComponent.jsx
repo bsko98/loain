@@ -14,8 +14,8 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
     }
 
     const addCharacter=(characterName)=>{
-        
-        if(!typeof characterName === 'string'){
+
+        if(typeof characterName !== 'string'){
             return;
         }
 
