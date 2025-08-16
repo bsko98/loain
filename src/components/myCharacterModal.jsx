@@ -59,7 +59,10 @@ const MyCharacterModal = ({state}) => {
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}
       </div>
-      <AddCharacterComponent isOpen = {isAddCharacterModalOpen} onClose={()=>setIsAddCharacterModalOpen(!isAddCharacterModalOpen)}/>
+      <AddCharacterComponent 
+        isOpen = {isAddCharacterModalOpen} 
+        onClose={()=>setIsAddCharacterModalOpen(!isAddCharacterModalOpen)}
+        state={state}/>
   </div>
   )
 }

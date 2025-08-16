@@ -4,7 +4,7 @@ import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 import { useState } from 'react';
 import { socketManager } from '../socket/socket.js';
 
-const AddCharacterComponent = ({isOpen, onClose}) => {
+const AddCharacterComponent = ({isOpen, onClose, state}) => {
 
     const [characterName, setCharacterName] = useState('');
     const characterNameRegex = /^[a-zA-Z0-9가-힣]{2,12}$/;
@@ -28,6 +28,12 @@ const AddCharacterComponent = ({isOpen, onClose}) => {
             alert("유효하지 않은 닉네임입니다");
             return;
         }
+
+        if(state.myData.characters.some(character=>character.name === characterName)){
+            alert("이미 추가된 캐릭터입니다");
+            return;
+        }
+
         try{
             socketManager.send("addCharacter",{characterName: characterName});
         }catch(error){
