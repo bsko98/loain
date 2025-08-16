@@ -11,24 +11,24 @@ const selectCharacter=(characterId, userData)=>{
   }
 
   if(!characterId){
-    alert("캐릭터를 확인해주세요");
     return;
   }
 
-  if(userData.chooseCharacter
+  
+  try{
+    if(userData.chooseCharacter
     && userData.chooseCharacter.characterId===characterId){
     alert("현재 선택 중인 캐릭터와 동일한 캐릭터입니다.");
     return
-  }
-  if(userData.joinedPartyId){
-    alert("현재 가입된 파티를 탈퇴 후 다시 시도해 주세요");
-    return
-  }
-  if(userData.volunteerParties.length>0){
-    alert("현재 신청 중인 파티 가입을 취소 후 다시 시도해 주세요");
-    return
-  }
-  try{
+    }
+    if(userData.joinedPartyId){
+      alert("현재 가입된 파티를 탈퇴 후 다시 시도해 주세요");
+      return
+    }
+    if(userData.volunteerParties.length>0){
+      alert("현재 신청 중인 파티 가입을 취소 후 다시 시도해 주세요");
+      return
+    }
     socketManager.send("selectCharacter",{characterId: characterId}); 
   }
   catch(error){
