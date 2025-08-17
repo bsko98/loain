@@ -4,6 +4,7 @@ import CharacterInfoComponent from './characterInfoComponent'
 import './CharacterChangeModal.css'
 import { ReactComponent as AddButton} from '../assets/images/addButton.svg'
 import AddCharacterComponent from "./AddCharacterComponent";
+import { socketManager } from '../socket/socket.js';
 
 
 //TODO - 정보 갱신 누를시 어떤 이벤트가 작동하는지 확인해봐야될듯
@@ -22,6 +23,23 @@ const MyCharacterModal = ({state}) => {
 
   const [activeServer, setActiveServer] = useState(null);
   const [isAddCharacterModalOpen,setIsAddCharacterModalOpen] = useState(false);
+
+  const updateCharacter=(characterName)=>{
+    if(typeof characterName !== 'string'){
+      return;
+    }
+    if(!characterName){
+        return;
+    }
+    try{
+      if(!state.myData.characters.some(character=>character.name === characterName)){
+          return;
+      }
+      socketManager.send("updateCharacter",{characterName: characterName});
+    }catch(error){
+        alert("문제가 발생했습니다. 다시 시도해주세요");
+    }
+  }
 
   return (
     <div className='my-character-container'>
@@ -54,7 +72,7 @@ const MyCharacterModal = ({state}) => {
             classInfo={character.job} 
             itemLevel={character.itemLevel} 
             characterId={character.characterId}
-            comp={<div style={{width:'60px', height:'21px', borderRadius:'8px', backgroundColor:'#D28506',color:'white' ,paddingTop:'4px', fontSize:'14px', cursor:'pointer'}}>정보 갱신</div>}/>)))
+            comp={<div className="refresh-character-button" onClick={()=>updateCharacter(character.name)}>정보 갱신</div>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}

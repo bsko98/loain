@@ -113,3 +113,14 @@ align-items: center;
 color: #DFDFDF;
 
 }
+
+.refresh-character-button{
+    width:'60px'; 
+    height:'21px'; 
+    border-radius:'8px'; 
+    background-color:'#D28506';
+    color:'white';
+    padding-top:'4px'; 
+    font-size:'14px'; 
+    cursor:'pointer';
+}
