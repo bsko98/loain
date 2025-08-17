@@ -2,7 +2,7 @@ import { CharacterEntityMapper } from "../../mappers/entityMappers/characterEnti
 
 export const updateCharacterEventHandler = (states) => {
     return {
-        name: "",
+        name: "updateCharacter",
         handle: (data) => {
             if(data.status === "error") {
                 console.log("Error");
