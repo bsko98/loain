@@ -23,8 +23,10 @@ const MyCharacterModal = ({state}) => {
 
   const [activeServer, setActiveServer] = useState(null);
   const [isAddCharacterModalOpen,setIsAddCharacterModalOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const updateCharacter=(characterName)=>{
+    
     if(typeof characterName !== 'string'){
       return;
     }
@@ -36,6 +38,12 @@ const MyCharacterModal = ({state}) => {
           return;
       }
       socketManager.send("updateCharacter",{characterName: characterName});
+      setIsDisabled(true);
+
+      // 2. 3초(3000ms) 후에 버튼을 다시 활성화합니다.
+      setTimeout(() => {
+        setIsDisabled(false);
+      }, 10000);
     }catch(error){
         alert("문제가 발생했습니다. 다시 시도해주세요");
     }
