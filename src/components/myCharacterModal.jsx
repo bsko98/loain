@@ -72,7 +72,7 @@ const MyCharacterModal = ({state}) => {
             classInfo={character.job} 
             itemLevel={character.itemLevel} 
             characterId={character.characterId}
-            comp={<div className="refresh-character-button" onClick={()=>updateCharacter(character.name)}>정보 갱신</div>}/>)))
+            comp={<button className="refresh-character-info-button" onClick={()=>updateCharacter(character.name)}>정보 갱신</button>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}

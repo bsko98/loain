@@ -124,3 +124,41 @@ color: #DFDFDF;
     font-size:'14px'; 
     cursor:'pointer';
 }
+
+.refresh-character-info-button{
+
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 4px;
+gap: 4px;
+
+width: 60px;
+height: 25px;
+
+background: #D28506;
+border-radius: 8px;
+border: none;
+
+flex: none;
+order: 1;
+flex-grow: 0;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #DFDFDF;
+
+cursor: pointer;
+}
+
+.refresh-character-info-button:active {
+
+  background-color: #9A5D04; /* 살짝 어두운 파란색으로 변경 */
+}
