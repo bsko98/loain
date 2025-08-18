@@ -20,7 +20,7 @@ export const updateCharacterEventHandler = (states) => {
 
             states.myData.characters = updatedCharacters;
             states.setMyData({...states.myData});
-            console.log(`!`)
+            console.log(`캐릭터 갱신 완료`)
         }
     }
 }
