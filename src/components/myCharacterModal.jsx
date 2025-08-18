@@ -23,10 +23,9 @@ const MyCharacterModal = ({state}) => {
 
   const [activeServer, setActiveServer] = useState(null);
   const [isAddCharacterModalOpen,setIsAddCharacterModalOpen] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
 
   const updateCharacter=(characterName)=>{
-    
+
     if(typeof characterName !== 'string'){
       return;
     }
@@ -38,11 +37,17 @@ const MyCharacterModal = ({state}) => {
           return;
       }
       socketManager.send("updateCharacter",{characterName: characterName});
-      setIsDisabled(!isDisabled);
+      state.setRefreshCooldownMap((prev) => ({
+        ...prev,
+        [characterName]: true,
+      }));
 
       setTimeout(() => {
-        setIsDisabled(!isDisabled);
-      }, 10000);
+        state.setRefreshCooldownMap((prev) => ({
+          ...prev,
+          [characterName]: false,
+        }));
+      }, 5000);
     }catch(error){
         alert("문제가 발생했습니다. 다시 시도해주세요");
     }
@@ -79,7 +84,9 @@ const MyCharacterModal = ({state}) => {
             classInfo={character.job} 
             itemLevel={character.itemLevel} 
             characterId={character.characterId}
-            comp={<button className="refresh-character-info-button" onClick={()=>updateCharacter(character.name)}>정보 갱신</button>}/>)))
+            comp={<button className="refresh-character-info-button" 
+                    onClick={()=>updateCharacter(character.name)}
+                    disabled={state.refreshCooldownMap[character.name]}>정보 갱신</button>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}

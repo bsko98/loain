@@ -158,7 +158,7 @@ color: #DFDFDF;
 cursor: pointer;
 }
 
-.refresh-character-info-button:active {
+.refresh-character-info-button:active, .refresh-character-info-button:disabled{
 
-  background-color: #9A5D04; /* 살짝 어두운 파란색으로 변경 */
+  filter: brightness(0.7);
 }
