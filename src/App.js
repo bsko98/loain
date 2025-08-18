@@ -19,7 +19,7 @@ function App() {
   const [chatList, setChatList] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const credential = CredentialFactory.create()
-  const [refreshCooldownMap, setRefreshCooldownMap] = useState({});
+  const [refreshCooldown, setRefreshCooldown] = useState(false);
 
   const state = {
     myData: myData,
@@ -33,8 +33,8 @@ function App() {
     credential: credential,
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
-    refreshCooldownMap: refreshCooldownMap,
-    setRefreshCooldownMap: setRefreshCooldownMap
+    refreshCooldown: refreshCooldown,
+    setRefreshCooldown: setRefreshCooldown
   }
   socketManager.setHandlers(setEventHandlers(state))
   state.partyList =[

@@ -37,16 +37,10 @@ const MyCharacterModal = ({state}) => {
           return;
       }
       socketManager.send("updateCharacter",{characterName: characterName});
-      state.setRefreshCooldownMap((prev) => ({
-        ...prev,
-        [characterName]: true,
-      }));
+      state.setRefreshCooldown(true)
 
       setTimeout(() => {
-        state.setRefreshCooldownMap((prev) => ({
-          ...prev,
-          [characterName]: false,
-        }));
+        state.setRefreshCooldown(false);
       }, 5000);
     }catch(error){
         alert("문제가 발생했습니다. 다시 시도해주세요");
@@ -86,7 +80,7 @@ const MyCharacterModal = ({state}) => {
             characterId={character.characterId}
             comp={<button className="refresh-character-info-button" 
                     onClick={()=>updateCharacter(character.name)}
-                    disabled={state.refreshCooldownMap[character.name]}>정보 갱신</button>}/>)))
+                    disabled={state.refreshCooldown}>정보 갱신</button>}/>)))
             :(
               <div className="no-character"><p>해당 서버에 캐릭터가 없습니다.</p></div>
         )}
