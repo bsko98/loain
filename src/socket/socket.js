@@ -7,10 +7,10 @@ class SocketManager {
     constructor() {
         this.accessKey = ``;
     }
-    connect(address, port) {
+    connect(url) {
         if (this.socket === undefined) {
             const accessKey = this.accessKey;
-            this.socket = io(`${address}:${port}`, {
+            this.socket = io(`${url}`, {
                 auth: {
                     token: accessKey
                 },

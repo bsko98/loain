@@ -9,14 +9,23 @@ import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
 import LoainAuthModal from '../components/LoainAuthModal.jsx'
+import { signUpService } from '../services/accountServices.js';
 
-const Signup = ({isOpen, onClose}) => {
+const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
 
     const [inputId, setInputId] = useState("");
     const [inputPw, setInputPw] = useState("");
     const [inputCheckPw, setInputCheckPw] = useState("");
     const [inputAPIKey, setInputAPIKey] = useState("");
     const [isLoainAuthModalOpen,setIsLoainAuthModalOpen] = useState(false);
+    const [authCode, setAuthCode] = useState('undefinedCode');
+    const [validedSignUpData, setValidSignUpData] = useState({
+        id: undefined,
+        pw: undefined,
+        apiKey: undefined,
+        stoveId: undefined,
+        key: undefined
+    });
 
     // <Lint>
     // const [subbmittedValueId, setSubbmittedValueId] = useState(null);
@@ -44,7 +53,45 @@ const Signup = ({isOpen, onClose}) => {
         setInputAPIKey(apikey.target.value);    // 입력값 업데이트
     };
 
+    const idValidCheck = (id) => {
+        if (typeof id !== 'string' || id.length === 0) {
+            return false;
+        }
+        return /^[a-zA-Z0-9]+$/.test(id);
+    }
+    const idDuplicateCheck = (id) => {
+        if (typeof id !== 'string' || id.length === 0) {
+            return false;
+        }
+        return true;
+    }
+    const pwValidCheck = (pw) => {
+        if (typeof pw !== 'string' || pw.length === 0) {
+            return false;
+        }
+        return /^[a-zA-Z0-9!@#$%^&*()]+$/.test(pw);
+    }
+    const apiKeyValidCheck = (apiKey) => {
+        if (typeof apiKey !== 'string' || apiKey.length === 0) {
+            return false;
+        }
+        return true;
+    }
+
     const CheckId = () => {
+        console.log(`Check id: ${inputId}`);
+        // id 유효성 체크
+        if(!idValidCheck(inputId)) {
+            alert("아이디는 알파벳과 숫자로만 이루어져야 합니다.");
+            return;
+        }
+        if(!idDuplicateCheck(inputId)) {
+            alert("이미 사용 중인 아이디 입니다.");
+        }
+        validedSignUpData.id = inputId;
+        setValidSignUpData({...validedSignUpData});
+        //
+
         setSubbmittedValueId(inputId.trim() ? inputId : null);              // 값이 없으면 null 저장
         if (inputId) {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
@@ -53,6 +100,16 @@ const Signup = ({isOpen, onClose}) => {
         setInputId("");
     };
     const CheckPassword = () => {
+        console.log(`Check password: ${inputPw}, ${inputCheckPw}`);
+        // pw 유효성 체크
+        if(!pwValidCheck(inputPw)) {
+            alert("비밀번호는 알파벳과 숫자, ! @ # $ % ^ & * ( )으로만 이루어져야 합니다.");
+            return;
+        }
+        validedSignUpData.pw = inputPw;
+        setValidSignUpData({...validedSignUpData});
+        //
+
         setSubbmittedValuePw(inputPw.trim() ? inputPw : null);                  // 값이 없으면 null 저장
         setSubbmittedValueCheckPw(inputCheckPw.trim() ? inputCheckPw : null);   // 값이 없으면 null 저장
         if (!(!inputPw || !inputCheckPw)) {
@@ -68,9 +125,22 @@ const Signup = ({isOpen, onClose}) => {
     };
 
     const CheckAPIKey = () => {
+        console.log(`Check Api Key: ${inputAPIKey}`);
+        // api key 유효성 체크
+        if(!apiKeyValidCheck(inputAPIKey)) {
+            alert("유효하지 않은 API Key입니다.");
+            return;
+        }
+        validedSignUpData.apiKey = inputAPIKey;
+        setValidSignUpData({...validedSignUpData});
+        setAuthCode("TestCode");
+        //
+
         setSubbmittedValueAPIKey(inputAPIKey.trim() ? inputAPIKey : null);     // 값이 없으면 null 저장
         if (inputAPIKey) {
             // API Key 저장
+            
+
         }
 
         setInputAPIKey("");
@@ -80,9 +150,20 @@ const Signup = ({isOpen, onClose}) => {
         setIsLoainAuthModalOpen(!isLoainAuthModalOpen)  
     };
 
-    const checkAuth = () =>{
-        setIsLoainAuthModalOpen(!isLoainAuthModalOpen)
-        onClose();
+    const checkAuth = async (url) =>{
+        console.log(`Check Auth: ${url}`);
+        validedSignUpData.stoveId = url;
+        setValidSignUpData({...validedSignUpData});
+        // url을 통해서 stove id 인증
+        await signUpService(
+            validedSignUpData.id,
+            validedSignUpData.pw,
+            validedSignUpData.apiKey,
+            validedSignUpData.stoveId,
+            validedSignUpData.key,
+            setIsLoggedIn
+        );
+        //
     }
 
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -221,7 +302,9 @@ const Signup = ({isOpen, onClose}) => {
                     </div>
                     <LoainAuthModal 
                         isOpen={isLoainAuthModalOpen} 
-                        onClose={checkAuth}
+                        onClose={()=>{setIsLoainAuthModalOpen(!isLoainAuthModalOpen); onClose();}}
+                        checkAuth={checkAuth}
+                        authCode={authCode}
                     />
                 </div>
             </div>

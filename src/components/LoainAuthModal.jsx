@@ -5,10 +5,10 @@ import { ReactComponent as LoainText } from '../assets/images/LoainTextImage.svg
 import { ReactComponent as APIKeyImage } from '../assets/images/APIKeyImage.svg';
 import { ReactComponent as QuestionMarkImage } from '../assets/images/QuestionMarkImage.svg';
 
-const LoainAuthModal = ({isOpen, onClose}) => {
+const LoainAuthModal = ({isOpen, onClose, checkAuth, authCode}) => {
 
   const [type,setType] = useState("web");
-  const randomString = 'seeex'
+  const randomString = authCode;
   const clientType = [
     "1. 인증코드 : {randomString}(클릭하여 복사)",
     "2. 스토브 프로그램(런처) 실행 후 로그인",
@@ -30,6 +30,11 @@ const LoainAuthModal = ({isOpen, onClose}) => {
     "7. 상단의 '내 MY홈 가기' 버튼 클릭하여 프로필 페이지로 이동",
     "8. 인증 페이지로 돌아와 복사한 주소(URL)를 붙여넣은 후 인증 진행"
   ]
+
+  const [url, setUrl] = useState("");
+  const handleUrl = (id) => {
+      setUrl(id.target.value);
+  };
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(randomString)
@@ -101,11 +106,11 @@ const LoainAuthModal = ({isOpen, onClose}) => {
                     </span>)
                   })
                   }
-                  <input className='loain-auto-content-input' placeholder='프로필 페이지 주소(URL)를 입력해주세요.'/> 
+                  <input className='loain-auto-content-input' placeholder='프로필 페이지 주소(URL)를 입력해주세요.' onChange={handleUrl}/> 
                   </div>
                 </div>
                 <div style={{marginTop:'11px'}}>
-                  <button className='loain-auth-btn' onClick={()=>onClose()}>인증하기</button>
+                  <button className='loain-auth-btn' onClick={async ()=>{await checkAuth(url); onClose();}}>인증하기</button>
                 </div>
             </div>
         </div>
