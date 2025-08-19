@@ -29,12 +29,12 @@ const AddCharacterComponent = ({isOpen, onClose, state}) => {
             return;
         }
 
-        if(state.myData.characters.some(character=>character.name === characterName)){
-            alert("이미 추가된 캐릭터입니다");
-            return;
-        }
-
         try{
+            if(state.myData.characters.some(character=>character.name === characterName)){
+                alert("이미 추가된 캐릭터입니다");
+                return;
+            }
+            
             socketManager.send("addCharacter",{characterName: characterName});
         }catch(error){
             alert("문제가 발생했습니다. 다시 시도해주세요");

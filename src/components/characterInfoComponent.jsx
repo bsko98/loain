@@ -19,7 +19,7 @@ const characterInfoComponent = ({
         <div className='character-info-container'>
             <div className='character-info-first-row'>
                 <div style={{color:'#6B83E1', fontSize:'20px'}}>{characterName}</div>
-                <div>{comp}</div>
+                {comp}
             </div>
             <div className='character-info-second-row'>
                 <div style={{width:'132px', marginRight:'12px', textAlign:'left'}}>{serverName}</div>

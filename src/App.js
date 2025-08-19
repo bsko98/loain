@@ -20,6 +20,7 @@ function App() {
   const [chatList, setChatList] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const credential = CredentialFactory.create()
+  const [refreshCooldown, setRefreshCooldown] = useState(false);
 
   const state = {
     myData: myData,
@@ -33,6 +34,8 @@ function App() {
     credential: credential,
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
+    refreshCooldown: refreshCooldown,
+    setRefreshCooldown: setRefreshCooldown
   }
   useEffect(()=> {
     console.log(sessionStorage.getItem("accessKey"));

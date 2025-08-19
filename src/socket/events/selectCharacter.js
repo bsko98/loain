@@ -6,6 +6,7 @@ export const selectCharacterEventHandler = (states) => {
         handle: (data) => {
             if(data.status === "error") {
                 console.log("Error");
+                alert("캐릭터 선택 실패\n선택할 캐릭터를 확인해주세요");
                 return;
             }
 
