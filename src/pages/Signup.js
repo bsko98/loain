@@ -65,9 +65,12 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
             alert(idValidCheckResult.message);
             return;
         }
+        // id 중복 체크
         if(!idDuplicateCheck(inputId)) {
             alert("이미 사용 중인 아이디 입니다.");
+            return;
         }
+        // 검증 완료된 id 저장
         validedSignUpData.id = inputId;
         setValidSignUpData({...validedSignUpData});
         //
@@ -89,6 +92,7 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
             alert(pwValidCheckResult.message);
             return;
         }
+        // 검증 완료된 pw 저장
         validedSignUpData.pw = inputPw;
         setValidSignUpData({...validedSignUpData});
         //
@@ -117,6 +121,7 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
             alert("유효하지 않은 API Key입니다.");
             return;
         }
+        // 검증 완료 된 apiKey 저장
         validedSignUpData.apiKey = inputAPIKey;
         setValidSignUpData({...validedSignUpData});
         setAuthCode("TestCode");
