@@ -10,6 +10,7 @@ import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
 import LoainAuthModal from '../components/LoainAuthModal.jsx'
 import { signUpService } from '../services/accountServices.js';
+import { apiKeyValidCheck, idDuplicateCheck, idValidCheck, pwValidCheck } from '../validation';
 
 const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
 
@@ -53,36 +54,15 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
         setInputAPIKey(apikey.target.value);    // 입력값 업데이트
     };
 
-    const idValidCheck = (id) => {
-        if (typeof id !== 'string' || id.length === 0) {
-            return false;
-        }
-        return /^[a-zA-Z0-9]+$/.test(id);
-    }
-    const idDuplicateCheck = (id) => {
-        if (typeof id !== 'string' || id.length === 0) {
-            return false;
-        }
-        return true;
-    }
-    const pwValidCheck = (pw) => {
-        if (typeof pw !== 'string' || pw.length === 0) {
-            return false;
-        }
-        return /^[a-zA-Z0-9!@#$%^&*()]+$/.test(pw);
-    }
-    const apiKeyValidCheck = (apiKey) => {
-        if (typeof apiKey !== 'string' || apiKey.length === 0) {
-            return false;
-        }
-        return true;
-    }
 
     const CheckId = () => {
         console.log(`Check id: ${inputId}`);
         // id 유효성 체크
-        if(!idValidCheck(inputId)) {
-            alert("아이디는 알파벳과 숫자로만 이루어져야 합니다.");
+        const idValidCheckResult = idValidCheck(inputId);
+        if(idValidCheckResult.success === false) {
+            if(idValidCheckResult.message === undefined)
+                idValidCheckResult.message = "사용할 수 없는 아이디입니다.";
+            alert(idValidCheckResult.message);
             return;
         }
         if(!idDuplicateCheck(inputId)) {
@@ -102,8 +82,11 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
     const CheckPassword = () => {
         console.log(`Check password: ${inputPw}, ${inputCheckPw}`);
         // pw 유효성 체크
-        if(!pwValidCheck(inputPw)) {
-            alert("비밀번호는 알파벳과 숫자, ! @ # $ % ^ & * ( )으로만 이루어져야 합니다.");
+        const pwValidCheckResult = pwValidCheck(inputPw);
+        if(pwValidCheckResult.success === false) {
+            if(pwValidCheckResult.message === undefined)
+                pwValidCheckResult.message = "사용할 수 없는 비밀번호입니다.";
+            alert(pwValidCheckResult.message);
             return;
         }
         validedSignUpData.pw = inputPw;
@@ -116,6 +99,9 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
             if (inputPw === inputCheckPw) {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
             }
+            else {
+                alert("비밀번호가 일치하지 않습니다.");
+            }
             setInputPw("");
             setInputCheckPw("");
         }
@@ -127,7 +113,7 @@ const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
     const CheckAPIKey = () => {
         console.log(`Check Api Key: ${inputAPIKey}`);
         // api key 유효성 체크
-        if(!apiKeyValidCheck(inputAPIKey)) {
+        if(apiKeyValidCheck(inputAPIKey).success === false) {
             alert("유효하지 않은 API Key입니다.");
             return;
         }
