@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
@@ -11,6 +11,7 @@ import { CredentialFactory } from './factoris/credentialFactory.js';
 import Notification from './notification/notificationComponent.jsx';
 import { socketManager } from './socket/socket.js';
 import { setEventHandlers } from './socket/eventHandlers.js';
+import { signIn } from './services/accountServices.js';
 
 function App() {
   const [myData, setMyData] = useState(MyDataFactory.create())
@@ -36,6 +37,10 @@ function App() {
     refreshCooldown: refreshCooldown,
     setRefreshCooldown: setRefreshCooldown
   }
+  useEffect(()=> {
+    console.log(sessionStorage.getItem("accessKey"));
+    signIn(state.setIsLoggedIn);
+  }, [state.setIsLoggedIn]);
   socketManager.setHandlers(setEventHandlers(state))
   state.partyList =[
     {
