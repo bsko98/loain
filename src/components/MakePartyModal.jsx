@@ -12,6 +12,37 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
   const [startMastery, setStartMastery] = useState("");
   const [endMastery, setEndMastery] = useState("");
+  const bossNameList = [
+        "commander_1",
+        "commander_2",
+        "commander_3",
+        "commander_4",
+        "commander_5",
+        "commander_6",
+        "kazeroth_1",
+        "kazeroth_2",
+        "kazeroth_3",
+        "kazeroth_4",
+        "epic_1"
+    ];
+    const difficultyMap={
+        "commander_1":"hell",
+        "commander_2":"hell",
+        "commander_3":"hell",
+        "commander_4":"hell",
+        "commander_5":"hard",
+        "commander_6":"hard",
+        "kazeroth_1":"hard",
+        "kazeroth_2":"hard",
+        "kazeroth_3":"hard",
+        "kazeroth_4":"hard",
+        "epic_1":"normal"
+    }
+    const difficultyObj = {
+        "normal" : ["normal"],
+        "hard" :  ["normal","hard"],
+        "hell" :  ["normal","hard","hell"]
+    }
   
   const [filters, setFilters] = useState({
 
@@ -124,16 +155,22 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                   <div className='party-info-modal-left-container-basic-row'>
                     <span className='party-info-modal-left-container-basic-span'>레이드</span>
                     <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
-                      <option value={1}>레이드를 선택해주세요.</option>
-                      <option value={filters.boss}>{filters.boss}</option>
-                      <option value={2}>2</option>
+                      <option value={undefined}>레이드를 선택해주세요.</option>
+                      {bossNameList.map((bossName)=>(
+                        <option key={bossName} value={bossName}>{bossName}</option> 
+                      ))
+                      }
                     </select>
                   </div>
                   <div className='party-info-modal-left-container-basic-row'>
                     <span className='party-info-modal-left-container-basic-span'>난이도</span>
                     <select className='party-info-modal-left-container-basic-select' name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
                       <option>난이도를 선택해주세요.</option>
-                      <option value={filters.difficulty}>{filters.difficulty}</option>
+                      {
+                        filters.boss&&difficultyObj[difficultyMap[filters.boss]].map((dif)=>(
+                            <option value={dif} key={dif}>{dif}</option>
+                        ))
+                      }
                     </select>
                   </div>
                   <div className='party-info-modal-left-container-range-container'>
@@ -283,7 +320,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             </div>
             <div className='party-info-modal-last-row'>
               <button className='last-row-button' onClick={onClose}>취소</button>
-              <button className='last-row-button'>{buttonText}</button>
+              <button className='last-row-button' onClick={()=>console.log(filters)}>{buttonText}</button>
             </div>
         </div>
       </div>
