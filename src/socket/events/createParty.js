@@ -1,13 +1,17 @@
+import { PartyEntityMapper } from "../../mappers/entityMappers/PartyEntityMapper"
+
 
 export const createPartyEventHandler = (states) => {
     return {
-        name: "",
+        name: "createParty",
         handle: (data) => {
             if(data.status === "error") {
-                console.log("Error");
+                console.log("파티 생성 실패.");
                 return;
             }
-            console.log(`!`)
+            states.myParty = PartyEntityMapper.toInternal(data.partyData);
+            states.setMyarty({...states.myParty});
+            console.log(`파티 생성 완료`)
         }
     }
 }
