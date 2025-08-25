@@ -1,4 +1,4 @@
-import { PartyEntityMapper } from "../../mappers/entityMappers/PartyEntityMapper"
+import {PartyEntityMapper} from "../../mappers/entityMappers/partyEntityMapper"
 
 
 export const createPartyEventHandler = (states) => {
