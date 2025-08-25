@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
+import { socketManager } from '../socket/socket.js';
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
@@ -43,7 +44,11 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "hard" :  ["normal","hard"],
         "hell" :  ["normal","hard","hell"]
     }
-
+    const difficultyValue={
+        "normal" : "1",
+        "hard" :  "2",
+        "hell" :  "3"
+    }
     const gateMap = {
         "commander_1":"two",
         "commander_2":"two",
@@ -180,8 +185,17 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     {
         onClose();
     }
-}
-
+ }
+ const createParty=()=>{
+    try{
+        socketManager.send("CreateParty",{characterName: filters});
+        onClose();  
+    }
+    catch(error){
+        alert("문제가 발생했습니다. 다시 시도해주세요");
+    }
+   
+ }
   
   if (!isOpen) return null;
 
@@ -227,7 +241,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                       <option>난이도를 선택해주세요.</option>
                       {
                         filters.boss&&difficultyObj[difficultyMap[filters.boss]].map((dif)=>(
-                            <option value={dif} key={dif}>{dif}</option>
+                            <option value={difficultyValue[dif]} key={dif}>{dif}</option>
                         ))
                       }
                     </select>
@@ -363,17 +377,19 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                                   <label className="character-filter-label">무기</label>
                                   <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
                                       <option value="0">선택해주세요</option>
-                                      <option value="1">0</option>
-                                      <option value="2">무풀</option>
+                                      <option value="0">0</option>
+                                      <option value="20">20</option>
+                                      <option value="21">21</option>
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">방어구</label>
                                   <select className="character-filter-dropdown" name="transcendenceArmor" value={filters.transcendenceArmor} onChange={handleFilterChange}>
-                                      <option value="">선택해주세요</option>
-                                      <option value="1">0</option>
-                                      <option value="2">75</option>
-                                      <option value="3">방풀</option>
+                                      <option value="0">선택해주세요</option>
+                                      <option value="0">0</option>
+                                      <option value="75">75</option>
+                                      <option value="100">100</option>
+                                      <option value="105">105</option>
                                   </select>
                               </div>
                           </div>
@@ -384,7 +400,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             </div>
             <div className='party-info-modal-last-row'>
               <button className='last-row-button' onClick={onClose}>취소</button>
-              <button className='last-row-button' onClick={()=>{console.log(filters);}}>{buttonText}</button>
+              <button className='last-row-button' onClick={()=>{createParty()}}>{buttonText}</button>
             </div>
         </div>
       </div>

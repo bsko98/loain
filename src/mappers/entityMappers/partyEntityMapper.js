@@ -1,6 +1,6 @@
 import { bossNameData } from "../dataMapTransformer";
 import { PartyFilterEntityMapper } from "./partyFilterEntityMapper";
-
+import {UserDataEntityMapper} from "./userDataEntityMapper"
 
 export class PartyEntityMapper {
     static toInternal(party) {
