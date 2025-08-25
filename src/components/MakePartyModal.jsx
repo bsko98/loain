@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const gateOptions = [1, 2, 3, 4];
+const startTime = ["1시간 후 ","2시간 후 ","3시간 후 "]
 
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
@@ -43,6 +43,51 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "hard" :  ["normal","hard"],
         "hell" :  ["normal","hard","hell"]
     }
+
+    const gateMap = {
+        "commander_1":"two",
+        "commander_2":"two",
+        "commander_3":"three",
+        "commander_4":"four",
+        "commander_5":"three",
+        "commander_6":"four",
+        "kazeroth_1":"two",
+        "kazeroth_2":"two",
+        "kazeroth_3":"two",
+        "kazeroth_4":"three",
+        "epic_1":"two"
+    }
+
+    const gateObj ={
+        two :  [1, 2],  
+        three :  [1, 2, 3],  
+        four :  [1, 2, 3, 4]  
+    } 
+
+    const cards=[
+        "Dealer_1",
+        "Dealer_2",
+        "Dealer_3",
+        "Dealer_4",
+        "Dealer_5",
+        "Dealer_6"
+    ]
+
+    const titles = [
+        "commander_valtan_1",
+        "commander_vykas_1",
+        "commander_kouku_saton_1",
+        "commander_abrelshud_1",
+        "commander_Illiakan_1",
+        "commander_kamen_1",
+        "commander_kamen_2",
+        "commander_kamen_3",
+        "kazeroth_echidna_1",
+        "kazeroth_egir_1",
+        "kazeroth_abrelshud_1",
+        "kazeroth_mordoom_1",
+        "epic_behemoth_1"
+    ]
   
   const [filters, setFilters] = useState({
 
@@ -57,6 +102,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
           awakening: "",
           evolution: "",
           enlightenment: "",
+          environment:"",
           leap: "",
           transcendenceWeapon: "",
           transcendenceArmor: "",
@@ -67,7 +113,6 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
           endMastery: "",
 
       });
-
 
   const handleSkillClick = (index) => {
     if (startMastery === null) {
@@ -85,6 +130,17 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         setEndMastery(null);
     }
   };
+
+  useEffect(()=>{
+    setFilters((prevFilters) => {
+        let newFilters = { ...prevFilters };
+        console.log("setMastery: ",startMastery," ",endMastery)
+        newFilters["startMastery"] = startMastery;  
+        newFilters["endMastery"] = endMastery;   
+        console.log(newFilters["startMastery"]," s ",newFilters["endMastery"])
+        return newFilters;
+    }) 
+  },[startMastery,endMastery])
 
   
   const handleFilterChange = (e) => {
@@ -149,7 +205,10 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                     <span className='party-info-modal-left-container-basic-span'>출발 시간</span>
                     <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
                       <option>출발시간을 선택해주세요.</option>
-                      <option value={filters.startTime}>{filters.startTime}</option>
+                      {startTime.map((time)=>(
+                        <option value={time} key = {time}>{time}</option>
+                      ))}
+                      
                     </select>
                   </div>
                   <div className='party-info-modal-left-container-basic-row'>
@@ -180,15 +239,15 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
   
                               <select name="startGate" value={filters.startGate} onChange={handleFilterChange}>
                                   <option value="">선택</option>
-                                  {gateOptions.map((gate) => (
+                                  {filters.boss&&gateObj[gateMap[filters.boss]].map((gate) => (
                                       <option key={gate} value={gate}>{gate}</option>
                                   ))}
                               </select>
                               <label>~</label>
                               <select name="endGate" value={filters.endGate} onChange={handleFilterChange}>
                                   <option value="">선택</option>
-                                  {gateOptions
-                                      .filter((gate) => parseInt(gate, 10) >= parseInt(filters.rangeStart || 0, 10))
+                                  {filters.boss&&gateObj[gateMap[filters.boss]]
+                                      .filter((gate) => parseInt(gate, 10) >= parseInt(filters.startGate || 0, 10))
                                       .map((gate) => (
                                           <option key={gate} value={gate}>{gate}</option>
                                       ))}
@@ -225,7 +284,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                                               ? "in-range"
                                               : ""
                                       }`}
-                                      onClick={() => handleSkillClick(index)}
+                                      onClick={() => {handleSkillClick(index)}}
                                   />
                                   <span className="skill-label">{text}</span>
                               </div>
@@ -243,23 +302,25 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                               <div className="character-filter-box">
                                   <label className="character-filter-label">칭호</label>
                                   <select className="character-filter-dropdown" name="title" value={filters.title} onChange={handleFilterChange}>
-                                      <option value="1">없음</option>
-                                      <option value="2">꿈꾸는 자</option>
-                                      <option value="3">빛을 꺼트리는 자</option>
-                                      <option value="commander_valtan_1">마수군단장</option>
+                                      <option value="">선택해주세요</option>
+                                      {titles.map((title)=>(
+                                        <option value={title} key={title}>{title}</option>
+                                      ))}
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">카드</label>
                                   <select className="character-filter-dropdown" name="card" value={filters.card} onChange={handleFilterChange}>
-                                      <option value="1">없음</option>
-                                      <option value="2">세상을 구하는 빛</option>
-                                      <option value="3">카제로스의 군단장</option>
+                                      <option value="">선택해주세요</option>
+                                      {cards.map((card)=>(
+                                        <option value={card} key={card}>{card}</option>
+                                      ))}
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">각성</label>
                                   <select className="character-filter-dropdown" name="awakening" value={filters.awakening} onChange={handleFilterChange}>
+                                      <option value="">선택해주세요</option>
                                       <option value="18">18</option>
                                       <option value="24">24</option>
                                       <option value="30">30</option>
@@ -268,6 +329,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                               <div className="character-filter-box">
                                   <label className="character-filter-label">분위기</label>
                                   <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
+                                      <option value="">선택해주세요</option>
                                       <option value="1">예민x</option>
                                       <option value="2">예민max</option>
                                   </select>
@@ -300,13 +362,15 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                               <div className="character-filter-box">
                                   <label className="character-filter-label">무기</label>
                                   <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
-                                      <option value="1">없음</option>
+                                      <option value="0">선택해주세요</option>
+                                      <option value="1">0</option>
                                       <option value="2">무풀</option>
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">방어구</label>
                                   <select className="character-filter-dropdown" name="transcendenceArmor" value={filters.transcendenceArmor} onChange={handleFilterChange}>
+                                      <option value="">선택해주세요</option>
                                       <option value="1">0</option>
                                       <option value="2">75</option>
                                       <option value="3">방풀</option>
@@ -320,7 +384,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             </div>
             <div className='party-info-modal-last-row'>
               <button className='last-row-button' onClick={onClose}>취소</button>
-              <button className='last-row-button' onClick={()=>console.log(filters)}>{buttonText}</button>
+              <button className='last-row-button' onClick={()=>{console.log(filters);}}>{buttonText}</button>
             </div>
         </div>
       </div>
