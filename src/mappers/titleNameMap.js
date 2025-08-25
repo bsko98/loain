@@ -2,6 +2,7 @@
 
 
 export const TITLE_NAME_MAP = {
+    //서버에서 보내는 값 : 클라에서 사용될 값(mapper를 통해 변환됨)
     "마수군단장": "commander_valtan_1",
     "욕망군단장": "commander_vykas_1",
     "광기군단장": "commander_kouku_saton_1",
