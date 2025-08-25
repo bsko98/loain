@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 import { socketManager } from '../socket/socket.js';
+import {CreatePartySchema} from '../validation/_party.js'
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
@@ -187,11 +188,24 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     }
  }
  const createParty=()=>{
+
     try{
-        socketManager.send("CreateParty",{characterName: filters});
-        onClose();  
+        const result = CreatePartySchema.safeParse(filters)
+        console.log(result)
+        if(result.success){
+            socketManager.send("CreateParty",{characterName: filters});
+            onClose(); 
+        }else{
+            alert("문제가 발생했습니다. 다시 시도해주세요");
+        }
+         
     }
     catch(error){
+        const fieldErrors = {};
+        error.errors.forEach(err => {
+            fieldErrors[err.path[0]] = err.message;
+        });
+        setErrors(fieldErrors);
         alert("문제가 발생했습니다. 다시 시도해주세요");
     }
    
