@@ -14,6 +14,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
   const [startMastery, setStartMastery] = useState("");
   const [endMastery, setEndMastery] = useState("");
+  const [errors, setErrors] = useState({});
   const bossNameList = [
         "commander_1",
         "commander_2",
@@ -206,6 +207,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             fieldErrors[err.path[0]] = err.message;
         });
         setErrors(fieldErrors);
+        console.log(errors)
         alert("문제가 발생했습니다. 다시 시도해주세요");
     }
    
