@@ -145,7 +145,7 @@ const Sidebar = ({state}) => {
                     <div style={{userSelect:'none', paddingTop: '14.5px', color: '#DFDFDF' }}>계정 관리 및 더보기</div>
                 </div>
             </div>
-            <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal} isFindIdOpen={()=>setIsFindIdModalOpen(!isFindIdModalOpen)} isResetPasswordOpen={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)} isSignUpOpen={()=>setIsSingUpModalOpen(!isSingUpModalOpen)}/>
+            <Signin isOpen={isSinginModalOpen} onClose={closeSinginModal} isFindIdOpen={()=>setIsFindIdModalOpen(!isFindIdModalOpen)} isResetPasswordOpen={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)} isSignUpOpen={()=>setIsSingUpModalOpen(!isSingUpModalOpen)} setIsLoggedIn={state.setIsLoggedIn}/>
             <MakePartyModal isOpen={isPartyModalOpen} onClose={closePartyModal} modalTitleText={'파티 만들기'} buttonText={'파티 만들기'}/>
             <ManageMyAccountModal isOpen={isMyAccountModalOpen} onClose={closeMyAccountModal}/>
             <ResetPassword isOpen={isResetPasswordModalOpen} onClose={()=>setIsResetPasswordModalOpen(!isResetPasswordModalOpen)}/>
