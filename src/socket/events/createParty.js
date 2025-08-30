@@ -10,6 +10,7 @@ export const createPartyEventHandler = (states) => {
                 return;
             }
             states.myParty = PartyEntityMapper.toInternal(data.partyData);
+            console.log("state: ",states);
             states.setMyarty({...states.myParty});
             console.log(`파티 생성 완료`)
         }

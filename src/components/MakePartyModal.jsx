@@ -28,18 +28,31 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "kazeroth_4",
         "epic_1"
     ];
+    const bossValueMap = {
+        "commander_1": 1,
+        "commander_2": 2,
+        "commander_3": 3,
+        "commander_4": 4,
+        "commander_5": 5,
+        "commander_6": 6,
+        "kazeroth_1": 7,
+        "kazeroth_2": 8,
+        "kazeroth_3": 9,
+        "kazeroth_4": 10,
+        "epic_1": 11
+    }
     const difficultyMap={
-        "commander_1":"hell",
-        "commander_2":"hell",
-        "commander_3":"hell",
-        "commander_4":"hell",
-        "commander_5":"hard",
-        "commander_6":"hard",
-        "kazeroth_1":"hard",
-        "kazeroth_2":"hard",
-        "kazeroth_3":"hard",
-        "kazeroth_4":"hard",
-        "epic_1":"normal"
+        1:"hell",
+        2:"hell",
+        3:"hell",
+        4:"hell",
+        5:"hard",
+        6:"hard",
+        7:"hard",
+        8:"hard",
+        9:"hard",
+        10:"hard",
+        11:"normal"
     }
     const difficultyObj = {
         "normal" : ["normal"],
@@ -47,22 +60,22 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "hell" :  ["normal","hard","hell"]
     }
     const difficultyValue={
-        "normal" : "1",
-        "hard" :  "2",
-        "hell" :  "3"
+        "normal" : 1,
+        "hard" :  2,
+        "hell" :  3
     }
     const gateMap = {
-        "commander_1":"two",
-        "commander_2":"two",
-        "commander_3":"three",
-        "commander_4":"four",
-        "commander_5":"three",
-        "commander_6":"four",
-        "kazeroth_1":"two",
-        "kazeroth_2":"two",
-        "kazeroth_3":"two",
-        "kazeroth_4":"three",
-        "epic_1":"two"
+        1:"two",
+        2:"two",
+        3:"three",
+        4:"four",
+        5:"three",
+        6:"four",
+        7:"two",
+        8:"two",
+        9:"two",
+        10:"three",
+        11:"two"
     }
 
     const gateObj ={
@@ -98,8 +111,8 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
   
   const [filters, setFilters] = useState({
 
-          boss: "",
-          difficulty: "",
+          boss: 0,
+          difficulty: 0,
           startGate: "",
           endGate: "",
           itemLevel: "",
@@ -173,10 +186,20 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                 newFilters.endGate = "";
             }
         }
-        if (type === "select-one"){
-            console.log(filters.boss)
-            newFilters[name] = value;
+        if(type === "select-one"){
+            if (name ==="startTime" || name==="card" || name==="title"){
+                console.log("여기서 확인해볼까?1 ", typeof value)
+                console.log(value)
+                newFilters[name] = value;
+            }
+            else{
+                console.log("여기서 확인해볼까?2 ", typeof value)
+                console.log(value)
+                newFilters[name] = Number(value);
+            }
         }
+        
+        
         return newFilters;
     });
   };
@@ -188,13 +211,40 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         onClose();
     }
  }
+
+ const getPartyFilter=(filters)=>{
+    const { evolution, enlightenment, leap } = filters;
+    const { transcendenceWeapon, transcendenceArmor }= filters;
+    const {startGate, endGate,startTime,startMastery,endMastery,itemLevel,title,lastSupporter,lastDealer} = filters;
+
+    const transcend = { weapon: transcendenceWeapon,
+         armor:transcendenceArmor };
+    const card = { name: filters.card,
+                    awakening: filters.awakening 
+                }
+    const partyFilter = {startGate, endGate,startTime,startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer};
+    partyFilter.arkPassive = { evolution: Number(evolution), enlightenment: Number(enlightenment), leap: Number(leap) };
+    partyFilter.transcend = transcend;
+    partyFilter.card = card;
+    partyFilter.mastery = Number(0);
+    return partyFilter;
+ }
+
  const createParty=()=>{
 
     try{
-        const result = CreatePartySchema.safeParse(filters)
+        const partyFilter = getPartyFilter(filters);
+        console.log("얘 타입 뭔데: ",typeof partyFilter)
+        const filters2 = {partyTitle: filters.partyTitle,boss: filters.boss,difficulty:filters.difficulty,partyFilter:partyFilter};
+        const result = CreatePartySchema.safeParse(filters2);
         console.log(result)
         if(result.success){
-            socketManager.send("CreateParty",{characterName: filters});
+            partyFilter.startTime = Number(0);
+            console.log("파티필터 값: ",partyFilter)
+            console.log(filters.boss)
+            console.log("sex: ",filters.difficulty);
+            partyFilter.card = [partyFilter.card]; 
+            socketManager.send("createParty",{title: filters.partyTitle, boss: "군단장_레이드_발탄", difficulty: filters.difficulty, partyFilter: partyFilter});
             onClose(); 
         }else{
             alert("문제가 발생했습니다. 다시 시도해주세요");
@@ -246,7 +296,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                     <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
                       <option value={undefined}>레이드를 선택해주세요.</option>
                       {bossNameList.map((bossName)=>(
-                        <option key={bossName} value={bossName}>{bossName}</option> 
+                        <option key={bossName} value={Number(bossValueMap[bossName])}>{bossName}</option> 
                       ))
                       }
                     </select>
@@ -257,7 +307,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                       <option>난이도를 선택해주세요.</option>
                       {
                         filters.boss&&difficultyObj[difficultyMap[filters.boss]].map((dif)=>(
-                            <option value={difficultyValue[dif]} key={dif}>{dif}</option>
+                            <option value={Number(difficultyValue[dif])} key={dif}>{dif}</option>
                         ))
                       }
                     </select>
@@ -266,7 +316,6 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                       <span className='party-info-modal-left-container-range-info-text'>관문 정보</span>
                       <div className="range-container2">
                           <div className="raid-select-dropdown2">
-  
                               <select name="startGate" value={filters.startGate} onChange={handleFilterChange}>
                                   <option value="">선택</option>
                                   {filters.boss&&gateObj[gateMap[filters.boss]].map((gate) => (
@@ -351,17 +400,17 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                                   <label className="character-filter-label">각성</label>
                                   <select className="character-filter-dropdown" name="awakening" value={filters.awakening} onChange={handleFilterChange}>
                                       <option value="">선택해주세요</option>
-                                      <option value="18">18</option>
-                                      <option value="24">24</option>
-                                      <option value="30">30</option>
+                                      <option value={18}>18</option>
+                                      <option value={24}>24</option>
+                                      <option value={30}>30</option>
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">분위기</label>
                                   <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
                                       <option value="">선택해주세요</option>
-                                      <option value="1">예민x</option>
-                                      <option value="2">예민max</option>
+                                      <option value={1}>예민x</option>
+                                      <option value={2}>예민max</option>
                                   </select>
                               </div>
                               <div className="custom-checkbox-container">
@@ -392,20 +441,20 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                               <div className="character-filter-box">
                                   <label className="character-filter-label">무기</label>
                                   <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
-                                      <option value="0">선택해주세요</option>
-                                      <option value="0">0</option>
-                                      <option value="20">20</option>
-                                      <option value="21">21</option>
+                                      <option value="">선택해주세요</option>
+                                      <option value={0}>0</option>
+                                      <option value={20}>20</option>
+                                      <option value={21}>21</option>
                                   </select>
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">방어구</label>
                                   <select className="character-filter-dropdown" name="transcendenceArmor" value={filters.transcendenceArmor} onChange={handleFilterChange}>
-                                      <option value="0">선택해주세요</option>
-                                      <option value="0">0</option>
-                                      <option value="75">75</option>
-                                      <option value="100">100</option>
-                                      <option value="105">105</option>
+                                      <option value=" ">선택해주세요</option>
+                                      <option value={0}>0</option>
+                                      <option value={75}>75</option>
+                                      <option value={100}>100</option>
+                                      <option value={105}>105</option>
                                   </select>
                               </div>
                           </div>
