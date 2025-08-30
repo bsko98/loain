@@ -28,7 +28,7 @@ const PartyFilterSchema = z.object({
   itemLevel: z.number().min(0).max(2000),
   arkPassive: ArkPassiveSchema,
   transcend: TranscendSchema,
-  titleTitle: z.string().min(1).max(50),
+  title: z.string().min(1).max(50),
   card: CardSchema,
   lastSupporter: z.boolean(),
   lastDealer: z.boolean(),
@@ -36,7 +36,7 @@ const PartyFilterSchema = z.object({
 
 
 export const CreatePartySchema = z.object({
-  title: z.string().min(2).max(30),
+  partyTitle: z.string().min(2).max(30),
   boss: z.number().int().min(1).max(30),
   difficulty: z.number().int().min(0).max(5),
   partyFilter: PartyFilterSchema,
