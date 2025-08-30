@@ -188,13 +188,9 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         }
         if(type === "select-one"){
             if (name ==="startTime" || name==="card" || name==="title"){
-                console.log("여기서 확인해볼까?1 ", typeof value)
-                console.log(value)
                 newFilters[name] = value;
             }
             else{
-                console.log("여기서 확인해볼까?2 ", typeof value)
-                console.log(value)
                 newFilters[name] = Number(value);
             }
         }
@@ -234,15 +230,10 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
     try{
         const partyFilter = getPartyFilter(filters);
-        console.log("얘 타입 뭔데: ",typeof partyFilter)
         const filters2 = {partyTitle: filters.partyTitle,boss: filters.boss,difficulty:filters.difficulty,partyFilter:partyFilter};
         const result = CreatePartySchema.safeParse(filters2);
-        console.log(result)
         if(result.success){
             partyFilter.startTime = Number(0);
-            console.log("파티필터 값: ",partyFilter)
-            console.log(filters.boss)
-            console.log("sex: ",filters.difficulty);
             partyFilter.card = [partyFilter.card]; 
             socketManager.send("createParty",{title: filters.partyTitle, boss: "군단장_레이드_발탄", difficulty: filters.difficulty, partyFilter: partyFilter});
             onClose(); 
