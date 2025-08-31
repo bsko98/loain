@@ -49,7 +49,6 @@ const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen,
             console.log(idValidCheckResult.message);
             return { success: false, message: idValidCheckResult.message };
         }
-        setInputId("");
         return { success: true, id: idValidCheckResult.id };
     };
     const checkPassword = () => {
@@ -59,7 +58,6 @@ const Signin = ({isOpen, onClose, isFindIdOpen,isResetPasswordOpen,isSignUpOpen,
             console.log(pwValidCheckResult.message);
             return { success: false, message: pwValidCheckResult.message };
         }
-        setInputPw("");
         return { success: true, pw: pwValidCheckResult.pw };
     };
     const runSignIn = async () => {
