@@ -112,20 +112,20 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
   const [filters, setFilters] = useState({
 
           boss: 0,
-          difficulty: 0,
+          difficulty: Number(0),
           startGate: "",
           endGate: "",
-          itemLevel: "",
+          itemLevel: Number(0),
           partyTitle: "",
           title: "",
           card: "",
-          awakening: "",
-          evolution: "",
-          enlightenment: "",
+          awakening: Number(0),
+          evolution: Number(0),
+          enlightenment: Number(0),
           environment:"",
-          leap: "",
-          transcendenceWeapon: "",
-          transcendenceArmor: "",
+          leap: Number(0),
+          transcendenceWeapon: Number(0),
+          transcendenceArmor: Number(0),
           lastSupporter: false,
           lastDealer: false,
           startTime: "",
@@ -222,7 +222,6 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     partyFilter.arkPassive = { evolution: Number(evolution), enlightenment: Number(enlightenment), leap: Number(leap) };
     partyFilter.transcend = transcend;
     partyFilter.card = card;
-    partyFilter.mastery = Number(0);
     return partyFilter;
  }
 
