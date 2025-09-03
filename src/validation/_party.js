@@ -36,7 +36,7 @@ const PartyFilterSchema = z.object({
 
 export const CreatePartySchema = z.object({
   partyTitle: z.string().min(2).max(30),
-  boss: z.number().int().min(1).max(30),
+  boss: z.string().min(1).max(30),
   difficulty: z.number().int().min(0).max(5),
   partyFilter: PartyFilterSchema,
 });

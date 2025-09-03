@@ -3,7 +3,7 @@ import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 import { socketManager } from '../socket/socket.js';
 import {CreatePartySchema} from '../validation/_party.js'
-import { titleNameData, cardNameData} from '../mappers/dataMapTransformer.js'
+import { titleNameData, cardNameData, bossNameData} from '../mappers/dataMapTransformer.js'
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
@@ -29,31 +29,19 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "kazeroth_4",
         "epic_1"
     ];
-    const bossValueMap = {
-        "commander_1": 1,
-        "commander_2": 2,
-        "commander_3": 3,
-        "commander_4": 4,
-        "commander_5": 5,
-        "commander_6": 6,
-        "kazeroth_1": 7,
-        "kazeroth_2": 8,
-        "kazeroth_3": 9,
-        "kazeroth_4": 10,
-        "epic_1": 11
-    }
+
     const difficultyMap={
-        1:"hell",
-        2:"hell",
-        3:"hell",
-        4:"hell",
-        5:"hard",
-        6:"hard",
-        7:"hard",
-        8:"hard",
-        9:"hard",
-        10:"hard",
-        11:"normal"
+        "commander_1":"hell",
+        "commander_2":"hell",
+        "commander_3":"hell",
+        "commander_4":"hell",
+        "commander_5":"hard",
+        "commander_6":"hard",
+        "kazeroth_1":"hard",
+        "kazeroth_2":"hard",
+        "kazeroth_3":"hard",
+        "kazeroth_4":"hard",
+        "epic_1":"normal"
     }
     const difficultyObj = {
         "normal" : ["normal"],
@@ -66,17 +54,17 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         "hell" :  3
     }
     const gateMap = {
-        1:"two",
-        2:"two",
-        3:"three",
-        4:"four",
-        5:"three",
-        6:"four",
-        7:"two",
-        8:"two",
-        9:"two",
-        10:"three",
-        11:"two"
+        "commander_1":"two",
+        "commander_2":"two",
+        "commander_3":"three",
+        "commander_4":"four",
+        "commander_5":"three",
+        "commander_6":"four",
+        "kazeroth_1":"two",
+        "kazeroth_2":"two",
+        "kazeroth_3":"two",
+        "kazeroth_4":"three",
+        "epic_1":"two"
     }
 
     const gateObj ={
@@ -112,7 +100,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
   
   const [filters, setFilters] = useState({
 
-          boss: 0,
+          boss: "",
           difficulty: Number(0),
           startGate: "",
           endGate: "",
@@ -188,7 +176,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             }
         }
         if(type === "select-one"){
-            if (name ==="startTime" || name==="card" || name==="title"){
+            if (name ==="startTime" || name==="card" || name==="title" || name==="boss"){
                 newFilters[name] = value;
             }
             else{
@@ -293,7 +281,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                     <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
                       <option value={undefined}>레이드를 선택해주세요.</option>
                       {bossNameList.map((bossName)=>(
-                        <option key={bossName} value={Number(bossValueMap[bossName])}>{bossName}</option> 
+                        <option key={bossName} value={bossName}>{bossName}</option> 
                       ))
                       }
                     </select>

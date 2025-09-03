@@ -14,7 +14,7 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
   const [startMastery, setStartMastery] = useState(myParty.partyFilter.startMastery);
   const [endMastery, setEndMastery] = useState(myParty.partyFilter.endMastery);
 
-       const bossNameList = [
+    const bossNameList = [
         "commander_1",
         "commander_2",
         "commander_3",
@@ -27,31 +27,19 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
         "kazeroth_4",
         "epic_1"
     ];
-    const bossValueMap = {
-        "commander_1": 1,
-        "commander_2": 2,
-        "commander_3": 3,
-        "commander_4": 4,
-        "commander_5": 5,
-        "commander_6": 6,
-        "kazeroth_1": 7,
-        "kazeroth_2": 8,
-        "kazeroth_3": 9,
-        "kazeroth_4": 10,
-        "epic_1": 11
-    }
+
     const difficultyMap={
-        1:"hell",
-        2:"hell",
-        3:"hell",
-        4:"hell",
-        5:"hard",
-        6:"hard",
-        7:"hard",
-        8:"hard",
-        9:"hard",
-        10:"hard",
-        11:"normal"
+        "commander_1":"hell",
+        "commander_2":"hell",
+        "commander_3":"hell",
+        "commander_4":"hell",
+        "commander_5":"hard",
+        "commander_6":"hard",
+        "kazeroth_1":"hard",
+        "kazeroth_2":"hard",
+        "kazeroth_3":"hard",
+        "kazeroth_4":"hard",
+        "epic_1":"normal"
     }
     const difficultyObj = {
         "normal" : ["normal"],
@@ -63,6 +51,26 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
         "hard" :  2,
         "hell" :  3
     }
+    const gateMap = {
+        "commander_1":"two",
+        "commander_2":"two",
+        "commander_3":"three",
+        "commander_4":"four",
+        "commander_5":"three",
+        "commander_6":"four",
+        "kazeroth_1":"two",
+        "kazeroth_2":"two",
+        "kazeroth_3":"two",
+        "kazeroth_4":"three",
+        "epic_1":"two"
+    }
+
+    const gateObj ={
+        two :  [1, 2],  
+        three :  [1, 2, 3],  
+        four :  [1, 2, 3, 4]  
+    } 
+
     const cards=[
         "Dealer_1",
         "Dealer_2",
@@ -87,26 +95,6 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
         "kazeroth_mordoom_1",
         "epic_behemoth_1"
     ]
-
-    const gateMap = {
-        1:"two",
-        2:"two",
-        3:"three",
-        4:"four",
-        5:"three",
-        6:"four",
-        7:"two",
-        8:"two",
-        9:"two",
-        10:"three",
-        11:"two"
-    }
-
-    const gateObj ={
-        two :  [1, 2],  
-        three :  [1, 2, 3],  
-        four :  [1, 2, 3, 4]  
-    } 
 
 
   const [filters, setFilters] = useState({
@@ -236,10 +224,10 @@ useEffect(()=>{
                   <span className='party-info-modal-left-container-basic-span'>레이드</span>
                   <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
                     <option value={undefined}>레이드를 선택해주세요.</option>
-                    {bossNameList.map((bossName)=>(
-                    <option key={bossName} value={bossName}>{bossName}</option> 
-                    ))
-                    }
+                      {bossNameList.map((bossName)=>(
+                        <option key={bossName} value={bossName}>{bossName}</option> 
+                      ))
+                      }
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
@@ -247,7 +235,7 @@ useEffect(()=>{
                   <select className='party-info-modal-left-container-basic-select' name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
                     <option>난이도를 선택해주세요.</option>
                       {
-                        filters.boss&&difficultyObj[difficultyMap[Number(bossValueMap[filters.boss])]].map((dif)=>(
+                        filters.boss&&difficultyObj[difficultyMap[filters.boss]].map((dif)=>(
                             <option value={Number(difficultyValue[dif])} key={dif}>{dif}</option>
                         ))
                       }
@@ -260,7 +248,7 @@ useEffect(()=>{
 
                             <select name="startGate" value={filters.startGate} onChange={handleFilterChange}>
                                 <option value="">선택</option>
-                                {filters.boss&&gateObj[gateMap[Number(bossValueMap[filters.boss])]].map((gate) => (
+                                {filters.boss&&gateObj[gateMap[filters.boss]].map((gate) => (
                                       <option key={gate} value={gate}>{gate}</option>
                                   ))}
                             </select>
@@ -268,7 +256,7 @@ useEffect(()=>{
                             <select name="endGate" value={filters.endGate} onChange={handleFilterChange}>
                                 <option value="">선택</option>
                                 <option value="">선택</option>
-                                  {filters.boss&&gateObj[gateMap[Number(bossValueMap[filters.boss])]]
+                                  {filters.boss&&gateObj[gateMap[filters.boss]]
                                       .filter((gate) => parseInt(gate, 10) >= parseInt(filters.startGate || 0, 10))
                                       .map((gate) => (
                                           <option key={gate} value={gate}>{gate}</option>
