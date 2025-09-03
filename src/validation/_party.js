@@ -15,7 +15,6 @@ const TranscendSchema = z.object({
 
 // `card` 배열 내부의 각 객체에 대한 스키마
 const CardSchema = z.object({
-  name: z.string().min(1).max(50),
   awakening: z.number().int().min(0).max(50),
 });
 
@@ -28,7 +27,7 @@ const PartyFilterSchema = z.object({
   itemLevel: z.number().min(0).max(2000),
   arkPassive: ArkPassiveSchema,
   transcend: TranscendSchema,
-  title: z.string().min(1).max(50),
+  title: z.string().min(0).max(50),
   card: CardSchema,
   lastSupporter: z.boolean(),
   lastDealer: z.boolean(),

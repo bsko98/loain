@@ -3,10 +3,11 @@ import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 import { socketManager } from '../socket/socket.js';
 import {CreatePartySchema} from '../validation/_party.js'
+import { titleNameData, cardNameData} from '../mappers/dataMapTransformer.js'
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const startTime = ["1시간 후 ","2시간 후 ","3시간 후 "]
+const startTime = ["1시간 후", "2시간 후", "3시간 후"]
 
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
@@ -212,10 +213,10 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     const { evolution, enlightenment, leap } = filters;
     const { transcendenceWeapon, transcendenceArmor }= filters;
     const {startGate, endGate,startTime,startMastery,endMastery,itemLevel,title,lastSupporter,lastDealer} = filters;
-
     const transcend = { weapon: transcendenceWeapon,
          armor:transcendenceArmor };
-    const card = { name: filters.card,
+
+    const card = { name: filters.card? cardNameData.toExternal(filters.card) : "",
                     awakening: filters.awakening 
                 }
     const partyFilter = {startGate, endGate,startTime,startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer};
@@ -233,7 +234,13 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         const result = CreatePartySchema.safeParse(filters2);
         if(result.success){
             partyFilter.startTime = Number(0);
-            partyFilter.card = [partyFilter.card]; 
+            if(partyFilter.card.name!==""){
+                partyFilter.card = [partyFilter.card];
+            }
+            else{
+                partyFilter.card = [];
+            }
+            partyFilter.title = titleNameData.toExternal(partyFilter.title);
             socketManager.send("createParty",{title: filters.partyTitle, boss: "군단장_레이드_발탄", difficulty: filters.difficulty, partyFilter: partyFilter});
             onClose(); 
         }else{
