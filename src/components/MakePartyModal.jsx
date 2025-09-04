@@ -7,7 +7,14 @@ import { titleNameData, cardNameData, bossNameData} from '../mappers/dataMapTran
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const startTime = ["1시간 후", "2시간 후", "3시간 후"]
+const startTime = []
+
+const interval = 15; // 15분 간격
+const maxTime = 180; // 최대 120분 후까지
+for (let i = interval; i <= maxTime; i += interval) {
+    const time = {text: `${i}분 후`, value: i}
+    startTime.push(time);
+}
 
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
@@ -207,7 +214,9 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
     const card = { name: filters.card? cardNameData.toExternal(filters.card) : "",
                     awakening: filters.awakening 
                 }
-    const partyFilter = {startGate, endGate,startTime,startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer,environment: Number(enviornment)};
+    const currentDate = new Date();
+    currentDate.setUTCMinutes(currentDate.getUTCMinutes() + Number(startTime));
+    const partyFilter = {startGate, endGate,startTime: currentDate.toISOString(),startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer,environment: Number(enviornment)};
     partyFilter.arkPassive = { evolution: Number(evolution), enlightenment: Number(enlightenment), leap: Number(leap) };
     partyFilter.transcend = transcend;
     partyFilter.card = card;
@@ -221,7 +230,6 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         const filters2 = {partyTitle: filters.partyTitle,boss: filters.boss,difficulty:filters.difficulty,partyFilter:partyFilter};
         const result = CreatePartySchema.safeParse(filters2);
         if(result.success){
-            partyFilter.startTime = Number(0);
             if(partyFilter.card.name!==""){
                 partyFilter.card = [partyFilter.card];
             }
@@ -271,7 +279,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                     <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
                       <option>출발시간을 선택해주세요.</option>
                       {startTime.map((time)=>(
-                        <option value={time} key = {time}>{time}</option>
+                        <option value={time.value} key = {time.value}>{time.text}</option>
                       ))}
                       
                     </select>

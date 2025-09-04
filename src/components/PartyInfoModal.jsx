@@ -4,7 +4,13 @@ import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const startTime = ["1시간 후", "2시간 후","3시간 후"]
+const startTime = []
+
+const interval = 15; // 15분 간격
+const maxTime = 180; // 최대 120분 후까지
+for (let i = interval; i <= maxTime; i += interval) {
+  startTime.push(`${i}분 후`);
+}
 
 //TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
 //TODO - 랏딜 랏폿 안 바뀌는거 처리해야됨 2025.06.22
@@ -217,7 +223,7 @@ useEffect(()=>{
                   <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
                     <option>출발시간을 선택해주세요.</option>
                       {startTime.map((time)=>(
-                        <option value={time} key = {time}>{time}</option>
+                        <option value={time.value} key = {time.value}>{time.text}</option>
                       ))}
                   </select>
                 </div>
