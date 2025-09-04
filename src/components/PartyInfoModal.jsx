@@ -116,7 +116,8 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
     lastDealer: myParty.partyFilter.lastDealer,
     startTime: myParty.partyFilter.startTime,
     startMastery: myParty.partyFilter.startMastery,
-    endMastery: myParty.partyFilter.endMastery
+    endMastery: myParty.partyFilter.endMastery,
+    environment: myParty.partyFilter.environment
     });
 
 
@@ -340,8 +341,9 @@ useEffect(()=>{
                                 <label className="character-filter-label">분위기</label>
                                 <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
                                     <option value="">선택해주세요</option>
-                                    <option value="1">예민x</option>
-                                    <option value="2">예민max</option>
+                                    <option value={0}>상관없음</option>
+                                    <option value={1}>예민x</option>
+                                    <option value={2}>예민max</option>
                                 </select>
                             </div>
                             <div className="custom-checkbox-container">

@@ -111,7 +111,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
           awakening: Number(0),
           evolution: Number(0),
           enlightenment: Number(0),
-          environment:"",
+          enviornment:Number(0),
           leap: Number(0),
           transcendenceWeapon: Number(0),
           transcendenceArmor: Number(0),
@@ -200,14 +200,14 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
  const getPartyFilter=(filters)=>{
     const { evolution, enlightenment, leap } = filters;
     const { transcendenceWeapon, transcendenceArmor }= filters;
-    const {startGate, endGate,startTime,startMastery,endMastery,itemLevel,title,lastSupporter,lastDealer} = filters;
+    const {startGate, endGate,startTime,startMastery,endMastery,itemLevel,title,lastSupporter,lastDealer,enviornment} = filters;
     const transcend = { weapon: transcendenceWeapon,
          armor:transcendenceArmor };
 
     const card = { name: filters.card? cardNameData.toExternal(filters.card) : "",
                     awakening: filters.awakening 
                 }
-    const partyFilter = {startGate, endGate,startTime,startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer};
+    const partyFilter = {startGate, endGate,startTime,startMastery,endMastery,itemLevel: Number(itemLevel),title,lastSupporter,lastDealer,environment: Number(enviornment)};
     partyFilter.arkPassive = { evolution: Number(evolution), enlightenment: Number(enlightenment), leap: Number(leap) };
     partyFilter.transcend = transcend;
     partyFilter.card = card;
@@ -229,7 +229,7 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                 partyFilter.card = [];
             }
             partyFilter.title = titleNameData.toExternal(partyFilter.title);
-            socketManager.send("createParty",{title: filters.partyTitle, boss: "군단장_레이드_발탄", difficulty: filters.difficulty, partyFilter: partyFilter});
+            socketManager.send("createParty",{title: filters.partyTitle, boss: bossNameData.toExternal(filters.boss), difficulty: filters.difficulty, partyFilter: partyFilter});
             onClose(); 
         }else{
             alert("문제가 발생했습니다. 다시 시도해주세요");
@@ -392,8 +392,9 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
                               </div>
                               <div className="character-filter-box">
                                   <label className="character-filter-label">분위기</label>
-                                  <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
+                                  <select className="character-filter-dropdown" name="enviornment" value={filters.enviornment} onChange={handleFilterChange}>
                                       <option value="">선택해주세요</option>
+                                      <option value={0}>상관없음</option>
                                       <option value={1}>예민x</option>
                                       <option value={2}>예민max</option>
                                   </select>

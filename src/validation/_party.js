@@ -31,6 +31,7 @@ const PartyFilterSchema = z.object({
   card: CardSchema,
   lastSupporter: z.boolean(),
   lastDealer: z.boolean(),
+  environment: z.number().int().min(0).max(2),
 });
 
 

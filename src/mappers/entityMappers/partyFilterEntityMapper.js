@@ -17,6 +17,7 @@ export class PartyFilterEntityMapper {
             card: partyFilter.card.map((card) => CardEntityMapper.toInternal(card)),
             lastSupporter: partyFilter.lastSupporter,
             lastDealer: partyFilter.lastDealer,
+            environment: partyFilter.environment,
         }
     }
 }
