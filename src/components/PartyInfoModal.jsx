@@ -222,7 +222,7 @@ useEffect(()=>{
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>출발 시간</span>
                   <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
-                    <option>출발시간을 선택해주세요.</option>
+                    <option value = {filters.startTime}>{filters.startTime}</option>
                       {startTime.map((time)=>(
                         <option value={time.value} key = {time.value}>{time.text}</option>
                       ))}
@@ -262,7 +262,6 @@ useEffect(()=>{
                             </select>
                             <label>~</label>
                             <select name="endGate" value={filters.endGate} onChange={handleFilterChange}>
-                                <option value="">선택</option>
                                 <option value="">선택</option>
                                   {filters.boss&&gateObj[gateMap[filters.boss]]
                                       .filter((gate) => parseInt(gate, 10) >= parseInt(filters.startGate || 0, 10))
