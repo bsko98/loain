@@ -148,10 +148,8 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
 useEffect(()=>{
     setFilters((prevFilters) => {
         let newFilters = { ...prevFilters };
-        console.log("setMastery: ",startMastery," ",endMastery)
         newFilters["startMastery"] = startMastery;  
         newFilters["endMastery"] = endMastery;   
-        console.log(newFilters["startMastery"]," s ",newFilters["endMastery"])
         return newFilters;
     }) 
   },[startMastery,endMastery])
@@ -404,7 +402,7 @@ useEffect(()=>{
           </div>
           <div className='party-info-modal-last-row'>
             <button className='last-row-button' onClick={onClose}>취소</button>
-            <button className='last-row-button' onClick={()=>console.log(filters)}>{buttonText}</button>
+            <button className='last-row-button'>{buttonText}</button>
           </div>
       </div>
     </div>

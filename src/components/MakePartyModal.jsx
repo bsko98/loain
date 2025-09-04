@@ -150,10 +150,8 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
   useEffect(()=>{
     setFilters((prevFilters) => {
         let newFilters = { ...prevFilters };
-        console.log("setMastery: ",startMastery," ",endMastery)
         newFilters["startMastery"] = startMastery;  
         newFilters["endMastery"] = endMastery;   
-        console.log(newFilters["startMastery"]," s ",newFilters["endMastery"])
         return newFilters;
     }) 
   },[startMastery,endMastery])
@@ -250,7 +248,6 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
             fieldErrors[err.path[0]] = err.message;
         });
         setErrors(fieldErrors);
-        console.log("error: ",errors)
         alert("문제가 발생했습니다. 다시 시도해주세요");
     }
    
