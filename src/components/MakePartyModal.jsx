@@ -17,12 +17,10 @@ for (let i = interval; i <= maxTime; i += interval) {
 }
 
 
-//TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
 const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
 
   const [startMastery, setStartMastery] = useState("");
   const [endMastery, setEndMastery] = useState("");
-  const [errors, setErrors] = useState({});
   const bossNameList = [
         "commander_1",
         "commander_2",
@@ -247,8 +245,8 @@ const MakePartyModal = ({isOpen, onClose,modalTitleText,buttonText}) => {
         error.errors.forEach(err => {
             fieldErrors[err.path[0]] = err.message;
         });
-        setErrors(fieldErrors);
         alert("문제가 발생했습니다. 다시 시도해주세요");
+        console.log(fieldErrors)
     }
    
  }

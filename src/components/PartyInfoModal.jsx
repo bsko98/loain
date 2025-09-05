@@ -13,8 +13,6 @@ for (let i = interval; i <= maxTime; i += interval) {
     startTime.push(time);
 }
 
-//TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
-//TODO - 랏딜 랏폿 안 바뀌는거 처리해야됨 2025.06.22
 const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
 
   const myParty = state.myParty  
