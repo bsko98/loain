@@ -1,19 +1,106 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './PartyInfoModal.css'
 import { ReactComponent as CloseButton} from "../assets/images/CloseButton.svg";
 
 
 const skillLevels = ["트라이", "클경", "반숙", "숙련", "숙제"];
-const gateOptions = [1, 2, 3, 4];
+const startTime = []
 
+const interval = 15; // 15분 간격
+const maxTime = 180; // 최대 120분 후까지
+for (let i = interval; i <= maxTime; i += interval) {
+    const time = {text: `${i}분 후`, value: i}
+    startTime.push(time);
+}
 
-//TODO - 관문 수에 따라 노드 사이 간격이 바뀌는데 이거 처리해줘야됨
-//TODO - 랏딜 랏폿 안 바뀌는거 처리해야됨 2025.06.22
 const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
 
   const myParty = state.myParty  
   const [startMastery, setStartMastery] = useState(myParty.partyFilter.startMastery);
   const [endMastery, setEndMastery] = useState(myParty.partyFilter.endMastery);
+
+    const bossNameList = [
+        "commander_1",
+        "commander_2",
+        "commander_3",
+        "commander_4",
+        "commander_5",
+        "commander_6",
+        "kazeroth_1",
+        "kazeroth_2",
+        "kazeroth_3",
+        "kazeroth_4",
+        "epic_1"
+    ];
+
+    const difficultyMap={
+        "commander_1":"hell",
+        "commander_2":"hell",
+        "commander_3":"hell",
+        "commander_4":"hell",
+        "commander_5":"hard",
+        "commander_6":"hard",
+        "kazeroth_1":"hard",
+        "kazeroth_2":"hard",
+        "kazeroth_3":"hard",
+        "kazeroth_4":"hard",
+        "epic_1":"normal"
+    }
+    const difficultyObj = {
+        "normal" : ["normal"],
+        "hard" :  ["normal","hard"],
+        "hell" :  ["normal","hard","hell"]
+    }
+    const difficultyValue={
+        "normal" : 1,
+        "hard" :  2,
+        "hell" :  3
+    }
+    const gateMap = {
+        "commander_1":"two",
+        "commander_2":"two",
+        "commander_3":"three",
+        "commander_4":"four",
+        "commander_5":"three",
+        "commander_6":"four",
+        "kazeroth_1":"two",
+        "kazeroth_2":"two",
+        "kazeroth_3":"two",
+        "kazeroth_4":"three",
+        "epic_1":"two"
+    }
+
+    const gateObj ={
+        two :  [1, 2],  
+        three :  [1, 2, 3],  
+        four :  [1, 2, 3, 4]  
+    } 
+
+    const cards=[
+        "Dealer_1",
+        "Dealer_2",
+        "Dealer_3",
+        "Dealer_4",
+        "Dealer_5",
+        "Dealer_6"
+    ]
+
+    const titles = [
+        "commander_valtan_1",
+        "commander_vykas_1",
+        "commander_kouku_saton_1",
+        "commander_abrelshud_1",
+        "commander_Illiakan_1",
+        "commander_kamen_1",
+        "commander_kamen_2",
+        "commander_kamen_3",
+        "kazeroth_echidna_1",
+        "kazeroth_egir_1",
+        "kazeroth_abrelshud_1",
+        "kazeroth_mordoom_1",
+        "epic_behemoth_1"
+    ]
+
 
   const [filters, setFilters] = useState({
     boss: myParty.boss,
@@ -22,9 +109,9 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
     endGate: myParty.partyFilter.endGate,
     itemLevel: myParty.partyFilter.itemLevel,
     partyTitle: myParty.title,
-    title: myParty.partyFilter.title[0],
-    card: myParty.partyFilter.card[0].name,
-    awakening: myParty.partyFilter.card[0].awakening,
+    title: myParty.partyFilter.title? myParty.partyFilter.title: undefined,
+    card: myParty.partyFilter.card.length? myParty.partyFilter.card[0].name: undefined,
+    awakening: myParty.partyFilter.card.length? myParty.partyFilter.card[0].awakening: undefined,
     evolution: myParty.partyFilter.arkPassive.evolution,
     enlightenment: myParty.partyFilter.arkPassive.enlightenment,
     leap: myParty.partyFilter.arkPassive.leap,
@@ -34,7 +121,8 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
     lastDealer: myParty.partyFilter.lastDealer,
     startTime: myParty.partyFilter.startTime,
     startMastery: myParty.partyFilter.startMastery,
-    endMastery: myParty.partyFilter.endMastery
+    endMastery: myParty.partyFilter.endMastery,
+    environment: myParty.partyFilter.environment
     });
 
 
@@ -54,6 +142,15 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
         setEndMastery(null);
     }
   };
+
+useEffect(()=>{
+    setFilters((prevFilters) => {
+        let newFilters = { ...prevFilters };
+        newFilters["startMastery"] = startMastery;  
+        newFilters["endMastery"] = endMastery;   
+        return newFilters;
+    }) 
+  },[startMastery,endMastery])
 
   
   const handleFilterChange = (e) => {
@@ -79,9 +176,13 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                 newFilters.endGate = "";
             }
         }
-        if (type === "select-one"){
-            console.log(filters.boss)
-            newFilters[name] = value;
+        if(type === "select-one"){
+            if (name ==="startTime" || name==="card" || name==="title"){
+                newFilters[name] = value;
+            }
+            else{
+                newFilters[name] = Number(value);
+            }
         }
         return newFilters;
     });
@@ -117,23 +218,31 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>출발 시간</span>
                   <select className='party-info-modal-left-container-basic-select' name = "startTime" value={filters.startTime} onChange={handleFilterChange}>
-                    <option>출발시간을 선택해주세요.</option>
-                    <option value={myParty.partyFilter.startTime}>{myParty.partyFilter.startTime}</option>
+                    <option value = {filters.startTime}>{filters.startTime}</option>
+                      {startTime.map((time)=>(
+                        <option value={time.value} key = {time.value}>{time.text}</option>
+                      ))}
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>레이드</span>
                   <select className='party-info-modal-left-container-basic-select' name = "boss" value={filters.boss} onChange={handleFilterChange}>
-                    <option value={1}>레이드를 선택해주세요.</option>
-                    <option value={myParty.boss}>{myParty.boss}</option>
-                    <option value={2}>2</option>
+                    <option value={undefined}>레이드를 선택해주세요.</option>
+                      {bossNameList.map((bossName)=>(
+                        <option key={bossName} value={bossName}>{bossName}</option> 
+                      ))
+                      }
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-basic-row'>
                   <span className='party-info-modal-left-container-basic-span'>난이도</span>
                   <select className='party-info-modal-left-container-basic-select' name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
                     <option>난이도를 선택해주세요.</option>
-                    <option value={myParty.difficulty}>{myParty.difficulty}</option>
+                      {
+                        filters.boss&&difficultyObj[difficultyMap[filters.boss]].map((dif)=>(
+                            <option value={Number(difficultyValue[dif])} key={dif}>{dif}</option>
+                        ))
+                      }
                   </select>
                 </div>
                 <div className='party-info-modal-left-container-range-container'>
@@ -143,18 +252,18 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
 
                             <select name="startGate" value={filters.startGate} onChange={handleFilterChange}>
                                 <option value="">선택</option>
-                                {gateOptions.map((gate) => (
-                                    <option key={gate} value={gate}>{gate}</option>
-                                ))}
+                                {filters.boss&&gateObj[gateMap[filters.boss]].map((gate) => (
+                                      <option key={gate} value={gate}>{gate}</option>
+                                  ))}
                             </select>
                             <label>~</label>
                             <select name="endGate" value={filters.endGate} onChange={handleFilterChange}>
                                 <option value="">선택</option>
-                                {gateOptions
-                                    .filter((gate) => parseInt(gate, 10) >= parseInt(filters.rangeStart || 0, 10))
-                                    .map((gate) => (
-                                        <option key={gate} value={gate}>{gate}</option>
-                                    ))}
+                                  {filters.boss&&gateObj[gateMap[filters.boss]]
+                                      .filter((gate) => parseInt(gate, 10) >= parseInt(filters.startGate || 0, 10))
+                                      .map((gate) => (
+                                          <option key={gate} value={gate}>{gate}</option>
+                                      ))}
                             </select>
                         </div>
                     </div>
@@ -206,36 +315,37 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                             <div className="character-filter-box">
                                 <label className="character-filter-label">칭호</label>
                                 <select className="character-filter-dropdown" name="title" value={filters.title} onChange={handleFilterChange}>
-                                    <option value="1">없음</option>
-                                    <option value="2">꿈꾸는 자</option>
-                                    <option value="3">빛을 꺼트리는 자</option>
-                                    <option value="commander_valtan_1">마수군단장</option>
+                                    <option value="">선택해주세요</option>
+                                        {titles.map((title)=>(
+                                        <option value={title} key={title}>{title}</option>
+                                        ))}
                                 </select>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">카드</label>
                                 <select className="character-filter-dropdown" name="card" value={filters.card} onChange={handleFilterChange}>
-                                    <option value="1">없음</option>
-                                    <option value="2">세상을 구하는 빛</option>
-                                    <option value="3">카제로스의 군단장</option>
-                                    <option value={myParty.partyFilter.card[0].name}>{myParty.partyFilter.card[0].name}</option>
-
+                                    <option value="">선택해주세요</option>
+                                        {cards.map((card)=>(
+                                        <option value={card} key={card}>{card}</option>
+                                        ))}
                                 </select>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">각성</label>
                                 <select className="character-filter-dropdown" name="awakening" value={filters.awakening} onChange={handleFilterChange}>
-                                    <option value="18">18</option>
-                                    <option value="24">24</option>
-                                    <option value={myParty.partyFilter.card[0].awakening}>{myParty.partyFilter.card[0].awakening}</option>
-                                    <option value="30">30</option>
+                                    <option value="">선택해주세요</option>
+                                    <option value={18}>18</option>
+                                    <option value={24}>24</option>
+                                    <option value={30}>30</option>
                                 </select>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">분위기</label>
                                 <select className="character-filter-dropdown" name="environment" value={filters.environment} onChange={handleFilterChange}>
-                                    <option value="1">예민x</option>
-                                    <option value="2">예민max</option>
+                                    <option value="">선택해주세요</option>
+                                    <option value={0}>상관없음</option>
+                                    <option value={1}>예민x</option>
+                                    <option value={2}>예민max</option>
                                 </select>
                             </div>
                             <div className="custom-checkbox-container">
@@ -266,18 +376,20 @@ const PartyInfoModal = ({isOpen, onClose,modalTitleText,buttonText,state}) => {
                             <div className="character-filter-box">
                                 <label className="character-filter-label">무기</label>
                                 <select className="character-filter-dropdown" name="transcendenceWeapon" value={filters.transcendenceWeapon} onChange={handleFilterChange}>
-                                    <option value="1">없음</option>
-                                    <option value="2">무풀</option>
-                                    <option value={myParty.partyFilter.transcend.weapon}>{myParty.partyFilter.transcend.weapon}</option>
+                                    <option value="">선택해주세요</option>
+                                    <option value={0}>0</option>
+                                    <option value={20}>20</option>
+                                    <option value={21}>21</option>
                                 </select>
                             </div>
                             <div className="character-filter-box">
                                 <label className="character-filter-label">방어구</label>
                                 <select className="character-filter-dropdown" name="transcendenceArmor" value={filters.transcendenceArmor} onChange={handleFilterChange}>
-                                    <option value="1">0</option>
-                                    <option value="2">75</option>
-                                    <option value="3">방풀</option>
-                                    <option value={myParty.partyFilter.transcend.armor}>{myParty.partyFilter.transcend.armor}</option>
+                                    <option value=" ">선택해주세요</option>
+                                    <option value={0}>0</option>
+                                    <option value={75}>75</option>
+                                    <option value={100}>100</option>
+                                    <option value={105}>105</option>
                                 </select>
                             </div>
                         </div>
