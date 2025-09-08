@@ -1,14 +1,9 @@
-import React from "react";
-import "./characterInfoDisplay.css";
+import React from 'react';
+import './characterInfoDisplay.css';
 
 const CharacterInfoDisplay = ({ state }) => {
-
   if (!state.myData.userData.chooseCharacter) {
-    return (
-      <div className="character-info-box empty">
-
-      </div>
-    );
+    return <div className="character-info-box empty"></div>;
   }
 
   return (
@@ -16,15 +11,21 @@ const CharacterInfoDisplay = ({ state }) => {
       <div className="character-info-left">
         <div className="character-info-row">
           <span className="info-label">서버</span>
-          <span className="info-value">{state.myData.userData.chooseCharacter.serverName}</span>
+          <span className="info-value">
+            {state.myData.userData.chooseCharacter.serverName}
+          </span>
         </div>
         <div className="character-info-row">
           <span className="info-label">직 업</span>
-          <span className="info-value">{state.myData.userData.chooseCharacter.job}</span>
+          <span className="info-value">
+            {state.myData.userData.chooseCharacter.job}
+          </span>
         </div>
         <div className="character-info-row">
           <span className="info-label">아이템</span>
-          <span className="info-value">{state.myData.userData.chooseCharacter.itemLevel}</span>
+          <span className="info-value">
+            {state.myData.userData.chooseCharacter.itemLevel}
+          </span>
         </div>
       </div>
       <div className="character-image-box">

@@ -1,5 +1,1 @@
-
-
-export const getClosePartyRequestData = () => {
-    
-}
+export const getClosePartyRequestData = () => {};

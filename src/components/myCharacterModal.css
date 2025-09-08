@@ -1,164 +1,157 @@
 /* 내 캐릭터 나오는 부분 전체 컨테이너 */
-.my-character-container{
-    width: 1036px;
-    height: 721px;
-    background-color: #1E1E1E;
-    margin-top: 24px;
-    border-radius: 10px;
+.my-character-container {
+  width: 1036px;
+  height: 721px;
+  background-color: #1e1e1e;
+  margin-top: 24px;
+  border-radius: 10px;
 }
 
 /* 내 캐릭터, 추가하기 라인 */
-.my-character-add-button-row{
-    width: 1004px;
-    height: 26px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-    margin-left: 16px;
+.my-character-add-button-row {
+  width: 1004px;
+  height: 26px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-left: 16px;
 }
 
 /* 추가하기 버튼 */
-.open-add-character-button{
+.open-add-character-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+  gap: 4px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 4px;
-    gap: 4px;
+  width: 79px;
+  height: 26px;
 
-    width: 79px;
-    height: 26px;
+  background: #3f4044;
+  border-radius: 8px;
+  border: 0;
 
-    background: #3F4044;
-    border-radius: 8px;
-    border: 0;
-
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 /* 로아 서버 보여주는 부분 */
-.my-character-server-box{
-    width: 1004px;
-    height: auto;
-    border-radius: 8px;
-    padding: 8px;
-    gap: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    background: rgba(21, 23, 27, 1);
-    border-width: 1px;
-    border: 1px solid rgba(121, 121, 121, 1);
-    margin-top: 24px;
-    margin-left: 8px;
+.my-character-server-box {
+  width: 1004px;
+  height: auto;
+  border-radius: 8px;
+  padding: 8px;
+  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(21, 23, 27, 1);
+  border-width: 1px;
+  border: 1px solid rgba(121, 121, 121, 1);
+  margin-top: 24px;
+  margin-left: 8px;
 }
 
 /* 로아 서버 버튼 */
-.server-button{
-    width: 173px;
-    height: 25px;
-    background-color: #3F4044;
-    border-radius: 8px;
-    margin-right: 12px;
-    margin-bottom: 8px;
-    color: #DFDFDF;
+.server-button {
+  width: 173px;
+  height: 25px;
+  background-color: #3f4044;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-bottom: 8px;
+  color: #dfdfdf;
 }
 
 /* 내 캐릭터 정보 보여주는 부분 */
-.my-character-info-box{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: 16px;
-    margin-top: 24px;
+.my-character-info-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 16px;
+  margin-top: 24px;
 }
 
-.no-character{
-    width: 100%;
+.no-character {
+  width: 100%;
 }
 
-.my-character-tittle{
-    /* 내 캐릭터 */
+.my-character-tittle {
+  /* 내 캐릭터 */
 
-width: 67px;
-height: 21px;
+  width: 67px;
+  height: 21px;
 
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 21px;
-display: flex;
-align-items: center;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
 
-color: #DFDFDF;
+  color: #dfdfdf;
 
-margin-top: 2.5px;
-
-
+  margin-top: 2.5px;
 }
 
-.add-character-button-text{
+.add-character-button-text {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
+  display: flex;
+  align-items: center;
 
-display: flex;
-align-items: center;
-
-color: #DFDFDF;
-
+  color: #dfdfdf;
 }
 
-.refresh-character-button{
-    width:'60px'; 
-    height:'21px'; 
-    border-radius:'8px'; 
-    background-color:'#D28506';
-    color:'white';
-    padding-top:'4px'; 
-    font-size:'14px'; 
-    cursor:'pointer';
+.refresh-character-button {
+  width: '60px';
+  height: '21px';
+  border-radius: '8px';
+  background-color: '#D28506';
+  color: 'white';
+  padding-top: '4px';
+  font-size: '14px';
+  cursor: 'pointer';
 }
 
-.refresh-character-info-button{
+.refresh-character-info-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+  gap: 4px;
 
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 4px;
-gap: 4px;
+  width: 60px;
+  height: 25px;
 
-width: 60px;
-height: 25px;
+  background: #d28506;
+  border-radius: 8px;
+  border: none;
 
-background: #D28506;
-border-radius: 8px;
-border: none;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 
-flex: none;
-order: 1;
-flex-grow: 0;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
 
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-/* identical to box height */
-display: flex;
-align-items: center;
+  color: #dfdfdf;
 
-color: #DFDFDF;
-
-cursor: pointer;
+  cursor: pointer;
 }
 
-.refresh-character-info-button:active{
+.refresh-character-info-button:active {
   filter: brightness(0.7);
 }
 

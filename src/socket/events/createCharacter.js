@@ -1,13 +1,12 @@
-
-export const createCharacterEventHandler = (states) => {
-    return {
-        name: "",
-        handle: (data) => {
-            if(data.status === "error") {
-                console.log("Error");
-                return;
-            }
-            console.log(`!`)
-        }
-    }
-}
+export const createCharacterEventHandler = states => {
+  return {
+    name: '',
+    handle: data => {
+      if (data.status === 'error') {
+        console.log('Error');
+        return;
+      }
+      console.log(`!`);
+    },
+  };
+};

@@ -1,5 +1,1 @@
-
-
-export const getUpdatePartyInfoRequestData = () => {
-    
-}
+export const getUpdatePartyInfoRequestData = () => {};

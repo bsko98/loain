@@ -1,8 +1,4 @@
+import { isString } from './_is';
+import { extractZodMessage } from './_zod';
 
-import { isString } from "./_is"
-import { extractZodMessage } from "./_zod"
-
-export {
-    isString,
-    extractZodMessage
-}
+export { isString, extractZodMessage };

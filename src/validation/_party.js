@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from 'zod';
 
 // `arkPassive` 객체의 스키마
 const ArkPassiveSchema = z.object({
@@ -33,7 +33,6 @@ const PartyFilterSchema = z.object({
   lastDealer: z.boolean(),
   environment: z.number().int().min(0).max(2),
 });
-
 
 export const CreatePartySchema = z.object({
   partyTitle: z.string().min(2).max(30),

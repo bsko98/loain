@@ -1,5 +1,1 @@
-
-
-export const getReplaceMemberRequestData = () => {
-    
-}
+export const getReplaceMemberRequestData = () => {};

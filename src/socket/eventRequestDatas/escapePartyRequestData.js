@@ -1,5 +1,1 @@
-
-
-export const getEscapePartyRequestData = () => {
-    
-}
+export const getEscapePartyRequestData = () => {};

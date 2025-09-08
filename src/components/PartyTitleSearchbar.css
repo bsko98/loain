@@ -1,122 +1,119 @@
 /* 전체 컨테이너 */
 .party-search-container {
-    width: 654PX;
-    height: 91px;
-    background: rgba(30, 30, 30, 1);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    font-family: Pretendard;
+  width: 654px;
+  height: 91px;
+  background: rgba(30, 30, 30, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: Pretendard;
 }
 
 /* 상단 타이틀 & 버튼 컨테이너 */
 .party-header {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* 모집중인 파티 텍스트 */
 .party-title {
-    width: 98px;
-    height: 21px;
-    font-family: 'Pretendard';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    color: #DFDFDF;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  width: 98px;
+  height: 21px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #dfdfdf;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
-
 
 /* 업데이트 버튼 */
 .update-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Pretendard';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    width: auto;
-    height: 26px;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 8px;
-    background: #3F4044;
-    color: #DFDFDF;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  width: auto;
+  height: 26px;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #3f4044;
+  color: #dfdfdf;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
 }
 
 .update-icon {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 /* 검색 박스 */
 .search-box {
-    width: 654PX;
-    max-width: 654px;
-    height: 33px;
-    display: flex;
-    align-items: center;
-    background: rgba(230, 230, 230, 1);
-    border-radius: 8px;
-    gap: 10px;
-
+  width: 654px;
+  max-width: 654px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  background: rgba(230, 230, 230, 1);
+  border-radius: 8px;
+  gap: 10px;
 }
 
 /* 검색 입력 필드 */
 .search-input {
-    width: 100%;
-    height: 17px;
-    max-width: 595px;
-    border: none;
-    background: transparent;
-    font-family: 'Pretendard';
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: #898989;
-    outline: none;
-    border-radius: 8px;
-    padding-left: 16px;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+  width: 100%;
+  height: 17px;
+  max-width: 595px;
+  border: none;
+  background: transparent;
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #898989;
+  outline: none;
+  border-radius: 8px;
+  padding-left: 16px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
 }
-
 
 /* 검색 입력 후 나타나는 텍스트 */
 .search-placeholder {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 100%;
-    color: rgba(50, 50, 50, 1);
-    font-family: 'Pretendard';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(50, 50, 50, 1);
+  font-family: 'Pretendard';
 }
 
 /* 검색 아이콘 */
 .search-button {
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.search-icon{
-    width: 14.17px;
-    height: 14.17px;
-    top: 1.42px;
-    left: 1.42px;
+.search-icon {
+  width: 14.17px;
+  height: 14.17px;
+  top: 1.42px;
+  left: 1.42px;
 }

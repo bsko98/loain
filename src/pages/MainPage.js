@@ -1,40 +1,39 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './MainPage.css';
 import CharacterSelectContainer from '../components/CharacterSelectContainer';
 import PartyTitleSearchbar from '../components/PartyTitleSearchbar';
 import FilterContainer from '../components/FilterContainer';
-import FilterModal from "../components/FilterModal";
-import PartyContainer from "../components/partyContainer";
-import CharacterInfoDisplay from "../components/characterInfoDisplay";
+import FilterModal from '../components/FilterModal';
+import PartyContainer from '../components/partyContainer';
+import CharacterInfoDisplay from '../components/characterInfoDisplay';
 import CardContainer from '../components/CardContainer';
 import TitleContainer from '../components/TitleContainer';
 import ArkPassiveContainer from '../components/ArkPassiveContainer';
-import AdComponent from '../components/AdComponent'; 
+import AdComponent from '../components/AdComponent';
 
-const MainPage = ({state}) => {
-
+const MainPage = ({ state }) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState({
-    raid: "",
-    difficulty: "",
-    rangeStart: "",
-    rangeEnd: "",
-    itemLevel: "",
-    title: "",
-    card: "",
-    cardValue: "",
-    environment: "",
-    evolution: "",
-    realization: "",
-    leap: "",
-    transcendenceWeapon: "",
-    transcendenceArmor: "",
+    raid: '',
+    difficulty: '',
+    rangeStart: '',
+    rangeEnd: '',
+    itemLevel: '',
+    title: '',
+    card: '',
+    cardValue: '',
+    environment: '',
+    evolution: '',
+    realization: '',
+    leap: '',
+    transcendenceWeapon: '',
+    transcendenceArmor: '',
     isLastPot: false,
     isLastDeal: false,
-    skillRange: "",
+    skillRange: '',
   });
 
-  const applyFilters = (filters) => {
+  const applyFilters = filters => {
     setSelectedFilters(filters);
     setFilterModalOpen(false);
   };
@@ -42,11 +41,11 @@ const MainPage = ({state}) => {
   return (
     <div className="main-Container">
       <div className="content-Wrapper">
-        <div className="ad-Container"><AdComponent /></div>
+        <div className="ad-Container">
+          <AdComponent />
+        </div>
         <div className="character-Select-Container">
-          <CharacterSelectContainer
-            state={state}
-          />
+          <CharacterSelectContainer state={state} />
         </div>
         <div className="main-Content">
           <div className="left-Column">
@@ -60,13 +59,13 @@ const MainPage = ({state}) => {
           <div className="right-Column">
             <div className="right-Container">
               <div className="right-Top-Container">
-                <PartyTitleSearchbar/>
+                <PartyTitleSearchbar />
                 <FilterContainer
                   setFilterModalOpen={setFilterModalOpen}
                   selectedFilters={selectedFilters}
                 />
                 <div className="main-party-Container">
-                  {state.partyList.map((party) => (
+                  {state.partyList.map(party => (
                     <PartyContainer
                       key={party.partyId}
                       partyData={party}

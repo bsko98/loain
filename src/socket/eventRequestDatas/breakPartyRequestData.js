@@ -1,5 +1,1 @@
-
-
-export const getBreakPartyRequestData = () => {
-    
-}
+export const getBreakPartyRequestData = () => {};

@@ -1,5 +1,1 @@
-
-
-export const getCreateCharacterRequestData = () => {
-    
-}
+export const getCreateCharacterRequestData = () => {};

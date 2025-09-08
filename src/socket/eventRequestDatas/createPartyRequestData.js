@@ -1,5 +1,1 @@
-
-
-export const getCreatePartyRequestData = () => {
-    
-}
+export const getCreatePartyRequestData = () => {};

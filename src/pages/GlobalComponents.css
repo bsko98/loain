@@ -1,140 +1,140 @@
 /* 백그라운드 컨테이너 */
 .background-container {
-    width: 1440px;
-    height: 900px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0A0A0A;
-    color: aliceblue;
-    overflow: hidden;
+  width: 1440px;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0a0a;
+  color: aliceblue;
+  overflow: hidden;
 }
 
 /* 메인 컨테이너 */
 .mainaccount-container {
-    width: auto;
-    min-width: 440px;
-    height: 419px;
-    border-radius: 24px;
-    justify-content: center;
-    align-items: center;
-    background-color: #1E1E1E;
+  width: auto;
+  min-width: 440px;
+  height: 419px;
+  border-radius: 24px;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e1e;
 }
 
 /* 내용 컨테이너 */
 .contentaccount-container {
-    width: auto;
-    min-width: 368px;
-    height: auto;
-    min-height: 347px;
-    padding: 36px;
+  width: auto;
+  min-width: 368px;
+  height: auto;
+  min-height: 347px;
+  padding: 36px;
 }
 
 /* 주 내용 컨테이너 */
 .maincontentaccount-container {
-    width: auto;
-    min-width: 368px;
-    height: auto;
-    min-height: 317px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: auto;
+  min-width: 368px;
+  height: auto;
+  min-height: 317px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 로고 컨테이너 */
 .logoposaccount-container {
-    width: 162px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 162px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* 입력창 컨테이너 */
 .inputposaccount-container {
-    width: auto;
-    min-width: 368px;
-    height: auto;
-    min-height: 162px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 28px;
+  width: auto;
+  min-width: 368px;
+  height: auto;
+  min-height: 162px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
 }
 
 /* 메인버튼 컨테이너 */
 .mainbuttonposaccount-container {
-    width: 368px;
-    height: 56px;
-    padding-top: 24px;
+  width: 368px;
+  height: 56px;
+  padding-top: 24px;
 }
 
 /* 보조 내용 컨테이너 */
 .subcontentaccount-container {
-    width: auto;
-    min-width: 256px;
-    height: auto;
-    min-height: 18px;
+  width: auto;
+  min-width: 256px;
+  height: auto;
+  min-height: 18px;
 }
 
 /* 메인 버튼 */
 .mainaccount-button {
-    width: 368px;
-    height: auto;
-    min-height: 56px;
-    border: none;
-    border-radius: 12px;
-    background-color: #6B83E1;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+  width: 368px;
+  height: auto;
+  min-height: 56px;
+  border: none;
+  border-radius: 12px;
+  background-color: #6b83e1;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* 메인 버튼 키다운 상태 */
 .mainaccount-button:active {
-    background-color: #464AA5;
+  background-color: #464aa5;
 }
 
 /* 마우스 호버 시 버튼 텍스트 밑줄 */
 .underline-text {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button:hover .underline-text {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* 텍스트 입력창 */
 .inputaccount-textbox {
-    background-color: white;
-    border: none;
-    outline: none;
-    padding: 12px 32px;
-    border-radius: 12px;
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: 12px 32px;
+  border-radius: 12px;
 }
 
 /* <a>태그 밑줄 없애는 클래스 */
 .no-underline {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* 텍스트 입력창 폰트 적용 */
 input {
-    font-family: 'Pretendard', sans-serif;
-    color: #3E3E3E;
+  font-family: 'Pretendard', sans-serif;
+  color: #3e3e3e;
 }
 
 input::placeholder {
-    font-family: 'Pretendard', sans-serif;
-    color: #898989;
+  font-family: 'Pretendard', sans-serif;
+  color: #898989;
 }
 
 textarea {
-    font-family: 'Pretendard', sans-serif;
-    color: #3E3E3E;
+  font-family: 'Pretendard', sans-serif;
+  color: #3e3e3e;
 }
 
 textarea:placeholder {
-    font-family: 'Pretendard', sans-serif;
-    color: #898989;
+  font-family: 'Pretendard', sans-serif;
+  color: #898989;
 }

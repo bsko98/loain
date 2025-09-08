@@ -1,5 +1,1 @@
-
-
-export const getUpdateCharacterRequestData = () => {
-    
-}
+export const getUpdateCharacterRequestData = () => {};

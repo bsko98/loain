@@ -1,5 +1,1 @@
-
-
-export const getRejectVolunteerRequestData = () => {
-    
-}
+export const getRejectVolunteerRequestData = () => {};

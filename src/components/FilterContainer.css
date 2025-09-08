@@ -1,85 +1,84 @@
 /* 필터 전체 컨테이너 */
 .filter-container {
-    width: 654px;
-    padding: 12px;
-    background: #15171B;
-    border: 1px solid #797979;
-    border-radius: 8px;
-    box-sizing: border-box;
-    margin-bottom: 24px;
-  }
-  
-  /* 한 줄짜리 flex: 태그 + 버튼 */
-  .filter-inner-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch; /* 중요 */
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  
-  /* 필터 태그 모음 */
-  .filter-tags {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    font-family: 'Pretendard';
-  }
-  
-  /* 필터 태그 한 개 */
-  .filter-tag {
-    height: 28px;
-    background: rgba(42, 43, 46, 1);
-    color: rgba(223, 223, 223, 1);
-    font-size: 14px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    gap: 6px;
-  }
-  
-  /* 버튼 + 구분선 감싸는 래퍼 */
-  .filter-button-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  /* 구분선 */
-  .filter-divider {
-    width: 1.4px;
-    height: 100%;
-    background-color: #434343;
-    margin: 0 12px;
-  }
-  
-  /* 필터 버튼 */
-  .filter-button {
-    width: 65px;
-    height: 60px;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background: rgba(63, 64, 68, 1);
-    color: rgba(223, 223, 223, 1);
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    font-family: 'Pretendard';
-    padding: 4px 8px;
-    gap: 4px;
-  }
-  
-  /* 아이콘 */
-  .filter-icon {
-    width: 16px;
-    height: 16px;
-  }
-  
+  width: 654px;
+  padding: 12px;
+  background: #15171b;
+  border: 1px solid #797979;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+
+/* 한 줄짜리 flex: 태그 + 버튼 */
+.filter-inner-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* 중요 */
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 필터 태그 모음 */
+.filter-tags {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Pretendard';
+}
+
+/* 필터 태그 한 개 */
+.filter-tag {
+  height: 28px;
+  background: rgba(42, 43, 46, 1);
+  color: rgba(223, 223, 223, 1);
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 6px;
+}
+
+/* 버튼 + 구분선 감싸는 래퍼 */
+.filter-button-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 구분선 */
+.filter-divider {
+  width: 1.4px;
+  height: 100%;
+  background-color: #434343;
+  margin: 0 12px;
+}
+
+/* 필터 버튼 */
+.filter-button {
+  width: 65px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(63, 64, 68, 1);
+  color: rgba(223, 223, 223, 1);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: 'Pretendard';
+  padding: 4px 8px;
+  gap: 4px;
+}
+
+/* 아이콘 */
+.filter-icon {
+  width: 16px;
+  height: 16px;
+}

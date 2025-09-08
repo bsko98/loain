@@ -1,6 +1,6 @@
 /* 전체 파티 컨테이너 */
 .party-container {
-  background: #2C2F34;
+  background: #2c2f34;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 12px;
@@ -34,7 +34,7 @@
   font-size: 16px;
   font-weight: 600;
   text-align: left;
-  color: #DFDFDF;
+  color: #dfdfdf;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
@@ -56,7 +56,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #DFDFDF;
+  color: #dfdfdf;
 }
 
 /* 추가 태그 묶음 */
@@ -68,7 +68,7 @@
   font-style: normal;
   font-weight: 400;
   flex-direction: column;
-  color: #DFDFDF;
+  color: #dfdfdf;
   gap: 4px;
 }
 
@@ -82,7 +82,7 @@
 
 /* 강조 태그 색상 */
 .party-container-extra-tags .highlight-tag {
-  background-color: #22233F ;  
+  background-color: #22233f;
   height: 20px;
   padding: 3px;
   border-radius: 4px;
@@ -95,7 +95,7 @@
   line-height: 14px;
   display: flex;
   align-items: center;
-  color: #DFDFDF;
+  color: #dfdfdf;
   box-sizing: border-box;
 }
 
@@ -193,7 +193,7 @@
 
 /* 파티원 카드 */
 .party-container-member {
-  background: #2C2F34;
+  background: #2c2f34;
   padding: 3px 8px;
   border-radius: 4px;
   display: flex;
@@ -205,7 +205,7 @@
 
 /* 닉네임 */
 .nickname {
-  color: #6B83E1;
+  color: #6b83e1;
   font-weight: 500;
   font-size: 13px;
   text-align: left;
@@ -241,7 +241,7 @@
 .divider {
   width: 1px;
   height: 12px;
-  background: #DFDFDF;
+  background: #dfdfdf;
   border-radius: 1px;
 }
 

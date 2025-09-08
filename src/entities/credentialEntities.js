@@ -1,6 +1,6 @@
 class Credential {
-    accessKey // string
-    refreshKey // string
+  accessKey; // string
+  refreshKey; // string
 }
 
-export { Credential }
+export { Credential };

@@ -1,5 +1,1 @@
-
-
-export const getChatRequestData = () => {
-    
-}
+export const getChatRequestData = () => {};

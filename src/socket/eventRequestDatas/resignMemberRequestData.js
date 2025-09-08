@@ -1,5 +1,1 @@
-
-
-export const getResignMemberRequestData = () => {
-    
-}
+export const getResignMemberRequestData = () => {};

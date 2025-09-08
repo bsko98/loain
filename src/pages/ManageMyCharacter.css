@@ -1,41 +1,41 @@
 /* 내 캐릭터 나오는 부분 전체 컨테이너 */
-.my-character-container{
-    width: 1036px;
-    height: 721px;
-    background-color: #1E1E1E;
-    margin-top: 24px;
-    border-radius: 10px;
+.my-character-container {
+  width: 1036px;
+  height: 721px;
+  background-color: #1e1e1e;
+  margin-top: 24px;
+  border-radius: 10px;
 }
 
 /* 내 캐릭터, 추가하기 라인 */
-.my-character-add-button-row{
-    width: 1004px;
-    height: 26px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-    margin-left: 16px;
+.my-character-add-button-row {
+  width: 1004px;
+  height: 26px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-left: 16px;
 }
 
 /* 추가하기 버튼 */
-.add-character-buuton{
-    width: 79px;
-    height: 26px;
-    background-color: #3F4044;
-    color: #DFDFDF;
-    border-radius: 8px;
-    border: none;
-    display: flex;
-    flex-direction: row;
+.add-character-buuton {
+  width: 79px;
+  height: 26px;
+  background-color: #3f4044;
+  color: #dfdfdf;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  flex-direction: row;
 }
 
-.my-character-server-box{
-    width: 1004px;
-    height: 74px;
-    margin-top: 24px;
-    background-color: #0D0D0D;
-    margin-left: 12px;
-    border-radius: 10px;
-    border: 1px solid #737373;
+.my-character-server-box {
+  width: 1004px;
+  height: 74px;
+  margin-top: 24px;
+  background-color: #0d0d0d;
+  margin-left: 12px;
+  border-radius: 10px;
+  border: 1px solid #737373;
 }

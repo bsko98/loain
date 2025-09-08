@@ -1,5 +1,5 @@
 import './GlobalComponents.css';
-import React, { useState, useRef } from "react"
+import React, { useState, useRef } from 'react';
 import { ReactComponent as LoainLogo } from './images/LoainLogoImage.svg';
 import { ReactComponent as LoainText } from './images/LoainTextImage.svg';
 import { ReactComponent as IdImage } from './images/IdImage.svg';
@@ -8,299 +8,661 @@ import { ReactComponent as APIKeyImage } from './images/APIKeyImage.svg';
 import { ReactComponent as QuestionMarkImage } from './images/QuestionMarkImage.svg';
 import { ReactComponent as XMarkImage } from './images/XMarkImage.svg';
 import { ReactComponent as Dot } from './images/Dot.svg';
-import LoainAuthModal from '../components/LoainAuthModal.jsx'
+import LoainAuthModal from '../components/LoainAuthModal.jsx';
 import { signUpService } from '../services/accountServices.js';
-import { apiKeyValidCheck, idDuplicateCheck, idValidCheck, pwValidCheck } from '../validation';
+import {
+  apiKeyValidCheck,
+  idDuplicateCheck,
+  idValidCheck,
+  pwValidCheck,
+} from '../validation';
 
-const Signup = ({isOpen, onClose, setIsLoggedIn}) => {
+const Signup = ({ isOpen, onClose, setIsLoggedIn }) => {
+  const [inputId, setInputId] = useState('');
+  const [inputPw, setInputPw] = useState('');
+  const [inputCheckPw, setInputCheckPw] = useState('');
+  const [inputAPIKey, setInputAPIKey] = useState('');
+  const [isLoainAuthModalOpen, setIsLoainAuthModalOpen] = useState(false);
+  const [authCode, setAuthCode] = useState('undefinedCode');
+  const [validedSignUpData, setValidSignUpData] = useState({
+    id: undefined,
+    pw: undefined,
+    apiKey: undefined,
+    stoveId: undefined,
+    key: undefined,
+  });
 
-    const [inputId, setInputId] = useState("");
-    const [inputPw, setInputPw] = useState("");
-    const [inputCheckPw, setInputCheckPw] = useState("");
-    const [inputAPIKey, setInputAPIKey] = useState("");
-    const [isLoainAuthModalOpen,setIsLoainAuthModalOpen] = useState(false);
-    const [authCode, setAuthCode] = useState('undefinedCode');
-    const [validedSignUpData, setValidSignUpData] = useState({
-        id: undefined,
-        pw: undefined,
-        apiKey: undefined,
-        stoveId: undefined,
-        key: undefined
-    });
+  // <Lint>
+  // const [subbmittedValueId, setSubbmittedValueId] = useState(null);
+  // const [subbmittedValuePw, setSubbmittedValuePw] = useState(null);
+  // const [subbmittedValueCheckPw, setSubbmittedValueCheckPw] = useState(null);
+  // const [subbmittedValueEmail, setSubbmittedValueEmail] = useState(null);
+  // const [subbmittedValueAPIKey, setSubbmittedValueAPIKey] = useState(null);
+  const setSubbmittedValueId = useState(null)[1];
+  const setSubbmittedValuePw = useState(null)[1];
+  const setSubbmittedValueCheckPw = useState(null)[1];
+  const setSubbmittedValueAPIKey = useState(null)[1];
 
-    // <Lint>
-    // const [subbmittedValueId, setSubbmittedValueId] = useState(null);
-    // const [subbmittedValuePw, setSubbmittedValuePw] = useState(null);
-    // const [subbmittedValueCheckPw, setSubbmittedValueCheckPw] = useState(null);
-    // const [subbmittedValueEmail, setSubbmittedValueEmail] = useState(null);
-    // const [subbmittedValueAPIKey, setSubbmittedValueAPIKey] = useState(null);
-    const setSubbmittedValueId = useState(null)[1];
-    const setSubbmittedValuePw = useState(null)[1];
-    const setSubbmittedValueCheckPw = useState(null)[1];
-    const setSubbmittedValueAPIKey = useState(null)[1];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const handleChangeId = id => {
+    setInputId(id.target.value); // 입력값 업데이트
+  };
+  const handleChangePw = pw => {
+    setInputPw(pw.target.value); // 입력값 업데이트
+  };
+  const handleChangeCheckPw = checkpw => {
+    setInputCheckPw(checkpw.target.value); // 입력값 업데이트
+  };
+  const handleChangeAPIKey = apikey => {
+    setInputAPIKey(apikey.target.value); // 입력값 업데이트
+  };
 
-    const handleChangeId = (id) => {
-        setInputId(id.target.value);            // 입력값 업데이트
-    };
-    const handleChangePw = (pw) => {
-        setInputPw(pw.target.value);            // 입력값 업데이트
-    };
-    const handleChangeCheckPw = (checkpw) => {
-        setInputCheckPw(checkpw.target.value);  // 입력값 업데이트
-    };
-    const handleChangeAPIKey = (apikey) => {
-        setInputAPIKey(apikey.target.value);    // 입력값 업데이트
-    };
+  const CheckId = () => {
+    console.log(`Check id: ${inputId}`);
+    // id 유효성 체크
+    const idValidCheckResult = idValidCheck(inputId);
+    if (idValidCheckResult.success === false) {
+      if (idValidCheckResult.message === undefined)
+        idValidCheckResult.message = '사용할 수 없는 아이디입니다.';
+      alert(idValidCheckResult.message);
+      return;
+    }
+    // id 중복 체크
+    if (!idDuplicateCheck(inputId)) {
+      alert('이미 사용 중인 아이디 입니다.');
+      return;
+    }
+    // 검증 완료된 id 저장
+    validedSignUpData.id = inputId;
+    setValidSignUpData({ ...validedSignUpData });
+    //
 
-
-    const CheckId = () => {
-        console.log(`Check id: ${inputId}`);
-        // id 유효성 체크
-        const idValidCheckResult = idValidCheck(inputId);
-        if(idValidCheckResult.success === false) {
-            if(idValidCheckResult.message === undefined)
-                idValidCheckResult.message = "사용할 수 없는 아이디입니다.";
-            alert(idValidCheckResult.message);
-            return;
-        }
-        // id 중복 체크
-        if(!idDuplicateCheck(inputId)) {
-            alert("이미 사용 중인 아이디 입니다.");
-            return;
-        }
-        // 검증 완료된 id 저장
-        validedSignUpData.id = inputId;
-        setValidSignUpData({...validedSignUpData});
-        //
-
-        setSubbmittedValueId(inputId.trim() ? inputId : null);              // 값이 없으면 null 저장
-        if (inputId) {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
-        }
-
-        setInputId("");
-    };
-    const CheckPassword = () => {
-        console.log(`Check password: ${inputPw}, ${inputCheckPw}`);
-        // pw 유효성 체크
-        const pwValidCheckResult = pwValidCheck(inputPw);
-        if(pwValidCheckResult.success === false) {
-            if(pwValidCheckResult.message === undefined)
-                pwValidCheckResult.message = "사용할 수 없는 비밀번호입니다.";
-            alert(pwValidCheckResult.message);
-            return;
-        }
-        // 검증 완료된 pw 저장
-        validedSignUpData.pw = inputPw;
-        setValidSignUpData({...validedSignUpData});
-        //
-
-        setSubbmittedValuePw(inputPw.trim() ? inputPw : null);                  // 값이 없으면 null 저장
-        setSubbmittedValueCheckPw(inputCheckPw.trim() ? inputCheckPw : null);   // 값이 없으면 null 저장
-        if (!(!inputPw || !inputCheckPw)) {
-            if (inputPw === inputCheckPw) {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % divList.length);
-            }
-            else {
-                alert("비밀번호가 일치하지 않습니다.");
-            }
-            setInputPw("");
-            setInputCheckPw("");
-        }
-
-        setInputPw("");
-        setInputCheckPw("");
-    };
-
-    const CheckAPIKey = () => {
-        console.log(`Check Api Key: ${inputAPIKey}`);
-        // api key 유효성 체크
-        if(apiKeyValidCheck(inputAPIKey).success === false) {
-            alert("유효하지 않은 API Key입니다.");
-            return;
-        }
-        // 검증 완료 된 apiKey 저장
-        validedSignUpData.apiKey = inputAPIKey;
-        setValidSignUpData({...validedSignUpData});
-        setAuthCode("TestCode");
-        //
-
-        setSubbmittedValueAPIKey(inputAPIKey.trim() ? inputAPIKey : null);     // 값이 없으면 null 저장
-        if (inputAPIKey) {
-            // API Key 저장
-            
-
-        }
-
-        setInputAPIKey("");
-
-        // 회원가입 완료 후 메인페이지 or 로그인페이지
-        setCurrentIndex(0);
-        setIsLoainAuthModalOpen(!isLoainAuthModalOpen)  
-    };
-
-    const checkAuth = async (url) =>{
-        console.log(`Check Auth: ${url}`);
-        validedSignUpData.stoveId = url;
-        setValidSignUpData({...validedSignUpData});
-        // url을 통해서 stove id 인증
-        await signUpService(
-            validedSignUpData.id,
-            validedSignUpData.pw,
-            validedSignUpData.apiKey,
-            validedSignUpData.stoveId,
-            validedSignUpData.key,
-            setIsLoggedIn
-        );
-        //
+    setSubbmittedValueId(inputId.trim() ? inputId : null); // 값이 없으면 null 저장
+    if (inputId) {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % divList.length);
     }
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
-    const [modalPosition, setModalPosition] = useState({ top: 350.7, left: 664 });  //일단 위치는 고정값으로
+    setInputId('');
+  };
+  const CheckPassword = () => {
+    console.log(`Check password: ${inputPw}, ${inputCheckPw}`);
+    // pw 유효성 체크
+    const pwValidCheckResult = pwValidCheck(inputPw);
+    if (pwValidCheckResult.success === false) {
+      if (pwValidCheckResult.message === undefined)
+        pwValidCheckResult.message = '사용할 수 없는 비밀번호입니다.';
+      alert(pwValidCheckResult.message);
+      return;
+    }
+    // 검증 완료된 pw 저장
+    validedSignUpData.pw = inputPw;
+    setValidSignUpData({ ...validedSignUpData });
+    //
 
-    const divRef = useRef(null);
-    const modalWidth = 240;
-
-    const modalOpen = () => {
-        if (divRef.current) {
-            const rect = divRef.current.getBoundingClientRect();
-            setModalPosition({
-                top: rect.top,
-                left: rect.right - modalWidth
-            });
-            setIsModalOpen(true);
-        }
-    };
-    const modalClose = () => {
-        setIsModalOpen(false);
+    setSubbmittedValuePw(inputPw.trim() ? inputPw : null); // 값이 없으면 null 저장
+    setSubbmittedValueCheckPw(inputCheckPw.trim() ? inputCheckPw : null); // 값이 없으면 null 저장
+    if (!(!inputPw || !inputCheckPw)) {
+      if (inputPw === inputCheckPw) {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % divList.length);
+      } else {
+        alert('비밀번호가 일치하지 않습니다.');
+      }
+      setInputPw('');
+      setInputCheckPw('');
     }
 
-    const divList = [
-        <div key={0}>
-            <div className='IdPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
-                    <IdImage style={{ width: '18px', height: '18px' }} />
-                    <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>아이디 *</span>
-                </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputaccount-textbox' type='text' placeholder='사용할 아이디를 입력해주세요.' onChange={handleChangeId} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
-                    </input>
-                </div>
-            </div>
-        </div>,
+    setInputPw('');
+    setInputCheckPw('');
+  };
 
-        <div key={1}>
-            <div className='PwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
-                    <PwImage style={{ width: '18px', height: '18px' }} />
-                    <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 *</span>
-                </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputaccount-textbox' type='password' value={inputPw} placeholder='사용할 비밀번호를 입력해주세요.' onChange={handleChangePw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
-                    </input>
-                </div>
-            </div>
-            <div className='CheckPwPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column', paddingTop: '16px' }}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
-                    <PwImage style={{ width: '18px', height: '18px' }} />
-                    <span style={{ width: 'auto', minWidth: '51px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px' }}>비밀번호 확인 *</span>
-                </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '43px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <input className='inputaccount-textbox' type='password' value={inputCheckPw} placeholder='비밀번호를 한번 더 입력해주세요.' onChange={handleChangeCheckPw} style={{ width: '304px', height: 'auto', minHeight: '19px', fontSize: '16px' }}>
-                    </input>
-                </div>
-            </div>
-        </div>,
+  const CheckAPIKey = () => {
+    console.log(`Check Api Key: ${inputAPIKey}`);
+    // api key 유효성 체크
+    if (apiKeyValidCheck(inputAPIKey).success === false) {
+      alert('유효하지 않은 API Key입니다.');
+      return;
+    }
+    // 검증 완료 된 apiKey 저장
+    validedSignUpData.apiKey = inputAPIKey;
+    setValidSignUpData({ ...validedSignUpData });
+    setAuthCode('TestCode');
+    //
 
-        <div key={2}>
-            <div key={2} className='APIKeyPos' style={{ width: 'auto', minWidth: '368px', height: 'auto', minHeight: '73px', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ width: 'auto', minWidth: '77px', height: 'auto', minHeight: '18px', display: 'flex', alignItems: 'center', paddingBottom: '12px' }}>
-                    <APIKeyImage style={{ width: '18px', height: '18px' }} />
-                    <span style={{ width: 'auto', minWidth: '123px', height: 'auto', minHeight: '18px', fontSize: '15px', fontWeight: 'bold', color: '#DFDFDF', paddingLeft: '8px', paddingRight: '201px' }}>로스트아크 API Key</span>
-                    <div ref={divRef} onClick={modalOpen} style={{ width: '18px', height: '18px' }}>
-                        <QuestionMarkImage style={{ width: '18px', height: '18px' }} />
-                    </div>
-                    {isModalOpen && (
-                        <div style={{ position: "absolute", top: `${modalPosition.top}px`, left: `${modalPosition.left}px`, width: `${modalWidth}px`, height: "auto", minHeight: '100px', backgroundColor: "rgba(10, 10, 10, 0.9)", border: "solid", borderRadius: '20px', borderColor: '#737373' }}>
-                            <div style={{ width: '216px', height: 'autto', minHeight: '77px', display: 'flex', flexDirection: 'column', padding: '12px' }}>
-                                <div className='ModalTitlePos' style={{ width: '216px', height: 'auto', minHeight: '15px', display: 'flex' }}>
-                                    <span className='ModalTitle' style={{ width: 'auto', minWidth: '103px', height: 'auto', minHeight: '15px', color: '#DFDFDF', fontSize: '12px', fontWeight: 'bold' }}>로스트아크 API Key</span>
-                                    <div onClick={modalClose} style={{ width: '15px', height: '15px', paddingLeft: '96px' }}>
-                                        <XMarkImage style={{ width: '15px', height: '15px' }} />
-                                    </div>
-                                </div>
-                                <div className='ModalContentPos' style={{ width: '216px', height: 'auto', minHeight: '52px', display: 'flex', flexDirection: 'column', paddingTop: '10px' }}>
-                                    <div className='ModalContent' style={{ width: '216px', height: 'auto', minHeight: '24px', display: 'flex' }}>
-                                        <div style={{ width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                            <Dot />
-                                        </div>
-                                        <span style={{ color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px' }}>로스트아크 API Key에 대한 설명 문구가 들어갑니다.</span>
-                                    </div>
-                                    <div className='ModalContent' style={{ width: '216px', height: 'auto', minHeight: '24px', display: 'flex', paddingTop: '4px' }}>
-                                        <div style={{ width: '15px', height: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                            <Dot />
-                                        </div>
-                                        <span style={{ color: '#DFDFDF', fontSize: '10px', textAlign: 'left', paddingLeft: '3px' }}>로스트아크 API Key입력에 대한 권장 문구가 들어갑니다.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </div>
-                <div style={{ width: '368px', height: 'auto', minHeight: '62px', backgroundColor: 'white', borderRadius: '12px' }}>
-                    <textarea rows={2} className='inputaccount-textbox' type='text' value={inputAPIKey} placeholder='API Key를 입력해주세요.' onChange={handleChangeAPIKey} style={{ width: '304px', height: 'auto', minHeight: '38px', fontSize: '16px', wordWrap: 'break-word', scrollbarWidth: 'none', resize: 'none' }}>
-                    </textarea>
-                </div>
-            </div>
-        </div>
-    ];
+    setSubbmittedValueAPIKey(inputAPIKey.trim() ? inputAPIKey : null); // 값이 없으면 null 저장
+    if (inputAPIKey) {
+      // API Key 저장
+    }
 
-    const btnList = [
-        <button key={0} className='mainaccount-button' onClick={CheckId}>
-            <span style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</span>
-        </button>,
+    setInputAPIKey('');
 
-        <button key={1} className='mainaccount-button' onClick={CheckPassword}>
-            <span style={{ width: 'auto', minWidth: '85px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>다음 ({currentIndex + 1}/{divList.length})</span>
-        </button>,
+    // 회원가입 완료 후 메인페이지 or 로그인페이지
+    setCurrentIndex(0);
+    setIsLoainAuthModalOpen(!isLoainAuthModalOpen);
+  };
 
-        <button key={2} className='mainaccount-button' onClick={CheckAPIKey}>
-            <span style={{ width: 'auto', minWidth: '109px', height: 'auto', minHeight: '24px', fontSize: '20px' }}>회원가입 완료</span>
-        </button>
-    ];
-
-    if (!isOpen) return null;
-
-    return (
-        <div style={{ fontFamily: 'Pretendard' }}>
-            <div className='filter-modal-overlay'>
-                <div className='mainaccount-container'>
-                    <div className='contentaccount-container'>
-                        <div className='maincontentaccount-container'>
-                            <div className='logoposaccount-container'>
-                                <LoainLogo /> { }
-                                <LoainText /> { }
-                            </div>
-                            <div className='inputposaccount-container'>
-                                {divList[currentIndex]}
-                            </div>
-                            <div className='mainbuttonposaccount-container'>
-                                {btnList[currentIndex]}
-                            </div>
-                        </div>
-                    </div>
-                    <LoainAuthModal 
-                        isOpen={isLoainAuthModalOpen} 
-                        onClose={()=>{setIsLoainAuthModalOpen(!isLoainAuthModalOpen); onClose();}}
-                        checkAuth={checkAuth}
-                        authCode={authCode}
-                    />
-                </div>
-            </div>
-        </div>
+  const checkAuth = async url => {
+    console.log(`Check Auth: ${url}`);
+    validedSignUpData.stoveId = url;
+    setValidSignUpData({ ...validedSignUpData });
+    // url을 통해서 stove id 인증
+    await signUpService(
+      validedSignUpData.id,
+      validedSignUpData.pw,
+      validedSignUpData.apiKey,
+      validedSignUpData.stoveId,
+      validedSignUpData.key,
+      setIsLoggedIn
     );
-}
+    //
+  };
 
-export default Signup
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [modalPosition, setModalPosition] = useState({ top: 350.7, left: 664 }); //일단 위치는 고정값으로
+
+  const divRef = useRef(null);
+  const modalWidth = 240;
+
+  const modalOpen = () => {
+    if (divRef.current) {
+      const rect = divRef.current.getBoundingClientRect();
+      setModalPosition({
+        top: rect.top,
+        left: rect.right - modalWidth,
+      });
+      setIsModalOpen(true);
+    }
+  };
+  const modalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const divList = [
+    <div key={0}>
+      <div
+        className="IdPos"
+        style={{
+          width: 'auto',
+          minWidth: '368px',
+          height: 'auto',
+          minHeight: '73px',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            width: 'auto',
+            minWidth: '77px',
+            height: 'auto',
+            minHeight: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            paddingBottom: '12px',
+          }}
+        >
+          <IdImage style={{ width: '18px', height: '18px' }} />
+          <span
+            style={{
+              width: 'auto',
+              minWidth: '51px',
+              height: 'auto',
+              minHeight: '18px',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              color: '#DFDFDF',
+              paddingLeft: '8px',
+            }}
+          >
+            아이디 *
+          </span>
+        </div>
+        <div
+          style={{
+            width: '368px',
+            height: 'auto',
+            minHeight: '43px',
+            backgroundColor: 'white',
+            borderRadius: '12px',
+          }}
+        >
+          <input
+            className="inputaccount-textbox"
+            type="text"
+            placeholder="사용할 아이디를 입력해주세요."
+            onChange={handleChangeId}
+            style={{
+              width: '304px',
+              height: 'auto',
+              minHeight: '19px',
+              fontSize: '16px',
+            }}
+          ></input>
+        </div>
+      </div>
+    </div>,
+
+    <div key={1}>
+      <div
+        className="PwPos"
+        style={{
+          width: 'auto',
+          minWidth: '368px',
+          height: 'auto',
+          minHeight: '73px',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            width: 'auto',
+            minWidth: '77px',
+            height: 'auto',
+            minHeight: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            paddingBottom: '12px',
+          }}
+        >
+          <PwImage style={{ width: '18px', height: '18px' }} />
+          <span
+            style={{
+              width: 'auto',
+              minWidth: '51px',
+              height: 'auto',
+              minHeight: '18px',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              color: '#DFDFDF',
+              paddingLeft: '8px',
+            }}
+          >
+            비밀번호 *
+          </span>
+        </div>
+        <div
+          style={{
+            width: '368px',
+            height: 'auto',
+            minHeight: '43px',
+            backgroundColor: 'white',
+            borderRadius: '12px',
+          }}
+        >
+          <input
+            className="inputaccount-textbox"
+            type="password"
+            value={inputPw}
+            placeholder="사용할 비밀번호를 입력해주세요."
+            onChange={handleChangePw}
+            style={{
+              width: '304px',
+              height: 'auto',
+              minHeight: '19px',
+              fontSize: '16px',
+            }}
+          ></input>
+        </div>
+      </div>
+      <div
+        className="CheckPwPos"
+        style={{
+          width: 'auto',
+          minWidth: '368px',
+          height: 'auto',
+          minHeight: '73px',
+          display: 'flex',
+          flexDirection: 'column',
+          paddingTop: '16px',
+        }}
+      >
+        <div
+          style={{
+            width: 'auto',
+            minWidth: '77px',
+            height: 'auto',
+            minHeight: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            paddingBottom: '12px',
+          }}
+        >
+          <PwImage style={{ width: '18px', height: '18px' }} />
+          <span
+            style={{
+              width: 'auto',
+              minWidth: '51px',
+              height: 'auto',
+              minHeight: '18px',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              color: '#DFDFDF',
+              paddingLeft: '8px',
+            }}
+          >
+            비밀번호 확인 *
+          </span>
+        </div>
+        <div
+          style={{
+            width: '368px',
+            height: 'auto',
+            minHeight: '43px',
+            backgroundColor: 'white',
+            borderRadius: '12px',
+          }}
+        >
+          <input
+            className="inputaccount-textbox"
+            type="password"
+            value={inputCheckPw}
+            placeholder="비밀번호를 한번 더 입력해주세요."
+            onChange={handleChangeCheckPw}
+            style={{
+              width: '304px',
+              height: 'auto',
+              minHeight: '19px',
+              fontSize: '16px',
+            }}
+          ></input>
+        </div>
+      </div>
+    </div>,
+
+    <div key={2}>
+      <div
+        key={2}
+        className="APIKeyPos"
+        style={{
+          width: 'auto',
+          minWidth: '368px',
+          height: 'auto',
+          minHeight: '73px',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            width: 'auto',
+            minWidth: '77px',
+            height: 'auto',
+            minHeight: '18px',
+            display: 'flex',
+            alignItems: 'center',
+            paddingBottom: '12px',
+          }}
+        >
+          <APIKeyImage style={{ width: '18px', height: '18px' }} />
+          <span
+            style={{
+              width: 'auto',
+              minWidth: '123px',
+              height: 'auto',
+              minHeight: '18px',
+              fontSize: '15px',
+              fontWeight: 'bold',
+              color: '#DFDFDF',
+              paddingLeft: '8px',
+              paddingRight: '201px',
+            }}
+          >
+            로스트아크 API Key
+          </span>
+          <div
+            ref={divRef}
+            onClick={modalOpen}
+            style={{ width: '18px', height: '18px' }}
+          >
+            <QuestionMarkImage style={{ width: '18px', height: '18px' }} />
+          </div>
+          {isModalOpen && (
+            <div
+              style={{
+                position: 'absolute',
+                top: `${modalPosition.top}px`,
+                left: `${modalPosition.left}px`,
+                width: `${modalWidth}px`,
+                height: 'auto',
+                minHeight: '100px',
+                backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                border: 'solid',
+                borderRadius: '20px',
+                borderColor: '#737373',
+              }}
+            >
+              <div
+                style={{
+                  width: '216px',
+                  height: 'autto',
+                  minHeight: '77px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '12px',
+                }}
+              >
+                <div
+                  className="ModalTitlePos"
+                  style={{
+                    width: '216px',
+                    height: 'auto',
+                    minHeight: '15px',
+                    display: 'flex',
+                  }}
+                >
+                  <span
+                    className="ModalTitle"
+                    style={{
+                      width: 'auto',
+                      minWidth: '103px',
+                      height: 'auto',
+                      minHeight: '15px',
+                      color: '#DFDFDF',
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    로스트아크 API Key
+                  </span>
+                  <div
+                    onClick={modalClose}
+                    style={{
+                      width: '15px',
+                      height: '15px',
+                      paddingLeft: '96px',
+                    }}
+                  >
+                    <XMarkImage style={{ width: '15px', height: '15px' }} />
+                  </div>
+                </div>
+                <div
+                  className="ModalContentPos"
+                  style={{
+                    width: '216px',
+                    height: 'auto',
+                    minHeight: '52px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    paddingTop: '10px',
+                  }}
+                >
+                  <div
+                    className="ModalContent"
+                    style={{
+                      width: '216px',
+                      height: 'auto',
+                      minHeight: '24px',
+                      display: 'flex',
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '15px',
+                        height: '15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Dot />
+                    </div>
+                    <span
+                      style={{
+                        color: '#DFDFDF',
+                        fontSize: '10px',
+                        textAlign: 'left',
+                        paddingLeft: '3px',
+                      }}
+                    >
+                      로스트아크 API Key에 대한 설명 문구가 들어갑니다.
+                    </span>
+                  </div>
+                  <div
+                    className="ModalContent"
+                    style={{
+                      width: '216px',
+                      height: 'auto',
+                      minHeight: '24px',
+                      display: 'flex',
+                      paddingTop: '4px',
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '15px',
+                        height: '15px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <Dot />
+                    </div>
+                    <span
+                      style={{
+                        color: '#DFDFDF',
+                        fontSize: '10px',
+                        textAlign: 'left',
+                        paddingLeft: '3px',
+                      }}
+                    >
+                      로스트아크 API Key입력에 대한 권장 문구가 들어갑니다.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div
+          style={{
+            width: '368px',
+            height: 'auto',
+            minHeight: '62px',
+            backgroundColor: 'white',
+            borderRadius: '12px',
+          }}
+        >
+          <textarea
+            rows={2}
+            className="inputaccount-textbox"
+            type="text"
+            value={inputAPIKey}
+            placeholder="API Key를 입력해주세요."
+            onChange={handleChangeAPIKey}
+            style={{
+              width: '304px',
+              height: 'auto',
+              minHeight: '38px',
+              fontSize: '16px',
+              wordWrap: 'break-word',
+              scrollbarWidth: 'none',
+              resize: 'none',
+            }}
+          ></textarea>
+        </div>
+      </div>
+    </div>,
+  ];
+
+  const btnList = [
+    <button key={0} className="mainaccount-button" onClick={CheckId}>
+      <span
+        style={{
+          width: 'auto',
+          minWidth: '85px',
+          height: 'auto',
+          minHeight: '24px',
+          fontSize: '20px',
+        }}
+      >
+        다음 ({currentIndex + 1}/{divList.length})
+      </span>
+    </button>,
+
+    <button key={1} className="mainaccount-button" onClick={CheckPassword}>
+      <span
+        style={{
+          width: 'auto',
+          minWidth: '85px',
+          height: 'auto',
+          minHeight: '24px',
+          fontSize: '20px',
+        }}
+      >
+        다음 ({currentIndex + 1}/{divList.length})
+      </span>
+    </button>,
+
+    <button key={2} className="mainaccount-button" onClick={CheckAPIKey}>
+      <span
+        style={{
+          width: 'auto',
+          minWidth: '109px',
+          height: 'auto',
+          minHeight: '24px',
+          fontSize: '20px',
+        }}
+      >
+        회원가입 완료
+      </span>
+    </button>,
+  ];
+
+  if (!isOpen) return null;
+
+  return (
+    <div style={{ fontFamily: 'Pretendard' }}>
+      <div className="filter-modal-overlay">
+        <div className="mainaccount-container">
+          <div className="contentaccount-container">
+            <div className="maincontentaccount-container">
+              <div className="logoposaccount-container">
+                <LoainLogo /> {}
+                <LoainText /> {}
+              </div>
+              <div className="inputposaccount-container">
+                {divList[currentIndex]}
+              </div>
+              <div className="mainbuttonposaccount-container">
+                {btnList[currentIndex]}
+              </div>
+            </div>
+          </div>
+          <LoainAuthModal
+            isOpen={isLoainAuthModalOpen}
+            onClose={() => {
+              setIsLoainAuthModalOpen(!isLoainAuthModalOpen);
+              onClose();
+            }}
+            checkAuth={checkAuth}
+            authCode={authCode}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Signup;

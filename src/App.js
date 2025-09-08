@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Sidebar from './components/sidebar';
 import ManageMyCharacter from './pages/ManageMyCharacter';
@@ -14,12 +14,12 @@ import { setEventHandlers } from './socket/eventHandlers.js';
 import { signIn } from './services/accountServices.js';
 
 function App() {
-  const [myData, setMyData] = useState(MyDataFactory.create())
-  const [partyList, setPartyList] = useState([])
-  const [myParty, setMyarty] = useState(PartyFactory.create())
-  const [chatList, setChatList] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const credential = CredentialFactory.create()
+  const [myData, setMyData] = useState(MyDataFactory.create());
+  const [partyList, setPartyList] = useState([]);
+  const [myParty, setMyarty] = useState(PartyFactory.create());
+  const [chatList, setChatList] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const credential = CredentialFactory.create();
   const [refreshCooldown, setRefreshCooldown] = useState(false);
 
   const state = {
@@ -35,18 +35,18 @@ function App() {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
     refreshCooldown: refreshCooldown,
-    setRefreshCooldown: setRefreshCooldown
-  }
-  useEffect(()=> {
-    console.log(sessionStorage.getItem("accessKey"));
+    setRefreshCooldown: setRefreshCooldown,
+  };
+  useEffect(() => {
+    console.log(sessionStorage.getItem('accessKey'));
     signIn(state.setIsLoggedIn);
   }, [state.setIsLoggedIn]);
-  socketManager.setHandlers(setEventHandlers(state))
-  state.partyList =[
+  socketManager.setHandlers(setEventHandlers(state));
+  state.partyList = [
     {
-      partyId: "partyId",
-      title: "party title",
-      boss: "commander_1",
+      partyId: 'partyId',
+      title: 'party title',
+      boss: 'commander_1',
       difficulty: 1,
       partyFilter: {
         startGate: 1,
@@ -62,70 +62,84 @@ function App() {
         },
         transcend: {
           weapon: 10,
-          armor: 20
+          armor: 20,
         },
-        title: ["commander_valtan_1"],
-        card: [{
-          name: "Dealer_1",
-          awakening: 30
-        }],
+        title: ['commander_valtan_1'],
+        card: [
+          {
+            name: 'Dealer_1',
+            awakening: 30,
+          },
+        ],
         lastSupporter: true,
         lastDealer: true,
       },
-      leader:{
-        characterId: "bskoId123",
-        name: "bsko",
-        serverName: "아만",
-        job: "블레이드",
-        imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
+      leader: {
+        characterId: 'bskoId123',
+        name: 'bsko',
+        serverName: '아만',
+        job: '블레이드',
+        imageUrl:
+          'https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402',
         itemLevel: 1500,
         arkPassive: {
-            evolution: 10,
-            enlightenment: 15,
-            leap: 20,
+          evolution: 10,
+          enlightenment: 15,
+          leap: 20,
         },
         transcend: {
           weapon: 20,
-          armor: 100
+          armor: 100,
         },
-        titles: ["이클립스"],
-        cards: [{
-          name: "세상을 구하는 빛",
-          awakening: 35
-        }],
+        titles: ['이클립스'],
+        cards: [
+          {
+            name: '세상을 구하는 빛',
+            awakening: 35,
+          },
+        ],
       },
       partyMembers: [
-      {
-        characterId: "bskoId",
-        name: "bsko",
-        serverName: "아만",
-        job: "블레이드",
-        imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
-        itemLevel: 1500,
-        arkPassive: {
+        {
+          characterId: 'bskoId',
+          name: 'bsko',
+          serverName: '아만',
+          job: '블레이드',
+          imageUrl:
+            'https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402',
+          itemLevel: 1500,
+          arkPassive: {
             evolution: 10,
             enlightenment: 15,
             leap: 20,
+          },
+          transcend: {
+            weapon: 20,
+            armor: 100,
+          },
+          titles: ['이클립스'],
+          cards: [
+            {
+              name: '세상을 구하는 빛',
+              awakening: 35,
+            },
+          ],
         },
-        transcend: {
-          weapon: 20,
-          armor: 100
-        },
-        titles: ["이클립스"],
-        cards: [{
-          name: "세상을 구하는 빛",
-          awakening: 35
-        }],
-      }, null, null, null,
-        null, null, null, null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
       ],
       allow: undefined,
       volunteers: undefined,
     },
     {
-      partyId: "partyId2",
-      title: "party title2",
-      boss: "commander_2",
+      partyId: 'partyId2',
+      title: 'party title2',
+      boss: 'commander_2',
       difficulty: 0,
       partyFilter: {
         startGate: 1,
@@ -141,77 +155,94 @@ function App() {
         },
         transcend: {
           weapon: 10,
-          armor: 20
+          armor: 20,
         },
-        title: ["commander_valtan_1"],
-        card: [{
-          name: "Dealer_1",
-          awakening: 30
-        }],
+        title: ['commander_valtan_1'],
+        card: [
+          {
+            name: 'Dealer_1',
+            awakening: 30,
+          },
+        ],
         lastSupporter: true,
         lastDealer: false,
       },
-      leader:{
-        characterId: "bskoId321",
-        name: "bsko123",
-        serverName: "루페온",
-        job: "스카우터",
-        imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
+      leader: {
+        characterId: 'bskoId321',
+        name: 'bsko123',
+        serverName: '루페온',
+        job: '스카우터',
+        imageUrl:
+          'https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402',
         itemLevel: 1600,
         arkPassive: {
-            evolution: 10,
-            enlightenment: 15,
-            leap: 20,
+          evolution: 10,
+          enlightenment: 15,
+          leap: 20,
         },
         transcend: {
           weapon: 20,
-          armor: 100
+          armor: 100,
         },
-        titles: ["이클립스"],
-        cards: [{
-          name: "세상을 구하는 빛",
-          awakening: 35
-        }],
+        titles: ['이클립스'],
+        cards: [
+          {
+            name: '세상을 구하는 빛',
+            awakening: 35,
+          },
+        ],
       },
       partyMembers: [
-      {
-        characterId: "bskoId321",
-        name: "bsko123",
-        serverName: "루페온",
-        job: "스카우터",
-        imageUrl: "https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402",
-        itemLevel: 1600,
-        arkPassive: {
+        {
+          characterId: 'bskoId321',
+          name: 'bsko123',
+          serverName: '루페온',
+          job: '스카우터',
+          imageUrl:
+            'https://img.lostark.co.kr/armory/3/F4201758FCE4C335A1A8A3BAC13AF299E581F48918866FB4BCFF636CC6E204CF.jpg?v=20250407150402',
+          itemLevel: 1600,
+          arkPassive: {
             evolution: 10,
             enlightenment: 15,
             leap: 20,
+          },
+          transcend: {
+            weapon: 20,
+            armor: 100,
+          },
+          titles: ['이클립스'],
+          cards: [
+            {
+              name: '세상을 구하는 빛',
+              awakening: 35,
+            },
+          ],
         },
-        transcend: {
-          weapon: 20,
-          armor: 100
-        },
-        titles: ["이클립스"],
-        cards: [{
-          name: "세상을 구하는 빛",
-          awakening: 35
-        }],
-      }, null, null, null,
-        null, null, null, null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
       ],
       allow: undefined,
       volunteers: undefined,
     },
-  ]
+  ];
 
   return (
     <div className="App">
       <Notification />
-        <Routes>
-          <Route path="/" element={<MainPage state={state}/>} />
-          <Route path="/manageMyCharacter" element={<ManageMyCharacter state={state} />} />
-          <Route path="/myParty" element={<MyPartyPage state={state}/>} />
-        </Routes>
-        <Sidebar state={state}/>
+      <Routes>
+        <Route path="/" element={<MainPage state={state} />} />
+        <Route
+          path="/manageMyCharacter"
+          element={<ManageMyCharacter state={state} />}
+        />
+        <Route path="/myParty" element={<MyPartyPage state={state} />} />
+      </Routes>
+      <Sidebar state={state} />
     </div>
   );
 }

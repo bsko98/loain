@@ -1,5 +1,1 @@
-
-
-export const getSelectCharacterRequestData = () => {
-    
-}
+export const getSelectCharacterRequestData = () => {};
