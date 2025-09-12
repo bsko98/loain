@@ -12,8 +12,11 @@ import Notification from './notification/notificationComponent.jsx';
 import { socketManager } from './socket/socket.js';
 import { setEventHandlers } from './socket/eventHandlers.js';
 import { signIn } from './services/accountServices.js';
-import { Chat, MyData, Party } from './entities/businessEntities.js';
-import { Credential } from './entities/credentialEntities.js';
+
+/** @typedef {import('./entities/businessEntities').Chat} Chat */
+/** @typedef {import('./entities/businessEntities').MyData} MyData */
+/** @typedef {import('./entities/businessEntities').Party} Party */
+/** @typedef {import('./entities/credentialEntities').Credential} Credential */
 
 /**
  * @typedef {Object} States
