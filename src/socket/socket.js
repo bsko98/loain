@@ -21,6 +21,18 @@ class SocketManager {
         }
         return this;
     }
+    /**
+     * 
+     * @returns {{ success: boolean, message: string }}
+     */
+    disconnect() {
+        if(!this.socket || !this.socket.connected) {
+            return { success: false, message: `연결되지 않은 소켓입니다.` };
+        }
+        this.socket.disconnect();
+        this.socket = null;
+        return { success: true, message: `소켓 연결이 해제 되었습니다.` };
+    }
     getSocket() {
         return this.socket;
     }

@@ -1,67 +1,77 @@
+
+/** @class */
 class ArkPassive {
-    evolution // number
-    enlightenment // number
-    leap // number
+    /** @type {number} */  evolution
+    /** @type {number} */ enlightenment
+    /** @type {number} */ leap
 }
+/** @class */
 class Card {
-    name // string
-    awakening // number
+    /** @type {string} */ name
+    /** @type {number} */ awakening
 }
+/** @class */
 class Transcend {
-    weapon // number
-    armor // number
+    /** @type {number} */ weapon
+    /** @type {number} */ armor
 }
+/** @class */
 class Character {
-    characterId // string
-    name // string
-    serverName // string
-    job // string
-    imageUrl // string
-    itemLevel // number
-    arkPassive // ArkPassive
-    transcend // Transcend
-    titles // string[]
-    cards // Card[]
+    /** @type {string} */ characterId
+    /** @type {string} */ name
+    /** @type {string} */ serverName
+    /** @type {string} */ job
+    /** @type {string} */ imageUrl
+    /** @type {number} */ itemLevel
+    /** @type {ArkPassive} */ arkPassive
+    /** @type {Transcend} */ transcend
+    /** @type {string[]} */ titles
+    /** @type {Card[]} */ cards
 }
+/** @class */
 class PartyFilter {
-    startGate // number
-    endGate // number
-    startTime // Date
-    mastery // number
-    itemLevel // number
-    arkPassive // ArkPassive
-    transcend // Transcend
-    title // string|null
-    card // Card[]
-    lastSupporter // boolean|null
-    lastDealer // boolean|null
+    /** @type {number} */ startGate
+    /** @type {number} */ endGate
+    /** @type {Date} */ startTime
+    /** @type {number} */ mastery
+    /** @type {number} */ itemLevel
+    /** @type {ArkPassive} */ arkPassive
+    /** @type {Transcend} */ transcend
+    /** @type {string|null} */ title
+    /** @type {Card[]} */ card
+    /** @type {boolean|null} */ lastSupporter
+    /** @type {boolean|null} */ lastDealer
 }
+/** @class */
 class UserData {
-    id // string
-    chooseCharacter // Character|null
-    joinedPartyId //? string|null
-    volunteerParties //? string[]
+    /** @type {string} */ id
+    /** @type {Character|null} */ chooseCharacter
+    /** @type {string|null} */ joinedPartyId
+    /** @type {string[]} */ volunteerParties
 }
+/** @class */
 class Chat {
-    senderId // string
-    message // string
-    timestamp // date
+    /** @type {string} */ senderId
+    /** @type {string} */ message
+    /** @type {Date} */ timestamp
 }
+/** @class */
 class Party {
-    partyId // string
-    title // string
-    boss // string
-    difficulty // number
-    partyFilter // PartyFilter
-    leader // UserData
-    partyMembers // (UserData|null)[]
-    allow // boolean|undefined
-    volunteers // UserData[]|undefined
+    /** @type {string} */ partyId
+    /** @type {string} */ title
+    /** @type {string} */ boss
+    /** @type {number} */ difficulty
+    /** @type {PartyFilter} */ partyFilter
+    /** @type {UserData} */ leader
+    /** @type {(UserData|null)[]} */ partyMembers
+    /** @type {boolean|undefined} */ allow
+    /** @type {UserData[]|undefined} */ volunteers
 }
+/** @class */
 class MyData {
-    stoveId // number
-    characters // Character[]
-    userData // UserData
+    /** @type {number} */ stoveId
+    /** @type {Character[]} */ characters
+    /** @type {UserData} */ userData
 }
 
 export {

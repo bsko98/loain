@@ -12,23 +12,45 @@ import Notification from './notification/notificationComponent.jsx';
 import { socketManager } from './socket/socket.js';
 import { setEventHandlers } from './socket/eventHandlers.js';
 import { signIn } from './services/accountServices.js';
+import { Chat, MyData, Party } from './entities/businessEntities.js';
+import { Credential } from './entities/credentialEntities.js';
+
+/**
+ * @typedef {Object} States
+ * @property {MyData} myData
+ * @property {(myData: MyData) => void} setMyData
+ * @property {Party[]} partyList
+ * @property {(party: Party[]) => void} setPartyList
+ * @property {Party} myParty
+ * @property {(party: Party) => void} setMyParty
+ * @property {Chat[]} chatList
+ * @property {(chat: Chat[]) => void} setChatList
+ * @property {Credential} credential
+ * @property {boolean} isLoggedIn
+ * @property {(isLoggedIn: boolean) => void} setIsLoggedIn
+ * @property {number} refreshCooldown
+ * @property {(refreshCooldown: number) => void} setRefreshCooldown
+ */
 
 function App() {
   const [myData, setMyData] = useState(MyDataFactory.create())
   const [partyList, setPartyList] = useState([])
-  const [myParty, setMyarty] = useState(PartyFactory.create())
+  const [myParty, setMyParty] = useState(PartyFactory.create())
   const [chatList, setChatList] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const credential = CredentialFactory.create()
   const [refreshCooldown, setRefreshCooldown] = useState(false);
 
+  /**
+   * @type {States}
+   */
   const state = {
     myData: myData,
     setMyData: setMyData,
     partyList: partyList,
     setPartyList: setPartyList,
     myParty: myParty,
-    setMyarty: setMyarty,
+    setMyParty: setMyParty,
     chatList: chatList,
     setChatList: setChatList,
     credential: credential,
