@@ -23,7 +23,15 @@ import Signin from '../pages/Signin';
 import FindId from '../pages/Findid';       
 import ResetPassword from '../pages/Resetpassword';
 import SignUp from '../pages/Signup';
+import { MyDataFactory } from '../factoris/myDataFactory';
+import { PartyFactory } from '../factoris/partyFactory';
+import { CredentialFactory } from '../factoris/credentialFactory';
+import { socketManager } from '../socket/socket';
 
+/**
+ * @param {object} props
+ * @param {import('../App').States} props.state
+ */
 const Sidebar = ({state}) => {
 
     const [moreInfo, setMoreInfo] = useState(false);
@@ -100,7 +108,16 @@ const Sidebar = ({state}) => {
             setIsMyAccountModalOpen(!isMyAccountModalOpen);
         }
         else if(item.id === 4){
-            alert("로그아웃");
+            sessionStorage.removeItem('accessKey');
+            sessionStorage.removeItem('refreshKey');
+            state.setMyData(MyDataFactory.create());
+            state.setPartyList([]);
+            state.setMyParty(PartyFactory.create());
+            state.setChatList([]);
+            state.setIsLoggedIn(false);
+            state.credential = CredentialFactory.create();
+            state.setRefreshCooldown(false);
+            socketManager.disconnect();
         }
     }
 
