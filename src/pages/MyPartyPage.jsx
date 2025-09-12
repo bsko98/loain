@@ -28,6 +28,13 @@ const MyPartyPage = ({ state }) => {
     minute: "2-digit",
     hour12: true, // 24시간제
   });
+  const openPartyInfoModal=()=>{
+    if(state.myParty.leader.chooseCharacter.name === state.myData.userData.chooseCharacter.name){
+      setIsModalOpen(!isModalOpen);
+    }else{
+      alert("파티장만 방 설정을 할 수 있습니다.");
+    }
+  }
 
   return (
     <div className="main-Container">
@@ -53,7 +60,7 @@ const MyPartyPage = ({ state }) => {
 
               <button
                 className="my-party-moreinfo-button"
-                onClick={() => setIsModalOpen(!isModalOpen)}
+                onClick={() => openPartyInfoModal()}
               >
                 방 정보 상세보기
               </button>
