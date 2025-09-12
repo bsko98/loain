@@ -29,11 +29,15 @@ const MyPartyPage = ({ state }) => {
     hour12: true, // 24시간제
   });
   const openPartyInfoModal=()=>{
-    if(state.myParty.leader.id === state.myData.userData.id){
-      setIsModalOpen(!isModalOpen);
-    }else{
+    const partyLeaderId = state.myParty.leader.id;
+    const currentUserId = state.myData.userData.id;
+  
+    const isPartyLeader = partyLeaderId === currentUserId;
+    if(!isPartyLeader){
       alert("파티장만 방 설정을 할 수 있습니다.");
+      return;
     }
+    setIsModalOpen(!isModalOpen);
   }
 
   return (
@@ -136,19 +140,16 @@ const MyPartyPage = ({ state }) => {
               <div className="my-party-waitting-extra-button-row">
                 <button
                   className="my-party-waitting-extra-button"
-                  onClick={() => console.log(state.myParty)}
                 >
                   알람 보내기
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
-                  onClick={() => console.log(allMembers)}
                 >
                   마감
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
-                  onClick={() => console.log(state)}
                 >
                   나가기
                 </button>
