@@ -222,6 +222,13 @@ const PartyInfoModal = ({
     return partyFilter;
   };
 
+  const isLeader=()=>{
+    const partyLeaderId = state.myParty.leader.id;
+    const currentUserId = state.myData.userData.id;
+  
+    return partyLeaderId === currentUserId;
+  }
+
   const checkValues = (partyFilter) => {
     const updatedPartyInfo = {
       partyTitle: filters.partyTitle,
@@ -238,10 +245,12 @@ const PartyInfoModal = ({
   };
 
   const updatePartyInfo = () => {
+    if(!isLeader()){
+      alert("파티장만 수정할 수 있습니다.");
+      return;
+    }
     try {
       const partyFilter = getPartyFilter(filters);
-      console.log(partyFilter);
-      console.log(filters.partyTitle);
 
       if (checkValues(partyFilter)) {
         socketManager.send("updatePartyInfo", {
@@ -292,6 +301,7 @@ const PartyInfoModal = ({
                   placeholder="방 제목을 입력해주세요."
                   value={filters.partyTitle}
                   onChange={handleFilterChange}
+                  disabled={isLeader()?false:true}
                 />
               </div>
               <div className="party-info-modal-left-container-basic-row">
@@ -303,6 +313,7 @@ const PartyInfoModal = ({
                   name="startTime"
                   value={filters.startTime}
                   onChange={handleFilterChange}
+                  disabled={isLeader()?false:true}
                 >
                   <option value={filters.startTime}>{filters.startTime}</option>
                   {startTime.map((time) => (
@@ -361,6 +372,7 @@ const PartyInfoModal = ({
                       name="startGate"
                       value={filters.startGate}
                       onChange={handleFilterChange}
+                      disabled={isLeader()?false:true}
                     >
                       <option value="">선택</option>
                       {filters.boss &&
@@ -375,6 +387,7 @@ const PartyInfoModal = ({
                       name="endGate"
                       value={filters.endGate}
                       onChange={handleFilterChange}
+                      disabled={isLeader()?false:true}
                     >
                       <option value="">선택</option>
                       {filters.boss &&
@@ -400,7 +413,7 @@ const PartyInfoModal = ({
               상세정보
             </div>
             <div className="filter-bottom-container2">
-              <div className="skill-bar">
+              <div className={isLeader()?"skill-bar":"skill-bar-disabled"} >
                 <div className="skill-wrapper">
                   {startMastery !== null && endMastery !== null && (
                     <div
@@ -508,6 +521,7 @@ const PartyInfoModal = ({
                         name="environment"
                         value={filters.environment}
                         onChange={handleFilterChange}
+                        disabled={isLeader()?false:true}
                       >
                         <option value="">선택해주세요</option>
                         <option value={0}>상관없음</option>
@@ -524,6 +538,7 @@ const PartyInfoModal = ({
                           value={filters.lastSupporter}
                           checked={filters.lastSupporter}
                           onChange={handleFilterChange}
+                          disabled={isLeader()?false:true}
                         />
                         <label htmlFor="lastSupporter">랏폿</label>
                       </div>
@@ -535,6 +550,7 @@ const PartyInfoModal = ({
                           value={filters.lastDealer}
                           checked={filters.lastDealer}
                           onChange={handleFilterChange}
+                          disabled={isLeader()?false:true}
                         />
                         <label htmlFor="lastDealer">랏딜</label>
                       </div>
@@ -619,7 +635,7 @@ const PartyInfoModal = ({
           <button className="last-row-button" onClick={onClose}>
             취소
           </button>
-          <button className="last-row-button" onClick={() => updatePartyInfo()}>
+          <button className="last-row-button" onClick={() => updatePartyInfo()} disabled={isLeader()?false:true}>
             {buttonText}
           </button>
         </div>

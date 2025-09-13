@@ -29,14 +29,6 @@ const MyPartyPage = ({ state }) => {
     hour12: true, // 24시간제
   });
   const openPartyInfoModal=()=>{
-    const partyLeaderId = state.myParty.leader.id;
-    const currentUserId = state.myData.userData.id;
-  
-    const isPartyLeader = partyLeaderId === currentUserId;
-    if(!isPartyLeader){
-      alert("파티장만 방 설정을 할 수 있습니다.");
-      return;
-    }
     setIsModalOpen(!isModalOpen);
   }
 
