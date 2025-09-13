@@ -373,6 +373,7 @@ const PartyInfoModal = ({
                       value={filters.startGate}
                       onChange={handleFilterChange}
                       disabled={isLeader()?false:true}
+                      className="gate-select"
                     >
                       <option value="">선택</option>
                       {filters.boss &&
@@ -388,6 +389,7 @@ const PartyInfoModal = ({
                       value={filters.endGate}
                       onChange={handleFilterChange}
                       disabled={isLeader()?false:true}
+                      className="gate-select"
                     >
                       <option value="">선택</option>
                       {filters.boss &&

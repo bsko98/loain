@@ -429,4 +429,40 @@ text-align: left;
     position: relative;
     padding: 24px 32px 0px 32px;
     pointer-events: none;
+    opacity: 0.5;
+    cursor: default;  
+}
+
+.character-filter-input:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+.character-filter-dropdown:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.party-info-modal-left-container-title-input:disabled{
+    opacity: 0.7;
+    cursor: default;
+}
+
+.party-info-modal-left-container-basic-select:disabled{
+    opacity: 0.7;
+    cursor: default;
+}
+
+.raid-select-dropdown2:disabled{
+    opacity: 0.7;
+    cursor: default;
+}
+
+.custom-checkbox-container input[type="checkbox"]:disabled {
+    opacity: 0.7;
+    cursor: default;    
+}   
+
+.gate-select:disabled{
+    opacity: 0.7;
+    cursor: default;    
 }
