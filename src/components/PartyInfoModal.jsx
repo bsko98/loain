@@ -171,6 +171,9 @@ const PartyInfoModal = ({
       newFilters["endGate"] = state.myParty.partyFilter.endGate;
       newFilters["startTime"] = state.myParty.partyFilter.startTime;
       newFilters["partyTitle"] = state.myParty.title;
+      newFilters["lastSupporter"] = state.myParty.partyFilter.lastSupporter;
+      newFilters["lastDealer"] = state.myParty.partyFilter.lastDealer;
+      newFilters["environment"] = state.myParty.partyFilter.newFilters;
       return newFilters;
     });
   },[state]);
@@ -431,7 +434,7 @@ const PartyInfoModal = ({
               상세정보
             </div>
             <div className="filter-bottom-container2">
-              <div className={isLeader()?"skill-bar":"skill-bar-disabled"} >
+              <fieldset className="skill-bar" disabled={!isLeader()}>
                 <div className="skill-wrapper">
                   {startMastery !== null && endMastery !== null && (
                     <div
@@ -464,7 +467,7 @@ const PartyInfoModal = ({
                   ))}
                 </div>
                 <div className="skill-bar-bottom-line"></div>
-              </div>
+              </fieldset>
               <div
                 className="filter-main-container"
                 style={{ marginTop: "10px" }}
