@@ -320,7 +320,7 @@ const PartyInfoModal = ({
                   placeholder="방 제목을 입력해주세요."
                   value={filters.partyTitle}
                   onChange={handleFilterChange}
-                  disabled={isLeader()?false:true}
+                  disabled={!isLeader()}
                 />
               </div>
               <div className="party-info-modal-left-container-basic-row">
@@ -332,7 +332,7 @@ const PartyInfoModal = ({
                   name="startTime"
                   value={filters.startTime}
                   onChange={handleFilterChange}
-                  disabled={isLeader()?false:true}
+                  disabled={!isLeader()}
                 >
                   <option value={filters.startTime}>{filters.startTime}</option>
                   {startTime.map((time) => (
@@ -391,7 +391,7 @@ const PartyInfoModal = ({
                       name="startGate"
                       value={filters.startGate}
                       onChange={handleFilterChange}
-                      disabled={isLeader()?false:true}
+                      disabled={!isLeader()}
                       className="gate-select"
                     >
                       <option value="">선택</option>
@@ -407,7 +407,7 @@ const PartyInfoModal = ({
                       name="endGate"
                       value={filters.endGate}
                       onChange={handleFilterChange}
-                      disabled={isLeader()?false:true}
+                      disabled={!isLeader()}
                       className="gate-select"
                     >
                       <option value="">선택</option>
@@ -542,7 +542,7 @@ const PartyInfoModal = ({
                         name="environment"
                         value={filters.environment}
                         onChange={handleFilterChange}
-                        disabled={isLeader()?false:true}
+                        disabled={!isLeader()}
                       >
                         <option value="">선택해주세요</option>
                         <option value={0}>상관없음</option>
@@ -559,7 +559,7 @@ const PartyInfoModal = ({
                           value={filters.lastSupporter}
                           checked={filters.lastSupporter}
                           onChange={handleFilterChange}
-                          disabled={isLeader()?false:true}
+                          disabled={!isLeader()}
                         />
                         <label htmlFor="lastSupporter">랏폿</label>
                       </div>
@@ -571,7 +571,7 @@ const PartyInfoModal = ({
                           value={filters.lastDealer}
                           checked={filters.lastDealer}
                           onChange={handleFilterChange}
-                          disabled={isLeader()?false:true}
+                          disabled={!isLeader()}
                         />
                         <label htmlFor="lastDealer">랏딜</label>
                       </div>
@@ -656,7 +656,7 @@ const PartyInfoModal = ({
           <button className="last-row-button" onClick={onClose}>
             취소
           </button>
-          <button className="last-row-button" onClick={() => updatePartyInfo()} disabled={isLeader()?false:true}>
+          <button className="last-row-button" onClick={() => updatePartyInfo()} disabled={!isLeader()}>
             {buttonText}
           </button>
         </div>
