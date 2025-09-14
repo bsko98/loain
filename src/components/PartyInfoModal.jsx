@@ -186,9 +186,14 @@ const PartyInfoModal = ({
         }
       }
       if (type === "select-one") {
-        if (name === "startTime" || name === "card" || name === "title") {
+        if (name === "card" || name === "title") {
           newFilters[name] = value;
-        } else {
+        }else if(name === "startTime" ){
+          const currentDate = new Date();
+          currentDate.setUTCMinutes(currentDate.getUTCMinutes() + Number(value));
+          newFilters[name] = currentDate.toISOString();
+        } 
+        else {
           newFilters[name] = Number(value);
         }
       }
@@ -207,12 +212,10 @@ const PartyInfoModal = ({
       lastDealer,
       environment,
     } = filters;
-    const currentDate = new Date();
-    currentDate.setUTCMinutes(currentDate.getUTCMinutes() + Number(startTime));
     const partyFilter = {
       startGate,
       endGate,
-      startTime: currentDate.toISOString(),
+      startTime,
       startMastery,
       endMastery,
       lastSupporter,
