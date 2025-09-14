@@ -162,6 +162,19 @@ const PartyInfoModal = ({
     });
   }, [startMastery, endMastery]);
 
+  useEffect(()=>{
+    setFilters((prevFilters) => {
+      let newFilters = { ...prevFilters };
+      newFilters["startMastery"] = state.myParty.partyFilter.startMastery;
+      newFilters["endMastery"] = state.myParty.partyFilter.endMastery;
+      newFilters["startGate"] = state.myParty.partyFilter.startGate;
+      newFilters["endGate"] = state.myParty.partyFilter.endGate;
+      newFilters["startTime"] = state.myParty.partyFilter.startTime;
+      newFilters["partyTitle"] = state.myParty.title;
+      return newFilters;
+    });
+  },[state]);
+
   const handleFilterChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFilters((prevFilters) => {
