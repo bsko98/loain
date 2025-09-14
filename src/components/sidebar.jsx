@@ -55,7 +55,6 @@ const Sidebar = ({state}) => {
     }
 
     const activeMoreInfo = (moreInfo) => {
-        // console.log(moreInfo)
         setMoreInfo(!moreInfo);
     }
 
@@ -97,6 +96,13 @@ const Sidebar = ({state}) => {
         }
         else if(item.id === 2){
             setIsSinginModalOpen(!isSinginModalOpen);
+        }
+        else if(item.id === 4){
+            if(state.myParty.partyId !== undefined){
+                navigate(`${item.url}`);
+            }else{
+                alert("현재 가입중인 파티가 없습니다. 파티 가입을 먼저 해주세요")
+            }
         }
         else{
             navigate(`${item.url}`);

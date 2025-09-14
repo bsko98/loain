@@ -274,6 +274,8 @@ text-align: left;
     /* Frame 427322420 */
 appearance: none; /* 기본 화살표 제거 */
 
+cursor: pointer;
+
 box-sizing: border-box;
 
 /* Auto layout */
@@ -406,4 +408,53 @@ text-align: left;
     color: rgba(223, 223, 223, 1);
     text-align: left;
     margin-bottom: 8px;
+}
+
+/* 숙련도 선택 바 */
+.skill-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 440px;
+    height: 78px;
+    position: relative;
+    padding: 24px 32px 0px 32px;
+    border: none;
+    margin: 0;
+    min-width: 0;
+}
+
+/* 숙련도 선택 바 */
+.skill-bar:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.character-filter-input:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+.character-filter-dropdown:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.party-info-modal-left-container-title-input:disabled{
+    opacity: 0.7;
+    cursor: default;
+}
+
+.party-info-modal-left-container-basic-select:disabled{
+    opacity: 0.7;
+    cursor: default;
+}
+
+.custom-checkbox-container input[type="checkbox"]:disabled {
+    opacity: 0.7;
+    cursor: default;    
+}   
+
+.gate-select:disabled{
+    opacity: 0.7;
+    cursor: default;    
 }
