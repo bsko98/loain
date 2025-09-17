@@ -173,7 +173,7 @@ const PartyInfoModal = ({
       newFilters["partyTitle"] = state.myParty.title;
       newFilters["lastSupporter"] = state.myParty.partyFilter.lastSupporter;
       newFilters["lastDealer"] = state.myParty.partyFilter.lastDealer;
-      newFilters["environment"] = state.myParty.partyFilter.newFilters;
+      newFilters["environment"] = state.myParty.partyFilter.environment;
       return newFilters;
     });
   },[state]);

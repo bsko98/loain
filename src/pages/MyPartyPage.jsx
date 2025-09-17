@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./MyPartyPage.css";
 import UserInfoComponent from "../components/UserInfoComponent.jsx";
 import { ReactComponent as SendChattingButton } from "../assets/images/SendChattingButton.svg";
 import PartyInfoModal from "../components/PartyInfoModal.jsx";
+import { socketManager } from "../socket/socket.js";
 
 const MyPartyPage = ({ state }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPartyOpen,setIsPartyOpen] = useState(true);
   const closeModal = () => {
     return setIsModalOpen(!isModalOpen);
   };
@@ -28,10 +30,43 @@ const MyPartyPage = ({ state }) => {
     minute: "2-digit",
     hour12: true, // 24시간제
   });
+  const isLeader=()=>{
+    const partyLeaderId = state.myParty.leader.id;
+    const currentUserId = state.myData.userData.id;
+  
+    return partyLeaderId === currentUserId;
+  }
+
+  useEffect(()=>{
+    setIsPartyOpen(state.myParty.allow);
+  },[state.myParty.allow])
+
   const openPartyInfoModal=()=>{
     setIsModalOpen(!isModalOpen);
   }
-
+  const closeParty=()=>{
+    try{
+      socketManager.send("closeParty");
+    }catch(error){
+      alert(error);
+      console.log(error);
+    }
+  }
+  const openParty=()=>{
+    try{
+      socketManager.send("openParty");
+    }catch(error){
+      alert(error);
+      console.log(error);
+    }
+  }
+  const manageParty=()=>{
+    if(isPartyOpen){
+      closeParty();
+    }else{
+      openParty();
+    }
+  }
   return (
     <div className="main-Container">
       <div className="content-Wrapper">
@@ -137,8 +172,10 @@ const MyPartyPage = ({ state }) => {
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
+                  onClick={()=>manageParty()}
+                  disabled={!isLeader()}
                 >
-                  마감
+                  {isPartyOpen?"마감":"모집"}
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
