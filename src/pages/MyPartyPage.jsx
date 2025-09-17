@@ -3,9 +3,11 @@ import "./MyPartyPage.css";
 import UserInfoComponent from "../components/UserInfoComponent.jsx";
 import { ReactComponent as SendChattingButton } from "../assets/images/SendChattingButton.svg";
 import PartyInfoModal from "../components/PartyInfoModal.jsx";
+import { socketManager } from "../socket/socket.js";
 
 const MyPartyPage = ({ state }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPartyOpen,setIsPartyOpen] = useState(true);
   const closeModal = () => {
     return setIsModalOpen(!isModalOpen);
   };
@@ -28,10 +30,41 @@ const MyPartyPage = ({ state }) => {
     minute: "2-digit",
     hour12: true, // 24시간제
   });
+  const isLeader=()=>{
+    const partyLeaderId = state.myParty.leader.id;
+    const currentUserId = state.myData.userData.id;
+  
+    return partyLeaderId === currentUserId;
+  }
+
   const openPartyInfoModal=()=>{
     setIsModalOpen(!isModalOpen);
   }
-
+  const closeParty=()=>{
+    try{
+      socketManager.send("closeParty");
+      setIsPartyOpen(!isPartyOpen);
+      console.log("파티 마감 완료")  
+    }catch(error){
+      alert(error);
+    }
+  }
+  const openParty=()=>{
+    try{
+      socketManager.send("openParty");
+      setIsPartyOpen(!isPartyOpen);
+      console.log("파티 오픈 완료")  
+    }catch(error){
+      alert(error);
+    }
+  }
+  const manageParty=()=>{
+    if(isPartyOpen){
+      closeParty();
+    }else{
+      openParty();
+    }
+  }
   return (
     <div className="main-Container">
       <div className="content-Wrapper">
@@ -137,8 +170,10 @@ const MyPartyPage = ({ state }) => {
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
+                  onClick={()=>manageParty()}
+                  disabled={!isLeader()}
                 >
-                  마감
+                  {isPartyOpen?"마감":"모집"}
                 </button>
                 <button
                   className="my-party-waitting-extra-button"
