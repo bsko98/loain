@@ -9,8 +9,8 @@ export const closePartyEventHandler = (states) => {
                 return;
             }
             states.myParty.partyId = data.partId;
-            states.myParty.allow = data?.allow ? data.allow : undefined;
-            states.myParty.volunteers = data?.volunteers ? data.volunteers.map((volunteers) => UserDataEntityMapper.toInternal(volunteers)): undefined;
+            states.myParty.allow = data.allow;
+            states.myParty.volunteers = data.volunteers.map((volunteers) => UserDataEntityMapper.toInternal(volunteers));
             states.setMyParty({...states.myParty});
             console.log(`파티 마감`)
         }
