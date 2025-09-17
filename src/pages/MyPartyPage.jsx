@@ -44,18 +44,18 @@ const MyPartyPage = ({ state }) => {
     try{
       socketManager.send("closeParty");
       setIsPartyOpen(!isPartyOpen);
-      console.log("파티 마감 완료")  
     }catch(error){
       alert(error);
+      console.log(error);
     }
   }
   const openParty=()=>{
     try{
       socketManager.send("openParty");
-      setIsPartyOpen(!isPartyOpen);
-      console.log("파티 오픈 완료")  
+      setIsPartyOpen(!isPartyOpen); 
     }catch(error){
       alert(error);
+      console.log(error);
     }
   }
   const manageParty=()=>{
