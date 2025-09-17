@@ -7,7 +7,7 @@ export const openPartyEventHandler = (states) => {
                 console.log("Error");
                 return;
             }
-            states.myParty.partyId = data.partId;
+            states.myParty.partyId = data.partyId;
             states.myParty.allow = data.allow;
             states.setMyParty({...states.myParty});
             console.log(`파티 공개`)

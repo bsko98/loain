@@ -8,7 +8,7 @@ export const closePartyEventHandler = (states) => {
                 console.log("Error");
                 return;
             }
-            states.myParty.partyId = data.partId;
+            states.myParty.partyId = data.partyId;
             states.myParty.allow = data.allow;
             states.myParty.volunteers = data.volunteers.map((volunteers) => UserDataEntityMapper.toInternal(volunteers));
             states.setMyParty({...states.myParty});

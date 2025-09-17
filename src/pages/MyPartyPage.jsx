@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./MyPartyPage.css";
 import UserInfoComponent from "../components/UserInfoComponent.jsx";
 import { ReactComponent as SendChattingButton } from "../assets/images/SendChattingButton.svg";
@@ -37,13 +37,16 @@ const MyPartyPage = ({ state }) => {
     return partyLeaderId === currentUserId;
   }
 
+  useEffect(()=>{
+    setIsPartyOpen(state.myParty.allow);
+  },[state.myParty.allow])
+
   const openPartyInfoModal=()=>{
     setIsModalOpen(!isModalOpen);
   }
   const closeParty=()=>{
     try{
       socketManager.send("closeParty");
-      setIsPartyOpen(!isPartyOpen);
     }catch(error){
       alert(error);
       console.log(error);
@@ -52,7 +55,6 @@ const MyPartyPage = ({ state }) => {
   const openParty=()=>{
     try{
       socketManager.send("openParty");
-      setIsPartyOpen(!isPartyOpen); 
     }catch(error){
       alert(error);
       console.log(error);
