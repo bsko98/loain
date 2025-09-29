@@ -156,7 +156,9 @@ const MyPartyPage = ({ state }) => {
               <div className="my-party-waitting-container">
                 {state.myParty.volunteers.map((user, idx) => (
                   <div className="my-party-waitting-row" key={idx}>
-                    <UserInfoComponent userInfo={user} />
+                    <UserInfoComponent 
+                      userInfo={user}
+                    />
                     <div className="my-party-waitting-button-row">
                       <div className="kick-button2">추방</div>
                       <div className="accept-button">수락</div>
