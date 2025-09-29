@@ -4,7 +4,6 @@ import UserInfoComponent from "../components/UserInfoComponent.jsx";
 import { ReactComponent as SendChattingButton } from "../assets/images/SendChattingButton.svg";
 import PartyInfoModal from "../components/PartyInfoModal.jsx";
 import { socketManager } from "../socket/socket.js";
-import { CLASS_ICON_MAP } from "../mappers/classIconMap.js";
 
 const MyPartyPage = ({ state }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,10 +35,6 @@ const MyPartyPage = ({ state }) => {
     const currentUserId = state.myData.userData.id;
   
     return partyLeaderId === currentUserId;
-  }
-
-  const getClassIcon=(user)=>{
-    return CLASS_ICON_MAP[user.chooseCharacter.job];
   }
 
   useEffect(()=>{
@@ -114,7 +109,6 @@ const MyPartyPage = ({ state }) => {
                               <div className="party-memeber-info">
                                 <UserInfoComponent
                                   userInfo={member.chooseCharacter}
-                                  classIcon={getClassIcon(member)}
                                 />
                                 <div className="kick-button-container">
                                   <button
@@ -164,7 +158,6 @@ const MyPartyPage = ({ state }) => {
                   <div className="my-party-waitting-row" key={idx}>
                     <UserInfoComponent 
                       userInfo={user}
-                      classIcon={getClassIcon(user)}
                     />
                     <div className="my-party-waitting-button-row">
                       <div className="kick-button2">추방</div>
